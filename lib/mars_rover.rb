@@ -8,6 +8,10 @@ class MarsRover
   end
 
   def move
-    coordinate.up
+    @commands.each do |command|
+      @coordinate.up
+    end
+
+    @coordinate
   end
 end

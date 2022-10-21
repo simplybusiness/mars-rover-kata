@@ -20,11 +20,15 @@ describe MarsRover do
 
     it 'moves forward by 1' do
       commands = ['f']
-      expect(mars_rover(commands: commands).move.x).to eq 0
-      expect(mars_rover(commands: commands).move.y).to eq 1
+      expect(mars_rover(commands).move.x).to eq 0
+      expect(mars_rover(commands).move.y).to eq 1
     end
 
-    xit 'moves forward by 2'
+    it 'moves forward by 2' do
+      commands = ['f', 'f']
+      expect(mars_rover(commands).move.x).to eq 0
+      expect(mars_rover(commands).move.y).to eq 2
+    end
 
     xit 'moves backward by 1'
     
