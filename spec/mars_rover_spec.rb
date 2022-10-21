@@ -19,9 +19,9 @@ describe MarsRover do
     end
 
     it 'moves forward by 1' do
-      ending_position = { x: 0, y: 1 }
       commands = ['f']
-      expect(mars_rover(commands: commands).move).to eq ending_position
+      expect(mars_rover(commands: commands).move.x).to eq 0
+      expect(mars_rover(commands: commands).move.y).to eq 1
     end
 
     xit 'moves forward by 2'

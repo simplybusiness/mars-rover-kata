@@ -8,6 +8,6 @@ class MarsRover
   end
 
   def move
-    { x: 0, y: 1 }
+    coordinate.up
   end
 end
