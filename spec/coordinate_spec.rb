@@ -1,3 +1,4 @@
+require 'pry'
 require_relative '../lib/coordinate.rb'
 
 describe Coordinate do
@@ -7,6 +8,11 @@ describe Coordinate do
   it 'has starting coordinates' do
     expect(coordinate.x).to eq 0
     expect(coordinate.y).to eq 0
+  end
+
+  it 'adds 1 to y' do
+    expect(coordinate.up.x).to eq 0
+    expect(coordinate.up.y).to eq 1
   end
 end
 

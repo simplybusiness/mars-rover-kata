@@ -5,4 +5,9 @@ class Coordinate
     @x = x
     @y = y
   end
+
+  def up
+    @y += 1
+    self
+  end
 end
