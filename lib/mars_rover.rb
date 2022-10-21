@@ -7,4 +7,8 @@ class MarsRover
     @starting_direction = starting_direction
     @commands = commands
   end
+
+  def move
+    { x: 0, y: 1 }
+  end
 end

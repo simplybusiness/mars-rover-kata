@@ -17,11 +17,17 @@ describe MarsRover do
     it 'has an initial set of commands' do
       expect(mars_rover.commands).to eq []
     end
+
+    it 'moves forward' do
+      ending_position = { x: 0, y: 1 }
+      commands = ['f']
+      expect(mars_rover(commands: commands).move).to eq ending_position
+    end
   end
 end
 
-def mars_rover
-  MarsRover.new(starting_coordinate_x: starting_coordinate_x, starting_coordinate_y: starting_coordinate_y, starting_direction: starting_direction)
+def mars_rover(commands = [])
+  MarsRover.new(starting_coordinate_x: starting_coordinate_x, starting_coordinate_y: starting_coordinate_y, starting_direction: starting_direction, commands: commands)
 end
 
 
