@@ -18,11 +18,26 @@ describe MarsRover do
       expect(mars_rover.commands).to eq []
     end
 
-    it 'moves forward' do
+    it 'moves forward by 1' do
       ending_position = { x: 0, y: 1 }
       commands = ['f']
       expect(mars_rover(commands: commands).move).to eq ending_position
     end
+
+    xit 'moves forward by 2'
+
+    xit 'moves backward by 1'
+    
+    xit 'moves backward by 2'
+
+    xit 'moves from a starting position of (0, 3)'
+
+    xit 'moves from a starting position of (3, 2)'
+
+    xit 'moves from a starting direction of E'
+
+    xit 'moves from a starting direction of W with a starting position of (2, 5)'
+
   end
 end
 
