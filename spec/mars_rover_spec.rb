@@ -43,7 +43,17 @@ describe MarsRover do
       expect(mars_rover(commands).move.y).to eq -2
     end
 
-    xit 'moves from a starting position of (0, 3)'
+
+    context 'when starting position is (0, 3)' do
+      let(:starting_coordinate_x) { 0 }
+      let(:starting_coordinate_y) { 3 }
+
+      it 'moves forward twice and backward once' do
+        commands = ['f', 'f', 'b']
+        expect(mars_rover(commands).move.x).to eq 0
+        expect(mars_rover(commands).move.y).to eq 4
+      end
+    end
 
     xit 'moves from a starting position of (3, 2)'
 
