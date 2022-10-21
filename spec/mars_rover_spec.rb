@@ -20,18 +20,21 @@ describe MarsRover do
 
     it 'moves forward by 1' do
       commands = ['f']
+
       expect(mars_rover(commands).move.x).to eq 0
       expect(mars_rover(commands).move.y).to eq 1
     end
 
     it 'moves forward by 2' do
       commands = ['f', 'f']
+
       expect(mars_rover(commands).move.x).to eq 0
       expect(mars_rover(commands).move.y).to eq 2
     end
 
     it 'moves backward by 1' do
       commands = ['b']
+
       expect(mars_rover(commands).move.x).to eq 0
       expect(mars_rover(commands).move.y).to eq -1
     end
@@ -39,6 +42,7 @@ describe MarsRover do
     
     it 'moves backward by 2' do
       commands = ['b', 'b']
+
       expect(mars_rover(commands).move.x).to eq 0
       expect(mars_rover(commands).move.y).to eq -2
     end
@@ -50,17 +54,48 @@ describe MarsRover do
 
       it 'moves forward twice and backward once' do
         commands = ['f', 'f', 'b']
+
         expect(mars_rover(commands).move.x).to eq 0
         expect(mars_rover(commands).move.y).to eq 4
       end
     end
 
-    xit 'moves from a starting position of (3, 2)'
+    context 'when starting direction is E' do
+      let(:starting_direction) { 'E' }
 
-    xit 'moves from a starting direction of E'
+      it 'moves forward twice and backward once' do
+        commands = ['f', 'f', 'b']
 
-    xit 'moves from a starting direction of W with a starting position of (2, 5)'
+        expect(mars_rover(commands).move.x).to eq 1
+        expect(mars_rover(commands).move.y).to eq 0
+      end
+    end
 
+    context 'when starting direction is W and starting position is (2,5)' do
+      let(:starting_coordinate_x) { 2 }
+      let(:starting_coordinate_y) { 5 }
+      let(:starting_direction) { 'W' }
+
+      it 'moves forward once and backward twice' do
+        commands = ['b', 'f', 'b']
+
+        expect(mars_rover(commands).move.x).to eq 3
+        expect(mars_rover(commands).move.y).to eq 5
+      end
+    end
+
+    context 'when starting direction is S and starting position is (9, -4)' do
+      let(:starting_coordinate_x) { 9 }
+      let(:starting_coordinate_y) { -4 }
+      let(:starting_direction) { 'S' }
+
+      it 'moves forward once and backward twice' do
+        commands = ['b', 'f', 'b']
+
+        expect(mars_rover(commands).move.x).to eq 9
+        expect(mars_rover(commands).move.y).to eq -3
+      end
+    end
   end
 end
 

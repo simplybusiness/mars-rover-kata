@@ -9,11 +9,35 @@ class MarsRover
 
   def move
     @commands.each do |command|
-      case command
-      when 'f'
-        @coordinate.up
-      when 'b'
-        @coordinate.down
+      case @starting_direction
+      when 'N'
+        case command
+        when 'f'
+          @coordinate.up
+        when 'b'
+          @coordinate.down
+        end
+      when 'S'
+        case command
+        when 'f'
+          @coordinate.down
+        when 'b'
+          @coordinate.up
+        end
+      when 'E'
+        case command
+        when 'f'
+          @coordinate.right
+        when 'b'
+          @coordinate.left
+        end
+      when 'W'
+        case command
+        when 'f'
+          @coordinate.left
+        when 'b'
+          @coordinate.right
+        end
       end
     end
 
