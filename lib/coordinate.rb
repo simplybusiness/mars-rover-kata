@@ -10,4 +10,9 @@ class Coordinate
     @y += 1
     self
   end
+
+  def down
+    @y -= 1
+    self
+  end
 end

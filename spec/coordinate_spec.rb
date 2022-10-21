@@ -14,6 +14,11 @@ describe Coordinate do
     expect(coordinate.up.x).to eq 0
     expect(coordinate.up.y).to eq 1
   end
+
+  it 'removes 1 to y' do
+    expect(coordinate.down.x).to eq 0
+    expect(coordinate.down.y).to eq -1
+  end
 end
 
 def coordinate

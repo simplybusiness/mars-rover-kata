@@ -9,7 +9,12 @@ class MarsRover
 
   def move
     @commands.each do |command|
-      @coordinate.up
+      case command
+      when 'f'
+        @coordinate.up
+      when 'b'
+        @coordinate.down
+      end
     end
 
     @coordinate
