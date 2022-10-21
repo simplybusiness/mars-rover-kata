@@ -1,5 +1,5 @@
 class MarsRover
-  attr_accessor :starting_coordinate_x, :starting_coordinate_y, :starting_direction, :commands
+  attr_accessor :starting_coordinate_x, :starting_coordinate_y, :starting_direction, :commands, :coordinate
 
   def initialize(starting_coordinate_x:, starting_coordinate_y:, starting_direction:, commands: [])
     @starting_coordinate_x = starting_coordinate_x

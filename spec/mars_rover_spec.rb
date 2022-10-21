@@ -7,8 +7,8 @@ describe MarsRover do
 
   context 'when give an initial position' do
     it 'has an initial starting point and direction' do
-      expect(mars_rover.starting_coordinate_x).to eq 0
-      expect(mars_rover.starting_coordinate_y).to eq 0
+      expect(mars_rover.coordinate.x).to eq 0
+      expect(mars_rover.coordinate.y).to eq 0
       expect(mars_rover.starting_direction).to eq 'N'
     end
   end
