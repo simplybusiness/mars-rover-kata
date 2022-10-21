@@ -37,7 +37,11 @@ describe MarsRover do
     end
 
     
-    xit 'moves backward by 2'
+    it 'moves backward by 2' do
+      commands = ['b', 'b']
+      expect(mars_rover(commands).move.x).to eq 0
+      expect(mars_rover(commands).move.y).to eq -2
+    end
 
     xit 'moves from a starting position of (0, 3)'
 
