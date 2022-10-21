@@ -15,4 +15,14 @@ class Coordinate
     @y -= 1
     self
   end
+
+  def right
+    @x += 1
+    self
+  end
+
+  def left
+    @x -= 1
+    self
+  end
 end
