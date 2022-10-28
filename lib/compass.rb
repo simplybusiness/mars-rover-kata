@@ -4,4 +4,14 @@ class Compass
   def initialize(direction)
     @direction = direction
   end
+
+  def left
+    @direction = "W"
+    self
+  end
+
+  def right
+    @direction = "E"
+    self
+  end
 end
