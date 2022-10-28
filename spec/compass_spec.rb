@@ -12,10 +12,21 @@ describe Compass do
     expect(compass.left.direction).to eq "W"
   end
 
+  it 'goes left twice' do
+    new_compass = compass.left
+
+    expect(new_compass.left.direction).to eq "S"
+  end
+
   it 'goes right' do
     expect(compass.right.direction).to eq "E"
   end
 
+  it 'goes right twice' do
+    new_compass = compass.right
+
+    expect(new_compass.right.direction).to eq "S"
+  end
 end
 
 def compass
