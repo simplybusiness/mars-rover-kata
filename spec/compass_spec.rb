@@ -27,6 +27,12 @@ describe Compass do
 
     expect(new_compass.right.direction).to eq "S"
   end
+
+  it 'goes right then left' do
+    new_compass = compass.right
+
+    expect(new_compass.left.direction).to eq "N"
+  end
 end
 
 def compass
