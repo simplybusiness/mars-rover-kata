@@ -9,11 +9,11 @@ describe MarsRover do
     it 'has an initial starting point and direction' do
       expect(mars_rover.coordinate.x).to eq 0
       expect(mars_rover.coordinate.y).to eq 0
-      expect(mars_rover.starting_direction).to eq 'N'
+      expect(mars_rover.compass.direction).to eq 'N'
     end
   end
 
-  context 'when given a set of commands' do
+  context 'when given a set of commands for going forward and back' do
     it 'has an initial set of commands' do
       expect(mars_rover.commands).to eq []
     end
@@ -95,6 +95,15 @@ describe MarsRover do
         expect(mars_rover(commands).move.x).to eq 9
         expect(mars_rover(commands).move.y).to eq -3
       end
+    end
+  end
+
+  context 'when given a set of commands going forward, back, left and right' do
+    it 'moves like a knight' do
+      commands = ['f', 'f', 'f', 'r', 'f']
+
+      expect(mars_rover(commands).move.x).to eq 1
+      expect(mars_rover(commands).move.y).to eq 3
     end
   end
 end
