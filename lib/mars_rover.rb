@@ -15,13 +15,13 @@ class MarsRover
     @commands.each do |command|
       case command
       when 'l'
-        @current_position.left
+        @current_position.public_send(:left)
       when 'r'
-        @current_position.right
+        @current_position.public_send(:right)
       when 'f'
-        @current_position.move_forward
+        @current_position.public_send(:move_forward)
       when 'b'
-        @current_position.move_backward
+        @current_position.public_send(:move_backward)
       end
     end
 
