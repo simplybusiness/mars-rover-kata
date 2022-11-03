@@ -20,7 +20,7 @@ class MarsRover
       when 'f'
         CurrentPosition.new(@compass, @coordinate).move_forward
       when 'b'
-        move_backward
+        CurrentPosition.new(@compass, @coordinate).move_backward
       end
     end
 
