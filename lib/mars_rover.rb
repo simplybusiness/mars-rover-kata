@@ -15,7 +15,7 @@ class MarsRover
     @commands.each do |command|
       case command
       when 'l'
-        @compass.left
+        @current_position.left
       when 'r'
         @current_position.right
       when 'f'

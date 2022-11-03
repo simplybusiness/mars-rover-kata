@@ -8,6 +8,10 @@ class CurrentPosition
     @compass.right
   end
 
+  def left
+    @compass.left
+  end
+
   def move_forward
     case @compass.direction
     when 'N'
