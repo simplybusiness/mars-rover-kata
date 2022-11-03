@@ -4,6 +4,10 @@ class CurrentPosition
     @coordinate = coordinate
   end
 
+  def right
+    @compass.right
+  end
+
   def move_forward
     case @compass.direction
     when 'N'

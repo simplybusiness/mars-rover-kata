@@ -17,7 +17,7 @@ class MarsRover
       when 'l'
         @compass.left
       when 'r'
-        @compass.right
+        @current_position.right
       when 'f'
         @current_position.move_forward
       when 'b'
