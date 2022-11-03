@@ -8,6 +8,7 @@ class MarsRover
     @commands = commands
     @compass = Compass.new(starting_direction)
     @coordinate = Coordinate.new(starting_coordinate_x, starting_coordinate_y)
+    @current_position = CurrentPosition.new(@compass, @coordinate)
   end
 
   def move
@@ -18,7 +19,7 @@ class MarsRover
       when 'r'
         @compass.right
       when 'f'
-        CurrentPosition.new(@compass, @coordinate).move_forward
+        @current_position.move_forward
       when 'b'
         CurrentPosition.new(@compass, @coordinate).move_backward
       end
