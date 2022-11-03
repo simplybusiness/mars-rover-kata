@@ -19,16 +19,7 @@ class MarsRover
       when 'f'
         move_forward
       when 'b'
-        case @compass.direction
-        when 'N'
-          @coordinate.down
-        when 'E'
-          @coordinate.left
-        when 'S'
-          @coordinate.up
-        when 'W'
-          @coordinate.right
-        end
+        move_backward
       end
     end
 
@@ -47,6 +38,19 @@ class MarsRover
       @coordinate.down
     when 'W'
       @coordinate.left
+    end
+  end
+
+  def move_backward
+    case @compass.direction
+    when 'N'
+      @coordinate.down
+    when 'E'
+      @coordinate.left
+    when 'S'
+      @coordinate.up
+    when 'W'
+      @coordinate.right
     end
   end
 end
