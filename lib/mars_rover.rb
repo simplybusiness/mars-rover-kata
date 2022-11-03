@@ -1,5 +1,6 @@
 require_relative 'coordinate'
 require_relative 'compass'
+require_relative 'current_position'
 class MarsRover
   attr_accessor :compass, :commands, :coordinate
 
@@ -17,7 +18,7 @@ class MarsRover
       when 'r'
         @compass.right
       when 'f'
-        move_forward
+        CurrentPosition.new(@compass, @coordinate).move_forward
       when 'b'
         move_backward
       end
