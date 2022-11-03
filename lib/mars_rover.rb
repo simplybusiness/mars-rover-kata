@@ -18,11 +18,11 @@ class MarsRover
       when 'l'
         @current_position.public_send(command_mapping['l'])
       when 'r'
-        @current_position.public_send(:right)
+        @current_position.public_send(command_mapping['r'])
       when 'f'
-        @current_position.public_send(:forward)
+        @current_position.public_send(command_mapping['f'])
       when 'b'
-        @current_position.public_send(:backward)
+        @current_position.public_send(command_mapping['b'])
       end
     end
 
