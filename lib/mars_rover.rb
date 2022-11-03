@@ -17,16 +17,7 @@ class MarsRover
       when 'r'
         @compass.right
       when 'f'
-        case @compass.direction
-        when 'N'
-          @coordinate.up
-        when 'E'
-          @coordinate.right
-        when 'S'
-          @coordinate.down
-        when 'W'
-          @coordinate.left
-        end
+        move_forward
       when 'b'
         case @compass.direction
         when 'N'
@@ -42,5 +33,20 @@ class MarsRover
     end
 
     @coordinate
+  end
+
+  private
+
+  def move_forward
+    case @compass.direction
+    when 'N'
+      @coordinate.up
+    when 'E'
+      @coordinate.right
+    when 'S'
+      @coordinate.down
+    when 'W'
+      @coordinate.left
+    end
   end
 end
