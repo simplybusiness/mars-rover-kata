@@ -12,7 +12,7 @@ class CurrentPosition
     @compass.left
   end
 
-  def move_forward
+  def forward
     case @compass.direction
     when 'N'
       @coordinate.up
@@ -25,7 +25,7 @@ class CurrentPosition
     end
   end
 
-  def move_backward
+  def backward
     case @compass.direction
     when 'N'
       @coordinate.down

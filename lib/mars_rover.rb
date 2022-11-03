@@ -19,9 +19,9 @@ class MarsRover
       when 'r'
         @current_position.public_send(:right)
       when 'f'
-        @current_position.public_send(:move_forward)
+        @current_position.public_send(:forward)
       when 'b'
-        @current_position.public_send(:move_backward)
+        @current_position.public_send(:backward)
       end
     end
 
