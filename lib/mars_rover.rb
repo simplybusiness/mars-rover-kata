@@ -14,16 +14,7 @@ class MarsRover
   def move
     command_mapping = { 'l' => :left, 'r' => :right, 'f' => :forward, 'b' => :backward}
     @commands.each do |command|
-      case command
-      when 'l'
-        @current_position.public_send(command_mapping['l'])
-      when 'r'
-        @current_position.public_send(command_mapping['r'])
-      when 'f'
-        @current_position.public_send(command_mapping['f'])
-      when 'b'
-        @current_position.public_send(command_mapping['b'])
-      end
+      @current_position.public_send(command_mapping[command])
     end
 
     @coordinate
