@@ -20,4 +20,12 @@ RSpec.describe MarsRover do
 
     expect(result).to eq(['w', 'w', 'a'])
   end
+
+  it 'implements commands that move the rover forward or backward' do
+    mars_rover = MarsRover.new(x: 200, y: 400, direction: "N")
+
+    mars_rover.commands(['w', 'w', 's'])
+    
+    expect(mars_rover.coordinates).to eq [200, 450]
+  end
 end
