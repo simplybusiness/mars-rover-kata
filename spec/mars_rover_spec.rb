@@ -8,8 +8,8 @@ RSpec.describe MarsRover do
   end
 
   it 'knows its compass direction' do
-    mars_rover = MarsRover.new(x: 200, y: 400)
-    
-    expect(mars_rover.orientation).to eq "N"
+    mars_rover = MarsRover.new(x: 200, y: 400, direction: "S")
+
+    expect(mars_rover.direction).to eq "S"
   end
 end
