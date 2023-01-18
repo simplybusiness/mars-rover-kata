@@ -46,3 +46,14 @@ describe Rover do
     expect(rover.direction).to eq("S")
   end
 end
+
+#init rover and pass string of directions
+# check that it raises an error
+describe Rover do
+  it "should raise an error if directions is not an array" do
+    rover = Rover.new(1, 2, "N")
+    expect { rover.move("WEN") }.to raise_error(ArgumentError)
+  end
+end
+
+#Implement commands that move the rover forward/backward (f,b).

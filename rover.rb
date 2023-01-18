@@ -24,6 +24,10 @@ class Rover
   end
 
   def move(directions)
+    if(!directions.is_a?(Array))
+      raise ArgumentError, "directions is not an array"
+    end
+
     directions.each do |d|
       @direction = d
     end
