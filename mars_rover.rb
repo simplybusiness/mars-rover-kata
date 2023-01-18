@@ -8,7 +8,13 @@ class MarsRover
   end
 
   def execute(commands)
-    @y = @y + 1
+    process(commands).each do
+      @y = @y + 1
+    end
+  end
+
+  def process(commands)
+    commands.chars
   end
 end
 
