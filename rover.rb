@@ -29,7 +29,30 @@ class Rover
     end
 
     directions.each do |d|
-
+      case d
+        when "f"
+          case @direction
+            when "N"
+              @y += 1
+            when "S"
+              @y -= 1
+            when "E"
+              @x += 1
+            when "W"
+              @x -= 1
+          end
+        when "b"
+          case @direction
+          when "N"
+            @y -= 1
+          when "S"
+            @y += 1
+          when "E"
+            @x -= 1
+          when "W"
+            @x += 1
+        end
+      end
     end
   end
 end

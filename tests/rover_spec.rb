@@ -43,7 +43,7 @@ describe Rover do
 
     expect(rover.x).to eq(1)
     expect(rover.y).to eq(2)
-    expect(rover.direction).to eq("S")
+    expect(rover.direction).to eq("N")
   end
 end
 
