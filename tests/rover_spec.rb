@@ -173,37 +173,156 @@ describe Rover do
     expect(rover.direction).to eq("W")
   end
 
-  it "should turn right when facing N"
+  it "should turn right when facing N" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["r"])
 
-  it "should turn left when facing S"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
 
-  it "should turn right when facing S"
+  it "should turn left when facing S" do
+    rover = Rover.new(0, 0, "S")
+    rover.move(["l"])
 
-  it "should turn left when facing E"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
 
-  it "should turn right when facing E"
+  it "should turn right when facing S" do
+    rover = Rover.new(0, 0, "S")
+    rover.move(["r"])
 
-  it "should turn left when facing W"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
 
-  it "should turn right when facing W"
+  it "should turn left when facing E" do
+    rover = Rover.new(0, 0, "E")
+    rover.move(["l"])
 
-  it "should turn left multiple times"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("N")
+  end
 
-  it "should turn right multiple times"
+  it "should turn right when facing E" do
+    rover = Rover.new(0, 0, "E")
+    rover.move(["r"])
 
-  it "should turn left and right multiple times"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("S")
+  end
 
-  it "should turn left then go forward"
+  it "should turn left when facing W" do
+    rover = Rover.new(0, 0, "W")
+    rover.move(["l"])
 
-  it "should turn right then go forward"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("S")
+  end
 
-  it "should turn left then go backward"
+  it "should turn right when facing W" do
+    rover = Rover.new(0, 0, "W")
+    rover.move(["r"])
 
-  it "should turn right then go backward"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("N")
+  end
 
-  it "should turn left then go forward and backward"
+  it "should turn left multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "l", "l"])
 
-  it "should turn right then go forward and backward"
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
 
-  it "should turn left then right then go forward and backward"
+  it "should turn right multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["r", "r", "r"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
+
+  it "should turn left and right multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "r", "l", "r"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("N")
+  end
+
+  it "should turn left then go forward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "f"])
+
+    expect(rover.x).to eq(-1)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
+
+  it "should turn right then go forward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["r", "f"])
+
+    expect(rover.x).to eq(1)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
+
+  it "should turn left then go backward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "b"])
+
+    expect(rover.x).to eq(1)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
+
+  it "should turn right then go backward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["r", "b"])
+
+    expect(rover.x).to eq(-1)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
+
+  it "should turn left then go forward and backward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "f", "b"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
+
+  it "should turn right then go forward and backward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["r", "f", "b"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("E")
+  end
+
+  it "should turn left then forward then go right and backward" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l", "f","r", "b"])
+
+    expect(rover.x).to eq(-1)
+    expect(rover.y).to eq(-1)
+    expect(rover.direction).to eq("N")
+  end
 end
