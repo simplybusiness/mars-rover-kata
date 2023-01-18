@@ -13,6 +13,9 @@ class Rover
       
     elsif direction == "S"
       @y = @y - 1
+    
+    elsif direction == "E"
+      @x = @x + 1
     end
 
 
