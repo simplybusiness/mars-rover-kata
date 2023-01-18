@@ -2,27 +2,26 @@ require 'rspec'
 require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
+  let(:rover) {MarsRover.new(2,0,"N")}
   describe 'x' do
     it 'returns x' do
-      expect(position.x).to eq(2)
+      expect(rover.x).to eq(2)
     end
   end
   describe 'y' do
     it 'returns y' do
-      expect(position.y).to eq(0)
+      expect(rover.y).to eq(0)
     end
   end
   describe 'orientation' do
     it 'returns North' do
-      expect(position.orientation).to eq("N")
+      expect(rover.orientation).to eq("N")
     end
   end
   describe 'execute' do 
-    it'goes north when 
+    it 'moves the rover forward by one space' do
+      rover.execute(["f"])
+      expect(rover.y).to eq(1)
+    end
   end
-
-  def position
-    MarsRover.new(2,0,"N")
-  end
-
 end

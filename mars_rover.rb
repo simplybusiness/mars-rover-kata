@@ -7,6 +7,8 @@ class MarsRover
     @orientation = "N"
   end
 
-  def 
+  def execute(commands)
+    @y = @y + 1
+  end
 end
 
