@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Mars ROver
 class MarsRover
   attr_accessor :x, :y, :orientation
 
@@ -13,6 +16,10 @@ class MarsRover
         @y = @y + 1
       elsif command == "b"
         @y = @y - 1
+      elsif command == "r"
+        @orientation = "E"
+      elsif command == "l"
+        @orientation = "W"
       else
         @y
       end
