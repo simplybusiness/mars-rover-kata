@@ -31,6 +31,13 @@ RSpec.describe Rover do
       expect(rover.y).to eq 20
       expect(rover.direction).to eq "E"
     end
+    it "moves the rover forward when facing west" do
+      rover = Rover.new(x: 10, y: 20, direction: "W")
+      rover.move('f')
+      expect(rover.x).to eq 9
+      expect(rover.y).to eq 20
+      expect(rover.direction).to eq "W"
+    end
   end
 
 end
