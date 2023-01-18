@@ -10,7 +10,7 @@ RSpec.describe Rover do
     end
   end
   describe "#move" do
-    it "moves the rover forward or backward" do
+    it "moves the rover forward when facing north" do
       rover = Rover.new(x: 10, y: 20, direction: "N")
       rover.move('f')
       expect(rover.x).to eq 10
