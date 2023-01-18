@@ -30,29 +30,67 @@ class Rover
 
     directions.each do |d|
       case d
-        when "f"
-          case @direction
-            when "N"
-              @y += 1
-            when "S"
-              @y -= 1
-            when "E"
-              @x += 1
-            when "W"
-              @x -= 1
-          end
-        when "b"
-          case @direction
-          when "N"
-            @y -= 1
-          when "S"
-            @y += 1
-          when "E"
-            @x -= 1
-          when "W"
-            @x += 1
-        end
+      when "f"
+        step_forward
+      when "b"
+        step_backward
+      when "l"
+        rotate_left
+      when "r"
+        rotate_right
       end
     end
+  end
+end
+
+def rotate_left
+    case @direction
+    when "N"
+      @direction = "W"
+    when "W"
+      @direction = "S"
+    when "S"
+      @direction = "E"
+    when "E"
+      @direction = "N"
+    end
+end
+
+def rotate_right
+  case @direction
+  when "N"
+    @direction = "E"
+  when "E"
+    @direction = "S"
+  when "S"
+    @direction = "W"
+  when "W"
+    @direction = "N"
+  end
+end
+
+def step_forward
+  case @direction
+    when "N"
+      @y += 1
+    when "S"
+      @y -= 1
+    when "E"
+      @x += 1
+    when "W"
+      @x -= 1
+  end
+end
+
+def step_backward
+  case @direction
+    when "N"
+      @y -= 1
+    when "S"
+      @y += 1
+    when "E"
+      @x -= 1
+    when "W"
+      @x += 1
   end
 end
