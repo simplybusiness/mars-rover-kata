@@ -1,7 +1,6 @@
 require './lib/mars_rover'
 
 RSpec.describe MarsRover do
-  it 'returns true' do
-    expect(true).to be true
-  end 
+  it 'knows its initial starting coordinates of x and y'
+  it 'knows its compass direction'
 end
