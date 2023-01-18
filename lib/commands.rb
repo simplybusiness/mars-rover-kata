@@ -1,7 +1,11 @@
 class Commands
-  def send(commands, mars_rover = nil)
-    return commands if mars_rover.nil?
+  def initialize(mars_rover = nil)
+    @mars_rover = mars_rover
+  end
 
-    mars_rover.move(commands)
+  def send(commands)
+    return commands if @mars_rover.nil?
+
+    @mars_rover.move(commands)
   end
 end

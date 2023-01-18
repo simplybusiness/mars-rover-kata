@@ -27,9 +27,9 @@ RSpec.describe 'mars rover kata' do
 
     it 'implements commands that move the rover forward or backward' do
       mars_rover = MarsRover.new(x: 200, y: 400, direction: "N")
-      commands = Commands.new
+      commands = Commands.new(mars_rover)
 
-      commands.send(['w', 'w', 's'], mars_rover)
+      commands.send(['w', 'w', 's'])
 
       expect(mars_rover.coordinates).to eq [200, 450]
     end
