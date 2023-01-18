@@ -24,8 +24,8 @@ class Rover
   end
 
   def move(directions)
-    foreach(directions) do |d|
-      direction = d
+    directions.each do |d|
+      @direction = d
     end
   end
 end
