@@ -1,5 +1,4 @@
 class MarsRover
-  def hello
-    "hello"
+  def initialize
   end
 end

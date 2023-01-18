@@ -1,4 +1,4 @@
-require_relative '../lib/mars_rover.rb'
+require_relative 'spec_helper'
 
 describe MarsRover do
   it 'says hello' do
