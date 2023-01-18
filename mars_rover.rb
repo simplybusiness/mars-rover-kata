@@ -8,8 +8,14 @@ class MarsRover
   end
 
   def execute(commands)
-    process(commands).each do
-      @y = @y + 1
+    process(commands).each do |command|
+      if command == "f"
+        @y = @y + 1
+      elsif command == "b"
+        @y = @y - 1
+      else
+        @y
+      end
     end
   end
 

@@ -24,6 +24,10 @@ RSpec.describe MarsRover do
       rover.execute("f")
       expect(rover.y).to eq(1)
     end
+    it 'moves the rover backwards by one space' do
+      rover.execute("b")
+      expect(rover.y).to eq(-1)
+    end
     it 'process commands' do
       series_of_commands = rover.process(commands)
       expect(series_of_commands).to eq(["f","f","f"])
