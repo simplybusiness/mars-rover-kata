@@ -8,6 +8,13 @@ class Rover
   end
 
   def move(command)
-    @y = @y + 1
+    if direction == "N" 
+      @y = @y + 1
+      
+    elsif direction == "S"
+      @y = @y - 1
+    end
+
+
   end
 end
