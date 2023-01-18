@@ -7,5 +7,9 @@ RSpec.describe MarsRover do
     expect(mars_rover.coordinates).to eq [200, 400]
   end
 
-  it 'knows its compass direction'
+  it 'knows its compass direction' do
+    mars_rover = MarsRover.new(x: 200, y: 400)
+    
+    expect(mars_rover.orientation).to eq "N"
+  end
 end

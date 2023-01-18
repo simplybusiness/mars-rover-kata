@@ -7,4 +7,8 @@ class MarsRover
   def coordinates
     [@x, @y]
   end
+
+  def orientation
+    "N"
+  end
 end
