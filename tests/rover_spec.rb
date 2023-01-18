@@ -131,3 +131,79 @@ describe Rover do
 
   end
 end
+
+#Implement multiple forwards and backwards commands
+describe Rover do
+  it "should move forward multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["f", "f", "f"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(3)
+    expect(rover.direction).to eq("N")
+  end
+
+  it "should move backward multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["b", "b", "b"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(-3)
+    expect(rover.direction).to eq("N")
+  end
+
+  it "should move forward and backward multiple times" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["f", "b", "f", "b"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("N")
+  end
+end
+
+#Implement commands that turn the rover left/right (l,r).
+describe Rover do
+  it "should turn left when facing N" do
+    rover = Rover.new(0, 0, "N")
+    rover.move(["l"])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq("W")
+  end
+
+  it "should turn right when facing N"
+
+  it "should turn left when facing S"
+
+  it "should turn right when facing S"
+
+  it "should turn left when facing E"
+
+  it "should turn right when facing E"
+
+  it "should turn left when facing W"
+
+  it "should turn right when facing W"
+
+  it "should turn left multiple times"
+
+  it "should turn right multiple times"
+
+  it "should turn left and right multiple times"
+
+  it "should turn left then go forward"
+
+  it "should turn right then go forward"
+
+  it "should turn left then go backward"
+
+  it "should turn right then go backward"
+
+  it "should turn left then go forward and backward"
+
+  it "should turn right then go forward and backward"
+
+  it "should turn left then right then go forward and backward"
+end
