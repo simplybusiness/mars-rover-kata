@@ -29,7 +29,7 @@ class Rover
     end
 
     directions.each do |d|
-      @direction = d
+
     end
   end
 end
