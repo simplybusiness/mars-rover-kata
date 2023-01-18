@@ -10,11 +10,6 @@ class MarsRover
     [@x, @y]
   end
 
-  def commands(commands_array)
-    commands_array
-    move(commands_array)
-  end
-
   def move(commands)
     commands.each do |command|
       if command == 'w'
