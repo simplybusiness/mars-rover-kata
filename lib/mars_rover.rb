@@ -1,7 +1,8 @@
 class MarsRover
-  def initialize(x:)
+  def initialize(x:, y:)
     @x = x
+    @y = y
   end
 
-  attr_reader :x
+  attr_reader :x, :y
 end
