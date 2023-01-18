@@ -39,6 +39,20 @@ class Rover
       when "r"
         rotate_right
       end
+
+      case @y
+      when 11
+        @y = -10
+      when -11
+        @y = 10
+      end
+
+      case @x
+      when 11
+        @x = -10
+      when -11
+        @x = 10
+      end
     end
   end
 end
