@@ -15,11 +15,14 @@ class MarsRover
 
   def execute(commands)
     commands.each do |command|
-      if (command == 'f' && @direction == 'N')
-        @y = @y + 1
-      end
-      if (command == 'b' && @direction == 'N')
-        @y = @y - 1
+      case @direction
+      when 'N'
+        if(command == 'f')
+          @y = @y + 1
+        elsif(command == 'b')
+          @y = @y - 1
+        end
+      else
       end
     end
     true
