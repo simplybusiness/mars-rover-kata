@@ -103,6 +103,11 @@ RSpec.describe MarsRover do
       mars_rover.execute(['f'])
       expect(mars_rover.position).to eq({x: -1, y: 0})
     end
+    it 'Goes 1 step east when receiving a backward command' do
+      mars_rover = MarsRover.new(0, 0, 'W')
+      mars_rover.execute(['b'])
+      expect(mars_rover.position).to eq({x: 1, y: 0})
+    end
   end
 
   # if(command == 'b')
