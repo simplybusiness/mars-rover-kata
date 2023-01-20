@@ -13,7 +13,15 @@ class MarsRover
     {x: @x, y: @y}
   end
 
-  def execute(command)
+  def execute(commands)
+    commands.each do |command|
+      if (command == 'f' && @direction == 'N')
+        @y = @y + 1
+      end
+      if (command == 'b' && @direction == 'N')
+        @y = @y - 1
+      end
+    end
     true
   end
 end
@@ -28,7 +36,7 @@ RSpec.describe MarsRover do
     expect(mars_rover.position).to eq({x: 0, y: 0})
   end
 
-  it 'knows its position when at 1,1 on the planet' do
+  it 'knows its position when landing at 1,1 on the planet' do
     mars_rover = MarsRover.new(1, 1, 'N')
     expect(mars_rover.position).to eq({x: 1, y: 1})
   end
@@ -48,11 +56,18 @@ RSpec.describe MarsRover do
     expect(mars_rover.execute(['f', 'b', 'f'])).to eq(true)
   end
 
-  # it 'changes its position accordingly when receiving a forward command' do
-  #   mars_rover = MarsRover.new(0, 0, 'N')
-  #   expect(mars_rover.x).to eq(0)
-  #   expect(mars_rover.y).to eq(1)
-  # end
+  context 'when facing north' do
+    it 'Goes north 1 step when receiving a forward command' do
+      mars_rover = MarsRover.new(0, 0, 'N')
+      mars_rover.execute(['f'])
+      expect(mars_rover.position).to eq({x: 0, y: 1})
+    end
+    it 'Goes south 1 step when receiving a backwards command' do
+      mars_rover = MarsRover.new(0, 0, 'N')
+      mars_rover.execute(['b'])
+      expect(mars_rover.position).to eq({x: 0, y: -1})
+    end
+  end
 
   # describe 'x' do
   #   it 'returns x' do
