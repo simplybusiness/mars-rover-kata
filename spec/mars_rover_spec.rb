@@ -28,5 +28,15 @@ RSpec.describe MarsRover do
       rover.execute("b")
       expect(rover.y).to eq(-1)
     end
+
+    it 'move multiple steps forward' do
+      rover.execute("fff")
+      expect(rover.y).to eq(3)
+    end
+
+    it 'moves mulitple steps back' do
+      rover.execute("bbb")
+      expect(rover.y).to eq(-3)
+    end
   end
 end

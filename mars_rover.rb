@@ -10,20 +10,15 @@ class MarsRover
     @orientation = "N"
   end
 
-  def move(direction)
-    if direction == "f"
-      +1
-    elsif direction == "b"
-      -1
-    end
-  end
-
   def execute(commands)
-    case commands
-    when "f"
-      @y = @y + 1
-    when "b"
-      @y = @y - 1      
+    command = commands.chars
+    command.each do |instruction|
+      case instruction
+      when "f"
+        @y = @y + 1
+      when "b"
+        @y = @y - 1      
+      end
     end
   end
 end
