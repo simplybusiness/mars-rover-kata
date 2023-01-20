@@ -5,8 +5,6 @@ class MarsRover
   attr_accessor :orientation
 
   def initialize(x,y,orientation)
-    @x = x
-    @y = y
     @coordinates = OpenStruct.new(x: x, y: y)
     @orientation = "N"
   end
@@ -24,10 +22,8 @@ class MarsRover
     command.each do |instruction|
       case instruction
       when "f"
-        @y = @y + 1
         @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
       when "b"
-        @y = @y - 1
         @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
       end
     end
