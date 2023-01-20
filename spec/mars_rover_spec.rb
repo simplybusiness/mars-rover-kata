@@ -22,6 +22,13 @@ class MarsRover
         elsif(command == 'b')
           @y = @y - 1
         end
+      when 'S'
+        if(command == 'f')
+          @y = @y - 1
+        end
+        if(command == 'b')
+          @y = @y + 1
+        end
       else
       end
     end
@@ -69,6 +76,18 @@ RSpec.describe MarsRover do
       mars_rover = MarsRover.new(0, 0, 'N')
       mars_rover.execute(['b'])
       expect(mars_rover.position).to eq({x: 0, y: -1})
+    end
+  end
+  context 'when facing South' do 
+    it 'Goes south 1 step when receivng a forward command' do
+      mars_rover = MarsRover.new(0, 0, 'S')
+      mars_rover.execute(['f'])
+      expect(mars_rover.position).to eq({x: 0, y: -1})
+    end
+    it 'Goes north 1 step when receivng a backward command' do
+      mars_rover = MarsRover.new(0, 0, 'S')
+      mars_rover.execute(['b'])
+      expect(mars_rover.position).to eq({x: 0, y: 1})
     end
   end
 
