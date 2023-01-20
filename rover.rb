@@ -1,7 +1,7 @@
 require 'ostruct'
 
 class Rover
-  attr_reader :direction
+  attr_reader :coordinates, :direction
 
   def initialize(x, y, direction)
     validation(x, y, direction)
@@ -45,24 +45,30 @@ class Rover
         step_backward
       when "l"
         rotate_left
+        next
       when "r"
         rotate_right
+        next
       end
 
-      case @coordinates.y
-      when 11
-        @coordinates = OpenStruct.new(x: @coordinates.x, y: -10)
-      when -11
-        @coordinates = OpenStruct.new(x: @coordinates.x, y: 10)
-      end
-
-      case @coordinates.x
-      when 11
-        @coordinates = OpenStruct.new(x: -10, y: @coordinates.y)
-      when -11
-        @coordinates = OpenStruct.new(x: 10, y: @coordinates.y)
-      end
+      wrap_edges
     end
+  end
+end
+
+def wrap_edges
+  case @coordinates.y
+  when 11
+    @coordinates = OpenStruct.new(x: @coordinates.x, y: -10)
+  when -11
+    @coordinates = OpenStruct.new(x: @coordinates.x, y: 10)
+  end
+
+  case @coordinates.x
+  when 11
+    @coordinates = OpenStruct.new(x: -10, y: @coordinates.y)
+  when -11
+    @coordinates = OpenStruct.new(x: 10, y: @coordinates.y)
   end
 end
 
