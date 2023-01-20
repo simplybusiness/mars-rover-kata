@@ -6,17 +6,15 @@ class Rover
   def initialize(x, y, direction)
     validation(x, y, direction)
 
-    @coordinates = OpenStruct.new(x: x, y: y)
-    @direction = direction
     @state = OpenStruct.new(x: x, y: y, direction: direction)
   end
 
   def x
-    @coordinates.x
+    @state.x
   end
 
   def y
-    @coordinates.y
+    @state.y
   end
 
   def direction

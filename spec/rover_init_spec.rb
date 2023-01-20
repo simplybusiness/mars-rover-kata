@@ -5,8 +5,7 @@ describe Rover do
   it "should have x,y and direction" do
     rover = Rover.new(1, 2, "N")
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: 1, y: 2))
-    expect(rover.direction).to eq("N")
+    expect(rover.state).to eq(OpenStruct.new(x: 1, y: 2, direction: "N"))
   end
 end
 
@@ -40,8 +39,7 @@ describe Rover do
     rover = Rover.new(1, 2, "N")
     rover.move(["W", "E", "N", "S"])
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: 1, y: 2))
-    expect(rover.direction).to eq("N")
+    expect(rover.state).to eq(OpenStruct.new(x: 1, y: 2, direction: "N"))
   end
 end
 
