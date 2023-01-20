@@ -2,7 +2,7 @@
 require 'ostruct'
 # Mars Rover
 class MarsRover
-  attr_accessor :x, :y, :orientation
+  attr_accessor :orientation
 
   def initialize(x,y,orientation)
     @x = x
