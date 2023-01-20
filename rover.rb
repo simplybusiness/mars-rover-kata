@@ -1,19 +1,21 @@
 require 'ostruct'
 
 class Rover
-  attr_reader :y, :direction
+  attr_reader :direction
 
   def initialize(x, y, direction)
     validation(x, y, direction)
 
-    @x = x
-    @y = y
     @coordinates = OpenStruct.new(x: x, y: y)
     @direction = direction
   end
 
   def x
     @coordinates.x
+  end
+
+  def y
+    @coordinates.y
   end
 
   def validation(x, y, direction)
@@ -47,22 +49,18 @@ class Rover
         rotate_right
       end
 
-      case @y
+      case @coordinates.y
       when 11
-        @y = -10
         @coordinates = OpenStruct.new(x: @coordinates.x, y: -10)
       when -11
-        @y = 10
         @coordinates = OpenStruct.new(x: @coordinates.x, y: 10)
       end
 
-      case @x
+      case @coordinates.x
       when 11
-        @x = -10
         @coordinates = OpenStruct.new(x: -10, y: @coordinates.y)
       when -11
-        @x = 10
-        @coordinates = OpenStruct.new(x: 10, y: @corrdinates.y)
+        @coordinates = OpenStruct.new(x: 10, y: @coordinates.y)
       end
     end
   end
@@ -97,16 +95,12 @@ end
 def step_forward
   case @direction
     when "N"
-      @y += 1
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
     when "S"
-      @y -= 1
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
     when "E"
-      @x += 1
       @coordinates = OpenStruct.new(x: @coordinates.x + 1, y: @coordinates.y)
     when "W"
-      @x -= 1
       @coordinates = OpenStruct.new(x: @coordinates.x - 1, y: @coordinates.y)
   end
 end
@@ -114,16 +108,12 @@ end
 def step_backward
   case @direction
     when "N"
-      @y -= 1
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
     when "S"
-      @y += 1
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
   when "E"
-      @x -= 1
       @coordinates = OpenStruct.new(x: @coordinates.x - 1, y: @coordinates.y)
     when "W"
-      @x += 1
       @coordinates = OpenStruct.new(x: @coordinates.x + 1, y: @coordinates.y)
   end
 end
