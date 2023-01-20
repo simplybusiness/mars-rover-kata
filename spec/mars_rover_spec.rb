@@ -48,4 +48,12 @@ RSpec.describe MarsRover do
       expect(rover.message).to eq "Unknown instruction in the command, please review and resend"
     end
   end
+
+  describe 'movement for a East facing Mars Rover' do
+    xit 'moves the rover forward by one space' do
+      rover.execute("f")
+
+      expect(rover.coordinates).to eq(OpenStruct.new(x: 1, y: 0))
+    end
+  end
 end
