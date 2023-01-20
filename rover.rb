@@ -1,3 +1,5 @@
+require 'ostruct'
+
 class Rover
   attr_accessor :x, :y, :direction
 
@@ -6,6 +8,7 @@ class Rover
 
     @x = x
     @y = y
+    @coordinates = OpenStruct.new(x: x, y: y)
     @direction = direction
   end
 

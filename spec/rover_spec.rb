@@ -348,5 +348,14 @@ describe Rover do
         expect(rover.direction).to eq("E")
     end
 
-    it "should wrap around both axis"
+    it "should wrap around both axis" do
+      rover = Rover.new(0, 0, "N")
+      rover.move(["f"] * 11)
+      rover.move(["r"])
+      rover.move(["f"] * 11)
+
+      expect(rover.x).to eq(-10)
+      expect(rover.y).to eq(-10)
+      expect(rover.direction).to eq("E")
+    end
 end
