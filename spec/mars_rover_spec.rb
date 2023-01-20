@@ -3,8 +3,6 @@ require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
   let(:rover) {MarsRover.new(0,0,"N")}
-  let(:commands) {"fff"}
-  let(:complex_command) {"flfrb"} # You end in (-1, 0, "N")
 
   describe 'position' do
     it 'returns x' do

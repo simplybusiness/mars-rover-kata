@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Mars ROver
+# Mars Rover
 class MarsRover
   attr_accessor :x, :y, :orientation
 
@@ -15,19 +15,16 @@ class MarsRover
       +1
     elsif direction == "b"
       -1
-    else
-      1
     end
   end
 
   def execute(commands)
-    process(commands).each do |command|
-      @y = @y + (1 * move(command))
+    case commands
+    when "f"
+      @y = @y + 1
+    when "b"
+      @y = @y - 1      
     end
-  end
-
-  def process(commands)
-    commands.chars
   end
 end
 
