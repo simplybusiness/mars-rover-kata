@@ -7,7 +7,7 @@ describe Rover do
     rover = Rover.new(0, 0, "N")
     rover.move(["f"] * 11)
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: -10))
+    expect(rover.state).to eq(OpenStruct.new(x: 0, y: -10, direction: "N"))
     expect(rover.direction).to eq("N")
   end
 
@@ -15,7 +15,7 @@ describe Rover do
     rover = Rover.new(0, 0, "E")
     rover.move(["f"] * 11)
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: -10, y: 0))
+    expect(rover.state).to eq(OpenStruct.new(x: -10, y: 0, direction: "E"))
     expect(rover.direction).to eq("E")
   end
 
@@ -25,7 +25,7 @@ describe Rover do
     rover.move(["r"])
     rover.move(["f"] * 11)
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: -10, y: -10))
+    expect(rover.state).to eq(OpenStruct.new(x: -10, y: -10, direction: "E"))
     expect(rover.direction).to eq("E")
   end
 
@@ -33,7 +33,7 @@ describe Rover do
     rover = Rover.new(10, 10, "N")
     rover.move(["l"])
 
-    expect(rover.coordinates).to eq(OpenStruct.new(x: 10, y: 10))
+    expect(rover.state).to eq(OpenStruct.new(x: 10, y: 10, direction: "W"))
   end
 
   #can you check a method isnt called?

@@ -1,13 +1,14 @@
 require 'ostruct'
 
 class Rover
-  attr_reader :coordinates, :direction
+  attr_reader :coordinates, :state
 
   def initialize(x, y, direction)
     validation(x, y, direction)
 
     @coordinates = OpenStruct.new(x: x, y: y)
     @direction = direction
+    @state = OpenStruct.new(x: x, y: y, direction: direction)
   end
 
   def x
@@ -16,6 +17,10 @@ class Rover
 
   def y
     @coordinates.y
+  end
+
+  def direction
+    @state.direction
   end
 
   def validation(x, y, direction)
@@ -57,69 +62,69 @@ class Rover
 end
 
 def wrap_edges
-  case @coordinates.y
+  case @state.y
   when 11
-    @coordinates = OpenStruct.new(x: @coordinates.x, y: -10)
+    @state = OpenStruct.new(x: @state.x, y: -10, direction: @state.direction)
   when -11
-    @coordinates = OpenStruct.new(x: @coordinates.x, y: 10)
+    @state = OpenStruct.new(x: @state.x, y: 10, direction: @state.direction)
   end
 
-  case @coordinates.x
+  case @state.x
   when 11
-    @coordinates = OpenStruct.new(x: -10, y: @coordinates.y)
+    @state = OpenStruct.new(x: -10, y: @state.y, direction: @state.direction)
   when -11
-    @coordinates = OpenStruct.new(x: 10, y: @coordinates.y)
+    @state = OpenStruct.new(x: 10, y: @state.y, direction: @state.direction)
   end
 end
 
 def rotate_left
-    case @direction
+    case @state.direction
     when "N"
-      @direction = "W"
+      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "W")
     when "W"
-      @direction = "S"
+      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "S")
     when "S"
-      @direction = "E"
+      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "E")
     when "E"
-      @direction = "N"
+      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "N")
     end
 end
 
 def rotate_right
-  case @direction
+  case state.direction
   when "N"
-    @direction = "E"
+    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "E")
   when "E"
-    @direction = "S"
+    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "S")
   when "S"
-    @direction = "W"
+    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "W")
   when "W"
-    @direction = "N"
+    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "N")
   end
 end
 
 def step_forward
-  case @direction
+  case state.direction
     when "N"
-      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
+      @state = OpenStruct.new(x: @state.x, y: @state.y + 1, direction: @state.direction)
     when "S"
-      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
+      @state = OpenStruct.new(x: @state.x, y: @state.y - 1, direction: @state.direction)
     when "E"
-      @coordinates = OpenStruct.new(x: @coordinates.x + 1, y: @coordinates.y)
+      @state = OpenStruct.new(x: @state.x + 1, y: @state.y, direction: @state.direction)
     when "W"
-      @coordinates = OpenStruct.new(x: @coordinates.x - 1, y: @coordinates.y)
+      @state = OpenStruct.new(x: @state.x - 1, y: @state.y, direction: @state.direction)
   end
 end
 
 def step_backward
-  case @direction
+  case state.direction
     when "N"
-      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
+      @state = OpenStruct.new(x: @state.x, y: @state.y - 1, direction: @state.direction)
     when "S"
-      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
+      @state = OpenStruct.new(x: @state.x, y: @state.y + 1, direction: @state.direction)
   when "E"
-      @coordinates = OpenStruct.new(x: @coordinates.x - 1, y: @coordinates.y)
+      @state = OpenStruct.new(x: @state.x - 1, y: @state.y, direction: @state.direction)
     when "W"
-      @coordinates = OpenStruct.new(x: @coordinates.x + 1, y: @coordinates.y)
+      @state = OpenStruct.new(x: @state.x + 1, y: @state.y, direction: @state.direction)
   end
 end
