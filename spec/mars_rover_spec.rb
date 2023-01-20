@@ -22,6 +22,8 @@ class MarsRover
         @y += { f: -1, b: 1 }[command.to_sym]
       when 'E'
         @x += { f: 1, b: -1 }[command.to_sym]
+      when 'W'
+        @x += { f: -1, b: 1 }[command.to_sym]
       else
       end
     end
@@ -92,6 +94,13 @@ RSpec.describe MarsRover do
     it 'Goes 1 step west when receiving a backward command' do
       mars_rover = MarsRover.new(0, 0, 'E')
       mars_rover.execute(['b'])
+      expect(mars_rover.position).to eq({x: -1, y: 0})
+    end
+  end
+  context 'When facing West' do
+    it 'Goes 1 step west when receiving a forward command' do
+      mars_rover = MarsRover.new(0, 0, 'W')
+      mars_rover.execute(['f'])
       expect(mars_rover.position).to eq({x: -1, y: 0})
     end
   end
