@@ -2,7 +2,7 @@
 require 'ostruct'
 # Mars Rover
 class MarsRover
-  attr_accessor :orientation
+  attr_reader :orientation, :coordinates
 
   def initialize(x,y,orientation)
     @coordinates = OpenStruct.new(x: x, y: y)

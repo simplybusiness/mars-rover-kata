@@ -1,4 +1,5 @@
 require 'rspec'
+require 'ostruct'
 require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
@@ -21,8 +22,8 @@ RSpec.describe MarsRover do
   describe 'movement for a North facing Mars Rover' do
     it 'moves the rover forward by one space' do
       rover.execute("f")
-      expect(rover.y).to eq(1)
-      expect(rover.x).to eq(0)
+
+      expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 1))
     end
 
     it 'moves the rover backwards by one space' do
