@@ -1,7 +1,7 @@
 require 'ostruct'
 
 class Rover
-  attr_accessor :x, :y, :direction
+  attr_reader :x, :y, :direction
 
   def initialize(x, y, direction)
     validation(x, y, direction)
