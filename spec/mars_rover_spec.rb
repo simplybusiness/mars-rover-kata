@@ -38,5 +38,9 @@ RSpec.describe MarsRover do
       rover.execute("bbb")
       expect(rover.y).to eq(-3)
     end
+
+    xit 'the mars rover will refuse to execute the command if there is an unknown character' do
+      expect(rover.message).to eq "Unknown instruction in the command, please review and resend"
+    end
   end
 end
