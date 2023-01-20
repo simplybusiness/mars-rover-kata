@@ -1,4 +1,5 @@
 require 'rspec'
+require 'ostruct'
 # require_relative '../mars_rover'
 class MarsRover
   attr_accessor :x, :y, :direction
@@ -6,25 +7,39 @@ class MarsRover
   def initialize(x, y, direction)
     @x = x
     @y = y
-    @direction = direction
+    @direction = direction.to_sym
   end
 
-  def position
-    {x: @x, y: @y}
+  def coordinates
+    OpenStruct.new(x: @x, y: @y)
+  end
+
+  def move(command)
+    hash = {
+      N: { f: 1, b: -1 },
+      S: { f: -1, b: 1 },
+      E: { f: 1, b: -1 },
+      W: { f: -1, b: 1 },
+    }
+    case direction
+    when :N, :S
+      @y += hash[direction][command]
+    when :E, :W
+      @x += hash[direction][command]
+    end
+  end
+
+  def rotate(command)
+    compass = [:N, :E, :S, :W]
+    @direction = compass[compass.index(@direction) + {r: 1, l:-1}[command]]
   end
 
   def execute(commands)
     commands.each do |command|
-      case @direction
-      when 'N'
-        @y += { f: 1, b: -1 }[command.to_sym]
-      when 'S'
-        @y += { f: -1, b: 1 }[command.to_sym]
-      when 'E'
-        @x += { f: 1, b: -1 }[command.to_sym]
-      when 'W'
-        @x += { f: -1, b: 1 }[command.to_sym]
+      if ['l','r'].member?(command)
+        rotate(command.to_sym)
       else
+        move(command.to_sym)
       end
     end
     true
@@ -38,22 +53,22 @@ RSpec.describe MarsRover do
 
   it 'knows its position on the planet' do
     mars_rover = MarsRover.new(0, 0, 'N')
-    expect(mars_rover.position).to eq({x: 0, y: 0})
+    expect(mars_rover.coordinates).to have_attributes(x: 0, y: 0)
   end
 
   it 'knows its position when landing at 1,1 on the planet' do
     mars_rover = MarsRover.new(1, 1, 'N')
-    expect(mars_rover.position).to eq({x: 1, y: 1})
+    expect(mars_rover.coordinates).to have_attributes(x: 1, y: 1)
   end
 
   it 'knows the direction its facing' do
     mars_rover = MarsRover.new(0, 0, 'N')
-    expect(mars_rover.direction).to eq('N')
+    expect(mars_rover.direction).to eq(:N)
   end
 
   it 'knows the direction its facing when it lands facing south' do
     mars_rover = MarsRover.new(0, 0, 'S')
-    expect(mars_rover.direction).to eq('S')
+    expect(mars_rover.direction).to eq(:S)
   end
 
   it 'can receive an array of commands' do 
@@ -65,48 +80,78 @@ RSpec.describe MarsRover do
     it 'Goes north 1 step when receiving a forward command' do
       mars_rover = MarsRover.new(0, 0, 'N')
       mars_rover.execute(['f'])
-      expect(mars_rover.position).to eq({x: 0, y: 1})
+      expect(mars_rover.coordinates).to have_attributes(x: 0, y: 1)
     end
     it 'Goes south 1 step when receiving a backwards command' do
       mars_rover = MarsRover.new(0, 0, 'N')
       mars_rover.execute(['b'])
-      expect(mars_rover.position).to eq({x: 0, y: -1})
+      expect(mars_rover.coordinates).to have_attributes(x: 0, y: -1)
+    end
+    it 'Turns to face east when receiving a right command' do
+      mars_rover = MarsRover.new(0, 0, 'N')
+      mars_rover.execute(['r'])
+      expect(mars_rover.direction).to eq(:E)
+    end
+    it 'Turns to face west when receiving a left command' do
+      mars_rover = MarsRover.new(0, 0, 'N')
+      mars_rover.execute(['l'])
+      expect(mars_rover.direction).to eq(:W)
     end
   end
   context 'when facing South' do 
     it 'Goes south 1 step when receivng a forward command' do
       mars_rover = MarsRover.new(0, 0, 'S')
       mars_rover.execute(['f'])
-      expect(mars_rover.position).to eq({x: 0, y: -1})
+      expect(mars_rover.coordinates).to have_attributes(x: 0, y: -1)
     end
     it 'Goes north 1 step when receivng a backward command' do
       mars_rover = MarsRover.new(0, 0, 'S')
       mars_rover.execute(['b'])
-      expect(mars_rover.position).to eq({x: 0, y: 1})
+      expect(mars_rover.coordinates).to have_attributes(x: 0, y: 1)
+    end
+    it 'Turns to face west when receiving a right command' do
+      mars_rover = MarsRover.new(0, 0, 'S')
+      mars_rover.execute(['r'])
+      expect(mars_rover.direction).to eq(:W)
+    end
+    it 'Turns to face east when receiving a left command' do
+      mars_rover = MarsRover.new(0, 0, 'S')
+      mars_rover.execute(['l'])
+      expect(mars_rover.direction).to eq(:E)
     end
   end
   context 'when facing East' do
     it 'Goes forward 1 step east when receiving a forward command' do
       mars_rover = MarsRover.new(0, 0, 'E')
       mars_rover.execute(['f'])
-      expect(mars_rover.position).to eq({x: 1, y: 0})
+      expect(mars_rover.coordinates).to have_attributes(x: 1, y: 0)
     end
     it 'Goes 1 step west when receiving a backward command' do
       mars_rover = MarsRover.new(0, 0, 'E')
       mars_rover.execute(['b'])
-      expect(mars_rover.position).to eq({x: -1, y: 0})
+      expect(mars_rover.coordinates).to have_attributes(x: -1, y: 0)
+    end
+    it 'Turns to face south when receiving a right command' do
+      mars_rover = MarsRover.new(0, 0, 'E')
+      mars_rover.execute(['r'])
+      expect(mars_rover.direction).to eq(:S)
+    end
+    it 'Turns to face north when receiving a left command' do
+      mars_rover = MarsRover.new(0, 0, 'E')
+      mars_rover.execute(['l'])
+      expect(mars_rover.direction).to eq(:N)
     end
   end
   context 'When facing West' do
     it 'Goes 1 step west when receiving a forward command' do
       mars_rover = MarsRover.new(0, 0, 'W')
       mars_rover.execute(['f'])
-      expect(mars_rover.position).to eq({x: -1, y: 0})
+      expect(mars_rover.coordinates).to have_attributes(x: -1, y: 0)
     end
     it 'Goes 1 step east when receiving a backward command' do
       mars_rover = MarsRover.new(0, 0, 'W')
       mars_rover.execute(['b'])
-      expect(mars_rover.position).to eq({x: 1, y: 0})
+      expect(mars_rover.coordinates).to have_attributes(x: 1, y: 0)
     end
   end
 
