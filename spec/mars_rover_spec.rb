@@ -17,18 +17,11 @@ class MarsRover
     commands.each do |command|
       case @direction
       when 'N'
-        if(command == 'f')
-          @y = @y + 1
-        elsif(command == 'b')
-          @y = @y - 1
-        end
+        @y += { f: 1, b: -1 }[command.to_sym]
       when 'S'
-        if(command == 'f')
-          @y = @y - 1
-        end
-        if(command == 'b')
-          @y = @y + 1
-        end
+        @y += { f: -1, b: 1 }[command.to_sym]
+      when 'E'
+        @x += { f: 1, b: -1 }[command.to_sym]
       else
       end
     end
@@ -90,6 +83,40 @@ RSpec.describe MarsRover do
       expect(mars_rover.position).to eq({x: 0, y: 1})
     end
   end
+  context 'when facing East' do
+    it 'Goes forward 1 step east when receiving a forward command' do
+      mars_rover = MarsRover.new(0, 0, 'E')
+      mars_rover.execute(['f'])
+      expect(mars_rover.position).to eq({x: 1, y: 0})
+    end
+    it 'Goes 1 step west when receiving a backward command' do
+      mars_rover = MarsRover.new(0, 0, 'E')
+      mars_rover.execute(['b'])
+      expect(mars_rover.position).to eq({x: -1, y: 0})
+    end
+  end
+
+  # if(command == 'b')
+  #   @x = @x - 1
+  # end
+  # {
+  #   N: {
+  #     f: {
+  #       y: 1
+  #     }
+  #     b: {
+  #       y: -1
+  #     }
+  #   }
+  #   S: {
+  #     f: {
+  #       y: -1
+  #     }
+  #     b: {
+  #       y: 1
+  #     }
+  #   }
+  # }
 
   # describe 'x' do
   #   it 'returns x' do
