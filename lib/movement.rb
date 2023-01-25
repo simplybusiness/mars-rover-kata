@@ -24,4 +24,7 @@ class Movement
     final_pos
   end
 
+  def execute(command, direction, start_x, start_y)
+    move(command, direction, start_x, start_y)
+  end
 end
