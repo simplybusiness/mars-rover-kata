@@ -4,8 +4,8 @@ require 'current_position'
 class MarsRover
   attr_reader :x, :y
 
-  def move(command, direction, start_x, start_y)
-    current_position = CurrentPosition.new(direction, start_x, start_y)
+  def move(command, direction, start_x, start_y, coordinates = CurrentPosition.new(direction, start_x, start_y))
+    current_position = coordinates
     final_pos = [current_position.x, current_position.y]
     command.tap { |move_command|
       case current_position.direction
