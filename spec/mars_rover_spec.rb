@@ -10,6 +10,7 @@ class MarsRover
     @direction = direction.to_sym
   end
 
+
   def coordinates
     OpenStruct.new(x: @x, y: @y)
   end
@@ -30,14 +31,38 @@ class MarsRover
   end
 
   def rotate(command)
-    compass = [:N, :E, :S, :W]
-    @direction = compass[compass.index(@direction) + {r: 1, l:-1}[command]]
+    case @direction
+    when :N
+      if command == 'r'
+        @direction = :E 
+      elsif command == 'l'
+        @direction = :W 
+      end
+    when :E
+      if command == 'r'
+        @direction = :S
+      elsif command == 'l'
+        @direction = :N 
+      end
+    when :S
+      if command == 'r'
+        @direction = :W
+      elsif command == 'l'
+        @direction = :E
+      end
+    when :W
+      if command == 'r'
+        @direction = :N
+      elsif command == 'l'
+        @direction = :S
+      end
+    end
   end
 
   def execute(commands)
     commands.each do |command|
       if ['l','r'].member?(command)
-        rotate(command.to_sym)
+        rotate(command)
       else
         move(command.to_sym)
       end
@@ -153,29 +178,16 @@ RSpec.describe MarsRover do
       mars_rover.execute(['b'])
       expect(mars_rover.coordinates).to have_attributes(x: 1, y: 0)
     end
+    it 'turns to face north when receiving a right command' do
+      mars_rover = MarsRover.new(0, 0, 'W')
+      mars_rover.execute(['r'])
+      expect(mars_rover.direction).to eq(:N)
+    end
   end
 
   # if(command == 'b')
   #   @x = @x - 1
   # end
-  # {
-  #   N: {
-  #     f: {
-  #       y: 1
-  #     }
-  #     b: {
-  #       y: -1
-  #     }
-  #   }
-  #   S: {
-  #     f: {
-  #       y: -1
-  #     }
-  #     b: {
-  #       y: 1
-  #     }
-  #   }
-  # }
 
   # describe 'x' do
   #   it 'returns x' do
