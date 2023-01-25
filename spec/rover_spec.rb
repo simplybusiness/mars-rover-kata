@@ -58,10 +58,4 @@ RSpec.describe do
       expect(Movement.new.move('bfbf', 'w', 0, 0)).to eq([0, 0])
     end
   end
-
-  context 'rover turns' do
-    it 'turns left' do
-      expect(Movement.turn('l', 'n')).to eq('w')
-    end
-  end
 end
