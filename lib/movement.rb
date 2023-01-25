@@ -1,9 +1,11 @@
 require 'pry'
+require 'current_position'
 
 class MarsRover
   attr_reader :x, :y
 
   def move(command, direction, start_x, start_y)
+    current_position = CurrentPosition.new(direction, start_x, start_y)
     final_pos = [start_x, start_y]
     command.tap { |move_command|
       case direction
