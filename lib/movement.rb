@@ -28,3 +28,7 @@ class Movement
     move(command, direction, start_x, start_y)
   end
 end
+
+class MarsRover < Movement
+  
+end
