@@ -1,6 +1,6 @@
 require 'pry'
 
-class Movement
+class MarsRover
   attr_reader :x, :y
 
   def move(command, direction, start_x, start_y)
@@ -27,8 +27,4 @@ class Movement
   def execute(command, direction, start_x, start_y)
     move(command, direction, start_x, start_y)
   end
-end
-
-class MarsRover < Movement
-  
 end
