@@ -1,4 +1,5 @@
 require 'ostruct'
+require_relative 'command'
 
 class Rover
   attr_reader :coordinates, :state
@@ -121,8 +122,12 @@ def step_backward
     when "S"
       @state = OpenStruct.new(x: @state.x, y: @state.y + 1, direction: @state.direction)
   when "E"
-      @state = OpenStruct.new(x: @state.x - 1, y: @state.y, direction: @state.direction)
+      @state = moveX(-1)
     when "W"
       @state = OpenStruct.new(x: @state.x + 1, y: @state.y, direction: @state.direction)
   end
+end
+
+def moveX(number)
+  OpenStruct.new(x: @state.x + number, y: @state.y, direction: @state.direction)
 end
