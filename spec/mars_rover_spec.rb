@@ -6,14 +6,6 @@ RSpec.describe MarsRover do
   let(:rover) {MarsRover.new(0,0,"N")}
 
   describe 'position' do
-    it 'returns x' do
-      expect(rover.x).to eq(0)
-    end
-
-    it 'returns y' do
-      expect(rover.y).to eq(0)
-    end
-
     it 'knows its current position' do
       expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 0))
     end

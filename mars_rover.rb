@@ -9,14 +9,6 @@ class MarsRover
     @orientation = "N"
   end
 
-  def x
-    @coordinates.x
-  end
-
-  def y
-    @coordinates.y
-  end
-
   def execute(series_of_instructions)
     commands = series_of_instructions.chars
     commands.each do |command|
