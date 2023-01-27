@@ -21,11 +21,12 @@ class MarsRover
     command = commands.chars
     command.each do |instruction|
       case instruction
-      when "f"
-        @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + 1)
-      when "b"
-        @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y - 1)
+        when "f"
+          direction = + 1
+        when "b"
+          direction = - 1
       end
+      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + direction)
     end
   end
 end
