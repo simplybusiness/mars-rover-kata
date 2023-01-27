@@ -75,7 +75,3 @@ def wrap_edges
     @state = OpenStruct.new(x: 10, y: @state.y, direction: @state.direction)
   end
 end
-
-def moveX(number)
-  OpenStruct.new(x: @state.x + number, y: @state.y, direction: @state.direction)
-end
