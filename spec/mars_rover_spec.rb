@@ -14,6 +14,10 @@ RSpec.describe MarsRover do
       expect(rover.y).to eq(0)
     end
 
+    it 'knows its current position' do
+      expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 0))
+    end
+
     it 'returns North' do
       expect(rover.orientation).to eq("N")
     end
