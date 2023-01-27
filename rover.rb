@@ -1,5 +1,6 @@
 require 'ostruct'
 require_relative 'command'
+require_relative 'position'
 
 class Rover
   attr_reader :coordinates, :state
@@ -8,6 +9,7 @@ class Rover
     validation(x, y, direction)
 
     @state = OpenStruct.new(x: x, y: y, direction: direction)
+    @current_position = Position.new(x: x, y: y, direction: direction)
   end
 
   def x
