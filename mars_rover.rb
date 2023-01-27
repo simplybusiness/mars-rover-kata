@@ -25,6 +25,8 @@ class MarsRover
           direction = + 1
         when "b"
           direction = - 1
+       else
+          direction = 0
       end
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + direction)
     end
