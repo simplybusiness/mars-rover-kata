@@ -17,10 +17,10 @@ class MarsRover
     @coordinates.y
   end
 
-  def execute(commands)
-    command = commands.chars
-    command.each do |instruction|
-      case instruction
+  def execute(series_of_instructions)
+    commands = series_of_instructions.chars
+    commands.each do |command|
+      case command
         when "f"
           direction = + 1
         when "b"

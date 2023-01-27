@@ -44,6 +44,10 @@ RSpec.describe MarsRover do
       expect(rover.coordinates).to eq(OpenStruct.new(x:0, y: -3))
     end
 
+    it 'sends a success messages when movement order is fully completed' do
+      expec(rover.execute).to eq("(1,0)")
+    end
+
     xit 'the mars rover will refuse to execute the command if there is an unknown character' do
       expect(rover.message).to eq "Unknown instruction in the command, please review and resend"
     end
