@@ -44,14 +44,14 @@ class Rover
     directions.each do |d|
       case d
       when "f"
-        step_forward
+        @state = Command.step_forward(@state)
       when "b"
-        step_backward
+        @state = Command.step_backward(@state)
       when "l"
-        rotate_left
+        @state = Command.rotate_left(@state)
         next
       when "r"
-        rotate_right
+        @state = Command.rotate_right(@state)
         next
       end
 
@@ -73,58 +73,6 @@ def wrap_edges
     @state = OpenStruct.new(x: -10, y: @state.y, direction: @state.direction)
   when -11
     @state = OpenStruct.new(x: 10, y: @state.y, direction: @state.direction)
-  end
-end
-
-def rotate_left
-    case @state.direction
-    when "N"
-      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "W")
-    when "W"
-      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "S")
-    when "S"
-      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "E")
-    when "E"
-      @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "N")
-    end
-end
-
-def rotate_right
-  case state.direction
-  when "N"
-    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "E")
-  when "E"
-    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "S")
-  when "S"
-    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "W")
-  when "W"
-    @state = OpenStruct.new(x: @state.x, y: @state.y, direction: "N")
-  end
-end
-
-def step_forward
-  case state.direction
-    when "N"
-      @state = OpenStruct.new(x: @state.x, y: @state.y + 1, direction: @state.direction)
-    when "S"
-      @state = OpenStruct.new(x: @state.x, y: @state.y - 1, direction: @state.direction)
-    when "E"
-      @state = OpenStruct.new(x: @state.x + 1, y: @state.y, direction: @state.direction)
-    when "W"
-      @state = OpenStruct.new(x: @state.x - 1, y: @state.y, direction: @state.direction)
-  end
-end
-
-def step_backward
-  case state.direction
-    when "N"
-      @state = OpenStruct.new(x: @state.x, y: @state.y - 1, direction: @state.direction)
-    when "S"
-      @state = OpenStruct.new(x: @state.x, y: @state.y + 1, direction: @state.direction)
-  when "E"
-      @state = moveX(-1)
-    when "W"
-      @state = OpenStruct.new(x: @state.x + 1, y: @state.y, direction: @state.direction)
   end
 end
 
