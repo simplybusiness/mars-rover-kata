@@ -6,4 +6,6 @@ class Rover
     @y = y
     @direction = direction
   end
+
+  def move(arr); end
 end
