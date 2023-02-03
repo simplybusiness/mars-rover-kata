@@ -1,7 +1,7 @@
 RSpec.describe Rover do
-  subject(:rover) { described_class.new(x: 0, y: 0, direction: 'N') }
-
   context "initialization" do
+    let(:rover) { create_rover }
+
     it 'has a starting point (x,y)' do
       expect(rover.x).to eq(0)
       expect(rover.y).to eq(0)
@@ -14,7 +14,7 @@ RSpec.describe Rover do
 
   it 'receives an array of commands' do
     commands = ['f', 'b', 'l', 'r']
-
+    rover = create_rover
     expect { rover.move(commands) }.to_not raise_error
   end
 
@@ -33,5 +33,14 @@ RSpec.describe Rover do
 
     it 'facing east adds to X'
     it 'facing west subtracts to X'
+  end
+
+  def create_rover(**overrides)
+    described_class.new(
+      x: 0,
+      y: 0,
+      direction: 'N',
+      **overrides
+    )
   end
 end
