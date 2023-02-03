@@ -19,14 +19,18 @@ RSpec.describe Rover do
   end
 
   context 'moving forward' do
-    before do
-      rover.move(['f'])
-    end
-
     it 'facing north adds to Y' do
+      rover = described_class.new(x: 0, y: 0, direction: 'N')
+      rover.move(['f'])
       expect(rover.y).to eq(1)
     end
-    it 'facing south subtracts to Y'
+
+    it 'facing south subtracts to Y' do
+      rover = described_class.new(x: 0, y: 0, direction: 'S')
+      rover.move(['f'])
+      expect(rover.y).to eq(-1)
+    end
+
     it 'facing east adds to X'
     it 'facing west subtracts to X'
   end
