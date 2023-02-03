@@ -7,5 +7,5 @@ class Rover
     @direction = direction
   end
 
-  def move(arr); end
+  def move(commands); end
 end
