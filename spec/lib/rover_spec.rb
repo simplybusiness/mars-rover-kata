@@ -17,4 +17,17 @@ RSpec.describe Rover do
 
     expect { rover.move(commands) }.to_not raise_error
   end
+
+  context 'moving forward' do
+    before do
+      rover.move(['f'])
+    end
+
+    it 'facing north adds to Y' do
+      expect(rover.y).to eq(1)
+    end
+    it 'facing south subtracts to Y'
+    it 'facing east adds to X'
+    it 'facing west subtracts to X'
+  end
 end
