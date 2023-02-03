@@ -11,4 +11,10 @@ RSpec.describe Rover do
       expect(rover.direction).to eq('N')
     end
   end
+
+  it 'receives an array of commands' do
+    commands = ['f', 'b', 'l', 'r']
+
+    expect { rover.move(commands) }.to_not raise_error
+  end
 end
