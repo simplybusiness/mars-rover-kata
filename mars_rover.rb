@@ -23,6 +23,7 @@ class MarsRover
           direction = 0
       end
       @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + direction)
+      @position = Coordinates.new(x: @position.x, y: @position.y + direction)
     end
   end
 end

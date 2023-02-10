@@ -29,3 +29,11 @@ Develop an API that translates the commands sent from earth to instructions that
 - Change roles (driver, navigator) after each TDD cycle.
 - No red phases while refactoring.
 - Be careful about edge cases and exceptions. We can not afford to lose a mars rover, just because the developers overlooked a null pointer.
+
+"In this murky, complex, social word, and given our limited time and material there are people who matter, who have both explicit and tacit needs and desires for a product.
+
+As the product and requirements develop, and perhaps long after too, there is danger that the product will violate requirements, causing harm.
+
+We strive to serve our clients by understanding requirements, examining the product as needed and evaluate risk.
+
+To fullfill our mission
