@@ -9,4 +9,8 @@ class Coordinates
   def ==(point)
     @x == point.x && @y == point.y
   end
+
+  def inspect
+    "(#{x}, #{y})"
+  end
 end
