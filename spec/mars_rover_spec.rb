@@ -3,7 +3,7 @@ require_relative '../coordinates'
 require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
-  let(:rover) {MarsRover.new(0,0,"N")}
+  let(:rover) { MarsRover.new(x: 0, y: 0, orientation: "N") }
 
   describe 'position' do
     it 'knows its current position' do
