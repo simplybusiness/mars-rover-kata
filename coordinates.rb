@@ -7,6 +7,6 @@ class Coordinates
   end
 
   def ==(point)
-    return true if @x == point.x
+    @x == point.x && @y == point.y
   end
 end
