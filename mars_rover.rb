@@ -3,7 +3,7 @@ require 'ostruct'
 require_relative 'coordinates'
 # Mars Rover
 class MarsRover
-  attr_reader :orientation, :coordinates
+  attr_reader :orientation, :coordinates, :position
 
   def initialize(x,y,orientation)
     @coordinates = OpenStruct.new(x: x, y: y)

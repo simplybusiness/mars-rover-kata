@@ -1,5 +1,6 @@
 require 'rspec'
 require 'ostruct'
+require_relative '../coordinates'
 require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
@@ -7,7 +8,7 @@ RSpec.describe MarsRover do
 
   describe 'position' do
     it 'knows its current position' do
-      expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 0))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
     end
 
     it 'returns North' do
@@ -19,31 +20,31 @@ RSpec.describe MarsRover do
     it 'moves the rover forward by one space' do
       rover.execute("f")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 1))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: 1))
     end
 
     it 'moves the rover backwards by one space' do
       rover.execute("b")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x:0, y: -1))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: -1))
     end
 
     it 'move multiple steps forward' do
       rover.execute("fff")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x:0, y: 3))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: 3))
     end
 
     it 'moves mulitple steps back' do
       rover.execute("bbb")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x:0, y: -3))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: -3))
     end
 
     it 'will ignore the unknown command' do
       rover.execute("u")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x: 0, y: 0))
+      expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
     end
   end
 
@@ -51,7 +52,7 @@ RSpec.describe MarsRover do
     xit 'moves the rover forward by one space' do
       rover.execute("f")
 
-      expect(rover.coordinates).to eq(OpenStruct.new(x: 1, y: 0))
+      expect(rover.position).to eq(Coordinates.new(x: 1, y: 0))
     end
   end
 end
