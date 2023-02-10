@@ -1,6 +1,5 @@
 require 'rspec'
-require 'movement'
-require_relative '../lib/movement'
+require 'mars_rover'
 
 RSpec.describe do
   context 'the rover moves facing north' do
