@@ -1,5 +1,4 @@
 require 'rspec'
-require 'ostruct'
 require_relative '../coordinates'
 require_relative '../mars_rover'
 

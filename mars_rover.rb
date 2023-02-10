@@ -6,7 +6,6 @@ class MarsRover
   attr_reader :orientation, :coordinates, :position
 
   def initialize(x,y,orientation)
-    @coordinates = OpenStruct.new(x: x, y: y)
     @position = Coordinates.new(x: x, y: y)
     @orientation = "N"
   end
@@ -22,7 +21,6 @@ class MarsRover
        else
           direction = 0
       end
-      @coordinates = OpenStruct.new(x: @coordinates.x, y: @coordinates.y + direction)
       @position = Coordinates.new(x: @position.x, y: @position.y + direction)
     end
   end
