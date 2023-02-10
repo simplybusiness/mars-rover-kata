@@ -49,7 +49,7 @@ RSpec.describe MarsRover do
 
   describe 'movement for a East facing Mars Rover' do
     it 'moves the rover forward by one space' do
-      rover = MarsRover.new(x: 0, y: 0, orientation: 'E')
+      rover = MarsRover.new(x: 0, y: 0, orientation: "E")
 
       rover.execute("f")
 

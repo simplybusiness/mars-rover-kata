@@ -7,7 +7,7 @@ class MarsRover
 
   def initialize(x:, y:, orientation:)
     @position = Coordinates.new(x: x, y: y)
-    @orientation = "N"
+    @orientation = orientation
   end
 
   def execute(series_of_instructions)
@@ -21,8 +21,12 @@ class MarsRover
        else
           direction = 0
       end
-      @position = Coordinates.new(x: @position.x, y: @position.y + direction)
+
+      if @orientation == "N"
+        @position = Coordinates.new(x: @position.x, y: @position.y + direction)
+      else
+        @position = Coordinates.new(x: @position.x + direction, y: @position.y)
+      end
     end
   end
 end
-
