@@ -55,5 +55,13 @@ RSpec.describe MarsRover do
 
       expect(rover.position).to eq(Coordinates.new(x: 1, y: 0))
     end
+
+    it 'moves multiples step forward' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "E")
+
+      rover.execute("fff")
+
+      expect(rover.position). to eq(Coordinates.new(x:3, y:0))
+    end
   end
 end
