@@ -8,20 +8,23 @@ class MarsRover
     current_position = coordinates
     final_pos = [current_position.x, current_position.y]
     command.tap do |move_command|
-      # final_pos[1] = step(current.position, move_command)
       case current_position.direction
       when 'n'
-        final_pos[1] = move_forward(current_position) if move_command == 'f'
-        final_pos[1] = current_position.y - 1 if move_command == 'b'
+        axis = 1
+        final_pos[axis] = move_forward(current_position) if move_command == 'f'
+        final_pos[axis] = current_position.y - 1 if move_command == 'b'
       when 's'
-        final_pos[1] = move_forward(current_position) if move_command == 'f'
-        final_pos[1] = current_position.y + 1 if move_command == 'b'
+        axis = 1
+        final_pos[axis] = move_forward(current_position) if move_command == 'f'
+        final_pos[axis] = current_position.y + 1 if move_command == 'b'
       when 'e'
-        final_pos[0] = move_forward(current_position) if move_command == 'f'
-        final_pos[0] = current_position.x - 1 if move_command == 'b'
+        axis = 0
+        final_pos[axis] = move_forward(current_position) if move_command == 'f'
+        final_pos[axis] = current_position.x - 1 if move_command == 'b'
       when 'w'
-        final_pos[0] = move_forward(current_position) if move_command == 'f'
-        final_pos[0] = current_position.x + 1 if move_command == 'b'
+        axis = 0
+        final_pos[axis] = move_forward(current_position) if move_command == 'f'
+        final_pos[axis] = current_position.x + 1 if move_command == 'b'
       end
     end
     final_pos
