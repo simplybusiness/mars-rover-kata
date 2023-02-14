@@ -11,21 +11,18 @@ class MarsRover
       case current_position.direction
       when 'n'
         axis = 1
-        final_pos[axis] = move_forward(current_position) if move_command == 'f'
         final_pos[axis] = current_position.y - 1 if move_command == 'b'
       when 's'
         axis = 1
-        final_pos[axis] = move_forward(current_position) if move_command == 'f'
         final_pos[axis] = current_position.y + 1 if move_command == 'b'
       when 'e'
         axis = 0
-        final_pos[axis] = move_forward(current_position) if move_command == 'f'
         final_pos[axis] = current_position.x - 1 if move_command == 'b'
       when 'w'
         axis = 0
-        final_pos[axis] = move_forward(current_position) if move_command == 'f'
         final_pos[axis] = current_position.x + 1 if move_command == 'b'
       end
+      final_pos[axis] = move_forward(current_position) if move_command == 'f'
     end
     final_pos
   end
