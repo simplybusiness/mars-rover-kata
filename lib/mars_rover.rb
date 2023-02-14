@@ -8,16 +8,8 @@ class MarsRover
     current_position = coordinates
     final_pos = [current_position.x, current_position.y]
     command.tap do |move_command|
-      case current_position.direction
-      when 'n'
-        axis = 1
-      when 's'
-        axis = 1
-      when 'e'
-        axis = 0
-      when 'w'
-        axis = 0
-      end
+      axes = { 'n' => 1, 's' => 1, 'e' => 0, 'w' => 0 }
+      axis = axes[current_position.direction]
       final_pos[axis] = move_forward(current_position) if move_command == 'f'
       final_pos[axis] = move_backward(current_position) if move_command == 'b'
     end
