@@ -14,10 +14,10 @@ class MarsRover
         final_pos[1] = move_forward(current_position) if move_command == 'f'
         final_pos[1] = current_position.y - 1 if move_command == 'b'
       when 's'
-        final_pos[1] = current_position.y - 1 if move_command == 'f'
+        final_pos[1] = move_forward(current_position) if move_command == 'f'
         final_pos[1] = current_position.y + 1 if move_command == 'b'
       when 'e'
-        final_pos[0] = current_position.x + 1 if move_command == 'f'
+        final_pos[0] = move_forward(current_position) if move_command == 'f'
         final_pos[0] = current_position.x - 1 if move_command == 'b'
       when 'w'
         final_pos[0] = current_position.x - 1 if move_command == 'f'
@@ -33,6 +33,12 @@ class MarsRover
   end
 
   def move_forward(current_position)
-    current_position.y + 1
+    if current_position.direction == 'n'
+      current_position.y + 1
+    elsif current_position.direction == 'e'
+      current_position.x + 1
+    else
+      current_position.y - 1
+    end
   end
 end
