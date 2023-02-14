@@ -11,10 +11,10 @@ class MarsRover
       case current_position.direction
       when 'n'
         axis = 1
-        final_pos[axis] = current_position.y - 1 if move_command == 'b'
+        final_pos[axis] = move_backward(current_position) if move_command == 'b'
       when 's'
         axis = 1
-        final_pos[axis] = current_position.y + 1 if move_command == 'b'
+        final_pos[axis] = move_backward(current_position) if move_command == 'b'
       when 'e'
         axis = 0
         final_pos[axis] = current_position.x - 1 if move_command == 'b'
@@ -41,6 +41,14 @@ class MarsRover
       current_position.x - 1
     else
       current_position.y - 1
+    end
+  end
+
+  def move_backward(current_position)
+    if current_position.direction == 'n'
+      current_position.y - 1
+    else
+      current_position.y + 1
     end
   end
 end
