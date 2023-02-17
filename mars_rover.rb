@@ -22,10 +22,11 @@ class MarsRover
           direction = 0
       end
 
-      if @orientation == "N"
-        @position = Coordinates.new(x: @position.x, y: @position.y + direction)
-      else
-        @position = Coordinates.new(x: @position.x + direction, y: @position.y)
+      case @orientation 
+        when"N"
+          @position = Coordinates.new(x: @position.x, y: @position.y + direction)
+        else
+          @position = Coordinates.new(x: @position.x + direction, y: @position.y)
       end
     end
   end
