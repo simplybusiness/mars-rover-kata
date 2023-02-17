@@ -21,7 +21,7 @@ RSpec.describe MarsRover do
   describe 'movement for a North facing Mars Rover' do
     it 'moves the rover forward by one space' do
       rover = north_facing_rover
-      
+
       rover.execute("f")
 
       expect(rover.position).to eq(Coordinates.new(x: 0, y: 1))
@@ -49,14 +49,6 @@ RSpec.describe MarsRover do
       rover.execute("bbb")
 
       expect(rover.position).to eq(Coordinates.new(x: 0, y: -3))
-    end
-
-    it 'will ignore the unknown command' do
-      rover = north_facing_rover
-
-      rover.execute("u")
-
-      expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
     end
 
     def north_facing_rover
@@ -99,6 +91,78 @@ RSpec.describe MarsRover do
 
     def east_facing_rover
       MarsRover.new(x: 0, y: 0, orientation: "E")
+    end
+  end
+  
+  describe 'movement for a South facing Mars Rover' do
+    it 'moves the rover forward by one space' do
+      rover = south_facing_rover
+
+      rover.execute("f")
+
+      expect(rover.position).to eq(Coordinates.new(x:0, y:-1))
+    end
+
+    it 'moves the rover backwards by one space' do
+      rover = south_facing_rover
+
+      rover.execute("b")
+
+      expect(rover.position).to eq(Coordinates.new(x:0, y:+1))
+    end
+
+    def south_facing_rover
+      MarsRover.new(x:0, y:0, orientation: 'S')
+    end
+  end
+
+  describe 'movement for a West facing Mars Rover' do
+    it 'moves the rover forward by one space' do
+      rover = west_facing_rover
+
+      rover.execute("f")
+
+      expect(rover.position).to eq(Coordinates.new(x:-1, y:0))
+    end
+
+    it 'moves the rover backwards by one space' do
+      rover = west_facing_rover
+
+      rover.execute("b")
+
+      expect(rover.position).to eq(Coordinates.new(x:1, y:0))
+    end
+
+    def west_facing_rover
+      MarsRover.new(x:0, y:0, orientation: 'W')
+    end
+  end
+
+  describe 'rotation' do
+    it 'rotates to the right going from facing North to facing East' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "N")
+
+      rover.execute("r")
+
+      expect(rover.orientation).to eq("E")
+    end
+
+    it 'rotates to the left going from facing North to facing West' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "N")
+
+      rover.execute("l")
+
+      expect(rover.orientation).to eq("W")
+    end
+  end
+
+  describe 'invalid movement options' do
+    it 'will ignore an unknown command' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "N")
+
+      rover.execute("x")
+
+      expect(rover.position).to eq(Coordinates.new(x:0, y:0))
     end
   end
 end

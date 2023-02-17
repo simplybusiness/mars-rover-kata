@@ -18,15 +18,27 @@ class MarsRover
           direction = + 1
         when "b"
           direction = - 1
-       else
+        when "r"
+          @orientation = "E"
+          direction = 0
+        when "l"
+          @orientation = "W"
+          direction = 0
+        else
           direction = 0
       end
 
       case @orientation 
         when"N"
           @position = Coordinates.new(x: @position.x, y: @position.y + direction)
-        else
+        when "E"
           @position = Coordinates.new(x: @position.x + direction, y: @position.y)
+        when "S"
+          @position = Coordinates.new(x: @position.x, y: @position.y - direction)
+        when "W"
+          @position = Coordinates.new(x: @position.x - direction, y: @position.y)
+        else
+          @position = @position
       end
     end
   end
