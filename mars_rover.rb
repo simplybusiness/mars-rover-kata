@@ -38,7 +38,7 @@ class MarsRover
         when "W"
           @position = Coordinates.new(x: @position.x - direction, y: @position.y)
         else
-          @position = @position
+          @position
       end
     end
   end
