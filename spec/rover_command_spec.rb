@@ -2,6 +2,7 @@ class Rover
     def initialize(starting_point = [-1, -1], starting_direction = 'W')
         @current_position = starting_point
         @current_direction = starting_direction
+        @current_commands = []
     end
 
     def current_position
@@ -10,6 +11,10 @@ class Rover
 
     def current_direction
         @current_direction
+    end
+
+    def commands
+        @current_commands
     end
 end
 
@@ -35,5 +40,12 @@ RSpec.describe '1 + 1' do
         starting_point = [1, 1]
         rover = Rover.new(starting_point, starting_direction)
         expect(rover.current_direction). to eq('N')
+    end
+
+    it 'knows it current commands status' do
+        starting_direction = 'N'
+        starting_point = [1, 1]
+        rover = Rover.new(starting_point, starting_direction)
+        expect(rover.commands). to eq([])
     end
 end
