@@ -28,7 +28,8 @@ RSpec.describe MarsRover do
 
 		test = rover.command_shell(distance, 'b')
 
-		expect(rover.cPoint).to eq([x - distance,y])
+		expect(rover.coordinates.x).to eq(x - distance)
+		expect(rover.coordinates.y).to eq(y)
 		expect(test).to eq('success')
 	end
 
@@ -39,7 +40,8 @@ RSpec.describe MarsRover do
 
 		test = rover.command_shell(distance, 'l')
 
-		expect(rover.cPoint).to eq([x,y + distance])
+		expect(rover.coordinates.x).to eq(x)
+		expect(rover.coordinates.y).to eq(y + distance)
 		expect(test).to eq('success')
 	end
 
@@ -50,7 +52,8 @@ RSpec.describe MarsRover do
 
 		test = rover.command_shell(distance, 'r')
 
-		expect(rover.cPoint).to eq([x,y - distance])
+		expect(rover.coordinates.x).to eq(x)
+		expect(rover.coordinates.y).to eq(y - distance)
 		expect(test).to eq('success')
 	end
 
@@ -61,7 +64,8 @@ RSpec.describe MarsRover do
 
 		test = rover.command_shell(distance, 'f')
 
-		expect(rover.cPoint).to eq([x,y])
+		expect(rover.coordinates.x).to eq(x)
+		expect(rover.coordinates.y).to eq(y)
 		expect(test).to eq('success')
 	end
 end
