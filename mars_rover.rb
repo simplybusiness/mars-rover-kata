@@ -1,18 +1,17 @@
 require './coordinates'
 
 class MarsRover
-	attr_reader :cPoint, :direction, :coordinates
+	attr_reader :direction, :coordinates
 
 
-	def initialize(cPoint, direction)
-		@coordinates = Coordinates.new(cPoint.first, cPoint.last)
-		@cPoint = cPoint
+	def initialize(direction)
+		@coordinates = Coordinates.new(0, 0)
 		@direction = direction
 	end 
 
 	def command_shell(distance, command) 
-		x = @cPoint.first
-		y = @cPoint.last
+		x = @coordinates.x
+		y = @coordinates.y
 
 		case command
 		when 'f'
