@@ -1,10 +1,15 @@
 class Rover
-    def initialize(starting_point)
+    def initialize(starting_point = [-1, -1], starting_direction = 'W')
         @current_position = starting_point
+        @current_direction = starting_direction
     end
 
     def current_position
         @current_position
+    end
+
+    def current_direction
+        @current_direction
     end
 end
 
@@ -25,5 +30,10 @@ RSpec.describe '1 + 1' do
         expect(rover.current_position). to eq([1, 1])
     end
 
-    it 'knows it current direction'
+    it 'knows it current direction' do
+        starting_direction = 'N'
+        starting_point = [1, 1]
+        rover = Rover.new(starting_point, starting_direction)
+        expect(rover.current_direction). to eq('N')
+    end
 end
