@@ -27,7 +27,6 @@ class MarsRover
 			return 'error: could not interpret command'
 		end
 
-		#@cPoint = [@coordinates.x, @coordinates.y]
 		return 'success'
 	end
 

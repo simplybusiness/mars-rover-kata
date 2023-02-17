@@ -2,7 +2,9 @@ require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
 	rover = MarsRover.new([0,0], 'N')
-
+	x = rover.coordinates.x
+	y = rover.coordinates.y
+	distance = 1
 
 	it 'initailizes starting point and direction for the rover' do
 		expect(rover.cPoint).to eq([0,0])
@@ -10,10 +12,6 @@ RSpec.describe MarsRover do
 	end
 
 	it 'moves the rover forwward' do
-		x = rover.cPoint.first
-		y = rover.cPoint.last
-		distance = 1
-
 		test = rover.command_shell(distance, 'f')
 
 		expect(rover.coordinates.x).to eq(x + distance)
@@ -22,10 +20,6 @@ RSpec.describe MarsRover do
 	end
 
 	it 'moves the rover backward' do
-		x = rover.cPoint.first
-		y = rover.cPoint.last
-		distance = 1
-
 		test = rover.command_shell(distance, 'b')
 
 		expect(rover.coordinates.x).to eq(x - distance)
@@ -34,10 +28,6 @@ RSpec.describe MarsRover do
 	end
 
 	it 'moves the rover left' do
-		x = rover.cPoint.first
-		y = rover.cPoint.last
-		distance = 1
-
 		test = rover.command_shell(distance, 'l')
 
 		expect(rover.coordinates.x).to eq(x)
@@ -46,10 +36,6 @@ RSpec.describe MarsRover do
 	end
 
 	it 'moves the rover right' do
-		x = rover.cPoint.first
-		y = rover.cPoint.last
-		distance = 1
-
 		test = rover.command_shell(distance, 'r')
 
 		expect(rover.coordinates.x).to eq(x)
@@ -58,8 +44,6 @@ RSpec.describe MarsRover do
 	end
 
 	it 'wraps around edges when applicable' do
-		x = rover.cPoint.first
-		y = rover.cPoint.last
 		distance = 13
 
 		test = rover.command_shell(distance, 'f')
