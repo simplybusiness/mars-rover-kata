@@ -16,6 +16,10 @@ class MarsRover
         "E"
       when "E"
         "S"
+      when "S"
+        "W"
+      when "W"
+        "N"
       else
         current_orientation
     end

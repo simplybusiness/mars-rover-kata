@@ -138,7 +138,7 @@ RSpec.describe MarsRover do
     end
   end
 
-  describe 'rotation' do
+  describe 'the Mars Rover can rotate to the right' do
     it 'rotates to the right going from facing North to facing East' do
       rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
@@ -155,6 +155,24 @@ RSpec.describe MarsRover do
       expect(rover.orientation).to eq("S")
     end
 
+    it 'rotates to the right going from facing South to facing West' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "S")
+
+      rover.execute("r")
+
+      expect(rover.orientation).to eq("W")
+    end
+
+    it 'rotates to the right going from facing West to facing North' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "W")
+
+      rover.execute("r")
+
+      expect(rover.orientation).to eq("N")
+    end
+  end
+
+  describe 'the Mars Rover can rotate to the left' do
     it 'rotates to the left going from facing North to facing West' do
       rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
