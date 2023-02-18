@@ -10,6 +10,17 @@ class MarsRover
     @orientation = orientation
   end
 
+  def rotate_right(current_orientation)
+    case current_orientation
+      when "N"
+        "E"
+      when "E"
+        "S"
+      else
+        current_orientation
+    end
+  end
+
   def execute(series_of_instructions)
     commands = series_of_instructions.chars
     commands.each do |command|
@@ -19,7 +30,7 @@ class MarsRover
         when "b"
           direction = - 1
         when "r"
-          @orientation = "E"
+          @orientation = rotate_right(@orientation)
           direction = 0
         when "l"
           @orientation = "W"
@@ -29,7 +40,7 @@ class MarsRover
       end
 
       case @orientation 
-        when"N"
+        when "N"
           @position = Coordinates.new(x: @position.x, y: @position.y + direction)
         when "E"
           @position = Coordinates.new(x: @position.x + direction, y: @position.y)
