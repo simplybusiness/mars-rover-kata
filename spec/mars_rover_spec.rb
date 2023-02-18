@@ -180,6 +180,22 @@ RSpec.describe MarsRover do
 
       expect(rover.orientation).to eq("W")
     end
+
+    it 'rotates to the left going from facing West to facing South' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "W")
+
+      rover.execute("l")
+
+      expect(rover.orientation).to eq("S")
+    end
+
+    it 'rotates to the left going from facing South to facing East' do
+      rover = MarsRover.new(x: 0, y: 0, orientation: "S")
+
+      rover.execute("l")
+
+      expect(rover.orientation).to eq("E")
+    end
   end
 
   describe 'invalid movement options' do
