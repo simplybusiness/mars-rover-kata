@@ -18,7 +18,7 @@ RSpec.describe MarsRover do
     end
   end
 
-  describe 'movement for a North facing Mars Rover' do
+  describe 'a North facing Mars Rover can move forwards or backwards' do
     it 'moves the rover forward by one space' do
       rover = north_facing_rover
 
@@ -56,7 +56,7 @@ RSpec.describe MarsRover do
     end
   end
 
-  describe 'movement for a East facing Mars Rover' do
+  describe 'a East facing Mars Rover can move forwards or backwards' do
     it 'moves the rover forward by one space' do
       rover = east_facing_rover
 
@@ -94,7 +94,7 @@ RSpec.describe MarsRover do
     end
   end
   
-  describe 'movement for a South facing Mars Rover' do
+  describe 'a South facing Mars Rover can move forwards or backwards' do
     it 'moves the rover forward by one space' do
       rover = south_facing_rover
 
@@ -116,7 +116,7 @@ RSpec.describe MarsRover do
     end
   end
 
-  describe 'movement for a West facing Mars Rover' do
+  describe 'a West facing Mars Rover can move forwards or backwards' do
     it 'moves the rover forward by one space' do
       rover = west_facing_rover
 
@@ -198,7 +198,7 @@ RSpec.describe MarsRover do
     end
   end
 
-  describe 'invalid movement options' do
+  describe 'will do nothing given an invalid movement option' do
     it 'will ignore an unknown command' do
       rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
