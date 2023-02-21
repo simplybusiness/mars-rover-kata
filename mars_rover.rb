@@ -2,7 +2,7 @@
 require_relative 'coordinates'
 # Mars Rover
 class MarsRover
-  attr_reader :orientation, :coordinates, :position
+  attr_reader :orientation, :position
 
   def initialize(x:, y:, orientation:)
     @position = Coordinates.new(x: x, y: y)
