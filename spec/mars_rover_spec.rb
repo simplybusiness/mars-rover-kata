@@ -22,17 +22,9 @@ RSpec.describe MarsRover do
     it 'moves the rover forward by one space' do
       mars_rover = north_facing_rover
 
-      mars_rover.process_movement_commands("f")
+      mars_rover.execute_single_movement_action("f")
 
       expect(mars_rover.position).to eq(Coordinates.new(x: 0, y: 1))
-    end
-
-    it 'moves the rover backwards by one space' do
-      mars_rover = north_facing_rover
-
-      mars_rover.process_movement_commands("b")
-
-      expect(mars_rover.position).to eq(Coordinates.new(x: 0, y: -1))
     end
 
     it 'move multiple steps forward' do
@@ -41,6 +33,14 @@ RSpec.describe MarsRover do
       mars_rover.process_movement_commands("fff")
 
       expect(mars_rover.position).to eq(Coordinates.new(x: 0, y:3))
+    end
+
+    it 'moves the rover backwards by one space' do
+      mars_rover = north_facing_rover
+
+      mars_rover.execute_single_movement_action("b")
+
+      expect(mars_rover.position).to eq(Coordinates.new(x: 0, y: -1))
     end
 
     it 'moves mulitple steps back' do
@@ -60,7 +60,7 @@ RSpec.describe MarsRover do
     it 'moves the rover forward by one space' do
       mars_rover = east_facing_rover
 
-      mars_rover.process_movement_commands("f")
+      mars_rover.execute_single_movement_action("f")
 
       expect(mars_rover.position). to eq(Coordinates.new(x:1, y:0))
     end
@@ -76,7 +76,7 @@ RSpec.describe MarsRover do
     it 'moves the rover backwards by one space' do
       mars_rover = east_facing_rover
 
-      mars_rover.process_movement_commands("b")
+      mars_rover.execute_single_movement_action("b")
 
       expect(mars_rover.position).to eq(Coordinates.new(x:-1, y:0))
     end
@@ -98,17 +98,33 @@ RSpec.describe MarsRover do
     it 'moves the rover forward by one space' do
       mars_rover = south_facing_rover
 
-      mars_rover.process_movement_commands("f")
+      mars_rover.execute_single_movement_action("f")
 
       expect(mars_rover.position).to eq(Coordinates.new(x:0, y:-1))
+    end
+
+    it 'moves the rover multiples steps forward' do
+      mars_rover = south_facing_rover
+
+      mars_rover.process_movement_commands("fff")
+
+      expect(mars_rover.position).to eq(Coordinates.new(x:0, y:-3))
     end
 
     it 'moves the rover backwards by one space' do
       mars_rover = south_facing_rover
 
-      mars_rover.process_movement_commands("b")
+      mars_rover.execute_single_movement_action("b")
 
       expect(mars_rover.position).to eq(Coordinates.new(x:0, y:1))
+    end
+
+    it 'moves the rover multiples steps backwards' do
+      mars_rover = south_facing_rover
+
+      mars_rover.process_movement_commands("bbb")
+
+      expect(mars_rover.position).to eq(Coordinates.new(x:0, y:3))
     end
 
     def south_facing_rover
@@ -120,17 +136,33 @@ RSpec.describe MarsRover do
     it 'moves the rover forward by one space' do
       mars_rover = west_facing_rover
 
-      mars_rover.process_movement_commands("f")
+      mars_rover.execute_single_movement_action("f")
 
       expect(mars_rover.position).to eq(Coordinates.new(x:-1, y:0))
+    end
+
+    it 'moves the rover multiple steps forward' do
+      mars_rover = west_facing_rover
+
+      mars_rover.process_movement_commands("fff")
+
+      expect(mars_rover.position).to eq(Coordinates.new(x:-3, y:0))
     end
 
     it 'moves the rover backwards by one space' do
       mars_rover = west_facing_rover
 
-      mars_rover.process_movement_commands("b")
+      mars_rover.execute_single_movement_action("b")
 
       expect(mars_rover.position).to eq(Coordinates.new(x:1, y:0))
+    end
+
+    it 'moves the rover multiples steps backwards' do
+      mars_rover = west_facing_rover
+
+      mars_rover.process_movement_commands("bbb")
+
+      expect(mars_rover.position).to eq(Coordinates.new(x:3, y:0))
     end
 
     def west_facing_rover
@@ -142,7 +174,7 @@ RSpec.describe MarsRover do
     it 'rotates to the right going from facing North to facing East' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
-      mars_rover.process_movement_commands("r")
+      mars_rover.execute_single_movement_action("r")
 
       expect(mars_rover.orientation).to eq("E")
     end
@@ -150,7 +182,7 @@ RSpec.describe MarsRover do
     it 'rotates to the right going from facing East to facing South' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "E")
 
-      mars_rover.process_movement_commands("r")
+      mars_rover.execute_single_movement_action("r")
 
       expect(mars_rover.orientation).to eq("S")
     end
@@ -158,7 +190,7 @@ RSpec.describe MarsRover do
     it 'rotates to the right going from facing South to facing West' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "S")
 
-      mars_rover.process_movement_commands("r")
+      mars_rover.execute_single_movement_action("r")
 
       expect(mars_rover.orientation).to eq("W")
     end
@@ -166,7 +198,7 @@ RSpec.describe MarsRover do
     it 'rotates to the right going from facing West to facing North' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "W")
 
-      mars_rover.process_movement_commands("r")
+      mars_rover.execute_single_movement_action("r")
 
       expect(mars_rover.orientation).to eq("N")
     end
@@ -184,7 +216,7 @@ RSpec.describe MarsRover do
     it 'rotates to the left going from facing North to facing West' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
-      mars_rover.process_movement_commands("l")
+      mars_rover.execute_single_movement_action("l")
 
       expect(mars_rover.orientation).to eq("W")
     end
@@ -192,7 +224,7 @@ RSpec.describe MarsRover do
     it 'rotates to the left going from facing West to facing South' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "W")
 
-      mars_rover.process_movement_commands("l")
+      mars_rover.execute_single_movement_action("l")
 
       expect(mars_rover.orientation).to eq("S")
     end
@@ -200,7 +232,7 @@ RSpec.describe MarsRover do
     it 'rotates to the left going from facing South to facing East' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "S")
 
-      mars_rover.process_movement_commands("l")
+      mars_rover.execute_single_movement_action("l")
 
       expect(mars_rover.orientation).to eq("E")
     end
@@ -208,7 +240,7 @@ RSpec.describe MarsRover do
     it 'rotates to the left going from facing East to facing North' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "E")
 
-      mars_rover.process_movement_commands("l")
+      mars_rover.execute_single_movement_action("l")
 
       expect(mars_rover.orientation).to eq("N")
     end
