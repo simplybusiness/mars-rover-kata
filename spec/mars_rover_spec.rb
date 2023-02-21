@@ -13,6 +13,10 @@ RSpec.describe MarsRover do
       expect(mars_rover.orientation).to eq("N")
     end
 
+    it 'can return its full position of both coordinates and orientation' do
+      expect(mars_rover).to eq(MarsRover.new(x: 0, y: 0, orientation: "N"))
+    end
+
     def mars_rover
       MarsRover.new(x: 0, y: 0, orientation: "N")
     end
