@@ -254,6 +254,16 @@ RSpec.describe MarsRover do
     end
   end
 
+  describe 'will process orders containing both movement and rotations' do
+    it 'can execute an order that contains both movement and rotation' do
+      mars_rover = MarsRover.new(x:0, y:0, orientation: "N")
+
+      mars_rover.process_movement_commands("frflbr")
+
+      expect(mars_rover).to eq(MarsRover.new(x:1, y:0, orientation: "E"))
+    end
+  end
+
   describe 'will do nothing given an invalid movement option' do
     it 'will ignore an unknown command' do
       mars_rover = MarsRover.new(x:0, y:0, orientation: "N")
