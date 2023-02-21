@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'ostruct'
 require_relative 'coordinates'
 # Mars Rover
 class MarsRover
@@ -10,69 +9,48 @@ class MarsRover
     @orientation = orientation
   end
 
-  def execute(series_of_instructions)
-    commands = series_of_instructions.chars
-    commands.each do |command|
-      case command
-        when "f"
-          direction = + 1
-        when "b"
-          direction = - 1
-        when "r"
-          @orientation = rotate_right(@orientation)
-          direction = 0
-        when "l"
-          @orientation = rotate_left(@orientation)
-          direction = 0
-        else
-          direction = 0
-      end
-
-      case @orientation 
-        when "N"
-          @position = Coordinates.new(x: @position.x, y: @position.y + direction)
-        when "E"
-          @position = Coordinates.new(x: @position.x + direction, y: @position.y)
-        when "S"
-          @position = Coordinates.new(x: @position.x, y: @position.y - direction)
-        when "W"
-          @position = Coordinates.new(x: @position.x - direction, y: @position.y)
-        else
-          @position
-      end
-    end
-  end
-
   def process_movement_commands(series_of_instructions)
     commands = series_of_instructions.chars
     commands.each do |command|
-      case command
-        when "f"
-          direction = + 1
-        when "b"
-          direction = - 1
-        when "r"
-          @orientation = rotate_right(@orientation)
-          direction = 0
-        when "l"
-          @orientation = rotate_left(@orientation)
-          direction = 0
-        else
-          direction = 0
-      end
+      execute_single_movement_action(command)
+    end
+  end
 
-      case @orientation 
-        when "N"
-          @position = Coordinates.new(x: @position.x, y: @position.y + direction)
-        when "E"
-          @position = Coordinates.new(x: @position.x + direction, y: @position.y)
-        when "S"
-          @position = Coordinates.new(x: @position.x, y: @position.y - direction)
-        when "W"
-          @position = Coordinates.new(x: @position.x - direction, y: @position.y)
-        else
-          @position
-      end
+  def execute_single_movement_action(command)
+    case command
+    when "f"
+      @position = move_forward(distance: 1)
+    when "b"
+      @position = move_backwards(distance: 1)
+    when "r"
+      @orientation = rotate_right(@orientation)
+    when "l"
+      @orientation = rotate_left(@orientation)
+    else
+      @position
+    end
+  end
+
+  def move_forward(distance:)
+    move_forward_or_backwards(distance)
+  end
+
+  def move_backwards(distance:)
+    move_forward_or_backwards(-distance)
+  end
+
+  def move_forward_or_backwards(distance)
+    case @orientation 
+    when "N"
+      Coordinates.new(x: @position.x, y: @position.y + distance)
+    when "E"
+      Coordinates.new(x: @position.x + distance, y: @position.y)
+    when "S"
+      Coordinates.new(x: @position.x, y: @position.y - distance)
+    when "W"
+      Coordinates.new(x: @position.x - distance, y: @position.y)
+    else
+      @position
     end
   end
 
