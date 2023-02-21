@@ -170,6 +170,14 @@ RSpec.describe MarsRover do
 
       expect(mars_rover.orientation).to eq("N")
     end
+
+    it 'can peform a full rotation clockwise' do
+      mars_rover = MarsRover.new(x:0, y:0, orientation: "N")
+      
+      mars_rover.process_movement_commands("rrrr")
+
+      expect(mars_rover.orientation).to eq("N")
+    end
   end
 
   describe 'the Mars Rover can rotate to the left' do
@@ -201,6 +209,14 @@ RSpec.describe MarsRover do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "E")
 
       mars_rover.process_movement_commands("l")
+
+      expect(mars_rover.orientation).to eq("N")
+    end
+
+    it 'can perform a full rotation anti clockwise' do
+      mars_rover = MarsRover.new(x:0, y:0, orientation: "N")
+      
+      mars_rover.process_movement_commands("llll")
 
       expect(mars_rover.orientation).to eq("N")
     end
