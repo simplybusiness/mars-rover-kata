@@ -9,6 +9,10 @@ class MarsRover
     @orientation = orientation
   end
 
+  def ==(place)
+    @position == place.position && @orientation == place.orientation
+  end
+
   def process_movement_commands(series_of_instructions)
     commands = series_of_instructions.chars
     commands.each do |command|
