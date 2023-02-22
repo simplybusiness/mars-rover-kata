@@ -27,9 +27,9 @@ class MarsRover
     when "b"
       @position = move_backwards(distance: 1)
     when "r"
-      @orientation = rotate_right(@orientation)
+      @orientation = rotate_right(current_orientation: @orientation)
     when "l"
-      @orientation = rotate_left(@orientation)
+      @orientation = rotate_left(current_orientation: @orientation)
     else
       @position
     end
@@ -58,7 +58,7 @@ class MarsRover
     end
   end
 
-  def rotate_right(current_orientation)
+  def rotate_right(current_orientation: )
     case current_orientation
       when "N"
         "E"
@@ -73,7 +73,7 @@ class MarsRover
     end
   end
 
-  def rotate_left(current_orientation)
+  def rotate_left(current_orientation:)
     case current_orientation
       when "N"
         "W"

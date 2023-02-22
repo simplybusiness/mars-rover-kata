@@ -1,11 +1,12 @@
 class Coordinates
   attr_reader :x, :y
 
-  WRAP_AROUND = 10
+  WRAP_AROUND_X = 10
+  WRAP_AROUND_Y = 10
 
   def initialize(x:, y:)
-    @x = x.modulo(WRAP_AROUND)
-    @y = y.modulo(WRAP_AROUND)
+    @x = x.modulo(WRAP_AROUND_X)
+    @y = y.modulo(WRAP_AROUND_Y)
   end
 
   def ==(point)
@@ -13,6 +14,6 @@ class Coordinates
   end
 
   def inspect
-    "(#{x}, #{y})"
+    "(x: #{x}, y: #{y})"
   end
 end

@@ -284,7 +284,7 @@ RSpec.describe MarsRover do
 
       mars_rover.execute_single_movement_action("f"*10)
 
-      expect(mars_rover.position). to eq(Coordinates.new(x:0, y:0))
+      expect(mars_rover.position).to eq(Coordinates.new(x:0, y:0))
     end
   end
 end
