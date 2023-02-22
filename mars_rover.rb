@@ -9,8 +9,8 @@ class MarsRover
     @orientation = orientation
   end
 
-  def ==(place)
-    @position == place.position && @orientation == place.orientation
+  def ==(another_position)
+    @position == another_position.position && @orientation == another_position.orientation
   end
 
   def process_movement_commands(series_of_instructions)

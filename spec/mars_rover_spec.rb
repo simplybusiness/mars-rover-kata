@@ -277,4 +277,14 @@ RSpec.describe MarsRover do
       expect(mars_rover.position).to eq(Coordinates.new(x:0, y:0))
     end
   end
+
+  describe "can do a full move around the planet" do
+    it 'moves forward enough distance it ends in the same starting point' do
+      mars_rover = MarsRover.new(x: 0, y: 0, orientation: "N")
+
+      mars_rover.execute_single_movement_action("f"*10)
+
+      expect(mars_rover.position). to eq(Coordinates.new(x:0, y:0))
+    end
+  end
 end
