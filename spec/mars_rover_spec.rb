@@ -9,7 +9,7 @@ RSpec.describe MarsRover do
       expect(mars_rover.position).to eq(Coordinates.new(x: 0, y: 0))
     end
 
-    it 'returns North' do
+    it 'knows it currents orientation' do
       expect(mars_rover.orientation).to eq("N")
     end
 
@@ -29,6 +29,7 @@ RSpec.describe MarsRover do
       mars_rover.execute_single_movement_action("f")
 
       expect(mars_rover.position).to eq(Coordinates.new(x: 0, y: 1))
+      expect(mars_rover).to eq(MarsRover.new(x: 0, y: 1, orientation: "N"))
     end
 
     it 'move multiple steps forward' do

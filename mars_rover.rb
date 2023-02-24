@@ -23,9 +23,9 @@ class MarsRover
   def execute_single_movement_action(command)
     case command
     when "f"
-      @position = move_forward(distance: 1)
+      @position = move(distance: 1) #move(distance: 1)
     when "b"
-      @position = move_backwards(distance: 1)
+      @position = move(distance: -1)
     when "r"
       @orientation = rotate_right(current_orientation: @orientation)
     when "l"
@@ -35,15 +35,7 @@ class MarsRover
     end
   end
 
-  def move_forward(distance:)
-    move_forward_or_backwards(distance)
-  end
-
-  def move_backwards(distance:)
-    move_forward_or_backwards(-distance)
-  end
-
-  def move_forward_or_backwards(distance)
+  def move(distance:)
     case @orientation 
     when "N"
       Coordinates.new(x: @position.x, y: @position.y + distance)
@@ -58,7 +50,7 @@ class MarsRover
     end
   end
 
-  def rotate_right(current_orientation: )
+  def rotate_right(current_orientation:)
     case current_orientation
       when "N"
         "E"
