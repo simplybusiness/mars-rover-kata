@@ -10,7 +10,12 @@ class MarsRover
   end
 
   def ==(another_position)
-    @position == another_position.position && @orientation == another_position.orientation
+    @position == another_position.position &&
+    @orientation == another_position.orientation
+  end
+
+  def inspect
+    "Coordinates: #{@position.inspect}, Orientation: #{@orientation}"
   end
 
   def process_movement_commands(series_of_instructions)
