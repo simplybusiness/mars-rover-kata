@@ -274,17 +274,25 @@ RSpec.describe MarsRover do
 
       mars_rover.process_movement_commands("x")
 
-      expect(mars_rover.position).to eq(Coordinates.new(x:0, y:0))
+      expect(mars_rover).to eq(MarsRover.new(x:0, y:0, orientation: "N"))
     end
   end
 
   describe "can do a full move around the planet" do
-    it 'moves forward enough distance it ends in the same starting point' do
+    it 'moves forward North enough distance it ends in the same starting point' do
       mars_rover = MarsRover.new(x: 0, y: 0, orientation: "N")
 
-      mars_rover.execute_single_movement_action("f"*10)
+      mars_rover.process_movement_commands("f"*10)
 
       expect(mars_rover).to eq(MarsRover.new(x: 0, y: 0, orientation: "N"))
+    end
+
+    it 'moves backwards while facing East enough distance it ends in the same starting point' do
+      mars_rover = MarsRover.new(x: 0, y: 0, orientation: "E")
+
+      mars_rover.process_movement_commands("b"*10)
+
+      expect(mars_rover).to eq(MarsRover.new(x: 0, y: 0, orientation: "E"))
     end
   end
 end
