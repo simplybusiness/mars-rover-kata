@@ -1,6 +1,8 @@
 require 'ostruct'
 
 class MarsRover
+  attr_reader :direction
+
   def initialize(coords, direction)
     @coords = coords
     @direction = direction
@@ -8,10 +10,6 @@ class MarsRover
 
   def starting_point
     [@coords.x, @coords.y]
-  end
-
-  def direction
-    @direction
   end
 end
 
