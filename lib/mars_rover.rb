@@ -9,4 +9,8 @@ class MarsRover
   def starting_point
     [@coords.x, @coords.y]
   end
+
+  def execute(commands)
+    
+  end  
 end

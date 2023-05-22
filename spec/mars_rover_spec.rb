@@ -28,4 +28,10 @@ describe 'on bootup' do
 
     expect(rover.direction).to eq('W')
   end
+  
+  it 'receives commands from earth' do
+    rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'W')
+    
+    expect(rover).to respond_to(:execute)
+  end
 end
