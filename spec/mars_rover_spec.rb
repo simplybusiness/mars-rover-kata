@@ -1,4 +1,5 @@
 require 'ostruct'
+require_relative '../lib/mars_rover'
 
 class MarsRover
   attr_reader :direction
