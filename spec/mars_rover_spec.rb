@@ -1,19 +1,6 @@
 require 'ostruct'
 require_relative '../lib/mars_rover'
 
-class MarsRover
-  attr_reader :direction
-
-  def initialize(coords, direction)
-    @coords = coords
-    @direction = direction
-  end
-
-  def starting_point
-    [@coords.x, @coords.y]
-  end
-end
-
 describe "1+1" do
   it "equals 2" do
 
