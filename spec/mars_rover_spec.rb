@@ -32,5 +32,8 @@ describe "on bootup" do
     expect(rover.starting_point).to eq([1, 1])
   end
 
-  it "is facing W"
+  it "is facing W" do
+    rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), "W")
+    expect(rover.direction).to eq("W")
+  end
 end
