@@ -11,7 +11,7 @@ class MarsRover
   end
 
   def execute(commands)
-    if(commands == "f")
+    if commands == "f"
       @coords = OpenStruct.new(x: 0, y: 1)
     end
   end  
