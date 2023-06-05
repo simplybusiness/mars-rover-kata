@@ -12,14 +12,18 @@ class MarsRover
 
   def execute(commands)
     if commands == "f"
-
-      case @direction
-      when 'N'
-        @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
-      when 'S'
-        @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
-      end
-
+      move_forward
     end
   end  
+
+  private
+  
+  def move_forward
+    case @direction
+    when 'N'
+      @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
+    when 'S'
+      @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
+    end
+  end
 end
