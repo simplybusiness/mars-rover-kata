@@ -11,8 +11,10 @@ class MarsRover
   end
 
   def execute(commands)
-    if commands == "f"
-      move_forward
+    commands.split("").each do |letter|
+      if letter == "f"
+        move_forward
+      end
     end
   end  
 
