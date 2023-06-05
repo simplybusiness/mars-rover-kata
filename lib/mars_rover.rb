@@ -17,13 +17,15 @@ class MarsRover
   end  
 
   private
-  
+
   def move_forward
     case @direction
     when 'N'
       @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
     when 'S'
       @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
+    when 'W'
+      @coords = OpenStruct.new(x: @coords.x - 1, y: @coords.y)
     end
   end
 end
