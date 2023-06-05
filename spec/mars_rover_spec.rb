@@ -34,4 +34,20 @@ describe 'on bootup' do
     
     expect(rover).to respond_to(:execute)
   end
+
+  it 'moves forward when facing north' do
+    rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
+    rover.execute("f")
+
+    expect(rover.current_position).to eq([0, 1])
+  end
+  it 'moves forward when facing south'
+  it 'moves forward when facing west'
+  it 'moves forward when facing east'
+  it 'moves backward when facing north'
+  it 'moves backward when facing south'
+  it 'moves backward when facing west'
+  it 'moves backward when facing east'
+
+
 end
