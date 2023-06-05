@@ -12,7 +12,7 @@ class MarsRover
 
   def execute(commands)
     if commands == "f"
-      @coords = OpenStruct.new(x: 0, y: 1)
+      @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
     end
   end  
 end
