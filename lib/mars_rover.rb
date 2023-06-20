@@ -14,11 +14,17 @@ class MarsRover
     commands.split("").each do |letter|
       if letter == "f"
         move_forward
+      elsif letter == 'b'
+        move_backwards
       end
     end
   end  
 
   private
+
+  def move_backwards
+    @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
+  end
 
   def move_forward
     case @direction
