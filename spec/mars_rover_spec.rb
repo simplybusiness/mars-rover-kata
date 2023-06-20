@@ -35,52 +35,54 @@ describe 'on bootup' do
     expect(rover).to respond_to(:execute)
   end
 
-  it 'moves forward when facing north' do
-    rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
-    rover.execute("f")
+  describe 'moving forward' do
+    it 'moves forward when facing north' do
+      rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
+      rover.execute("f")
 
-    expect(rover.current_position).to eq([0, 1])
+      expect(rover.current_position).to eq([0, 1])
+    end
+
+    it 'moves forward when facing north and away from the origin' do
+      rover = MarsRover.new(OpenStruct.new(x: 3, y: 2), 'N')
+      rover.execute("f")
+
+      expect(rover.current_position).to eq([3, 3])
+    end
+
+    it 'moves forward when facing south' do
+      rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'S')
+      rover.execute("f")
+
+      expect(rover.current_position).to eq([0, -1])
+    end
+
+    it 'moves forward when facing west' do
+      rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'W')
+      rover.execute("f")
+
+      expect(rover.current_position).to eq([-1, 0])
+    end
+
+    it 'moves forward when facing east' do
+      rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'E')
+      rover.execute("f")
+
+      expect(rover.current_position).to eq([1, 0])
+    end
+
+    it 'moves forward multiple times' do
+      rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
+      rover.execute("ff")
+
+      expect(rover.current_position).to eq([0, 2])
+    end
   end
 
-  it 'moves forward when facing north and away from the origin' do
-    rover = MarsRover.new(OpenStruct.new(x: 3, y: 2), 'N')
-    rover.execute("f")
-
-    expect(rover.current_position).to eq([3, 3])
+  describe 'moving backwards' do
+    it 'moves backward when facing north'
+    it 'moves backward when facing south'
+    it 'moves backward when facing west'
+    it 'moves backward when facing east'
   end
-
-  it 'moves forward when facing south' do
-    rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'S')
-    rover.execute("f")
-
-    expect(rover.current_position).to eq([0, -1])
-  end
-
-  it 'moves forward when facing west' do
-    rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'W')
-    rover.execute("f")
-
-    expect(rover.current_position).to eq([-1, 0])
-  end
-
-  it 'moves forward when facing east' do
-    rover = MarsRover.new(OpenStruct.new(x:0, y:0), 'E')
-    rover.execute("f")
-
-    expect(rover.current_position).to eq([1, 0])
-  end
-
-  it 'moves forward multiple times' do
-    rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
-    rover.execute("ff")
-
-    expect(rover.current_position).to eq([0, 2])
-  end
-
-  it 'moves backward when facing north'
-  it 'moves backward when facing south'
-  it 'moves backward when facing west'
-  it 'moves backward when facing east'
-
-
 end
