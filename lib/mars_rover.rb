@@ -23,7 +23,11 @@ class MarsRover
   private
 
   def move_backwards
-    @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
+    if @direction == 'N'
+      @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
+    elsif @direction == 'S'
+      @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
+    end
   end
 
   def move_forward
