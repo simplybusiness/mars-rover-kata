@@ -29,3 +29,8 @@ Develop an API that translates the commands sent from earth to instructions that
 - Change roles (driver, navigator) after each TDD cycle.
 - No red phases while refactoring.
 - Be careful about edge cases and exceptions. We can not afford to lose a mars rover, just because the developers overlooked a null pointer.
+
+## Running the tests
+Either:
+1. `bundle exec rspec -cfd`; or
+2. `sh -x tcr.sh`
