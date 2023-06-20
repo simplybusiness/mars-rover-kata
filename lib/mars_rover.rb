@@ -30,6 +30,8 @@ class MarsRover
       @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
     when 'W'
       @coords = OpenStruct.new(x: @coords.x + 1, y: @coords.y)
+    when 'E'
+      @coords = OpenStruct.new(x: @coords.x - 1, y: @coords.y)
     end
   end
 
