@@ -27,6 +27,8 @@ class MarsRover
       @coords = OpenStruct.new(x: @coords.x, y: @coords.y - 1)
     elsif @direction == 'S'
       @coords = OpenStruct.new(x: @coords.x, y: @coords.y + 1)
+    elsif @direction == 'W'
+      @coords = OpenStruct.new(x: @coords.x + 1, y: @coords.y)
     end
   end
 

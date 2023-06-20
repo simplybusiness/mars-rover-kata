@@ -96,7 +96,14 @@ describe 'on bootup' do
       expect(rover.current_position).to eq([-2, 0])
     end
 
-    it 'moves backward when facing west'
+    it 'moves backward when facing west' do
+      rover = MarsRover.new(OpenStruct.new(x: -2, y: -1), 'W')
+
+      rover.execute('b')
+
+      expect(rover.current_position).to eq([-1, -1])
+    end
+
     it 'moves backward when facing east'
   end
 end
