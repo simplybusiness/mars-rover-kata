@@ -16,6 +16,8 @@ class MarsRover
         move_forward
       elsif letter == 'b'
         move_backwards
+      elsif letter == 'l'
+        turn_left
       end
     end
   end  
@@ -45,6 +47,12 @@ class MarsRover
       @coords = OpenStruct.new(x: @coords.x - 1, y: @coords.y)
     when 'E'
       @coords = OpenStruct.new(x: @coords.x + 1, y: @coords.y)
+    end
+  end
+
+  def turn_left
+    if @direction == 'N'
+      @direction = 'W'
     end
   end
 end
