@@ -51,14 +51,11 @@ class MarsRover
   end
 
   def turn_left
-    if @direction == 'N'
-      @direction = 'W'
-    elsif @direction == 'S'
-      @direction = 'E'
-    elsif @direction == 'E'
-      @direction = 'N'
-    elsif @direction == 'W'
-      @direction = 'S'
-    end
+    @direction = {
+      'N' => 'W',
+      'S' => 'E',
+      'E' => 'N',
+      'W' => 'S' 
+    }[@direction]
   end
 end
