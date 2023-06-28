@@ -136,8 +136,15 @@ describe 'on bootup' do
       rover.execute('l')
 
       expect(rover.direction).to eq('N')
-      expect(rover.current_position). to eq([1, 0])
+      expect(rover.current_position).to eq([1, 0])
     end
-    it 'moves left when facing west'
+    it 'moves left when facing west' do
+      rover = MarsRover.new(OpenStruct.new(x: -1, y: 0), 'W')
+
+      rover.execute('l')
+
+      expect(rover.direction).to eq('S')
+      expect(rover.current_position).to eq([-1, 0])
+    end
   end 
 end
