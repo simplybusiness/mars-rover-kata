@@ -53,6 +53,8 @@ class MarsRover
   def turn_left
     if @direction == 'N'
       @direction = 'W'
+    elsif @direction == 'S'
+      @direction = 'E'
     end
   end
 end
