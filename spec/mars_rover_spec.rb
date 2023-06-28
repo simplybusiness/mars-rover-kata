@@ -112,4 +112,10 @@ describe 'on bootup' do
       expect(rover.current_position).to eq([1, -1])
     end
   end
+  describe 'moving left' do
+    it 'moves left when facing north'
+    it 'moves left when facing south'
+    it 'moves left when facing east'
+    it 'moves left when facing west'
+  end 
 end
