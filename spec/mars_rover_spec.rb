@@ -1,5 +1,8 @@
 require 'ostruct'
 describe 'Mars rover' do
+  class MarsRover
+
+  end
   it 'has a starting point' do
     pending('Homework')
 
