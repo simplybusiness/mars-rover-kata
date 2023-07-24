@@ -9,6 +9,11 @@ describe 'Mars rover' do
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 0, y: 0))
   end
 
+  it 'has any starting point' do
+    mars_rover.starting_point = OpenStruct.new(x:2, y: 5)
+    expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 2, y: 5))
+  end
+
   it 'faces a particular direction (N, E, S, W)' do
     expect(mars_rover.direction).to eq('N')
   end
