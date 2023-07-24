@@ -3,9 +3,7 @@ require_relative '../mars_rover'
 
 describe 'Mars rover' do
 
-  let(:mars_rover) do
-    MarsRover.new
-  end
+  let(:mars_rover) { MarsRover.new }
 
   it 'has a starting point' do
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 0, y: 0))
