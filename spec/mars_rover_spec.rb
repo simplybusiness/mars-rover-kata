@@ -13,4 +13,10 @@ describe 'Mars rover' do
     mars_rover = MarsRover.new
     expect(mars_rover.direction).to eq('N')
   end
+
+  it 'faces any particular direction' do
+    mars_rover = MarsRover.new
+    mars_rover.direction = 'S'
+    expect(mars_rover.direction).to eq('S')
+  end
 end
