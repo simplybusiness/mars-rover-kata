@@ -22,4 +22,9 @@ describe 'Mars rover' do
     mars_rover.direction = 'S'
     expect(mars_rover.direction).to eq('S')
   end
+
+  it 'moves forward when facing north'
+  it 'moves forward when facing south'
+  it 'moves forward when facing east'
+  it 'moves forward when facing west'
 end
