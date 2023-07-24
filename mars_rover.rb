@@ -9,6 +9,7 @@ class MarsRover
     @starting_point
   end
   def execute(commands)
+    @starting_point = OpenStruct.new(x: @starting_point.x,y: @starting_point.y + 1)
   end
 
 end

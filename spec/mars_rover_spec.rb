@@ -26,7 +26,10 @@ describe 'Mars rover' do
     expect(mars_rover).to respond_to(:execute)
   end
 
-  it 'moves forward when facing north'
+  it 'moves forward when facing north' do
+    mars_rover.execute(['f'])
+    expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 0, y: 1))
+  end
   it 'moves forward when facing south'
   it 'moves forward when facing east'
   it 'moves forward when facing west'
