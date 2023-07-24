@@ -10,7 +10,7 @@ describe 'Mars rover' do
   end
 
   it 'has any starting point' do
-    mars_rover.starting_point = OpenStruct.new(x:2, y: 5)
+    mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 5))
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 2, y: 5))
   end
 
@@ -19,7 +19,7 @@ describe 'Mars rover' do
   end
 
   it 'faces any particular direction' do
-    mars_rover.direction = 'S'
+    mars_rover = MarsRover.new(direction: 'S')
     expect(mars_rover.direction).to eq('S')
   end
   it 'receives commands from earth' do
@@ -27,7 +27,7 @@ describe 'Mars rover' do
   end
 
   it 'moves forward when facing north' do
-    mars_rover.starting_point = OpenStruct.new(x:2, y: 5)
+    mars_rover = MarsRover.new(starting_point: OpenStruct.new(x:2, y: 5))
     mars_rover.execute(['f'])
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 2, y: 6))
   end
