@@ -22,6 +22,9 @@ describe 'Mars rover' do
     mars_rover.direction = 'S'
     expect(mars_rover.direction).to eq('S')
   end
+  it 'receives commands from earth' do
+    expect(mars_rover).to respond_to(:execute)
+  end
 
   it 'moves forward when facing north'
   it 'moves forward when facing south'
