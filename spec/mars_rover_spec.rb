@@ -27,8 +27,9 @@ describe 'Mars rover' do
   end
 
   it 'moves forward when facing north' do
+    mars_rover.starting_point = OpenStruct.new(x:2, y: 5)
     mars_rover.execute(['f'])
-    expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 0, y: 1))
+    expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 2, y: 6))
   end
   it 'moves forward when facing south'
   it 'moves forward when facing east'
