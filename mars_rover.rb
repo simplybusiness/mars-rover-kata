@@ -1,8 +1,6 @@
 require 'ostruct'
 class MarsRover
-  attr_writer :direction
-  attr_reader :direction
-
+  attr_accessor :direction
   def initialize
     @direction = "N"
   end
