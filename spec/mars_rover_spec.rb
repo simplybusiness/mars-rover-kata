@@ -28,34 +28,37 @@ describe 'Mars rover' do
     expect(mars_rover).to respond_to(:execute)
   end
 
+  expectations = {
+    "b" => {
+      "expectations" => [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 4)),
+                         OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 6)),
+                         OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:3, y: 5)),
+                         OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:1, y: 5))
+      ],
+      "description" => "backwards"
+    },
+    "f" => {
+      "expectations" => [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 6)),
+                         OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 4)),
+                         OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:1, y: 5)),
+                         OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:3, y: 5))
+      ],
+      "description" => "forward"
+    }
+  }
 
+  context "Executing the command" do
+    expectations.each do |key, obj|
 
-  context "moves forward" do
-    [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 6)),
-     OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 4)),
-     OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:1, y: 5)),
-     OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:3, y: 5))
-    ].each do |hash|
-      it "moves when facing (#{hash.direction}) " do
-        mars_rover = MarsRover.new(direction: hash.direction, starting_point: hash.start)
-        mars_rover.execute(commands: ['f'])
-        expect(mars_rover.starting_point).to eq(hash.end)
+      context "to go #{obj['description']}" do
+        obj["expectations"].each do |hash|
+          it "when facing (#{hash.direction}) " do
+            mars_rover = MarsRover.new(direction: hash.direction, starting_point: hash.start)
+            mars_rover.execute(commands: [key])
+            expect(mars_rover.starting_point).to eq(hash.end)
+          end
+        end
       end
     end
   end
-
-  context "moves backward" do
-    [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 4)),
-     OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 6)),
-     OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:3, y: 5)),
-     OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:1, y: 5))
-    ].each do |hash|
-      it "moves when facing (#{hash.direction}) " do
-        mars_rover = MarsRover.new(direction: hash.direction, starting_point: hash.start)
-        mars_rover.execute(commands: ['b'])
-        expect(mars_rover.starting_point).to eq(hash.end)
-      end
-    end
-  end
-
 end
