@@ -24,4 +24,18 @@ describe Rover do
       expect(rover.direction).to eq('S')
     end
   end
+  describe '#move' do
+
+    xit 'does not move if it receives route'
+
+    xit 'does not move if it does not receive a route'
+
+    xit 'does move left when receives a single left command in the route'
+
+    xit 'does move right when receives a single right command in the route'
+    
+    xit 'does move forward when receives a single forward command in the route'
+    
+    xit 'does move back when receives a single back command in the route'
+  end
 end
