@@ -28,17 +28,21 @@ describe Rover do
 
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates:[3,4])
-      rover.move([])
+      rover.move('')
       expect(rover.position[0]).to eq(3)
       expect(rover.position[1]).to eq(4)
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
       rover = Rover.new(coordinates:[3,4])
-      expect {rover.move(['x1','y2'])}.to raise_error "ArgumentError"
+      expect {rover.move('xy')}.to raise_error "ArgumentError"
     end
 
-    xit 'does move left when receives a single left command in the route'
+    it 'does face west when receives a single left command in the route and starting direction of north' do
+      rover = Rover.new(direction: 'N', coordinates:[3,4])
+      rover.move('l')
+      expect(rover.direction).to eq('W')
+    end
 
     xit 'does move right when receives a single right command in the route'
     
