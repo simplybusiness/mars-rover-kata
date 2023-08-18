@@ -33,7 +33,10 @@ describe Rover do
       expect(rover.position[1]).to eq(4)
     end
 
-    xit 'does not move if it does not receive a route'
+    it 'does raise an argument error exception if it receive an invalid route' do
+      rover = Rover.new(coordinates:[3,4])
+      expect {rover.move(['x1','y2'])}.to raise_error "ArgumentError"
+    end
 
     xit 'does move left when receives a single left command in the route'
 
