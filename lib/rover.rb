@@ -7,5 +7,8 @@ class Rover
     end
 
     def move (route)
+      if route.any?
+          raise ArgumentError
+      end
     end
 end
