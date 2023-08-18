@@ -5,4 +5,7 @@ class Rover
         @position = coordinates
         @direction = direction
     end
+
+    def move (route)
+    end
 end
