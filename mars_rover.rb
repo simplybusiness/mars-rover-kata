@@ -27,30 +27,21 @@ class MarsRover
   def turn_right
     @direction = {'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N'}[@direction]
   end
+
   def move_forward
-    case @direction
-    when 'N'
-      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y + 1)
-    when 'S'
-      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y - 1)
-    when 'E'
-      @starting_point = OpenStruct.new(x:@starting_point.x - 1, y:@starting_point.y)
-    when 'W'
-      @starting_point = OpenStruct.new(x:@starting_point.x + 1, y:@starting_point.y)
-    end
+    @starting_point = {'N' => OpenStruct.new(x:@starting_point.x, y:@starting_point.y + 1),
+                       'E' => OpenStruct.new(x:@starting_point.x - 1, y:@starting_point.y),
+                       'S' => OpenStruct.new(x:@starting_point.x, y:@starting_point.y - 1),
+                       'W' => OpenStruct.new(x:@starting_point.x + 1, y:@starting_point.y)
+    }[@direction]
   end
 
   def move_backwards
-    case @direction
-    when 'N'
-      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y - 1)
-    when 'S'
-      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y + 1)
-    when 'E'
-      @starting_point = OpenStruct.new(x:@starting_point.x + 1, y:@starting_point.y)
-    when 'W'
-      @starting_point = OpenStruct.new(x:@starting_point.x - 1, y:@starting_point.y)
-    end
+    @starting_point = {'N' => OpenStruct.new(x:@starting_point.x, y:@starting_point.y - 1),
+                       'E' => OpenStruct.new(x:@starting_point.x + 1, y:@starting_point.y),
+                       'S' => OpenStruct.new(x:@starting_point.x, y:@starting_point.y + 1),
+                       'W' => OpenStruct.new(x:@starting_point.x - 1, y:@starting_point.y)
+    }[@direction]
   end
 
 end
