@@ -26,6 +26,8 @@ class MarsRover
       @direction = 'N'
     when 'S'
       @direction = 'E'
+    when 'W'
+      @direction = 'S'
     end
 
   end
