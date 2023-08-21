@@ -13,19 +13,7 @@ class MarsRover
 
 
     if commands.include? 'f'
-      case @direction
-      when 'N'
-        y = @starting_point.y + 1
-      when 'S'
-        y = @starting_point.y - 1
-      when 'E'
-        x = @starting_point.x - 1
-      when 'W'
-        x = @starting_point.x + 1
-      else
-        x = x
-        y = y
-      end
+      move_forward
     elsif commands.include? 'b'
       case @direction
       when 'N'
@@ -40,8 +28,25 @@ class MarsRover
         x = x
         y = y
       end
+      @starting_point = OpenStruct.new(x: x,y: y)
     end
 
+
+  end
+
+  def move_forward
+    x = @starting_point.x
+    y = @starting_point.y
+    case @direction
+    when 'N'
+      y = @starting_point.y + 1
+    when 'S'
+      y = @starting_point.y - 1
+    when 'E'
+      x = @starting_point.x - 1
+    when 'W'
+      x = @starting_point.x + 1
+    end
     @starting_point = OpenStruct.new(x: x,y: y)
   end
 
