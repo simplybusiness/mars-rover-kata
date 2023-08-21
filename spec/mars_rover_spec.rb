@@ -3,11 +3,9 @@ require_relative '../mars_rover'
 
 describe 'Mars rover' do
 
-  let(:mars_rover) { MarsRover.new }
-
-
 
   it 'has a starting point' do
+    mars_rover = MarsRover.new
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x: 0, y: 0))
   end
 
@@ -17,6 +15,7 @@ describe 'Mars rover' do
   end
 
   it 'faces a particular direction (N, E, S, W)' do
+    mars_rover = MarsRover.new
     expect(mars_rover.direction).to eq('N')
   end
 
@@ -25,6 +24,7 @@ describe 'Mars rover' do
     expect(mars_rover.direction).to eq('S')
   end
   it 'receives commands from earth' do
+    mars_rover = MarsRover.new
     expect(mars_rover).to respond_to(:execute)
   end
 
@@ -112,5 +112,11 @@ describe 'Mars rover' do
     mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
     mars_rover.execute(commands: ['r'])
     expect(mars_rover.direction).to eq("E")
+  end
+
+  it "turns right when facing east" do
+    mars_rover = MarsRover.new(direction: "E", starting_point: OpenStruct.new(x:0, y: 0))
+    mars_rover.execute(commands: ['r'])
+    expect(mars_rover.direction).to eq('S')
   end
 end
