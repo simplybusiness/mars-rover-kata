@@ -25,7 +25,7 @@ class MarsRover
   end
 
   def turn_right
-    @direction = {'N' => 'E', 'E' => 'S', 'S' => 'W'}[@direction]
+    @direction = {'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N'}[@direction]
   end
   def move_forward
     case @direction
