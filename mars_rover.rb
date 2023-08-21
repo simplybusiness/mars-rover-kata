@@ -19,17 +19,7 @@ class MarsRover
   end
 
   def turn_left
-    case @direction
-    when 'N'
-      @direction = 'W'
-    when 'E'
-      @direction = 'N'
-    when 'S'
-      @direction = 'E'
-    when 'W'
-      @direction = 'S'
-    end
-
+    @direction = {'N' => 'W', 'E' => 'N', 'S' => 'E', 'W' => 'S'}[@direction]
   end
 
   def move_forward
