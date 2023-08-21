@@ -7,10 +7,12 @@ class MarsRover
   end
 
   def execute(commands: [])
-    if commands.include? 'f'
-      move_forward
-    elsif commands.include? 'b'
-      move_backwards
+    commands.each do |command|
+      if command == 'f'
+        move_forward
+      elsif command == 'b'
+        move_backwards
+      end
     end
   end
 

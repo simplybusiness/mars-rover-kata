@@ -61,4 +61,11 @@ describe 'Mars rover' do
       end
     end
   end
+
+  it "moves forward twice" do
+    mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
+    mars_rover.execute(commands: ['f','f'])
+
+    expect(mars_rover.starting_point).to eq(OpenStruct.new(x:0, y: 2))
+  end
 end
