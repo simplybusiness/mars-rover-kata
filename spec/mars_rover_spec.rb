@@ -89,4 +89,10 @@ describe 'Mars rover' do
     mars_rover.execute(commands: ['l'])
     expect(mars_rover.direction).to eq("N")
   end
+
+  it "turns left when facing south" do
+    mars_rover = MarsRover.new(direction: "S", starting_point: OpenStruct.new(x:0, y: 0))
+    mars_rover.execute(commands: ['l'])
+    expect(mars_rover.direction).to eq("E")
+  end
 end
