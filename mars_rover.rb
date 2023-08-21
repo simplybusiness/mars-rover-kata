@@ -13,12 +13,12 @@ class MarsRover
       elsif command == 'b'
         move_backwards
       elsif command == 'l'
-        change_direction
+        turn_left
       end
     end
   end
 
-  def change_direction
+  def turn_left
     case @direction
     when 'N'
       @direction = 'W'
