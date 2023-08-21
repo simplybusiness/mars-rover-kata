@@ -5,9 +5,7 @@ class MarsRover
     @direction = direction
     @starting_point = starting_point
   end
-  def starting_point
-    @starting_point
-  end
+
   def execute(commands: [])
 
     x = @starting_point.x
