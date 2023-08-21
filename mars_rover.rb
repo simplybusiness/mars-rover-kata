@@ -14,6 +14,8 @@ class MarsRover
         move_backwards
       elsif command == 'l'
         turn_left
+      elsif command == 'r'
+        turn_right
       end
     end
   end
@@ -22,6 +24,9 @@ class MarsRover
     @direction = {'N' => 'W', 'E' => 'N', 'S' => 'E', 'W' => 'S'}[@direction]
   end
 
+  def turn_right
+    @direction = {'N' => 'E'}[@direction]
+  end
   def move_forward
     case @direction
     when 'N'
