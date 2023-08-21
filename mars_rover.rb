@@ -12,8 +12,20 @@ class MarsRover
         move_forward
       elsif command == 'b'
         move_backwards
+      elsif command == 'l'
+        change_direction
       end
     end
+  end
+
+  def change_direction
+    case @direction
+    when 'N'
+      @direction = 'W'
+    when 'E'
+      @direction = 'N'
+    end
+
   end
 
   def move_forward
