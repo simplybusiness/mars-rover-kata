@@ -76,59 +76,49 @@ describe 'Mars rover' do
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x:0, y: 0))
   end
 
-  it "turns left when facing north" do
-    mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['l'])
-
-    expect(mars_rover.direction).to eq("W")
-    expect(mars_rover.starting_point).to eq(OpenStruct.new(x:0, y: 0))
-  end
-
-  it "turns left when facing east" do
-    mars_rover = MarsRover.new(direction: "E", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['l'])
-    expect(mars_rover.direction).to eq("N")
-  end
-
-  it "turns left when facing south" do
-    mars_rover = MarsRover.new(direction: "S", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['l'])
-    expect(mars_rover.direction).to eq("E")
-  end
-
-  it "turns left when facing west" do
-    mars_rover = MarsRover.new(direction: "W", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['l'])
-    expect(mars_rover.direction).to eq("S")
-  end
-
   it "turns left twice when facing north" do
     mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
     mars_rover.execute(commands: ['l', 'l'])
     expect(mars_rover.direction).to eq("S")
   end
 
-  it "turns right when facing north" do
+  it "turns left twice when facing north" do
     mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['r'])
-    expect(mars_rover.direction).to eq("E")
+    mars_rover.execute(commands: ['r', 'r'])
+    expect(mars_rover.direction).to eq("S")
   end
 
-  it "turns right when facing east" do
-    mars_rover = MarsRover.new(direction: "E", starting_point: OpenStruct.new(x:0, y: 0))
-    mars_rover.execute(commands: ['r'])
-    expect(mars_rover.direction).to eq('S')
-  end
+  expectations = {
+    "l" => {
+      "expectations" => [OpenStruct.new(direction: "N", new_direction:'W'),
+                         OpenStruct.new(direction: "S", new_direction:'E'),
+                         OpenStruct.new(direction: "E", new_direction:'N'),
+                         OpenStruct.new(direction: "W", new_direction:'S')
+      ],
+      "description" => "left"
+    },
+    "r" => {
+      "expectations" => [OpenStruct.new(direction: "N", new_direction:'E'),
+                         OpenStruct.new(direction: "S", new_direction:'W'),
+                         OpenStruct.new(direction: "E", new_direction:'S'),
+                         OpenStruct.new(direction: "W", new_direction:'N')
+      ],
+      "description" => "right"
+    }
+  }
 
-  it "turns right when facing south" do
-    mars_rover = MarsRover.new(direction: "S", starting_point: OpenStruct.new(x:0, y:0))
-    mars_rover.execute(commands: ['r'])
-    expect(mars_rover.direction).to eq("W")
-  end
+  context "Executing the command" do
+    expectations.each do |key, obj|
 
-  it "turns right when facing west" do
-    mars_rover = MarsRover.new(direction: "W", starting_point: OpenStruct.new(x:0, y:0))
-    mars_rover.execute(commands: ['r'])
-    expect(mars_rover.direction).to eq("N")
+      context "turns #{obj['description']}" do
+        obj["expectations"].each do |hash|
+          it "when facing (#{hash.direction}) " do
+            mars_rover = MarsRover.new(direction: hash.direction, starting_point: OpenStruct.new(x:0, y: 0))
+            mars_rover.execute(commands: [key])
+            expect(mars_rover.direction).to eq(hash.new_direction)
+          end
+        end
+      end
+    end
   end
 end
