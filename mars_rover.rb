@@ -36,19 +36,16 @@ class MarsRover
   end
 
   def move_backwards
-    x = @starting_point.x
-    y = @starting_point.y
     case @direction
     when 'N'
-      y = @starting_point.y - 1
+      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y - 1)
     when 'S'
-      y = @starting_point.y + 1
+      @starting_point = OpenStruct.new(x:@starting_point.x, y:@starting_point.y + 1)
     when 'E'
-      x = @starting_point.x + 1
+      @starting_point = OpenStruct.new(x:@starting_point.x + 1, y:@starting_point.y)
     when 'W'
-      x = @starting_point.x - 1
+      @starting_point = OpenStruct.new(x:@starting_point.x - 1, y:@starting_point.y)
     end
-    @starting_point = OpenStruct.new(x: x,y: y)
   end
 
 end
