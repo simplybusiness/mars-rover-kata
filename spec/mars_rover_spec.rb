@@ -68,4 +68,11 @@ describe 'Mars rover' do
 
     expect(mars_rover.starting_point).to eq(OpenStruct.new(x:0, y: 2))
   end
+
+  it "moves forward then backwards" do
+    mars_rover = MarsRover.new(direction: "N", starting_point: OpenStruct.new(x:0, y: 0))
+    mars_rover.execute(commands: ['f','b'])
+
+    expect(mars_rover.starting_point).to eq(OpenStruct.new(x:0, y: 0))
+  end
 end
