@@ -4,8 +4,7 @@ describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
-      expect(rover.position[0]).to eq(0)
-      expect(rover.position[1]).to eq(0)
+      expect(rover.position).to eq([0,0])
     end
 
     it 'has position matching the coordinates it was initialized with' do
@@ -24,8 +23,8 @@ describe Rover do
       expect(rover.direction).to eq('S')
     end
   end
-  describe '#move' do
 
+  describe '#move' do
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates:[3,4])
       rover.move('')
@@ -35,16 +34,42 @@ describe Rover do
 
     it 'does raise an argument error exception if it receive an invalid route' do
       rover = Rover.new(coordinates:[3,4])
-      expect {rover.move('xy')}.to raise_error "ArgumentError"
+      expect {rover.move(['x','y'])}.to raise_error "ArgumentError"
     end
 
-    it 'does face west when receives a single left command in the route and starting direction of north' do
+    directions_mapping = { 'N' => 'E',
+                           'S' => 'W',
+                           'W' => 'N',
+                           'E' => 'S'
+    }
+    
+    
+    directions_mapping.each do |start_direction,expected_direction|
+      # puts directions
+      it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
+        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover.move('r')
+        expect(rover.direction).to eq(expected_direction)
+      end
+    end
+
+    xit 'does face west when receives a single left command in the route and starting direction of north' do
       rover = Rover.new(direction: 'N', coordinates:[3,4])
-      rover.move('l')
+      rover.move(['l'])
       expect(rover.direction).to eq('W')
     end
 
-    xit 'does move right when receives a single right command in the route'
+    # it 'does face east when receives a single right command in the route and starting direction of north' do
+    #   rover = Rover.new(direction: 'N', coordinates:[3,4])
+    #   rover.move('r')
+    #   expect(rover.direction).to eq('E')
+    # end
+
+    xit 'does face east when receives a single left command in the route and starting direction of south' do
+      rover = Rover.new(direction: 'S', coordinates:[3,4])
+      rover.move('l')
+      expect(rover.direction).to eq('E')
+    end
     
     xit 'does move forward when receives a single forward command in the route'
     
