@@ -9,6 +9,10 @@ class MarsRover
     @direction = direction
   end
 
+  def direction
+    @direction
+  end
+
   def point
     OpenStruct.new(x: @x, y: @y)
   end
