@@ -5,7 +5,12 @@ describe MarsRover do
     expect(1 + 1).to eq 2
   end
 
-  it 'has a starting position of (2,3)'
+  it 'has a starting position of (2,3)' do
+    mars_rover = MarsRover.new(2, 3, 'N')
+
+    point = mars_rover.point
+    expect(point).to eq OpenStruct.new(x: 2, y: 3)
+  end
 
   it 'has a starting facing direction of N'
 
