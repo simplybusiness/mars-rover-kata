@@ -2,15 +2,12 @@
 require 'ostruct'
 
 class MarsRover
+  attr_reader :direction
 
   def initialize(x, y, direction)
     @x = x
     @y = y
     @direction = direction
-  end
-
-  def direction
-    @direction
   end
 
   def point
