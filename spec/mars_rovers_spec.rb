@@ -18,7 +18,10 @@ describe MarsRover do
     expect(mars_rover.direction).to eq 'N'
   end
 
-  it 'has a starting position of (1,2) and a facing direction of S'
+  it 'has a starting position of (1,2) and a facing direction of S' do
+    mars_rover = MarsRover.new(1, 2, 'S')
 
-  it 'does not have a starting direction of (1,4)'
+    expect(mars_rover.point).to eq OpenStruct.new(x: 1, y: 2)
+    expect(mars_rover.direction).to eq 'S'
+  end
 end
