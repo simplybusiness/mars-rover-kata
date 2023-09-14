@@ -1,10 +1,11 @@
 RSpec.describe "Mars Rover" do
   class MarsRover
-    attr_reader :x, :y
+    attr_reader :x, :y, :direction
 
-    def initialize(x, y)
+    def initialize(x, y, direction)
       @x = x
       @y = y
+      @direction = direction
     end
   end
   it 'has an initial starting point (x, y)'
@@ -15,16 +16,16 @@ RSpec.describe "Mars Rover" do
     context 'with valid inputs' do
       # TO_DO: move the creation of instance out side of it block
       it 'sets the x correctly' do
-        mars_rover = MarsRover.new(0, 0)
+        mars_rover = MarsRover.new(0, 0, 'N')
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly' do
-        mars_rover = MarsRover.new(0, 0)
+        mars_rover = MarsRover.new(0, 0,'N')
 
         expect(mars_rover.y).to eq(0)
       end
       it 'sets the direction correctly' do
-        pending('TODO')
+        mars_rover = MarsRover.new(0,0, 'N')
         expect(mars_rover.direction).to eq('N')
       end
     end
