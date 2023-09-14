@@ -2,7 +2,7 @@ RSpec.describe "Mars Rover" do
   class MarsRover
     attr_reader :x, :y
 
-    def initialize(x, y = 0)
+    def initialize(x, y)
       @x = x
       @y = y
     end
@@ -15,11 +15,11 @@ RSpec.describe "Mars Rover" do
     context 'with valid inputs' do
       # TO_DO: move the creation of instance out side of it block
       it 'sets the x correctly' do
-        mars_rover = MarsRover.new(0)
+        mars_rover = MarsRover.new(0, 0)
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly' do
-        mars_rover = MarsRover.new(0)
+        mars_rover = MarsRover.new(0, 0)
 
         expect(mars_rover.y).to eq(0)
       end
