@@ -1,6 +1,10 @@
 RSpec.describe "Mars Rover" do
   class MarsRover
+    attr :x
 
+    def initialize(x)
+      @x = x
+    end
   end
   it 'has an initial starting point (x, y)'
 
@@ -9,8 +13,7 @@ RSpec.describe "Mars Rover" do
   describe '#initialize' do
     context 'with valid inputs' do
       it 'sets the x correctly' do
-        pending('TO DO')
-        mars_rover = MarsRover.new
+        mars_rover = MarsRover.new(x=0)
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly'
