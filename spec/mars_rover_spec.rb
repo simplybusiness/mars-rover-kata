@@ -1,4 +1,9 @@
-RSpec.describe "2 + 2" do
+RSpec.describe "Mars Rover" do
+
+  it 'has an initial starting point (x, y)'
+
+  it 'has a direction (N, E, S, W)'
+
   describe '#initialize' do
     context 'with valid inputs' do
       it 'sets the x correctly'
@@ -7,19 +12,9 @@ RSpec.describe "2 + 2" do
     end
 
     context 'with invalid inputs' do
-      it 'raises an error when x is invalid'
-      it 'raises an error when y is invalid'
-      it 'raises an error when direction is invalid'
-    end
-  end
-  describe '#receives command list' do
-    context 'receives valid command list' do
-      it 'receives empty list and rover stays at the same position'
-      it 'receives with a list of characters in (f, b, l, r)'
-    end
-
-    context 'receive invalid command list' do
-      it 'raises an error when command list contain invalid character(s)'
+      it 'raises an error when x is invalid e.g. out of range'
+      it 'raises an error when y is invalid e.g. out of range'
+      it 'raises an error when direction is invalid (not any of N, E, S, W)'
     end
   end
 end
