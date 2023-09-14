@@ -2,10 +2,10 @@ RSpec.describe "Mars Rover" do
   class MarsRover
     attr_reader :x, :y, :direction
 
-    def initialize(x, y)
+    def initialize(x, y, direction = 'N')
       @x = x
       @y = y
-      @direction = 'N'
+      @direction = direction
     end
   end
 
