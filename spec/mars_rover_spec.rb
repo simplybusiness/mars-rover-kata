@@ -2,9 +2,9 @@ RSpec.describe "Mars Rover" do
   class MarsRover
     attr_reader :x, :y
 
-    def initialize(x)
+    def initialize(x, y = 0)
       @x = x
-      @y = 0
+      @y = y
     end
   end
   it 'has an initial starting point (x, y)'
