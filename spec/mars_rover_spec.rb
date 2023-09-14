@@ -1,6 +1,6 @@
 RSpec.describe "Mars Rover" do
   class MarsRover
-    attr :x
+    attr_reader :x
 
     def initialize(x)
       @x = x
@@ -13,7 +13,7 @@ RSpec.describe "Mars Rover" do
   describe '#initialize' do
     context 'with valid inputs' do
       it 'sets the x correctly' do
-        mars_rover = MarsRover.new(x=0)
+        mars_rover = MarsRover.new(0)
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly'
