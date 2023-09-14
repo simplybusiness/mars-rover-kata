@@ -5,6 +5,10 @@ RSpec.describe "Mars Rover" do
     def initialize(x)
       @x = x
     end
+
+    def y
+      0
+    end
   end
   it 'has an initial starting point (x, y)'
 
@@ -18,7 +22,8 @@ RSpec.describe "Mars Rover" do
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly' do
-        pending("TO DO")
+        mars_rover = MarsRover.new(0)
+
         expect(mars_rover.y).to eq(0)
       end
       it 'sets the direction correctly'
