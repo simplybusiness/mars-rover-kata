@@ -4,10 +4,11 @@ RSpec.describe "Mars Rover" do
 
     def initialize(x)
       @x = x
+      @y = 0
     end
 
     def y
-      0
+      @y
     end
   end
   it 'has an initial starting point (x, y)'
