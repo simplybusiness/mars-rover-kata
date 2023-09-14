@@ -8,9 +8,6 @@ RSpec.describe "Mars Rover" do
       @direction = direction
     end
   end
-  it 'has an initial starting point (x, y)'
-
-  it 'has a direction (N, E, S, W)'
 
   describe '#initialize' do
     context 'with valid inputs' do
