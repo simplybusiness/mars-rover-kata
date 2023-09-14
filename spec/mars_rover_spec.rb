@@ -23,7 +23,10 @@ RSpec.describe "Mars Rover" do
 
         expect(mars_rover.y).to eq(0)
       end
-      it 'sets the direction correctly'
+      it 'sets the direction correctly' do
+        pending('TODO')
+        expect(mars_rover.direction).to eq('N')
+      end
     end
 
     context 'with invalid inputs' do
