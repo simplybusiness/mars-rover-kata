@@ -40,13 +40,15 @@ class Rover
 
     def move (route)
       if route.length > 0
-        case route
-        when LEFT 
-          turn_left
-        when RIGHT
-          turn_right
-        else
-          raise ArgumentError
+        route.split("").each do |direction|
+          case direction
+          when LEFT 
+            turn_left
+          when RIGHT
+            turn_right
+          else
+            raise ArgumentError
+          end
         end
       end
     end
