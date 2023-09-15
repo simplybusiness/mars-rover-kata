@@ -37,18 +37,33 @@ describe Rover do
       expect {rover.move(['x','y'])}.to raise_error "ArgumentError"
     end
 
-    directions_mapping = { 'N' => 'E',
+    directions_mapping_right = { 'N' => 'E',
                            'S' => 'W',
                            'W' => 'N',
                            'E' => 'S'
     }
+
+    directions_mapping_left = { 'N' => 'W',
+                          'S' => 'E',
+                          'W' => 'S',
+                          'E' => 'N'
+                          }
     
     
-    directions_mapping.each do |start_direction,expected_direction|
+    directions_mapping_right.each do |start_direction,expected_direction|
       # puts directions
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
         rover.move('r')
+        expect(rover.direction).to eq(expected_direction)
+      end
+    end
+
+    directions_mapping_left.each do |start_direction,expected_direction|
+      # puts directions
+      it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
+        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover.move('l')
         expect(rover.direction).to eq(expected_direction)
       end
     end
