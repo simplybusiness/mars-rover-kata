@@ -89,10 +89,18 @@ describe Rover do
       expect(rover.direction).to eq('N')
     end
 
-    it 'does move forward when receives a single forward command in the route' do
-      rover = Rover.new(direction: 'E', coordinates:[3,4])
-      rover.move(['f'])
-      expect(rover.position).to eq([4,4])
+    directions_mapping_forward = { 'N' => [3,5],
+    'S' => [3,3],
+    'W' => [2,4],
+    'E' => [4,4]
+    }    
+
+    directions_mapping_forward.each do |start_direction,expected_position|
+      it "does move forward when receives a single forward command with direction #{start_direction}" do
+        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover.move(['f'])
+        expect(rover.position).to eq(expected_position)
+      end
     end
     
     xit 'does move back when receives a single back command in the route'
