@@ -40,7 +40,7 @@ class Rover
 
     def move (route)
       if route.length > 0
-        route.split("").each do |direction|
+        route.each do |direction|
           case direction
           when LEFT 
             turn_left
