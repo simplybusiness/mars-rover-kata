@@ -25,11 +25,24 @@ class Rover
       end
     end
 
+    def turn_left
+      case @direction
+      when SOUTH
+        @direction = EAST
+      when WEST
+        @direction = SOUTH
+      when EAST
+        @direction = NORTH
+      when NORTH
+        @direction = WEST
+      end
+    end
+
     def move (route)
       if route.length > 0
         case route
         when LEFT 
-          @direction = WEST
+          turn_left
         when RIGHT
           turn_right
         else
