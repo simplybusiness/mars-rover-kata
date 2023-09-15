@@ -61,29 +61,11 @@ describe Rover do
 
     directions_mapping_left.each do |start_direction,expected_direction|
       # puts directions
-      it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
+      it "does face #{expected_direction} when receives a single left command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
         rover.move('l')
         expect(rover.direction).to eq(expected_direction)
       end
-    end
-
-    xit 'does face west when receives a single left command in the route and starting direction of north' do
-      rover = Rover.new(direction: 'N', coordinates:[3,4])
-      rover.move(['l'])
-      expect(rover.direction).to eq('W')
-    end
-
-    # it 'does face east when receives a single right command in the route and starting direction of north' do
-    #   rover = Rover.new(direction: 'N', coordinates:[3,4])
-    #   rover.move('r')
-    #   expect(rover.direction).to eq('E')
-    # end
-
-    xit 'does face east when receives a single left command in the route and starting direction of south' do
-      rover = Rover.new(direction: 'S', coordinates:[3,4])
-      rover.move('l')
-      expect(rover.direction).to eq('E')
     end
     
     xit 'does move forward when receives a single forward command in the route'
