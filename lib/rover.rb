@@ -39,7 +39,7 @@ class Rover
     end
 
     def move (route)
-      if route.length > 0
+      if route.any?
         route.each do |direction|
           case direction
           when LEFT 

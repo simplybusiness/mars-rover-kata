@@ -27,7 +27,7 @@ describe Rover do
   describe '#move' do
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates:[3,4])
-      rover.move('')
+      rover.move([])
       expect(rover.position[0]).to eq(3)
       expect(rover.position[1]).to eq(4)
     end
