@@ -83,7 +83,17 @@ describe Rover do
       end
     end
     
-    xit 'does move forward when receives a single forward command in the route'
+    it "does face North when receives a two right and two left commands in the route and starting direction of North" do
+      rover = Rover.new(direction: 'N', coordinates:[3,4])
+      rover.move(['r','r','l','l'])
+      expect(rover.direction).to eq('N')
+    end
+
+    it 'does move forward when receives a single forward command in the route' do
+      rover = Rover.new(direction: 'E', coordinates:[3,4])
+      rover.move(['f'])
+      expect(rover.position).to eq([4,4])
+    end
     
     xit 'does move back when receives a single back command in the route'
   end
