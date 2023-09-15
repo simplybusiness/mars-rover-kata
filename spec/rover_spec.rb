@@ -67,6 +67,21 @@ describe Rover do
         expect(rover.direction).to eq(expected_direction)
       end
     end
+
+    directions_mapping_3x_right = { 'N' => 'W',
+      'S' => 'E',
+      'W' => 'S',
+      'E' => 'N'
+    }
+
+    directions_mapping_3x_right.each do |start_direction,expected_direction|
+      # puts directions
+      it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
+        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover.move('rrr')
+        expect(rover.direction).to eq(expected_direction)
+      end
+    end
     
     xit 'does move forward when receives a single forward command in the route'
     
