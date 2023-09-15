@@ -2,6 +2,7 @@ class Rover
     attr_reader :position, :direction
     LEFT = 'l'
     RIGHT = 'r'
+    FORWARD = 'f'
     NORTH = 'N'
     WEST = 'W'
     EAST = 'E'
@@ -46,6 +47,8 @@ class Rover
             turn_left
           when RIGHT
             turn_right
+          when FORWARD
+            @position = [4,4]
           else
             raise ArgumentError
           end
