@@ -34,7 +34,7 @@ describe Rover do
 
     it 'does raise an argument error exception if it receive an invalid route' do
       rover = Rover.new(coordinates:[3,4])
-      expect {rover.move('xy')}.to raise_error "ArgumentError"
+      expect {rover.move(['x','y'])}.to raise_error "ArgumentError"
     end
 
     directions_mapping_right = { 'N' => 'E',
@@ -54,7 +54,7 @@ describe Rover do
       # puts directions
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
-        rover.move('r')
+        rover.move(['r'])
         expect(rover.direction).to eq(expected_direction)
       end
     end
@@ -63,7 +63,7 @@ describe Rover do
       # puts directions
       it "does face #{expected_direction} when receives a single left command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
-        rover.move('l')
+        rover.move(['l'])
         expect(rover.direction).to eq(expected_direction)
       end
     end
@@ -78,7 +78,7 @@ describe Rover do
       # puts directions
       it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
-        rover.move('rrr')
+        rover.move(['r','r','r'])
         expect(rover.direction).to eq(expected_direction)
       end
     end
