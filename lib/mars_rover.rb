@@ -20,9 +20,10 @@ class MarsRover
 
 
   def execute_commands
-    # while rover is on
-    #   while commands is not empty
-    #       execute_command
-
+    @commands.each do | command |
+      if command == 'f'
+        @point.y += 1
+      end
+    end
   end
 end
