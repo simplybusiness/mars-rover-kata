@@ -34,7 +34,7 @@ class MarsRover
     when 'S'
       @point = OpenStruct.new(x: @point.x, y: @point.y - 1)
     else
-      @point.y += 1
+      @point = OpenStruct.new(x: @point.x, y: @point.y + 1)
     end
   end
 end
