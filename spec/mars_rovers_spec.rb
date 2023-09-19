@@ -32,6 +32,28 @@ describe MarsRover do
     expect(mars_rover.commands).to eq %w[f f l r b]
   end
 
+  it 'executes no commands when an empty list of commands is received' do
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2))
+    mars_rover.add_commands([])
 
-  it 'executes no commands when an empty list of commands is received'
+    expect(mars_rover.commands).to eq []
+  end
+
+  it 'does not add any commands if the commands are not in Array' do
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2))
+    mars_rover.add_commands('f f b')
+
+    expect(mars_rover.commands).to eq []
+  end
+
+  it 'overwrites the the first set of commands when two arrays of commands are added ' do
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2))
+    mars_rover.add_commands(%w[f f l r b])
+
+    expect(mars_rover.commands).to eq %w[f f l r b]
+
+    mars_rover.add_commands(%w[e e l r b])
+
+    expect(mars_rover.commands).to eq %w[e e l r b]
+  end
 end
