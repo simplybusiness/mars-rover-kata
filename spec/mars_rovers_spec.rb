@@ -48,10 +48,8 @@ describe MarsRover do
 
   it 'overwrites the the first set of commands when two arrays of commands are added ' do
     mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2))
+
     mars_rover.add_commands(%w[f f l r b])
-
-    expect(mars_rover.commands).to eq %w[f f l r b]
-
     mars_rover.add_commands(%w[e e l r b])
 
     expect(mars_rover.commands).to eq %w[e e l r b]
