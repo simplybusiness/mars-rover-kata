@@ -81,4 +81,6 @@ describe MarsRover do
     expect(mars_rover.point).to eq(OpenStruct.new(x: -1, y: 0))
     expect(mars_rover.direction).to eq('W')
   end
+
+  it 'moves forwards when '
 end

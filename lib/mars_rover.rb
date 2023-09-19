@@ -18,6 +18,7 @@ class MarsRover
     execute_commands
   end
 
+  private
 
   def execute_commands
     @commands.each do | command |
@@ -27,7 +28,7 @@ class MarsRover
     end
   end
 
-  private
+
 
   def move_forward
     case @direction
