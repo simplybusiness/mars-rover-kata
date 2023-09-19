@@ -54,4 +54,6 @@ describe MarsRover do
 
     expect(mars_rover.commands).to eq %w[e e l r b]
   end
+
+  it 'does not process unrecognised commands (e.g. command y)'
 end
