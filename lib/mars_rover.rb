@@ -32,6 +32,8 @@ class MarsRover
 
   def move_forward
     case @direction
+    when 'E'
+      @point = OpenStruct.new(x: @point.x + 1, y: @point.y)
     when 'S'
       @point = OpenStruct.new(x: @point.x, y: @point.y - 1)
     when 'W'
