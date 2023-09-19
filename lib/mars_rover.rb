@@ -14,6 +14,8 @@ class MarsRover
     return unless commands.is_a?(Array) && commands.length > 0
 
     @commands = commands
+
+    execute_commands
   end
 
 
