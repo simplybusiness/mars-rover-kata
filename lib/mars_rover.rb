@@ -22,7 +22,12 @@ class MarsRover
   def execute_commands
     @commands.each do | command |
       if command == 'f'
-        @point.y += 1
+        case @direction
+        when 'S'
+          @point.y -= 1
+        else
+          @point.y += 1
+        end
       end
     end
   end
