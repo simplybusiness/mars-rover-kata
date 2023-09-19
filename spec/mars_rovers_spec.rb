@@ -74,7 +74,6 @@ describe MarsRover do
   end
 
   it 'moves forwards when facing west' do
-    pending('TODO')
     mars_rover = MarsRover.new('W', OpenStruct.new(x: 0, y: 0))
 
     mars_rover.add_commands(%w[f])

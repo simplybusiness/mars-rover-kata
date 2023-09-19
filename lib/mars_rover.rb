@@ -33,6 +33,8 @@ class MarsRover
     case @direction
     when 'S'
       @point = OpenStruct.new(x: @point.x, y: @point.y - 1)
+    when 'W'
+      @point = OpenStruct.new(x: @point.x - 1, y: @point.y)
     else
       @point = OpenStruct.new(x: @point.x, y: @point.y + 1)
     end
