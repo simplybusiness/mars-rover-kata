@@ -82,5 +82,13 @@ describe MarsRover do
     expect(mars_rover.direction).to eq('W')
   end
 
-  it 'moves forwards when '
+  it 'moves forwards when facing east' do
+    pending('TODO')
+    mars_rover = MarsRover.new('E', OpenStruct.new(x: 0, y: 0))
+
+    mars_rover.add_commands(%w[f])
+
+    expect(mars_rover.point).to eq(OpenStruct.new(x: 1, y: 0))
+    expect(mars_rover.direction).to eq('E')
+  end
 end
