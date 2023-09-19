@@ -56,4 +56,14 @@ describe MarsRover do
   end
 
   it 'does not process unrecognised commands (e.g. command y)'
+
+  it 'moves forwards when facing north' do
+    pending('TODO')
+    mars_rover = MarsRover.new('N', OpenStruct.new(x: 0, y: 0))
+
+    mars_rover.add_commands(%w[f])
+    mars_rover.execute_commands
+
+    expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 1))
+  end
 end
