@@ -38,7 +38,7 @@ class MarsRover
       @point = OpenStruct.new(x: @point.x, y: @point.y - 1)
     when 'W'
       @point = OpenStruct.new(x: @point.x - 1, y: @point.y)
-    else
+    when 'N'
       @point = OpenStruct.new(x: @point.x, y: @point.y + 1)
     end
   end
