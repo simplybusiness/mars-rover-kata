@@ -15,20 +15,14 @@ class MarsRover
 
     @commands = commands
 
-    execute_commands
-  end
-
-  private
-
-  def execute_commands
-    @commands.each do | command |
+    @commands.each do |command|
       if command == 'f'
         move_forward
       end
     end
   end
 
-
+  private
 
   def move_forward
     case @direction
