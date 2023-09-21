@@ -41,6 +41,11 @@ RSpec.describe "Mars Rover" do
       it 'raises an error when direction is invalid incorrect type' do
         expect { MarsRover.new(0, 0, 0) }.to raise_error('direction should be a character')
       end
+
+      it 'raises an error when the direction is invalid (not any of N, E, S or W)' do
+        pending('TODO')
+        expect { MarsRover.new(0, 0, 'X') }.to raise_error('direction should be one of N, E, S or W')
+      end
     end
   end
 end
