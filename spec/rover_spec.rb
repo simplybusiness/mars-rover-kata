@@ -104,16 +104,22 @@ describe Rover do
     end
     
     directions_mapping_backward = { 'N' => [3,3],
-      'S' => [3,4],
+      'S' => [3,5],
       'W' => [4,4],
       'E' => [2,4]
     }    
     directions_mapping_backward.each do |start_direction,expected_position|
-      it "does move backward when receives a single backwqard command with direction #{start_direction}" do
+      it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
         rover.move(['b'])
         expect(rover.position).to eq(expected_position)
       end
+    end
+
+    it "returns to the start position when instructed to travel the entire equator" do
+      rover = Rover.new(direction: 'E',coordinates: [0,0])
+      rover.move(['f','f','f','f','f','f','f','f','f','f','f'])
+      expect(rover.position).to eq([0,0])
     end
   end
 end
