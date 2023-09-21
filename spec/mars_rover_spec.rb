@@ -4,7 +4,7 @@ RSpec.describe "Mars Rover" do
 
     def initialize(x, y, direction)
       raise Exception.new('x or y should be integer or float!') if x.is_a?(String) || y.is_a?(String)
-      raise Exception.new('direction should be a character') if direction.is_a?(Integer)
+      raise Exception.new('direction should be a character') if !direction.is_a?(String)
       @x = x
       @y = y
       @direction = direction
