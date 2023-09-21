@@ -4,6 +4,7 @@ RSpec.describe "Mars Rover" do
 
     def initialize(x, y, direction)
       raise Exception.new('x or y should be integer or float!') if x.is_a?(String) || y.is_a?(String)
+      raise Exception.new('direction should be a character') if direction.is_a?(Integer)
       @x = x
       @y = y
       @direction = direction
@@ -37,8 +38,7 @@ RSpec.describe "Mars Rover" do
         expect { MarsRover.new(1, 'y', 'N') }.to raise_error('x or y should be integer or float!')
       end
 
-      it 'raises an error when direction is invalid (not any of N, E, S, W)' do
-        pending('TODO')
+      it 'raises an error when direction is invalid incorrect type' do
         expect { MarsRover.new(0, 0, 0) }.to raise_error('direction should be a character')
       end
     end
