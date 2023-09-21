@@ -33,7 +33,11 @@ RSpec.describe "Mars Rover" do
         expect{ MarsRover.new('x', 0, 'N') }.to raise_error("x should be integer or float!")
       end
 
-      it 'raises an error when y is invalid e.g. out of range'
+      it 'raises an error when y is invalid e.g. out of range' do
+        pending('TODO')
+        expect { MarsRover.new(1, 'y', 'N') }.to raise_error('y should be an integer or float!')
+      end
+
       it 'raises an error when direction is invalid (not any of N, E, S, W)'
     end
   end
