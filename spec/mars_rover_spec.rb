@@ -1,11 +1,16 @@
 RSpec.describe "Mars Rover" do
   class MarsRover
-    attr_reader :x, :y, :direction
+    attr_reader :y, :direction
 
     def initialize(x, y, direction)
       @x = x
       @y = y
       @direction = direction
+    end
+
+    def x
+      raise Exception.new('x should be integer or float!') if @x.is_a?(String)
+      @x
     end
   end
 
@@ -32,6 +37,7 @@ RSpec.describe "Mars Rover" do
         mars_rover = MarsRover.new('x', 0, 'N')
         expect{mars_rover.x}.to raise_error("x should be integer or float!")
       end
+
       it 'raises an error when y is invalid e.g. out of range'
       it 'raises an error when direction is invalid (not any of N, E, S, W)'
     end
