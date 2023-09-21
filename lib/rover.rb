@@ -39,6 +39,23 @@ class Rover
       end
     end
 
+    def move_forward
+      # determine which element of position gets changed
+      current_x = @position[0]
+      current_y = @position[1]
+      
+      case @direction
+      when SOUTH
+        @position[1] = current_y - 1
+      when NORTH
+        @position[1] = current_y + 1
+      when EAST
+        @position[0] = current_x + 1
+      when WEST
+        @position[0] = current_x - 1
+      end
+    end
+
     def move (route)
       if route.any?
         route.each do |direction|
@@ -48,7 +65,7 @@ class Rover
           when RIGHT
             turn_right
           when FORWARD
-            @position = [4,4]
+            move_forward
           else
             raise ArgumentError
           end

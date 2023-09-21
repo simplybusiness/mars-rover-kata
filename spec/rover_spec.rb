@@ -103,6 +103,17 @@ describe Rover do
       end
     end
     
-    xit 'does move back when receives a single back command in the route'
+    directions_mapping_backward = { 'N' => [3,3],
+      'S' => [3,4],
+      'W' => [4,4],
+      'E' => [2,4]
+    }    
+    directions_mapping_backward.each do |start_direction,expected_position|
+      it "does move backward when receives a single backwqard command with direction #{start_direction}" do
+        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover.move(['b'])
+        expect(rover.position).to eq(expected_position)
+      end
+    end
   end
 end
