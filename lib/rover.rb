@@ -3,6 +3,7 @@ class Rover
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
+    BACKWARD = 'b'
     NORTH = 'N'
     WEST = 'W'
     EAST = 'E'
@@ -51,8 +52,25 @@ class Rover
         @position[1] = current_y + 1
       when EAST
         @position[0] = current_x + 1
+        puts "current_position: #{@position[0]}"
       when WEST
         @position[0] = current_x - 1
+      end
+    end
+
+    def move_backward
+      current_x = @position[0]
+      current_y = @position[1]
+
+      case @direction
+      when SOUTH
+        @position[1] = current_y + 1
+      when NORTH
+        @position[1] = current_y - 1
+      when EAST
+        @position[0] = current_x - 1
+      when WEST
+        @position[0] = current_x + 1
       end
     end
 
@@ -66,6 +84,8 @@ class Rover
             turn_right
           when FORWARD
             move_forward
+          when BACKWARD
+            move_backward
           else
             raise ArgumentError
           end
