@@ -4,6 +4,7 @@ RSpec.describe "Mars Rover" do
 
     def initialize(x, y, direction)
       raise Exception.new('x should be integer or float!') if x.is_a?(String)
+      raise Exception.new('y should be an integer or float!') if y.is_a?(String)
       @x = x
       @y = y
       @direction = direction
@@ -34,7 +35,6 @@ RSpec.describe "Mars Rover" do
       end
 
       it 'raises an error when y is invalid e.g. out of range' do
-        pending('TODO')
         expect { MarsRover.new(1, 'y', 'N') }.to raise_error('y should be an integer or float!')
       end
 
