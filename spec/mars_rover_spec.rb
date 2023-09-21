@@ -28,7 +28,10 @@ RSpec.describe "Mars Rover" do
     end
 
     context 'with invalid inputs' do
-      it 'raises an error when x is invalid e.g. out of range'
+      it 'raises an error when x is invalid e.g. out of range' do
+        mars_rover = MarsRover.new('x', 0, 'N')
+        expect{mars_rover.x}.to raise_error("x should be integer or float!")
+      end
       it 'raises an error when y is invalid e.g. out of range'
       it 'raises an error when direction is invalid (not any of N, E, S, W)'
     end
