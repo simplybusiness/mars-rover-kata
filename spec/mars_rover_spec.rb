@@ -1,16 +1,12 @@
 RSpec.describe "Mars Rover" do
   class MarsRover
-    attr_reader :y, :direction
+    attr_reader :x, :y, :direction
 
     def initialize(x, y, direction)
       raise Exception.new('x should be integer or float!') if x.is_a?(String)
       @x = x
       @y = y
       @direction = direction
-    end
-
-    def x
-      @x
     end
   end
 
