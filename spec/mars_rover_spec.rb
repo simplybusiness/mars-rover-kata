@@ -3,8 +3,7 @@ RSpec.describe "Mars Rover" do
     attr_reader :x, :y, :direction
 
     def initialize(x, y, direction)
-      raise Exception.new('x should be integer or float!') if x.is_a?(String)
-      raise Exception.new('y should be an integer or float!') if y.is_a?(String)
+      raise Exception.new('x or y should be integer or float!') if x.is_a?(String) || y.is_a?(String)
       @x = x
       @y = y
       @direction = direction
@@ -31,11 +30,11 @@ RSpec.describe "Mars Rover" do
 
     context 'with invalid inputs' do
       it 'raises an error when x is invalid e.g. out of range' do
-        expect{ MarsRover.new('x', 0, 'N') }.to raise_error("x should be integer or float!")
+        expect{ MarsRover.new('x', 0, 'N') }.to raise_error("x or y should be integer or float!")
       end
 
       it 'raises an error when y is invalid e.g. out of range' do
-        expect { MarsRover.new(1, 'y', 'N') }.to raise_error('y should be an integer or float!')
+        expect { MarsRover.new(1, 'y', 'N') }.to raise_error('x or y should be integer or float!')
       end
 
       it 'raises an error when direction is invalid (not any of N, E, S, W)'
