@@ -43,4 +43,15 @@ RSpec.describe "Mars Rover" do
       end
     end
   end
+  describe 'receive commands' do
+    context 'when provided with valid commands with a char array of f, b, l, r' do
+      it 'dose not raise errors'
+    end
+    context 'when provided with invalid commands' do
+      it 'raises an error'
+    end
+    context 'when provided with empty array' do
+      it 'does not raise errors and stay the same'
+    end
+  end
 end
