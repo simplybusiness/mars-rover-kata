@@ -13,18 +13,14 @@ RSpec.describe "Mars Rover" do
 
   describe '#initialize' do
     context 'with valid inputs' do
-      # TO_DO: move the creation of instance out side of it block
+      let(:mars_rover) {MarsRover.new(0, 0, 'N')}
       it 'sets the x correctly' do
-        mars_rover = MarsRover.new(0, 0, 'N')
         expect(mars_rover.x).to eq(0)
       end
       it 'sets the y correctly' do
-        mars_rover = MarsRover.new(0, 0,'N')
-
         expect(mars_rover.y).to eq(0)
       end
       it 'sets the direction correctly' do
-        mars_rover = MarsRover.new(0,0, 'N')
         expect(mars_rover.direction).to eq('N')
       end
     end
