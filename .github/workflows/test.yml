@@ -14,8 +14,6 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 3.2
-          bundler-cache: true
-          run: bundle lock --add-platform x86_64-linux
-      - name: Run tests
-        run: bundle exec rspec -cfd
+          ruby-version: '3.2.1'
+      - run: bundle install
+      - run: bundle exec rspec -cfd
