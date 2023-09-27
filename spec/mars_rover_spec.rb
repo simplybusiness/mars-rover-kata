@@ -62,6 +62,40 @@ describe 'Mars rover' do
     end
   end
 
+  expectations = {
+    "f" => {
+      "expectations" => [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 7)),
+                         OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 3)),
+                         OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:0, y: 5)),
+                         OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:4, y: 5))
+      ],
+      "description" => "forward"
+    },
+    "b" => {
+      "expectations" => [OpenStruct.new(direction: "N", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 3)),
+                         OpenStruct.new(direction: "S", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:2, y: 7)),
+                         OpenStruct.new(direction: "E", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:4, y: 5)),
+                         OpenStruct.new(direction: "W", start: OpenStruct.new(x:2, y: 5), end: OpenStruct.new(x:0, y: 5))
+      ],
+      "description" => "backwards"
+    }
+  }
+
+  context "Executing the command" do
+    expectations.each do |key, obj|
+
+      context "to go #{obj['description']} twice" do
+        obj["expectations"].each do |hash|
+          it "when facing (#{hash.direction}) " do
+            mars_rover = MarsRover.new(hash.direction, hash.start)
+            mars_rover.execute(commands: [key, key])
+            expect(mars_rover.starting_point).to eq(hash.end)
+          end
+        end
+      end
+    end
+  end
+
   it "moves forward twice" do
     mars_rover = MarsRover.new( "N", OpenStruct.new(x:0, y: 0))
     mars_rover.execute(commands: ['f','f'])
