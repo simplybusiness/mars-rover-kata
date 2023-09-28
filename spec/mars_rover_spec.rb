@@ -55,7 +55,12 @@ RSpec.describe "Mars Rover" do
       end
     end
     context 'when provided with empty commands or invalid commands' do
-      example 'when empty commands does not raise errors and stay the same'
+      example 'when empty commands does not raise errors and stay the same' do
+        mars_rover = MarsRover.new(1, 0, 'S')
+        commands = []
+
+        expect { mars_rover.receive(commands) }.not_to raise_error
+      end
       example 'when all invalid commands does not raise errors and stay the same'
       example 'when combined with invalid and valid commands does not raise errors and stay the same'
     end
