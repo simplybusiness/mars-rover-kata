@@ -59,7 +59,10 @@ RSpec.describe "Mars Rover" do
         commands = []
         expect { mars_rover.receive(commands) }.not_to raise_error
       end
-      example 'when all invalid commands does not raise errors and stay the same'
+      example 'when all invalid commands does not raise errors and stay the same' do
+        commands = ['a', 'c', 't']
+        expect { mars_rover.receive(commands) }.not_to raise_error
+      end
       example 'when combined with invalid and valid commands does not raise errors and stay the same'
     end
   end
