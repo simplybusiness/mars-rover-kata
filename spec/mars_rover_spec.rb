@@ -52,6 +52,9 @@ RSpec.describe "Mars Rover" do
       it 'dose not raise errors' do
         commands = ['f', 'b', 'r']
         expect { mars_rover.receive(commands) }.not_to raise_error
+        expect(mars_rover.x).to eq(1)
+        expect(mars_rover.y).to eq(0)
+        expect(mars_rover.direction).to eq('S')
       end
     end
     context 'when provided with empty commands or invalid commands' do
