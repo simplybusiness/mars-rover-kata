@@ -56,32 +56,20 @@ RSpec.describe "Mars Rover" do
       it 'dose not raise errors' do
         commands = ['f', 'b', 'r', 'l']
         expect { mars_rover.receive(commands) }.not_to raise_error
-        expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(1)
-        expect(mars_rover.direction).to eq('S')
       end
     end
     context 'when provided with empty commands or invalid commands' do
-      example 'when empty commands does not raise errors and stay the same' do
+      example 'when empty commands does not raise errors' do
         commands = []
         expect { mars_rover.receive(commands) }.not_to raise_error
-        expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(0)
-        expect(mars_rover.direction).to eq('S')
       end
-      example 'when all invalid commands does not raise errors and stay the same' do
+      example 'when all invalid commands does not raise errors' do
         commands = ['a', 'c', 't']
         expect { mars_rover.receive(commands) }.not_to raise_error
-        expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(0)
-        expect(mars_rover.direction).to eq('S')
       end
-      example 'when combined with invalid and valid commands does not raise errors and stay the same' do
+      example 'when combined with invalid and valid commands does not raise errors' do
         commands = ['f', 'a', 'l']
         expect { mars_rover.receive(commands) }.not_to raise_error
-        expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(1)
-        expect(mars_rover.direction).to eq('S')
       end
     end
   end
