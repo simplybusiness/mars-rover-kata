@@ -9,7 +9,7 @@ RSpec.describe "Mars Rover" do
       @y = y
       @direction = direction
     end
-    def receive(commands)
+    def move(commands)
       commands.each do |command|
         if command == 'f'
           @y = y + 1
@@ -55,21 +55,21 @@ RSpec.describe "Mars Rover" do
     context 'when provided with valid commands with a char array of f, b, l, r' do
       it 'dose not raise errors' do
         commands = ['f', 'b', 'r', 'l']
-        expect { mars_rover.receive(commands) }.not_to raise_error
+        expect { mars_rover.move(commands) }.not_to raise_error
       end
     end
     context 'when provided with empty commands or invalid commands' do
       example 'when empty commands does not raise errors' do
         commands = []
-        expect { mars_rover.receive(commands) }.not_to raise_error
+        expect { mars_rover.move(commands) }.not_to raise_error
       end
       example 'when all invalid commands does not raise errors' do
         commands = ['a', 'c', 't']
-        expect { mars_rover.receive(commands) }.not_to raise_error
+        expect { mars_rover.move(commands) }.not_to raise_error
       end
       example 'when combined with invalid and valid commands does not raise errors' do
         commands = ['f', 'a', 'l']
-        expect { mars_rover.receive(commands) }.not_to raise_error
+        expect { mars_rover.move(commands) }.not_to raise_error
       end
     end
   end
@@ -78,7 +78,7 @@ RSpec.describe "Mars Rover" do
     example 'moving forwards when facing north' do
       mars_rover = MarsRover.new(0, 0, 'N')
 
-      mars_rover.receive(['f'])
+      mars_rover.move(['f'])
 
       expect(mars_rover.x).to eq(0)
       expect(mars_rover.y).to eq(1)
