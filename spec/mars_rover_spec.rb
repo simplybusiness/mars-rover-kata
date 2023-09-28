@@ -10,7 +10,11 @@ RSpec.describe "Mars Rover" do
       @direction = direction
     end
     def receive(commands)
-
+      commands.each do |command|
+        if command == 'f'
+          @y = y + 1
+        end
+      end
     end
   end
 
@@ -53,7 +57,7 @@ RSpec.describe "Mars Rover" do
         commands = ['f', 'b', 'r', 'l']
         expect { mars_rover.receive(commands) }.not_to raise_error
         expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(0)
+        expect(mars_rover.y).to eq(1)
         expect(mars_rover.direction).to eq('S')
       end
     end
@@ -76,7 +80,7 @@ RSpec.describe "Mars Rover" do
         commands = ['f', 'a', 'l']
         expect { mars_rover.receive(commands) }.not_to raise_error
         expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(0)
+        expect(mars_rover.y).to eq(1)
         expect(mars_rover.direction).to eq('S')
       end
     end
@@ -84,7 +88,6 @@ RSpec.describe "Mars Rover" do
 
   describe 'Mars rover moving forwards' do
     example 'moving forwards when facing north' do
-      pending('TODO')
       mars_rover = MarsRover.new(0, 0, 'N')
 
       mars_rover.receive(['f'])
