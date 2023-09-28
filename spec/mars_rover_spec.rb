@@ -9,7 +9,7 @@ RSpec.describe "Mars Rover" do
       @y = y
       @direction = direction
     end
-    def receive(commands_list)
+    def receive(commands)
 
     end
   end
@@ -47,18 +47,16 @@ RSpec.describe "Mars Rover" do
     end
   end
   describe 'receive commands' do
+    let(:mars_rover) { MarsRover.new(1, 0, 'S') }
     context 'when provided with valid commands with a char array of f, b, l, r' do
       it 'dose not raise errors' do
-        commands_list = ['f','b','r']
-        mars_rover = MarsRover.new(0, 0, 'N')
-        expect{mars_rover.receive(commands_list)}.to_not raise_error
+        commands = ['f', 'b', 'r']
+        expect { mars_rover.receive(commands) }.not_to raise_error
       end
     end
     context 'when provided with empty commands or invalid commands' do
       example 'when empty commands does not raise errors and stay the same' do
-        mars_rover = MarsRover.new(1, 0, 'S')
         commands = []
-
         expect { mars_rover.receive(commands) }.not_to raise_error
       end
       example 'when all invalid commands does not raise errors and stay the same'
