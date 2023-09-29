@@ -57,7 +57,6 @@ class Rover
         @position[1] = current_y + 1
       when EAST
         @position[0] = current_x + 1
-        puts "current_position: #{@position[0]}"
       when WEST
         @position[0] = current_x - 1
       end
