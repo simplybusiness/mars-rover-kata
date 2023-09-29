@@ -49,16 +49,20 @@ class Rover
       # determine which element of position gets changed
       current_x = @position[0]
       current_y = @position[1]
-      
+            
       case @direction
       when SOUTH
         @position[1] = current_y - 1
+        @coordinate.y = current_y - 1
       when NORTH
         @position[1] = current_y + 1
+        @coordinate.y = current_y + 1
       when EAST
         @position[0] = current_x + 1
+        @coordinate.x = current_x + 1
       when WEST
         @position[0] = current_x - 1
+        @coordinate.x = current_x - 1
       end
     end
 
