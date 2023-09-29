@@ -1,3 +1,5 @@
+require "ostruct"
+
 class Rover
     attr_reader :position, :direction
     LEFT = 'l'
@@ -9,7 +11,10 @@ class Rover
     EAST = 'E'
     SOUTH = 'S'
    
+    
+
     def initialize (coordinates:[0,0], direction: NORTH)
+        @coordinate = OpenStruct.new(x:coordinates[0], y:coordinates[1])
         @position = coordinates
         @direction = direction
     end
