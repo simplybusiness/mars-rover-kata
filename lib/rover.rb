@@ -1,7 +1,7 @@
 require "ostruct"
 
 class Rover
-    attr_reader :position, :direction
+    attr_reader :position, :direction, :coordinate
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
@@ -73,12 +73,16 @@ class Rover
       case @direction
       when SOUTH
         @position[1] = current_y + 1
+        @coordinate.y = current_y + 1
       when NORTH
         @position[1] = current_y - 1
+        @coordinate.y = current_y - 1
       when EAST
         @position[0] = current_x - 1
+        @coordinate.x = current_x - 1
       when WEST
         @position[0] = current_x + 1
+        @coordinate.x = current_x + 1
       end
     end
 
