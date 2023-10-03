@@ -8,10 +8,6 @@ RSpec.describe 'Operating a Mars Rover' do
     def current_position
       @starting_position
     end
-
-    def starting_position
-      @starting_position
-    end
   end
 
   it 'has a starting position at the origin' do
