@@ -5,6 +5,10 @@ RSpec.describe 'Operating a Mars Rover' do
       @starting_position = OpenStruct.new(x: 0, y: 0)
     end
 
+    def current_position
+      @starting_position
+    end
+
     def starting_position
       @starting_position
     end
