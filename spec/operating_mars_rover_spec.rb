@@ -39,5 +39,10 @@ RSpec.describe 'Operating a Mars Rover' do
       .to raise_error('A starting position in the form of coordinates must be provided')
   end
 
-  it 'receives an list of commands'
+  it 'receives an list of commands' do
+    pending('Next test to get passing')
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: -1), direction: 'S')
+
+    expect(mars_rover).to respond_to(:execute).with(1)
+  end
 end
