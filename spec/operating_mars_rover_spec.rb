@@ -27,7 +27,6 @@ RSpec.describe 'Operating a Mars Rover' do
 
       expect(mars_rover.direction).to eq(direction)
     end
-
   end
 
   it 'cannot be operated when it has a direction that is not north, east, south or west' do
