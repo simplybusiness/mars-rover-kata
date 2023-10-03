@@ -35,5 +35,8 @@ RSpec.describe 'Operating a Mars Rover' do
       .to raise_error('Direction must be one of N, E, S or W')
   end
 
-  it 'cannot be operated when it is not given a starting position'
+  it 'cannot be operated when it is not given a starting position' do
+    expect { MarsRover.new(starting_position: nil, direction: 'W') }
+      .to raise_error('A starting position in the form of coordinates must be provided')
+  end
 end
