@@ -10,7 +10,7 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   it 'has a starting position anywhere away from an origin' do
-    mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 1, y: -1), direction: 'N')
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: 'N')
 
     expect(mars_rover.current_position.x).to eq(1)
     expect(mars_rover.current_position.y).to eq(-1)
