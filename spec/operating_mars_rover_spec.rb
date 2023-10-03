@@ -1,12 +1,10 @@
 require 'ostruct'
 RSpec.describe 'Operating a Mars Rover' do
   class MarsRover
+    attr_reader :current_position
+
     def initialize(starting_position: nil)
       @current_position = OpenStruct.new(x: 0, y: 0)
-    end
-
-    def current_position
-      @current_position
     end
   end
 
