@@ -17,7 +17,7 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   it 'has a direction' do
-    mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 1, y: -1), direction: 'S')
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: 'S')
 
     expect(mars_rover.direction).to eq('S')
   end
