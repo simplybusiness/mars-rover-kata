@@ -39,4 +39,6 @@ RSpec.describe 'Operating a Mars Rover' do
     expect { MarsRover.new(starting_position: nil, direction: 'W') }
       .to raise_error('A starting position in the form of coordinates must be provided')
   end
+
+  it 'receives an list of commands'
 end
