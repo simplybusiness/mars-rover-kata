@@ -24,7 +24,7 @@ RSpec.describe 'Operating a Mars Rover' do
 
   %w{N E S W}.each do |direction|
     it "can face any direction, e.g. #{direction}" do
-      mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 1, y: -1), direction: direction)
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: direction)
 
       expect(mars_rover.direction).to eq(direction)
     end
