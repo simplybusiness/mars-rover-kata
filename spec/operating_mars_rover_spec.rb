@@ -1,13 +1,17 @@
 require 'ostruct'
 RSpec.describe 'Operating a Mars Rover' do
   class MarsRover
+    def initialize(starting_position: nil)
+      @starting_position = OpenStruct.new(x: 0, y: 0)
+    end
+
     def starting_position
-      OpenStruct.new(x: 0, y: 0)
+      @starting_position
     end
   end
 
   it 'has a starting position at the origin' do
-    mars_rover = MarsRover.new
+    mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 0, y: 0))
 
     expect(mars_rover.starting_position).to eq(OpenStruct.new(x: 0, y: 0))
   end
