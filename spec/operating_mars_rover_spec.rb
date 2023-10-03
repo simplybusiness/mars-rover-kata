@@ -2,11 +2,11 @@ require 'ostruct'
 RSpec.describe 'Operating a Mars Rover' do
   class MarsRover
     def initialize(starting_position: nil)
-      @starting_position = OpenStruct.new(x: 0, y: 0)
+      @current_position = OpenStruct.new(x: 0, y: 0)
     end
 
     def current_position
-      @starting_position
+      @current_position
     end
   end
 
