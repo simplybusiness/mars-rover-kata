@@ -1,14 +1,6 @@
 require 'ostruct'
 require_relative '../lib/mars_rover'
 RSpec.describe 'Operating a Mars Rover' do
-  class MarsRover
-    attr_reader :current_position
-
-    def initialize(starting_position:)
-      @current_position = starting_position
-    end
-  end
-
   it 'has a starting position at the origin' do
     mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 0, y: 0))
 
