@@ -4,4 +4,8 @@ class MarsRover
   def initialize(starting_position:)
     @current_position = starting_position
   end
+
+  def direction
+    'S'
+  end
 end
