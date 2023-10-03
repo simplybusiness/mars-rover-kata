@@ -1,8 +1,9 @@
 require 'ostruct'
+require_relative '../lib/coordinates'
 require_relative '../lib/mars_rover'
 RSpec.describe 'Operating a Mars Rover' do
   it 'has a starting position at the origin' do
-    mars_rover = MarsRover.new(starting_position: OpenStruct.new(x: 0, y: 0), direction: 'E')
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'E')
 
     expect(mars_rover.current_position.x).to eq(0)
     expect(mars_rover.current_position.y).to eq(0)
