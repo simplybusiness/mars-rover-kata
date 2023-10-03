@@ -1,7 +1,7 @@
 require "ostruct"
 
 class Rover
-    attr_reader :position, :direction, :coordinate
+    attr_reader :position, :direction, :coordinate_position
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
@@ -14,7 +14,7 @@ class Rover
     
 
     def initialize (coordinates:[0,0], direction: NORTH)
-        @coordinate = OpenStruct.new(x:coordinates[0], y:coordinates[1])
+        @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])
         @position = coordinates
         @direction = direction
     end
@@ -53,16 +53,16 @@ class Rover
       case @direction
       when SOUTH
         @position[1] = current_y - 1
-        @coordinate.y = current_y - 1
+        @coordinate_position.y = current_y - 1
       when NORTH
         @position[1] = current_y + 1
-        @coordinate.y = current_y + 1
+        @coordinate_position.y = current_y + 1
       when EAST
         @position[0] = current_x + 1
-        @coordinate.x = current_x + 1
+        @coordinate_position.x = current_x + 1
       when WEST
         @position[0] = current_x - 1
-        @coordinate.x = current_x - 1
+        @coordinate_position.x = current_x - 1
       end
     end
 
@@ -73,16 +73,16 @@ class Rover
       case @direction
       when SOUTH
         @position[1] = current_y + 1
-        @coordinate.y = current_y + 1
+        @coordinate_position.y = current_y + 1
       when NORTH
         @position[1] = current_y - 1
-        @coordinate.y = current_y - 1
+        @coordinate_position.y = current_y - 1
       when EAST
         @position[0] = current_x - 1
-        @coordinate.x = current_x - 1
+        @coordinate_position.x = current_x - 1
       when WEST
         @position[0] = current_x + 1
-        @coordinate.x = current_x + 1
+        @coordinate_position.x = current_x + 1
       end
     end
 

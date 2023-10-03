@@ -99,7 +99,7 @@ describe Rover do
       it "does move forward when receives a single forward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
         rover.move(['f'])
-        expect(rover.coordinate).to eq(OpenStruct.new(x:expected_position[0], y:expected_position[1]))
+        expect(rover.coordinate_position).to eq(OpenStruct.new(x:expected_position[0], y:expected_position[1]))
       end
     end
     
