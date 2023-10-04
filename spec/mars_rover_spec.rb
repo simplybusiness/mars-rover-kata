@@ -8,7 +8,7 @@ describe MarsRover do
             expect { MarsRover.new }.to raise_error(ArgumentError)
         end
 
-        xit "raise an error when initialized with non integers as start position" do
+        it "raise an error when initialized with non integers as start position" do
             expect { MarsRover.new(["abc", "def"]) }.to raise_error
         end
 
