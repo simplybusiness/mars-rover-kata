@@ -10,7 +10,7 @@ describe MarsRover do
 
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
             mars_rover = MarsRover.new([0, 0])
-            expect mars_rover.position.to eq([0,0])
+            expect(mars_rover.position).to eq([0,0])
         end
     end
 end
