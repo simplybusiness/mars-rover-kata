@@ -9,7 +9,7 @@ describe MarsRover do
         end
 
         it "raise an error when initialized with non integers as start position" do
-            expect { MarsRover.new(["abc", "def"]) }.to raise_error
+            expect { MarsRover.new(["abc", "def"]) }.to raise_error(ArgumentError)
         end
 
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
