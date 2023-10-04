@@ -8,12 +8,12 @@ RSpec.describe MarsRover do
         expect(mars_rover).not_to be_nil
       end
       it 'contains a starting point' do
-        expect(mars_rover.x).to eq(1)
-        expect(mars_rover.y).to eq(2)
+        expect(mars_rover.x_pos).to eq(1)
+        expect(mars_rover.y_pos).to eq(2)
       end
 
       it 'contains a direction' do
-        expect(mars_rover.direction).to eq('E')
+        expect(mars_rover.cardinal_direction).to eq('E')
       end
     end
   end
