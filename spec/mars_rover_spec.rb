@@ -4,10 +4,11 @@ require_relative "../lib/mars_rover"
 
 describe MarsRover do
     describe "#initialise" do
-        xit "has an x coordinate of 0 and a y coordinate of 0 when initialised without a start position" do
+        it "raise an error when initialized without a start position" do
+            expect { MarsRover.new }.to raise_error(ArgumentError)
         end
 
-        xit "has an x coordinate and y coordinate equal to the start position passed on initialisation" do
+        xit "has an x coordinate and y coordinate equal to the start position passed on initialization" do
         end
     end
 end
