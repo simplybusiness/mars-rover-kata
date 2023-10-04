@@ -16,5 +16,11 @@ RSpec.describe MarsRover do
         expect(mars_rover.cardinal_direction).to eq('E')
       end
     end
+
+    context 'when the mars rover is initialised with invalid arguments' do
+      it 'raises an error for wrong directions' do
+        expect { described_class.new(0, 0, 'X') }.to raise_error InvalidMarsRover
+      end
+    end
   end
 end
