@@ -1,10 +1,9 @@
-require 'spec_helper'
 require_relative '../mars_rover'
 
 RSpec.describe MarsRover do
   describe '.new' do
     context 'when the mars rover is initialised' do
-      subject(:mars_rover) {described_class.new(1, 2, 'E')}
+      subject(:mars_rover) { described_class.new(1, 2, 'E') }
       it 'returns mars rover entity' do
         expect(mars_rover).not_to be_nil
       end
