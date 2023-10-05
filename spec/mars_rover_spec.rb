@@ -12,7 +12,12 @@ RSpec.describe "Mars Rover" do
     def move(commands)
       commands.each do |command|
         if command == 'f'
-          @y = y + 1
+          case @direction
+          when 'S'
+            @y = y - 1
+          when 'N'
+            @y = y + 1
+          end
         end
       end
     end
@@ -85,7 +90,6 @@ RSpec.describe "Mars Rover" do
       expect(mars_rover.direction).to eq('N')
     end
     example 'moving forwards when facing south' do
-      pending
       mars_rover = MarsRover.new(0, 0,'S')
       mars_rover.move(['f'])
       expect(mars_rover.x).to eq(0)
