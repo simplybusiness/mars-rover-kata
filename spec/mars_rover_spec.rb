@@ -28,6 +28,7 @@ RSpec.describe "Mars Rover" do
             @coordinates = Coordinates.new(x: @x, y: @y)
           when 'N'
             @y = y + 1
+            @coordinates = Coordinates.new(x: @x, y: @y)
           end
         end
       end
