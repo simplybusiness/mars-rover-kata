@@ -9,13 +9,12 @@ RSpec.describe "Mars Rover" do
   end
 
   class MarsRover
-    attr_reader :direction
+    attr_reader :coordinates, :direction
 
     def initialize(x, y, direction)
       raise Exception.new('x or y should be integer or float!') if x.is_a?(String) || y.is_a?(String)
       raise Exception.new('direction should be one of N, E, S or W') if ! ['N', 'S', 'W', 'E'].include? direction
-      @x = x
-      @y = y
+
       @coordinates = Coordinates.new(x: x, y: y)
       @direction = direction
     end
@@ -25,11 +24,9 @@ RSpec.describe "Mars Rover" do
         if command == 'f'
           case @direction
           when 'S'
-            @y = y - 1
-            @coordinates = Coordinates.new(x: @x, y: @coordinates.y - 1)
+            @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y - 1)
           when 'N'
-            @y = y + 1
-            @coordinates = Coordinates.new(x: @x, y: @coordinates.y + 1)
+            @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y + 1)
           end
         end
       end
@@ -48,10 +45,10 @@ RSpec.describe "Mars Rover" do
     context 'with valid inputs' do
       let(:mars_rover) {MarsRover.new(0, 0, 'N')}
       it 'sets the x correctly' do
-        expect(mars_rover.x).to eq(0)
+        expect(mars_rover.coordinates.x).to eq(0)
       end
       it 'sets the y correctly' do
-        expect(mars_rover.y).to eq(0)
+        expect(mars_rover.coordinates.y).to eq(0)
       end
       it 'sets the direction correctly' do
         expect(mars_rover.direction).to eq('N')
@@ -106,15 +103,15 @@ RSpec.describe "Mars Rover" do
 
       mars_rover.move(['f'])
 
-      expect(mars_rover.x).to eq(0)
-      expect(mars_rover.y).to eq(1)
+      expect(mars_rover.coordinates.x).to eq(0)
+      expect(mars_rover.coordinates.y).to eq(1)
       expect(mars_rover.direction).to eq('N')
     end
     example 'moving forwards when facing south' do
       mars_rover = MarsRover.new(0, 0,'S')
       mars_rover.move(['f'])
-      expect(mars_rover.x).to eq(0)
-      expect(mars_rover.y).to eq(-1)
+      expect(mars_rover.coordinates.x).to eq(0)
+      expect(mars_rover.coordinates.y).to eq(-1)
       expect(mars_rover.direction).to eq('S')
     end
   end
