@@ -1,4 +1,13 @@
 RSpec.describe "Mars Rover" do
+  class Coordinates
+    attr_reader :x, :y
+
+    def initialize(x:, y:)
+      @x = x
+      @y = y
+    end
+  end
+
   class MarsRover
     attr_reader :x, :y, :direction
 
