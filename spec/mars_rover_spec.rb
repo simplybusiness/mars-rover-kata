@@ -84,5 +84,13 @@ RSpec.describe "Mars Rover" do
       expect(mars_rover.y).to eq(1)
       expect(mars_rover.direction).to eq('N')
     end
+    example 'moving forwards when facing south' do
+      pending
+      mars_rover = MarsRover.new(0, 0,'S')
+      mars_rover.move(['f'])
+      expect(mars_rover.x).to eq(0)
+      expect(mars_rover.y).to eq(-1)
+      expect(mars_rover.direction).to eq('S')
+    end
   end
 end
