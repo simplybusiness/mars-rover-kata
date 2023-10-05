@@ -31,14 +31,6 @@ RSpec.describe "Mars Rover" do
         end
       end
     end
-
-    def x
-      @coordinates.x
-    end
-
-    def y
-      @coordinates.y
-    end
   end
 
   describe '#initialize' do
