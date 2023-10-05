@@ -9,7 +9,7 @@ RSpec.describe "Mars Rover" do
   end
 
   class MarsRover
-    attr_reader :x, :y, :direction
+    attr_reader :y, :direction
 
     def initialize(x, y, direction)
       raise Exception.new('x or y should be integer or float!') if x.is_a?(String) || y.is_a?(String)
@@ -19,6 +19,7 @@ RSpec.describe "Mars Rover" do
       @coordinates = Coordinates.new(x: x, y: y)
       @direction = direction
     end
+
     def move(commands)
       commands.each do |command|
         if command == 'f'
@@ -32,6 +33,10 @@ RSpec.describe "Mars Rover" do
           end
         end
       end
+    end
+
+    def x
+      @coordinates.x
     end
   end
 
