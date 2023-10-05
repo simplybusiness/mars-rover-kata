@@ -26,10 +26,10 @@ RSpec.describe "Mars Rover" do
           case @direction
           when 'S'
             @y = y - 1
-            @coordinates = Coordinates.new(x: @x, y: @y)
+            @coordinates = Coordinates.new(x: @x, y: @coordinates.y - 1)
           when 'N'
             @y = y + 1
-            @coordinates = Coordinates.new(x: @x, y: @y)
+            @coordinates = Coordinates.new(x: @x, y: @coordinates.y + 1)
           end
         end
       end
