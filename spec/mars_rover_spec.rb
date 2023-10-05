@@ -113,8 +113,8 @@ RSpec.describe "Mars Rover" do
 
       mars_rover.move(['f'])
 
-      expect(mars_rover.coordinates.x).to eq(1)
-      expect(mars_rover.coordinates.y).to eq(2)
+      expect(mars_rover.coordinates.x).to eq(2)
+      expect(mars_rover.coordinates.y).to eq(1)
       expect(mars_rover.direction).to eq('E')
     end
   end
