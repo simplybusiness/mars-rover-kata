@@ -16,6 +16,7 @@ RSpec.describe "Mars Rover" do
       raise Exception.new('direction should be one of N, E, S or W') if ! ['N', 'S', 'W', 'E'].include? direction
       @x = x
       @y = y
+      @coordinates = Coordinates.new(x: x, y: y)
       @direction = direction
     end
     def move(commands)
