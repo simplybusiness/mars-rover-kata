@@ -27,6 +27,8 @@ RSpec.describe "Mars Rover" do
             @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y - 1)
           when 'N'
             @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y + 1)
+          when 'E'
+            @coordinates = Coordinates.new(x: @coordinates.x + 1, y: @coordinates.y)
           end
         end
       end
@@ -108,7 +110,6 @@ RSpec.describe "Mars Rover" do
     end
 
     example 'moving forwards when facing east' do
-      pending
       mars_rover = MarsRover.new(1, 1, 'E')
 
       mars_rover.move(['f'])
