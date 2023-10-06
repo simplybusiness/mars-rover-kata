@@ -12,9 +12,15 @@ class Rover
     SOUTH = 'S'
    
     def initialize (coordinates:[0,0], direction: NORTH)
+      if coordinates.is_a?(Coordinate)
+        @coordinate_position = coordinates
+        @position[0] = coordinates.x
+        @position[1] = coordinates.y
+      else
         @position = coordinates
-        @direction = direction
-        @coordinate_position = Coordinate.new(x= @position[0], y= @position[1])
+        @coordinate_position = Coordinate.new(x = coordinates[0], y = coordinates[1])
+      end
+      @direction = direction
     end
 
     def turn_right
