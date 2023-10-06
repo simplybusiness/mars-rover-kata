@@ -37,7 +37,8 @@ describe Rover do
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
-      rover = Rover.new(coordinates:[3,4])
+      # rover = Rover.new(coordinates:[3,4])
+      rover = Rover.new(coordinates:Coordinate.new(x=3, y=4))
       expect {rover.move(['x','y'])}.to raise_error "ArgumentError"
     end
 
