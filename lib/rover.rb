@@ -14,7 +14,7 @@ class Rover
     def initialize (coordinates:[0,0], direction: NORTH)
         @position = coordinates
         @direction = direction
-        @coordinate_position = Coordinate.new(x: @position[0], y: @position[1])
+        @coordinate_position = Coordinate.new(x= @position[0], y= @position[1])
     end
 
     def turn_right
@@ -47,33 +47,44 @@ class Rover
       # determine which element of position gets changed
       current_x = @position[0]
       current_y = @position[1]
-      
+      current_x = @coordinate_position.x
+      current_y = @coordinate_position.y
+
       case @direction
       when SOUTH
         @position[1] = current_y - 1
+        @coordinate_position.y = current_y - 1
       when NORTH
         @position[1] = current_y + 1
+        @coordinate_position.y = current_y + 1
       when EAST
         @position[0] = current_x + 1
-        puts "current_position: #{@position[0]}"
+        @coordinate_position.x = current_x + 1
       when WEST
         @position[0] = current_x - 1
+        @coordinate_position.x = current_x - 1
       end
     end
 
     def move_backward
       current_x = @position[0]
       current_y = @position[1]
+      current_x = @coordinate_position.x
+      current_y = @coordinate_position.y
 
       case @direction
       when SOUTH
         @position[1] = current_y + 1
+        @coordinate_position.y = current_y + 1
       when NORTH
         @position[1] = current_y - 1
+        @coordinate_position.y = current_y - 1
       when EAST
         @position[0] = current_x - 1
+        @coordinate_position.x = current_x - 1
       when WEST
         @position[0] = current_x + 1
+        @coordinate_position.x = current_x + 1
       end
     end
 
