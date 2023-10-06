@@ -16,8 +16,11 @@ class MarsRover
     @commands = commands
 
     @commands.each do |command|
-      if command == 'f'
+      case command
+      when 'f'
         move_forward
+      when 'b'
+        move_backward
       end
     end
   end
@@ -34,6 +37,12 @@ class MarsRover
       @point = OpenStruct.new(x: @point.x - 1, y: @point.y)
     when 'N'
       @point = OpenStruct.new(x: @point.x, y: @point.y + 1)
+    end
+  end
+
+  def move_backwards
+    if @direction ==  'N'
+      @point = OpenStruct.new(x: @point.x, y: @point.y - 1 )
     end
   end
 end

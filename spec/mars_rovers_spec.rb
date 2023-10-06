@@ -92,7 +92,6 @@ describe MarsRover do
   end
 
   it 'moves backwards when facing north' do
-    pending('Homework')
     mars_rover = MarsRover.new('N', OpenStruct.new(x: 0, y: 1))
 
     mars_rover.add_commands(%w[b])
