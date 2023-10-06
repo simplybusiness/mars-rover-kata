@@ -55,7 +55,6 @@ describe Rover do
     
     
     directions_mapping_right.each do |start_direction,expected_direction|
-      # puts directions
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
         rover.move(['r'])
