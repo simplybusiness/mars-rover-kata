@@ -1,8 +1,8 @@
 class Coordinate
-    attr_accessor :xpos, :ypos
+    attr_accessor :x, :y
 
-    def initialize (xpos=0, ypos=0)
-        @xpos = xpos
-        @ypos = ypos
+    def initialize (x=0, y=0)
+        @x = x
+        @y = y
     end
 end
