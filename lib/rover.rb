@@ -1,5 +1,7 @@
+require 'coordinate'
+
 class Rover
-    attr_reader :position, :direction
+    attr_reader :position, :direction, :coordinate_position
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
@@ -12,6 +14,7 @@ class Rover
     def initialize (coordinates:[0,0], direction: NORTH)
         @position = coordinates
         @direction = direction
+        @coordinate_position = Coordinate.new(x: @position[0], y: @position[1])
     end
 
     def turn_right
