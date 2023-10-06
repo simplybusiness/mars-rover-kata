@@ -1,10 +1,12 @@
 require_relative '../lib/rover.rb'
+require_relative '../lib/coordinate.rb'
 
 describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
-      expect(rover.position).to eq([0,0])
+      expect(rover.coordinate_position.x).to eq(0)
+      expect(rover.coordinate_position.y).to eq(0)
     end
 
     it 'has position matching the coordinates it was initialized with' do
