@@ -1,4 +1,5 @@
 require "ostruct"
+require_relative "coordinate"
 
 class Rover
     attr_reader :position, :direction, :coordinate_position
@@ -14,9 +15,14 @@ class Rover
     
 
     def initialize (coordinates:[0,0], direction: NORTH)
-        @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])
-        @position = coordinates
-        @direction = direction
+      if coordinates.is_a?(Coordinate)
+        @coordinate_position = coordinates
+      else
+        @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])  
+      end
+      
+      @position = [@coordinate_position.x, @coordinate_position.y]
+      @direction = direction
     end
 
     def turn_right
