@@ -29,10 +29,11 @@ describe Rover do
 
   describe '#move' do
     it 'does not move if it receives an empty route' do
-      rover = Rover.new(coordinates:[3,4])
+      start_position = Coordinate.new(x=3, y=4)
+      rover = Rover.new(coordinates:start_position)
       rover.move([])
-      expect(rover.position[0]).to eq(3)
-      expect(rover.position[1]).to eq(4)
+      expect(rover.coordinate_position.x).to eq(3)
+      expect(rover.coordinate_position.y).to eq(4)
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
