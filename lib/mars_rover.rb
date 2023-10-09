@@ -2,18 +2,15 @@
 require 'ostruct'
 
 class MarsRover
-  attr_reader :point, :direction, :commands
+  attr_reader :point, :direction
 
   def initialize(direction, point)
     @point = point
     @direction = direction
-    @commands = []
   end
 
   def add_commands(commands)
     return unless commands.is_a?(Array) && commands.length > 0
-
-    @commands = commands
 
     commands.each do |command|
       case command
