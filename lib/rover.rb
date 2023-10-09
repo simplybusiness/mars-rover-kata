@@ -14,12 +14,12 @@ class Rover
    
     
 
-    def initialize (coordinates:[0,0], direction: NORTH)
-      if coordinates.is_a?(Coordinate)
+    def initialize (coordinates:Coordinate.new(x=0, y=0), direction: NORTH)
+      # if coordinates.is_a?(Coordinate)
         @coordinate_position = coordinates
-      else
-        @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])  
-      end
+      # else
+      #   @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])  
+      # end
       
       @position = [@coordinate_position.x, @coordinate_position.y]
       @direction = direction
