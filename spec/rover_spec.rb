@@ -87,7 +87,7 @@ describe Rover do
     end
     
     it "does face North when receives a two right and two left commands in the route and starting direction of North" do
-      rover = Rover.new(direction: 'N', coordinates:[3,4])
+      rover = Rover.new(direction: 'N', coordinates:Coordinate.new(x=3, y=4))
       rover.move(['r','r','l','l'])
       expect(rover.direction).to eq('N')
     end
