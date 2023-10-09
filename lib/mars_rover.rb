@@ -9,7 +9,7 @@ class MarsRover
     @direction = direction
   end
 
-  def add_commands(commands)
+  def execute_commands(commands)
     return unless commands.is_a?(Array) && commands.length > 0
 
     commands.each do |command|
