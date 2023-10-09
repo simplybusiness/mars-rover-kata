@@ -15,7 +15,7 @@ class MarsRover
 
     @commands = commands
 
-    @commands.each do |command|
+    commands.each do |command|
       case command
       when 'f'
         move_forward
