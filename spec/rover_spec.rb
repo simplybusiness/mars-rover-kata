@@ -80,7 +80,7 @@ describe Rover do
     directions_mapping_3x_right.each do |start_direction,expected_direction|
       # puts directions
       it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
-        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover = Rover.new(direction: start_direction, coordinates:Coordinate.new(x=3, y=4))
         rover.move(['r','r','r'])
         expect(rover.direction).to eq(expected_direction)
       end
