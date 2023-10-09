@@ -92,17 +92,18 @@ describe Rover do
       expect(rover.direction).to eq('N')
     end
 
-    directions_mapping_forward = { 'N' => [3,5],
-    'S' => [3,3],
-    'W' => [2,4],
-    'E' => [4,4]
+    directions_mapping_forward = { 'N' => Coordinate.new(x=3, y=5),
+      'S' => Coordinate.new(x=3, y=3),
+      'W' => Coordinate.new(x=2, y=4),
+      'E' => Coordinate.new(x=4, y=4)
     }    
 
     directions_mapping_forward.each do |start_direction,expected_position|
       it "does move forward when receives a single forward command with direction #{start_direction}" do
-        rover = Rover.new(direction: start_direction, coordinates:[3,4])
+        rover = Rover.new(direction: start_direction, coordinates:Coordinate.new(x=3, y=4))
         rover.move(['f'])
-        expect(rover.coordinate_position).to eq(OpenStruct.new(x:expected_position[0], y:expected_position[1]))
+        expect(rover.coordinate_position.x).to eq(expected_position.x)
+        expect(rover.coordinate_position.y).to eq(expected_position.y)
       end
     end
     
