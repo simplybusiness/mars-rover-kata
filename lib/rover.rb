@@ -1,8 +1,7 @@
-require "ostruct"
 require_relative "coordinate"
 
 class Rover
-    attr_reader :position, :direction, :coordinate_position
+    attr_reader :direction, :coordinate_position
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
@@ -11,18 +10,29 @@ class Rover
     WEST = 'W'
     EAST = 'E'
     SOUTH = 'S'
-   
-    
 
     def initialize (coordinates:Coordinate.new(x=0, y=0), direction: NORTH)
-      # if coordinates.is_a?(Coordinate)
-        @coordinate_position = coordinates
-      # else
-      #   @coordinate_position = OpenStruct.new(x:coordinates[0], y:coordinates[1])  
-      # end
-      
-      @position = [@coordinate_position.x, @coordinate_position.y]
+      @coordinate_position = coordinates
       @direction = direction
+    end
+
+    def move (route)
+      if route.any?
+        route.each do |direction|
+          case direction
+          when LEFT 
+            turn_left
+          when RIGHT
+            turn_right
+          when FORWARD
+            move_forward
+          when BACKWARD
+            move_backward
+          else
+            raise ArgumentError
+          end
+        end
+      end
     end
 
     def turn_right
@@ -52,66 +62,35 @@ class Rover
     end
 
     def move_forward
-      # determine which element of position gets changed
-      current_x = @position[0]
-      current_y = @position[1]
       current_x = @coordinate_position.x
       current_y = @coordinate_position.y
             
       case @direction
       when SOUTH
-        @position[1] = current_y - 1
         @coordinate_position.y = current_y - 1
       when NORTH
-        @position[1] = current_y + 1
         @coordinate_position.y = current_y + 1
       when EAST
-        @position[0] = current_x + 1
         @coordinate_position.x = current_x + 1
       when WEST
-        @position[0] = current_x - 1
         @coordinate_position.x = current_x - 1
       end
     end
 
     def move_backward
-      current_x = @position[0]
-      current_y = @position[1]
       current_x = @coordinate_position.x
       current_y = @coordinate_position.y
 
       case @direction
       when SOUTH
-        @position[1] = current_y + 1
         @coordinate_position.y = current_y + 1
       when NORTH
-        @position[1] = current_y - 1
         @coordinate_position.y = current_y - 1
       when EAST
-        @position[0] = current_x - 1
         @coordinate_position.x = current_x - 1
       when WEST
-        @position[0] = current_x + 1
         @coordinate_position.x = current_x + 1
       end
     end
 
-    def move (route)
-      if route.any?
-        route.each do |direction|
-          case direction
-          when LEFT 
-            turn_left
-          when RIGHT
-            turn_right
-          when FORWARD
-            move_forward
-          when BACKWARD
-            move_backward
-          else
-            raise ArgumentError
-          end
-        end
-      end
-    end
 end
