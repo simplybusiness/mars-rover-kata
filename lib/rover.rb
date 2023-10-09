@@ -55,6 +55,8 @@ class Rover
       # determine which element of position gets changed
       current_x = @position[0]
       current_y = @position[1]
+      current_x = @coordinate_position.x
+      current_y = @coordinate_position.y
             
       case @direction
       when SOUTH
@@ -75,6 +77,8 @@ class Rover
     def move_backward
       current_x = @position[0]
       current_y = @position[1]
+      current_x = @coordinate_position.x
+      current_y = @coordinate_position.y
 
       case @direction
       when SOUTH
