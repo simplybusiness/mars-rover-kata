@@ -5,4 +5,8 @@ class Coordinates
     @x = x
     @y = y
   end
+
+  def to_s
+    "(#{@x},#{@y})"
+  end
 end

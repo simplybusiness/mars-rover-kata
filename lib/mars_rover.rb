@@ -8,4 +8,8 @@ class MarsRover
     @current_position = starting_position
     @direction = direction
   end
+
+  def inspect
+    "'a Mars Rover located at #{@current_position} facing #{@direction}'"
+  end
 end
