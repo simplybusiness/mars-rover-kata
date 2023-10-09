@@ -40,7 +40,7 @@ class MarsRover
     end
   end
 
-  def move_backwards
+  def move_backward
     if @direction ==  'N'
       @point = OpenStruct.new(x: @point.x, y: @point.y - 1 )
     end
