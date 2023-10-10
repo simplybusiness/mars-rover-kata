@@ -21,13 +21,15 @@ describe MarsRover do
             expect(mars_rover.position).to eq([0,0])
         end
 
-        it "raises an error when direction passed is not N,S,E,W" do 
+        it "raises an error when direction passed is not N,S,E,W" do
             expect { MarsRover.new([0,0], "X") }.to raise_error(ArgumentError, 'Direction is not valid, use one of (N,S,E,W)')
         end
 
-        it "has a current direction equal to the direction passed on the initialization" do 
-            mars_rover = MarsRover.new([0, 0], "N")
-            expect(mars_rover.direction).to eq("N")
+        it "has a current direction equal to the direction passed on the initialization" do
+            ['N', 'S', 'E', 'W'].each do |direction|
+                mars_rover = MarsRover.new([0, 0], direction)
+                expect(mars_rover.direction).to eq(direction)
+            end
         end
     end
 end
