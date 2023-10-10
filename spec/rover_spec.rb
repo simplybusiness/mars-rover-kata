@@ -3,7 +3,7 @@ require_relative '../lib/coordinate.rb'
 
 describe Rover do
   describe '#init' do
-    it 'has an initial position of 0,0 when not given an explicit start point' do
+    it 'has an initial x and y coordinate of 0 when not given an explicit start point' do
       rover = Rover.new
       expect(rover.coordinate_position.x).to eq(0)
       expect(rover.coordinate_position.y).to eq(0)
@@ -47,13 +47,6 @@ describe Rover do
                            'E' => 'S'
     }
 
-    directions_mapping_left = { 'N' => 'W',
-                          'S' => 'E',
-                          'W' => 'S',
-                          'E' => 'N'
-                          }
-    
-    
     directions_mapping_right.each do |start_direction,expected_direction|
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:Coordinate.new(x=3, y=4))
@@ -62,8 +55,13 @@ describe Rover do
       end
     end
 
+    directions_mapping_left = { 'N' => 'W',
+      'S' => 'E',
+      'W' => 'S',
+      'E' => 'N'
+      }
+
     directions_mapping_left.each do |start_direction,expected_direction|
-      # puts directions
       it "does face #{expected_direction} when receives a single left command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:Coordinate.new(x=3, y=4))
         rover.move(['l'])
@@ -78,7 +76,6 @@ describe Rover do
     }
 
     directions_mapping_3x_right.each do |start_direction,expected_direction|
-      # puts directions
       it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:Coordinate.new(x=3, y=4))
         rover.move(['r','r','r'])
