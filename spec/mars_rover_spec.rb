@@ -24,7 +24,8 @@ describe MarsRover do
         end
 
         it "raises an error when direction passed is not N,S,E,W" do
-            expect { MarsRover.new([0,0], "X") }.to raise_error(ArgumentError, 'Direction is not valid, use one of (N,S,E,W)')
+            # expect { MarsRover.new([0,0], "X") }.to raise_error(ArgumentError, 'Direction is not valid, use one of (N,S,E,W)')
+            expect { MarsRover.new(Coordinate.new(x: 0, y: 0), "X") }.to raise_error(ArgumentError, 'Direction is not valid, use one of (N,S,E,W)')
         end
 
         it "has a current direction equal to the direction passed on the initialization" do
