@@ -25,7 +25,9 @@ describe MarsRover do
             expect { MarsRover.new([0,0], "X") }.to raise_error(ArgumentError, 'Direction is not valid, use one of (N,S,E,W)')
         end
 
-        xit "has a current direction equal to the direction passed on the initialization" do 
+        it "has a current direction equal to the direction passed on the initialization" do 
+            mars_rover = MarsRover.new([0, 0], "N")
+            expect(mars_rover.direction).to eq("N")
         end
     end
 end
