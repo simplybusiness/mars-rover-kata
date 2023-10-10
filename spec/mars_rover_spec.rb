@@ -1,5 +1,6 @@
 # Req 1: You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
 require_relative "spec_helper"
+require_relative "../lib/coordinate"
 require_relative "../lib/mars_rover"
 
 describe MarsRover do
@@ -9,7 +10,7 @@ describe MarsRover do
         end
 
         it "raise an error when initialized with non integers as start position" do
-            expect { MarsRover.new(["abc", "def"], "N") }.to raise_error(ArgumentError, 'Starting point should have Integer coordinates')
+            expect { MarsRover.new(Coordinate.new('abc', 'def'), "N") }.to raise_error(ArgumentError, 'Starting point should have Integer coordinates')
         end
 
         it 'raises an error when only one coordinate for starting point is provided' do
