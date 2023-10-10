@@ -5,10 +5,7 @@ class MarsRover
     attr_reader :direction
 
     def initialize(starting_point, direction)
-        if starting_point.is_a?(Array)
-            raise ArgumentError.new('Starting point should have [x, y] coordinate') unless starting_point.length == 2
-            raise ArgumentError.new('Starting point should have Integer coordinates') unless starting_point[0].is_a?(Integer) && starting_point[1].is_a?(Integer)
-        end
+        raise ArgumentError.new('starting_point should be a Coordinate data type') unless starting_point.is_a?(Coordinate)
         raise ArgumentError.new('Direction is not valid, use one of (N,S,E,W)') unless ['N','E','S','W'].include?(direction)
 
         @position = starting_point

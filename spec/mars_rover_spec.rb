@@ -26,5 +26,9 @@ describe MarsRover do
                 expect(mars_rover.direction).to eq(direction)
             end
         end
+
+        it "raises an error when starting_point is not a Coordinate" do
+            expect { MarsRover.new("start", "N") }.to raise_error(ArgumentError, 'starting_point should be a Coordinate data type')
+        end
     end
 end
