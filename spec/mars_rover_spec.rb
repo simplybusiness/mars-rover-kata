@@ -18,8 +18,9 @@ describe MarsRover do
         end
 
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
-            mars_rover = MarsRover.new([0, 0], "N")
-            expect(mars_rover.position).to eq([0,0])
+            starting_point = Coordinate.new(x: 0, y: 0)
+            mars_rover = MarsRover.new(starting_point, "N")
+            expect(mars_rover.position).to eq(starting_point)
         end
 
         it "raises an error when direction passed is not N,S,E,W" do
