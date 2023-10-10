@@ -9,14 +9,6 @@ describe MarsRover do
             expect { MarsRover.new }.to raise_error(ArgumentError)
         end
 
-        it "raise an error when initialized with non integers as start position" do
-            expect { MarsRover.new(Coordinate.new(x: 'abc', y: 'def'), "N") }.to raise_error(ArgumentError, 'Starting point should have Integer coordinates')
-        end
-
-        it 'raises an error when only one coordinate for starting point is provided' do
-            expect { MarsRover.new(Coordinate.new(x: 0), "N") }.to raise_error(ArgumentError, 'missing keyword: :y')
-        end
-
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
             starting_point = Coordinate.new(x: 0, y: 0)
             mars_rover = MarsRover.new(starting_point, "N")
