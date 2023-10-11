@@ -58,4 +58,11 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'moves forwards when facing south'
     it 'moves forwards when facing west'
   end
+
+  describe 'moving backwards' do
+    it 'moves backwards when facing north'
+    it 'moves backwards when facing east'
+    it 'moves backwards when facing south'
+    it 'moves backwards when facing west'
+  end
 end
