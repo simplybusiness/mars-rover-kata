@@ -44,7 +44,7 @@ RSpec.describe 'Operating a Mars Rover' do
     end
   end
 
-  it 'receives an list of commands' do
+  it 'receives a list of commands' do
     mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: -1), direction: 'S')
 
     expect(mars_rover).to respond_to(:execute).with(1)
