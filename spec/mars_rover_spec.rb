@@ -44,7 +44,7 @@ describe MarsRover do
 
         [0, 0.5, {A: 'a'}].each do |commands|
             it "raises an error for #{commands} type" do
-                expect { rover.consume(commands) }.to raise_error
+                expect { rover.consume(commands) }.to raise_error ArgumentError
             end
         end
 
