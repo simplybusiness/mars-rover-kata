@@ -33,11 +33,13 @@ describe MarsRover do
     end
 
     describe "#consume" do
-        let(:rover) {described_class.new()}
+        let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'N')}
         it "expects an array of characters" do
+            expect { rover.consume(['f', 'f', 'r']) }.not_to raise_error
         end
 
         it "expects a string" do
+            expect { rover.consume("ffr") }.not_to raise_error
         end
 
     end

@@ -11,4 +11,10 @@ class MarsRover
         @position = starting_point
         @direction = direction
     end
+
+    def consume(commands) 
+        raise ArgumentError.new("Commands should be of Char Array or String format") unless 
+        ((commands.is_a? Array) || (commands.is_a? String))
+
+    end
 end
