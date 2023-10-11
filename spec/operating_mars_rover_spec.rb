@@ -4,9 +4,9 @@ RSpec.describe 'Operating a Mars Rover' do
   it 'has a starting position at the origin' do
     mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'E')
 
-    expected_location = Coordinates.new(x: 0, y: 0)
-    expect(mars_rover.current_position.x).to eq(expected_location.x)
-    expect(mars_rover.current_position.y).to eq(expected_location.y)
+    expected_position = Coordinates.new(x: 0, y: 0)
+    expect(mars_rover.current_position.x).to eq(expected_position.x)
+    expect(mars_rover.current_position.y).to eq(expected_position.y)
   end
 
   it 'has a starting position anywhere away from an origin' do
