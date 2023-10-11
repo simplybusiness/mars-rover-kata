@@ -17,8 +17,15 @@ class MarsRover
     @cardinal_direction = cardinal_direction.to_s
   end
 
-  def change_position(routes_list) 
-    @y_pos = 1
+  def change_position(routes_list)
+    current_xpos = @x_pos
+    current_ypos = @y_pos
+
+    routes_list.route_steps.each do | route_step |
+      current_ypos += 1
+    end
+
+    @y_pos = current_ypos
   end
 end
 

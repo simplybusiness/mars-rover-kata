@@ -44,11 +44,20 @@ RSpec.describe MarsRover do
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
       end
 
-      it 'moves forward' do
+      it 'moves forward when receiving a single forward command' do
         mars_rover.change_position(valid_routes_list)
 
         expect(mars_rover.x_pos).to eq(0)
         expect(mars_rover.y_pos).to eq(1)
+        expect(mars_rover.cardinal_direction).to eq('N')
+      end
+
+      it 'moves forward when receiving multiple forward commands' do
+        valid_route = RoverRoute.new(route_steps: ['f', 'f'])
+        mars_rover.change_position(valid_route)
+
+        expect(mars_rover.x_pos).to eq(0)
+        expect(mars_rover.y_pos).to eq(2)
         expect(mars_rover.cardinal_direction).to eq('N')
       end
     end
