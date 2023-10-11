@@ -5,7 +5,7 @@ require_relative "../lib/mars_rover"
 
 describe MarsRover do
     describe "#initialise" do
-        let(:starting_point) { Coordinate.new(x: 0, y: 0) }
+        let(:starting_point) { Coordinates.new(x: 0, y: 0) }
 
         it "raise an error when initialized without a start position" do
             expect { MarsRover.new }.to raise_error(ArgumentError)
