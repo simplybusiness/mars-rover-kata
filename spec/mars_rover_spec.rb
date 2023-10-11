@@ -32,4 +32,16 @@ RSpec.describe MarsRover do
       end
     end
   end
+
+  describe '#change_position' do
+    let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
+
+    context '[when commands are valid]' do
+      let(:valid_routes_list) { ['f', 'b'] }
+
+      it 'does not raise an error' do
+        expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
+      end
+    end
+  end
 end

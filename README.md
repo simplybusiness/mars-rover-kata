@@ -8,11 +8,11 @@ Practise Object Oriented Design its deep synergy with TDD. More details may be f
 Included are minitest and rspec. Pick one that you feel comfortable with or would like to explore.
 
 ## Incremental Kata - no peeping ahead!
-This is an incremental kata to simulate a real business situation: work your way 
+This is an incremental kata to simulate a real business situation: work your way
 through the steps in order, but do not read the next requirement before you have finished your current one.
 
 ## Your Task
-You’re part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet. 
+You’re part of the team that explores Mars by sending remotely controlled vehicles to the surface of the planet.
 Develop an API that translates the commands sent from earth to instructions that are understood by the rover.
 
 ## Requirements

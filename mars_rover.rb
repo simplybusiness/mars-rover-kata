@@ -16,6 +16,9 @@ class MarsRover
     @y_pos = y_pos.to_f
     @cardinal_direction = cardinal_direction.to_s
   end
+
+  def change_position(routes_list)
+  end
 end
 
 private
