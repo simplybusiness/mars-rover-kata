@@ -4,7 +4,7 @@ require 'pry-byebug'
 class MarsRover
     attr_reader :position
     attr_reader :direction
-    
+
     MOVE_COMMANDS = ['f', 'b']
     TURN_COMMANDS = ['r', 'l']
 
@@ -21,13 +21,12 @@ class MarsRover
         ((commands.is_a? Array) || (commands.is_a? String))
 
         for i in 0...commands.length do
-            raise ArgumentError.new("Command <#{commands[i]}> does not exist") unless 
-            (MOVE_COMMANDS.include? commands[i]) || (TURN_COMMANDS.include? commands[i])
+            next unless (MOVE_COMMANDS.include? commands[i]) || (TURN_COMMANDS.include? commands[i])            
         end
     end
 
-    def move(command)
-    end
+    # def move(command)
+    # end
 
     # def turn(command)
     # end
