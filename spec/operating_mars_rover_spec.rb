@@ -65,4 +65,7 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'moves backwards when facing south'
     it 'moves backwards when facing west'
   end
+
+  it 'does not execute any commands it does not recognise'
+  it 'fails to execute any commands it does not recognise by raising an exception'
 end
