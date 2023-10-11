@@ -48,12 +48,16 @@ describe MarsRover do
             end
         end
 
-        context "for commands other than f,b,l,r" do
-            it "does nothing"
+        context "for commands moving the rover" do
+            it "moves forward for f" 
+
+            it "moves backwards for b" 
+
+            it "ends up in same position for f-b"
         end
 
-        context "for commands moving the rover" do
-
+        context "for commands other than f,b,l,r" do
+            it "does nothing"
         end
     end
 end
