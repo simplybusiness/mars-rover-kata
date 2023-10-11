@@ -53,7 +53,15 @@ RSpec.describe 'Operating a Mars Rover' do
   it 'cannot interpret commands when they are a string'
 
   describe 'moving forwards' do
-    it 'moves forwards when facing north from the origin'
+    it 'moves forwards when facing north from the origin' do
+      pending('Next test to get passing')
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
+
+      mars_rover.execute(['f'])
+
+      expect(mars_rover.current_position.x).to eq(0)
+      expect(mars_rover.current_position.y).to eq(1)
+    end
     it 'moves forwards when facing north at any starting point'
     it 'moves forwards when facing east'
     it 'moves forwards when facing south'
