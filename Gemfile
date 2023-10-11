@@ -4,3 +4,5 @@ group :test do
   gem 'minitest'
   gem 'rspec'
 end
+
+gem "pry-byebug", "~> 3.10"

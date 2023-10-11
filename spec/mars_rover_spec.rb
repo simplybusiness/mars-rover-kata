@@ -48,9 +48,25 @@ describe MarsRover do
             end
         end
 
-        # it "raises an error for commands other than f,b,l,r" do
+        context "for commands other than f,b,l,r" do
+            it "raises an error with bad array input" do
+                expect { rover.consume(['f', 'l', 0]) }.to raise_error ArgumentError
+            end
 
-        # end
+            it "raises an error with bad string input" do
+                expect { rover.consume("fl0") }.to raise_error ArgumentError
+
+            end
+
+            it "raises an error for empty input" do
+                expect { rover.consume(nil) }.to raise_error ArgumentError
+            end
+
+            it "raises an error for empty input array" do
+                expect { rover.consume([nil]) }.to raise_error ArgumentError
+            end
+
+        end
 
     end
 end

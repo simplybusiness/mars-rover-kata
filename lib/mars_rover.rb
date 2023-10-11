@@ -1,8 +1,11 @@
 require 'coordinates'
+require 'pry-byebug'
 
 class MarsRover
     attr_reader :position
     attr_reader :direction
+
+    COMMANDS = ['f', 'b', 'l', 'r']
 
     def initialize(starting_point, direction)
         raise ArgumentError.new('starting_point should be a Coordinate data type') unless starting_point.is_a?(Coordinates)
@@ -15,5 +18,10 @@ class MarsRover
     def consume(commands) 
         raise ArgumentError.new("Commands should be of Char Array or String format") unless 
         ((commands.is_a? Array) || (commands.is_a? String))
+
+        for i in 0...commands.length do
+            raise ArgumentError.new("Command <#{commands[i]}> does not exist") unless COMMANDS.include? commands[i]
+        end
+
     end
 end
