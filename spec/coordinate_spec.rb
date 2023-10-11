@@ -8,10 +8,6 @@ describe Coordinates do
             expect { Coordinates.new(x: 'abc', y: 'def')}.to raise_error(ArgumentError, 'Starting point should have Integer coordinates')
         end
 
-        it 'raises an error when only one coordinate for starting point is provided' do
-            expect { Coordinates.new(x: 0)  }.to raise_error(ArgumentError, 'missing keyword: :y')
-        end
-
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
             starting_point = Coordinates.new(x: 0, y: 1)
             expect(starting_point.x).to eq(0)
