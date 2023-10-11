@@ -42,5 +42,15 @@ describe MarsRover do
             expect { rover.consume("ffr") }.not_to raise_error
         end
 
+        it "rases an error for bad types" do
+            expect { rover.consume(0) }.to raise_error
+            expect { rover.consume(0.5) }.to raise_error
+            expect { rover.consume({A: 'a'}) }.to raise_error
+        end
+
+        # it "raises an error for commands other than f,b,l,r" do
+
+        # end
+
     end
 end

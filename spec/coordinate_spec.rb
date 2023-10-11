@@ -5,7 +5,7 @@ require_relative "../lib/coordinates"
 describe Coordinates do
     describe "#initialise" do
         it "raise an error when initialized with non integers as start position" do
-            expect { Coordinates.new(x: 'abc', y: 'def')}.to raise_error(ArgumentError, 'Starting point should have Integer coordinates')
+            expect { Coordinates.new(x: 'abc', y: 'def')}.to raise_error BadCoordinatesError
         end
 
         it "has an x coordinate and y coordinate equal to the start position passed on initialization" do
