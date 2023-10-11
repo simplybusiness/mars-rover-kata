@@ -12,8 +12,9 @@ RSpec.describe 'Operating a Mars Rover' do
   it 'has a starting position anywhere away from an origin' do
     mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: 'N')
 
-    expect(mars_rover.current_position.x).to eq(1)
-    expect(mars_rover.current_position.y).to eq(-1)
+    expected_position = Coordinates.new(x: 1, y: -1)
+    expect(mars_rover.current_position.x).to eq(expected_position.x)
+    expect(mars_rover.current_position.y).to eq(expected_position.y)
   end
 
   it 'has a direction' do
@@ -60,8 +61,9 @@ RSpec.describe 'Operating a Mars Rover' do
 
       mars_rover.execute(['f'])
 
-      expect(mars_rover.current_position.x).to eq(0)
-      expect(mars_rover.current_position.y).to eq(1)
+      expected_position = Coordinates.new(x: 0, y: 1)
+      expect(mars_rover.current_position.x).to eq(expected_position.x)
+      expect(mars_rover.current_position.y).to eq(expected_position.y)
     end
     it 'moves forwards when facing north at any starting point'
     it 'moves forwards when facing east'
