@@ -9,4 +9,8 @@ class Coordinates
   def to_s
     "(#{@x},#{@y})"
   end
+
+  def inspect
+    "(#{@x},#{@y})"
+  end
 end
