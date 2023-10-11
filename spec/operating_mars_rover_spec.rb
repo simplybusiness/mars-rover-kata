@@ -5,8 +5,7 @@ RSpec.describe 'Operating a Mars Rover' do
     mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'E')
 
     expected_position = Coordinates.new(x: 0, y: 0)
-    expect(mars_rover.current_position.x).to eq(expected_position.x)
-    expect(mars_rover.current_position.y).to eq(expected_position.y)
+    expect(mars_rover).to be_located_at(expected_position)
   end
 
   it 'has a starting position anywhere away from an origin' do
@@ -82,7 +81,7 @@ RSpec.describe 'Operating a Mars Rover' do
   it 'does not execute any commands it does not recognise'
   it 'fails to execute any commands it does not recognise by raising an exception'
 
-  RSpec::Matchers.define(:located_at) do |expected_position|
+  RSpec::Matchers.define(:be_located_at) do |expected_position|
     match do |mars_rover|
       mars_rover.current_position.x == expected_position.x && mars_rover.current_position.y == expected_position.y
     end
