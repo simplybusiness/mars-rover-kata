@@ -46,4 +46,6 @@ RSpec.describe 'Operating a Mars Rover' do
 
     expect(mars_rover).to respond_to(:execute).with(1)
   end
+
+  it 'cannot interpret commands when they are a string'
 end
