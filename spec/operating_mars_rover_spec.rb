@@ -29,9 +29,12 @@ RSpec.describe 'Operating a Mars Rover' do
     end
   end
 
-  it 'cannot be operated when it has a direction that is not north, east, south or west' do
-    expect { MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: 'Unsupported') }
-      .to raise_error('Direction must be one of N, E, S or W')
+  ['Unsupported', 'A', 1, {direction: 'north'}].each do |direction|
+    it "cannot be operated when it has a direction that is not north, east, south or west e.g. '#{direction}'" do
+      expect { MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: direction) }
+        .to raise_error('Direction must be one of N, E, S or W')
+    end
+
   end
 
   [nil, '(1, 1)', 1, 2.4].each do |starting_point|
