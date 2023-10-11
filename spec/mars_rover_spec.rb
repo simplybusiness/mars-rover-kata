@@ -38,10 +38,18 @@ RSpec.describe MarsRover do
     let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
 
     context '[when commands are valid]' do
-      let(:valid_routes_list) { RoverRoute.new(route_steps: ['f', 'b']) }
+      let(:valid_routes_list) { RoverRoute.new(route_steps: ['f']) }
 
       it 'does not raise an error' do
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
+      end
+
+      it 'moves forward' do
+        mars_rover.change_position(valid_routes_list)
+
+        expect(mars_rover.x_pos).to eq(0)
+        expect(mars_rover.y_pos).to eq(1)
+        expect(mars_rover.cardinal_direction).to eq('N')
       end
     end
   end

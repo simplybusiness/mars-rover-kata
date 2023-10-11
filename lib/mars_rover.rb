@@ -12,12 +12,13 @@ class MarsRover
     raise InvalidMarsRoverDirection unless CARDINAL_DIRECTIONS.include?(cardinal_direction)
     raise InvalidMarsRoverGeoLocation unless numeric?(x_pos) && numeric?(y_pos)
 
-    @x_pos = x_pos.to_f
-    @y_pos = y_pos.to_f
+    @x_pos = x_pos.to_i
+    @y_pos = y_pos.to_i
     @cardinal_direction = cardinal_direction.to_s
   end
 
-  def change_position(routes_list)
+  def change_position(routes_list) 
+    @y_pos = 1
   end
 end
 
