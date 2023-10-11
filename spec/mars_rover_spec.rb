@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-require_relative '../mars_rover'
+require_relative '../lib/mars_rover'
+require_relative '../lib/rover_route'
 
 RSpec.describe MarsRover do
   describe '.new' do
@@ -37,7 +38,7 @@ RSpec.describe MarsRover do
     let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
 
     context '[when commands are valid]' do
-      let(:valid_routes_list) { ['f', 'b'] }
+      let(:valid_routes_list) { RoverRoute.new(route_steps: ['f', 'b']) }
 
       it 'does not raise an error' do
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
