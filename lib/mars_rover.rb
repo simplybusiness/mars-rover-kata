@@ -1,4 +1,4 @@
-require 'coordinate'
+require 'coordinates'
 
 class MarsRover
     attr_reader :position

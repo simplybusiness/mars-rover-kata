@@ -1,6 +1,6 @@
 # Req 1: You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
 require_relative "spec_helper"
-require_relative "../lib/coordinate"
+require_relative "../lib/coordinates"
 
 describe Coordinates do
     describe "#initialise" do

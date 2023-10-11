@@ -1,6 +1,6 @@
 # Req 1: You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
 require_relative "spec_helper"
-require_relative "../lib/coordinate"
+require_relative "../lib/coordinates"
 require_relative "../lib/mars_rover"
 
 describe MarsRover do
@@ -30,5 +30,15 @@ describe MarsRover do
         it "raises an error when starting_point is not a Coordinate" do
             expect { MarsRover.new("start", "N") }.to raise_error(ArgumentError, 'starting_point should be a Coordinate data type')
         end
+    end
+
+    describe "#consume" do
+        let(:rover) {described_class.new()}
+        it "expects an array of characters" do
+        end
+
+        it "expects a string" do
+        end
+
     end
 end
