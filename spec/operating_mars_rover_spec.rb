@@ -51,4 +51,11 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   it 'cannot interpret commands when they are a string'
+
+  describe 'moving forwards' do
+    it 'moves forwards when facing north'
+    it 'moves forwards when facing east'
+    it 'moves forwards when facing south'
+    it 'moves forwards when facing west'
+  end
 end
