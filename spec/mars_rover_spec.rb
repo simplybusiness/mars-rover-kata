@@ -42,7 +42,7 @@ describe MarsRover do
             expect { rover.consume("ffr") }.not_to raise_error
         end
 
-        [0, 0.5, {A: 'a'}].each do |commands|
+        [0, 0.5, {A: 'a'}, ['f', 'X'], "random"].each do |commands|
             it "raises an error for #{commands} type" do
                 expect { rover.consume(commands) }.to raise_error ArgumentError
             end
@@ -65,8 +65,10 @@ describe MarsRover do
             it "raises an error for empty input array" do
                 expect { rover.consume([nil]) }.to raise_error ArgumentError
             end
-
         end
 
+        context "for commands moving the rover" do
+
+        end
     end
 end

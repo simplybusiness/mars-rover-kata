@@ -4,8 +4,9 @@ require 'pry-byebug'
 class MarsRover
     attr_reader :position
     attr_reader :direction
-
-    COMMANDS = ['f', 'b', 'l', 'r']
+    
+    MOVE_COMMANDS = ['f', 'b']
+    TURN_COMMANDS = ['r', 'l']
 
     def initialize(starting_point, direction)
         raise ArgumentError.new('starting_point should be a Coordinate data type') unless starting_point.is_a?(Coordinates)
@@ -20,8 +21,14 @@ class MarsRover
         ((commands.is_a? Array) || (commands.is_a? String))
 
         for i in 0...commands.length do
-            raise ArgumentError.new("Command <#{commands[i]}> does not exist") unless COMMANDS.include? commands[i]
+            raise ArgumentError.new("Command <#{commands[i]}> does not exist") unless 
+            (MOVE_COMMANDS.include? commands[i]) || (TURN_COMMANDS.include? commands[i])
         end
-
     end
+
+    def move(command)
+    end
+
+    # def turn(command)
+    # end
 end
