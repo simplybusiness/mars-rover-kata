@@ -81,4 +81,10 @@ RSpec.describe 'Operating a Mars Rover' do
 
   it 'does not execute any commands it does not recognise'
   it 'fails to execute any commands it does not recognise by raising an exception'
+
+  RSpec::Matchers.define(:located_at) do |expected_position|
+    match do |mars_rover|
+      mars_rover.current_position.x == expected_position.x && mars_rover.current_position.y == expected_position.y
+    end
+  end
 end
