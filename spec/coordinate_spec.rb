@@ -8,10 +8,9 @@ describe Coordinates do
             expect { Coordinates.new(x: 'abc', y: 'def')}.to raise_error BadCoordinatesError
         end
 
-        it "assigns coordinates correctly during initialization" do
+        it "assigns the intended position" do
             starting_point = Coordinates.new(x: 0, y: 1)
-            expect(starting_point.x).to eq(0)
-            expect(starting_point.y).to eq(1)
+            expect(starting_point).to eq(Coordinates.new(x: 0, y: 1))
         end
     end
 end
