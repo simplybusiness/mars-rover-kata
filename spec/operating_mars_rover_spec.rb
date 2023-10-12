@@ -66,6 +66,7 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'moves forwards when facing east'
     it 'moves forwards when facing south'
     it 'moves forwards when facing west'
+    it 'never changes direction'
   end
 
   describe 'moving backwards' do
@@ -74,6 +75,7 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'moves backwards when facing east'
     it 'moves backwards when facing south'
     it 'moves backwards when facing west'
+    it 'never changes direction'
   end
 
   it 'does not execute any commands it does not recognise'
