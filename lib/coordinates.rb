@@ -5,7 +5,7 @@ class Coordinates
   attr_accessor :y
 
   def initialize(x:, y:)
-      raise BadCoordinatesError.new('Starting point should have Integer coordinates') unless x.is_a?(Integer) && y.is_a?(Integer)
+      raise BadCoordinatesError.new('Position should have Integer coordinates') unless x.is_a?(Integer) && y.is_a?(Integer)
 
     @x = x
     @y = y
