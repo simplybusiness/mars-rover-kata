@@ -49,5 +49,21 @@ describe Rover do
             end
         end
 
+        context "for commands moving the rover" do
+            it "moves forward for f" do
+                initial_y = rover.position.y
+                rover.execute('f')
+                expect(rover.position.y).to eq(initial_y + 1)
+            end 
+
+            it "moves backwards for b" 
+
+            it "ends up in same position for f-b"
+        end
+
+        context "for commands other than f,b,l,r" do
+            it "does nothing"
+        end
+
     end
 end

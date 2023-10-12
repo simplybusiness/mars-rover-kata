@@ -24,13 +24,14 @@ class Rover
         for i in 0...commands.length do
             next unless (MOVE_COMMANDS.include? commands[i]) || (TURN_COMMANDS.include? commands[i])
 
-            # move(commands[i]) if MOVE_COMMANDS.include? commands[i]   
+            move(commands[i]) if MOVE_COMMANDS.include? commands[i]   
         end
     end
 
-    # def move(command)
-    #     position.
-    # end
+    def move(command)
+        return @position.y += 1 if command == 'f'
+        return @position.x += 1 if command == 'b'
+    end
 
     # def turn(command)
     # end
