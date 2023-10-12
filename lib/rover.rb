@@ -29,8 +29,22 @@ class Rover
     end
 
     def move(command)
-        return @position.y += 1 if command == 'f'
-        return @position.x += 1 if command == 'b'
+        # return @position.y += 1 if command == 'f'
+        # return @position.x += 1 if command == 'b'
+        case @direction
+        when 'N'
+            @position.y += 1 if command == 'f'
+            @position.y -= 1 if command == 'b'
+        when 'S'
+            @position.y -= 1 if command == 'f'
+            @position.y += 1 if command == 'b'
+        when 'W'
+            @position.x -= 1 if command == 'f'
+            @position.x += 1 if command == 'b'
+        when 'E'
+            @position.x += 1 if command == 'f'
+            @position.x -= 1 if command == 'b'
+        end
     end
 
     # def turn(command)

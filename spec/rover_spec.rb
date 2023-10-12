@@ -57,9 +57,9 @@ describe Rover do
             end 
 
             it "moves backwards for b" do
-                initial_x = rover.position.x
+                initial_y = rover.position.y
                 rover.execute('b')
-                expect(rover.position.x).to eq(initial_x + 1)
+                expect(rover.position.y).to eq(initial_y - 1)
             end
 
             it "ends up in same position for f-b"
