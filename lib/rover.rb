@@ -1,4 +1,5 @@
 require 'coordinate'
+require 'pry'
 
 class Rover
     attr_reader :position, :direction, :coordinate_position
@@ -10,12 +11,11 @@ class Rover
     WEST = 'W'
     EAST = 'E'
     SOUTH = 'S'
-   
+
     def initialize (coordinates:[0,0], direction: NORTH)
       if coordinates.is_a?(Coordinate)
         @coordinate_position = coordinates
-        @position[0] = coordinates.x
-        @position[1] = coordinates.y
+        @position = [coordinates.x, coordinates.y]
       else
         @position = coordinates
         @coordinate_position = Coordinate.new(x = coordinates[0], y = coordinates[1])
@@ -98,7 +98,7 @@ class Rover
       if route.any?
         route.each do |direction|
           case direction
-          when LEFT 
+          when LEFT
             turn_left
           when RIGHT
             turn_right
