@@ -7,4 +7,8 @@ class Point
     @x = x
     @y = y
   end
+
+  def coordinates
+    [@x, @y]
+  end
 end
