@@ -3,7 +3,7 @@ require_relative '../lib/coordinate.rb'
 describe Coordinate do
     describe '#init' do
         it 'has an x coordinate of 0 and a y coordinate of 0 when initialised without any parameters' do
-            coordinate = Coordinate.new(x_pos: 0, y_pos: 0)
+            coordinate = Coordinate.new
             expect(coordinate.x).to eq(0)
             expect(coordinate.y).to eq(0)
         end
