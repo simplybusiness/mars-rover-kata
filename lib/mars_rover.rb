@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 require 'ostruct'
+require_relative 'point'
 
 class MarsRover
-  attr_reader :point, :direction
+  attr_reader :point, :direction, :new_point
 
-  def initialize(direction, point)
+  def initialize(direction, point, new_point: nil)
     @point = point
+    @new_point = new_point
     @direction = direction
   end
 
