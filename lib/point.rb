@@ -15,4 +15,8 @@ class Point
   def move_x(value)
     @x += value if value.is_a?(Integer)
   end
+
+  def move_y(value)
+    @y += value if value.is_a?(Integer)
+  end
 end
