@@ -10,7 +10,7 @@ describe Rover do
     end
 
     it 'has position matching the coordinates it was initialized with' do
-      start_position = Coordinate.new(x=3, y=5)
+      start_position = Coordinate.new(x=3, y=5, x_pos: 3, y_pos: 5)
       rover = Rover.new(coordinates:start_position)
       expect(rover.coordinate_position.x).to eq(3)
       expect(rover.coordinate_position.y).to eq(5)
@@ -29,7 +29,7 @@ describe Rover do
 
   describe '#move' do
     it 'does not move if it receives an empty route' do
-      start_position = Coordinate.new(x=3, y=4)
+      start_position = Coordinate.new(x=3, y=4, x_pos: 3, y_pos: 4)
       rover = Rover.new(coordinates:start_position)
       rover.move([])
       expect(rover.coordinate_position.x).to eq(3)
@@ -37,7 +37,7 @@ describe Rover do
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
-      rover = Rover.new(coordinates:Coordinate.new(x=3, y=4))
+      rover = Rover.new(coordinates:Coordinate.new(x=3, y=4, x_pos: 3, y_pos: 4))
       expect {rover.move(['x','y'])}.to raise_error "ArgumentError"
     end
 
