@@ -1,4 +1,5 @@
 require_relative '../lib/rover.rb'
+require_relative '../lib/coordinate.rb'
 
 describe Rover do
   describe '#init' do
@@ -8,7 +9,8 @@ describe Rover do
     end
 
     it 'has position matching the coordinates it was initialized with' do
-      rover = Rover.new(coordinates:[3,5])
+      # rover = Rover.new(coordinates:[3,5])
+      rover = Rover.new(coordinates: Coordinate.new(3, 5))
       expect(rover.position[0]).to eq(3)
       expect(rover.position[1]).to eq(5)
     end
@@ -48,8 +50,8 @@ describe Rover do
                           'W' => 'S',
                           'E' => 'N'
                           }
-    
-    
+
+
     directions_mapping_right.each do |start_direction,expected_direction|
       # puts directions
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
@@ -82,7 +84,7 @@ describe Rover do
         expect(rover.direction).to eq(expected_direction)
       end
     end
-    
+
     it "does face North when receives a two right and two left commands in the route and starting direction of North" do
       rover = Rover.new(direction: 'N', coordinates:[3,4])
       rover.move(['r','r','l','l'])
@@ -93,7 +95,7 @@ describe Rover do
     'S' => [3,3],
     'W' => [2,4],
     'E' => [4,4]
-    }    
+    }
 
     directions_mapping_forward.each do |start_direction,expected_position|
       it "does move forward when receives a single forward command with direction #{start_direction}" do
@@ -102,12 +104,12 @@ describe Rover do
         expect(rover.position).to eq(expected_position)
       end
     end
-    
+
     directions_mapping_backward = { 'N' => [3,3],
       'S' => [3,5],
       'W' => [4,4],
       'E' => [2,4]
-    }    
+    }
     directions_mapping_backward.each do |start_direction,expected_position|
       it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates:[3,4])
