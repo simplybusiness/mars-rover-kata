@@ -9,7 +9,7 @@ describe Coordinate do
         end
 
         it 'has an x coordinate and a y coordinate the same as that it was initialised with' do
-            coordinate = Coordinate.new(3,4, x_pos: 3, y_pos: 4)
+            coordinate = Coordinate.new(3, 4, x_pos: 3, y_pos: 4)
             expect(coordinate.x).to eq(3)
             expect(coordinate.y).to eq(4)
         end

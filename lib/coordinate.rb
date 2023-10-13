@@ -5,4 +5,12 @@ class Coordinate
     @x = x
     @y = y
   end
+
+  def x_position
+    @x
+  end
+
+  def y_position
+    @y
+  end
 end
