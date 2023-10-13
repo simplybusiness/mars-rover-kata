@@ -24,6 +24,12 @@ Develop an API that translates the commands sent from earth to instructions that
 - Implement wrapping at edges. But be careful, planets are spheres.
 - Implement obstacle detection before each move to a new square. If a given sequence of commands encounters an obstacle, the rover moves up to the last possible point, aborts the sequence and reports the obstacle.
 
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+13-Oct: we were begining to use the coordinate object rather than a two dimensional array (primitive obsession)
+        Next task is to use mars_rover's @coordinate_position instance variable (which contains a coordinate class) instead of @position in specs
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ## Rules
 - TDD. No Excuses!
 - Change roles (driver, navigator) after each TDD cycle.
