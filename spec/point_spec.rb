@@ -9,7 +9,6 @@ describe Point do
   end
 
   it 'moves the x coordinate by a specific number' do
-    pending("TODO")
     point =  Point.new(0, 0)
 
     point.move_x(1)
@@ -18,7 +17,6 @@ describe Point do
   end
 
   it 'does not move the x coordinate if the number is not an integer' do
-    pending("TODO")
     point =  Point.new(0, 0)
 
     point.move_x(1.0)
