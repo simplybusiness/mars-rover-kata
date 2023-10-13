@@ -62,18 +62,22 @@ class Rover
   end
 
   def move_forward
-    current_x = @coordinate_position.x
+    current_x = @coordinate_position.x_position
     current_y = @coordinate_position.y
 
     case @direction
     when SOUTH
       @coordinate_position.y = current_y - 1
+      @coordinate_position.y_position = current_y - 1
     when NORTH
       @coordinate_position.y = current_y + 1
+      @coordinate_position.y_position = current_y + 1
     when EAST
       @coordinate_position.x = current_x + 1
+      @coordinate_position.x_position = current_x + 1
     when WEST
       @coordinate_position.x = current_x - 1
+      @coordinate_position.x_position = current_x - 1
     end
   end
 
@@ -84,12 +88,16 @@ class Rover
     case @direction
     when SOUTH
       @coordinate_position.y = current_y + 1
+      @coordinate_position.y_position = current_y + 1
     when NORTH
       @coordinate_position.y = current_y - 1
+      @coordinate_position.y_position = current_y - 1
     when EAST
       @coordinate_position.x = current_x - 1
+      @coordinate_position.x_position = current_x - 1
     when WEST
       @coordinate_position.x = current_x + 1
+      @coordinate_position.x_position = current_x + 1
     end
   end
 end
