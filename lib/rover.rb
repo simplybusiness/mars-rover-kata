@@ -11,7 +11,7 @@ class Rover
   EAST = "E"
   SOUTH = "S"
 
-  def initialize(coordinates: Coordinate.new(x = 0, y = 0), direction: NORTH)
+  def initialize(coordinates: Coordinate.new(x = 0, y = 0, x_pos: 0, y_pos: 0), direction: NORTH)
     @coordinate_position = coordinates
     @direction = direction
   end
