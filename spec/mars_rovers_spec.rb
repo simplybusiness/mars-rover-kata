@@ -6,14 +6,17 @@ describe MarsRover do
   end
 
   it 'has a starting position of (2,3)' do
-    mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3))
+    mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3), Point.new(2,3))
 
     point = mars_rover.point
+    new_point = mars_rover.new_point
+
     expect(point).to eq OpenStruct.new(x: 2, y: 3)
+    expect(new_point.coordinates).to eq [2,3]
   end
 
   it 'has a starting facing direction of N' do
-    mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3))
+    mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3), Point.new(2,3))
 
     expect(mars_rover.direction).to eq 'N'
   end
