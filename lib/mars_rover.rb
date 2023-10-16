@@ -27,27 +27,21 @@ class MarsRover
   def move_forward
     case point.direction
     when 'E'
-      @point.move_x(1)
-      @point.new_move_x(1)
+      @point = @point.new_move_x(1)
     when 'S'
-      @point.move_y(-1)
-      @point.new_move_y(-1)
+      @point = @point.new_move_y(-1)
     when 'W'
-      @point.move_x(-1)
-      @point.new_move_x(-1)
+      @point = @point.new_move_x(-1)
     when 'N'
-      @point.move_y(1)
-      @point.new_move_y(1)
+      @point = @point.new_move_y(1)
     end
   end
 
   def move_backward
     if point.direction ==  'N'
-      @point.move_y(-1)
-      @point.new_move_y(-1)
+      @point = @point.new_move_y(-1)
     elsif point.direction == 'S'
-      @point.move_y(1)
-      @point.new_move_y(1)
+      @point = @point.new_move_y(1)
     end
   end
 end
