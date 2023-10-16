@@ -61,7 +61,7 @@ RSpec.describe MarsRover do
       directions_mapping_forward_multiple = { 'N' => [0,2], 'S' => [0,-2], 'E' => [2,0], 'W' => [-2,0] }
 
       directions_mapping_forward_multiple.each do | start_direction, expected_position |
-        xit 'moves forward when receiving multiple forward commands and its facing #{start_direction}' do
+        it 'moves forward when receiving multiple forward commands and its facing #{start_direction}' do
           mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['f', 'f'])
           mars_rover.change_position(valid_route)
