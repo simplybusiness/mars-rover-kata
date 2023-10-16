@@ -2,6 +2,7 @@ require_relative '../lib/mars_rover'
 
 describe MarsRover do
   it 'has a starting position of (2,3)' do
+    pending("TODO")
     mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3), Point.new(2,3, 'N'))
 
     point = mars_rover.point
@@ -9,6 +10,7 @@ describe MarsRover do
 
     expect(point).to eq OpenStruct.new(x: 2, y: 3)
     expect(new_point.coordinates).to eq '[2 3]'
+    expect(new_point.coordinates_with_direction).to eq '[2 3 N]'
   end
 
   it 'has a starting facing direction of N' do

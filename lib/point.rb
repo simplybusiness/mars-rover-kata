@@ -12,7 +12,7 @@ class Point
   def coordinates
     '[%d %d]' % [@x, @y]
   end
-
+  
   def move_x(value)
     @x += value if value.is_a?(Integer)
   end
