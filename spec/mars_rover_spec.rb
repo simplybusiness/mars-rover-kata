@@ -38,9 +38,9 @@ RSpec.describe MarsRover do
     let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
 
     context '[when commands are valid]' do
-      let(:valid_routes_list) { RoverRoute.new(route_steps: ['f']) }
 
       it 'does not raise an error' do
+        valid_routes_list = RoverRoute.new(route_steps: ['f'])
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
       end
 
@@ -61,6 +61,15 @@ RSpec.describe MarsRover do
         expect(mars_rover.y_pos).to eq(2)
         expect(mars_rover.cardinal_direction).to eq('N')
       end
+
+      xit 'moves backward when receiving a single backward command' do
+
+      end
+
+      xit 'moves backwards when receiving multiple backward commands' do
+
+      end
+
     end
   end
 end
