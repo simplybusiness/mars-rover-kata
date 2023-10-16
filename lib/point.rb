@@ -10,10 +10,6 @@ class Point
   end
 
   def coordinates
-    '[%d %d]' % [@x, @y]
-  end
-
-  def coordinates_with_direction
     '[%d %d %s]' % [@x, @y, @direction]
   end
 
