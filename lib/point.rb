@@ -23,6 +23,12 @@ class Point
     Point.new(@x+value, @y, @direction)
   end
 
+  def new_move_y(value)
+    return unless value.is_a?(Integer)
+
+    Point.new(@x, @y+value, @direction)
+  end
+
   def move_y(value)
     @y += value if value.is_a?(Integer)
   end

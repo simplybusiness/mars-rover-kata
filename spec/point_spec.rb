@@ -79,6 +79,14 @@ describe Point do
 
     expect(new_point.coordinates).to eq('[1 0 N]')
   end
+
+  it 'returns a new point [0 1 N] when a point [0 0 N] is moved east by 1' do
+    point =  Point.new(0, 0, 'E')
+
+    new_point = point.new_move_y(1)
+
+    expect(new_point.coordinates).to eq('[0 1 E]')
+  end
 end
 
 
