@@ -71,6 +71,15 @@ describe Point do
 
     expect(point.coordinates).to eq('[0 0 N]')
   end
+
+  it 'returns a new point [1 0 N] when a point [0 0 N] is moved north by 1' do
+    pending("TODO")
+    point =  Point.new(0, 0, 'N')
+
+    new_point = point.new_move_x(1)
+
+    expect(new_point.coordinates).to_eq '[1 0 N]'
+  end
 end
 
 
