@@ -13,9 +13,9 @@ describe MarsRover do
   end
 
   it 'has a starting position of (1,2) and a facing direction of S' do
-    mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2), Point.new(2,3, 'S'))
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2), Point.new(1,2, 'S'))
 
-    expect(mars_rover.new_point.coordinates_with_direction).to eq '[2 3 S]'
+    expect(mars_rover.new_point.coordinates_with_direction).to eq '[1 2 S]'
   end
 
   it 'does not process unrecognised commands (e.g. command y)'
