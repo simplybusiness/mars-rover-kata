@@ -5,8 +5,8 @@ require_relative 'point'
 class MarsRover
   attr_reader :point
 
-  def initialize( new_point)
-    @point = new_point
+  def initialize(point)
+    @point = point
   end
 
   def execute_commands(commands)
