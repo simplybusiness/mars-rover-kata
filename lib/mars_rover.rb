@@ -3,10 +3,10 @@ require 'ostruct'
 require_relative 'point'
 
 class MarsRover
-  attr_reader :new_point
+  attr_reader :point
 
   def initialize( new_point)
-    @new_point = new_point
+    @point = new_point
   end
 
   def execute_commands(commands)
@@ -25,23 +25,23 @@ class MarsRover
   private
 
   def move_forward
-    case new_point.direction
+    case point.direction
     when 'E'
-      @new_point.move_x(1)
+      @point.move_x(1)
     when 'S'
-      @new_point.move_y(-1)
+      @point.move_y(-1)
     when 'W'
-      @new_point.move_x(-1)
+      @point.move_x(-1)
     when 'N'
-      @new_point.move_y(1)
+      @point.move_y(1)
     end
   end
 
   def move_backward
-    if new_point.direction ==  'N'
-      @new_point.move_y(-1)
-    elsif new_point.direction == 'S'
-      @new_point.move_y(1)
+    if point.direction ==  'N'
+      @point.move_y(-1)
+    elsif point.direction == 'S'
+      @point.move_y(1)
     end
   end
 end
