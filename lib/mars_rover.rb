@@ -19,15 +19,28 @@ class MarsRover
 
   def change_position(routes_list)
     routes_list.route_steps.each do | route_step |
-      case cardinal_direction
-      when 'N'
-        @y_pos += 1
-      when 'S'
-        @y_pos -= 1
-      when 'E'
-        @x_pos += 1
-      when 'W'
-        @x_pos -= 1
+      if route_step == 'f'
+        case cardinal_direction
+        when 'N'
+          @y_pos += 1
+        when 'S'
+          @y_pos -= 1
+        when 'E'
+          @x_pos += 1
+        when 'W'
+          @x_pos -= 1
+        end
+      elsif route_step == 'b'
+        case cardinal_direction
+        when 'N'
+          @y_pos -= 1
+        when 'S'
+          @y_pos += 1
+        when 'E'
+          @x_pos -= 1
+        when 'W'
+          @x_pos += 1
+        end
       end
     end
   end
