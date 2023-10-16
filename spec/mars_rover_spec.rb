@@ -45,7 +45,8 @@ RSpec.describe MarsRover do
       end
 
       it 'moves forward when receiving a single forward command' do
-        mars_rover.change_position(valid_routes_list)
+        valid_route = RoverRoute.new(route_steps: ['f'])
+        mars_rover.change_position(valid_route)
 
         expect(mars_rover.x_pos).to eq(0)
         expect(mars_rover.y_pos).to eq(1)
