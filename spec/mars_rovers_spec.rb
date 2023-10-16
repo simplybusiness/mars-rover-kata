@@ -1,10 +1,6 @@
 require_relative '../lib/mars_rover'
 
 describe MarsRover do
-  it 'equals 2 ' do
-    expect(1 + 1).to eq 2
-  end
-
   it 'has a starting position of (2,3)' do
     mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3), Point.new(2,3, 'N'))
 
