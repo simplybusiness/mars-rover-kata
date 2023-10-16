@@ -2,7 +2,6 @@ require_relative '../lib/mars_rover'
 
 describe MarsRover do
   it 'has a starting position of (2,3)' do
-    pending("TODO")
     mars_rover = MarsRover.new( 'N', OpenStruct.new(x: 2, y: 3), Point.new(2,3, 'N'))
 
     point = mars_rover.point
