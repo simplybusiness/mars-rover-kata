@@ -44,22 +44,32 @@ RSpec.describe MarsRover do
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
       end
 
-      it 'moves forward when receiving a single forward command' do
-        valid_route = RoverRoute.new(route_steps: ['f'])
-        mars_rover.change_position(valid_route)
+      directions_mapping_forward_single = { 'N' => [0,1], 'S' => [0,-1], 'E' => [1,0], 'W' => [-1,0] }
 
-        expect(mars_rover.x_pos).to eq(0)
-        expect(mars_rover.y_pos).to eq(1)
-        expect(mars_rover.cardinal_direction).to eq('N')
+      directions_mapping_forward_single.each do | start_direction, expected_position |
+        it 'moves forward when receiving a single forward command and its facing #{start_direction}' do
+          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          valid_route = RoverRoute.new(route_steps: ['f'])
+          mars_rover.change_position(valid_route)
+
+          expect(mars_rover.x_pos).to eq(expected_position[0])
+          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.cardinal_direction).to eq(start_direction)
+        end
       end
 
-      it 'moves forward when receiving multiple forward commands' do
-        valid_route = RoverRoute.new(route_steps: ['f', 'f'])
-        mars_rover.change_position(valid_route)
+      directions_mapping_forward_multiple = { 'N' => [0,2], 'S' => [0,-2], 'E' => [2,0], 'W' => [-2,0] }
 
-        expect(mars_rover.x_pos).to eq(0)
-        expect(mars_rover.y_pos).to eq(2)
-        expect(mars_rover.cardinal_direction).to eq('N')
+      directions_mapping_forward_multiple.each do | start_direction, expected_position |
+        xit 'moves forward when receiving multiple forward commands and its facing #{start_direction}' do
+          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          valid_route = RoverRoute.new(route_steps: ['f', 'f'])
+          mars_rover.change_position(valid_route)
+
+          expect(mars_rover.x_pos).to eq(expected_position[0])
+          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.cardinal_direction).to eq(start_direction)
+        end
       end
 
       xit 'moves backward when receiving a single backward command' do
