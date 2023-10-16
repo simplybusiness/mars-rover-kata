@@ -55,6 +55,14 @@ describe Point do
 
     expect(point.coordinates).to eq('[0 0]')
   end
+
+  it 'has a starting direction of North' do
+    point =  Point.new(0, 0, 'N')
+
+    point.move_y(1.0)
+
+    expect(point.direction).to eq('N')
+  end
 end
 
 
