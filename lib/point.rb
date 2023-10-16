@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
 class Point
-  attr_reader :x, :y
+  attr_reader :x, :y, :direction
 
-  def initialize(x, y)
+  def initialize(x, y, direction = 'N')
     @x = x
     @y = y
+    @direction = direction
   end
 
   def coordinates
