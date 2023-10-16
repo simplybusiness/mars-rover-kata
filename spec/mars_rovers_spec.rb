@@ -41,46 +41,51 @@ describe MarsRover do
   end
 
   it 'moves forwards when facing south' do
-    mars_rover = MarsRover.new('S', OpenStruct.new(x: 0, y: 1))
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 0, y: 1),  Point.new(0,1))
 
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 0))
+    expect(mars_rover.new_point.coordinates).to eq [0,0]
   end
 
   it 'moves forwards when facing west' do
-    mars_rover = MarsRover.new('W', OpenStruct.new(x: 0, y: 0))
+    mars_rover = MarsRover.new('W', OpenStruct.new(x: 0, y: 0),  Point.new(0,0))
 
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: -1, y: 0))
+    expect(mars_rover.new_point.coordinates).to eq [-1,0]
     expect(mars_rover.direction).to eq('W')
   end
 
   it 'moves forwards when facing east' do
-    mars_rover = MarsRover.new('E', OpenStruct.new(x: 0, y: 0))
+    mars_rover = MarsRover.new('E', OpenStruct.new(x: 0, y: 0),  Point.new(0,0))
 
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 1, y: 0))
+    expect(mars_rover.new_point.coordinates).to eq [1,0]
     expect(mars_rover.direction).to eq('E')
   end
 
   it 'moves backwards when facing north' do
-    mars_rover = MarsRover.new('N', OpenStruct.new(x: 0, y: 1))
+    mars_rover = MarsRover.new('N', OpenStruct.new(x: 0, y: 1),  Point.new(0,1))
 
     mars_rover.execute_commands(%w[b])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 0))
+    expect(mars_rover.new_point.coordinates).to eq [0,0]
     expect(mars_rover.direction).to eq('N')
   end
 
   it 'moves backwards when facing south' do
-    mars_rover = MarsRover.new('S', OpenStruct.new(x: 0, y: 0))
+    mars_rover = MarsRover.new('S', OpenStruct.new(x: 0, y: 0),  Point.new(0,0))
 
     mars_rover.execute_commands(%w[b])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 1))
+    expect(mars_rover.new_point.coordinates).to eq [0,1]
     expect(mars_rover.direction).to eq('S')
   end
 end
