@@ -9,7 +9,7 @@ class Point
   end
 
   def coordinates
-    [@x, @y]
+    '[%d %d]' % [@x, @y]
   end
 
   def move_x(value)

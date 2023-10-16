@@ -12,7 +12,7 @@ describe MarsRover do
     new_point = mars_rover.new_point
 
     expect(point).to eq OpenStruct.new(x: 2, y: 3)
-    expect(new_point.coordinates).to eq [2,3]
+    expect(new_point.coordinates).to eq '[2 3]'
   end
 
   it 'has a starting facing direction of N' do
@@ -25,7 +25,7 @@ describe MarsRover do
     mars_rover = MarsRover.new('S', OpenStruct.new(x: 1, y: 2), Point.new(2,3))
 
     expect(mars_rover.point).to eq OpenStruct.new(x: 1, y: 2)
-    expect(mars_rover.new_point.coordinates).to eq [2,3]
+    expect(mars_rover.new_point.coordinates).to eq '[2 3]'
     expect(mars_rover.direction).to eq 'S'
   end
 
@@ -37,7 +37,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 1))
-    expect(mars_rover.new_point.coordinates).to eq [0,1]
+    expect(mars_rover.new_point.coordinates).to eq '[0 1]'
   end
 
   it 'moves forwards when facing south' do
@@ -46,7 +46,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 0))
-    expect(mars_rover.new_point.coordinates).to eq [0,0]
+    expect(mars_rover.new_point.coordinates).to eq '[0 0]'
   end
 
   it 'moves forwards when facing west' do
@@ -55,7 +55,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: -1, y: 0))
-    expect(mars_rover.new_point.coordinates).to eq [-1,0]
+    expect(mars_rover.new_point.coordinates).to eq '[-1 0]'
     expect(mars_rover.direction).to eq('W')
   end
 
@@ -65,7 +65,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[f])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 1, y: 0))
-    expect(mars_rover.new_point.coordinates).to eq [1,0]
+    expect(mars_rover.new_point.coordinates).to eq '[1 0]'
     expect(mars_rover.direction).to eq('E')
   end
 
@@ -75,7 +75,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[b])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 0))
-    expect(mars_rover.new_point.coordinates).to eq [0,0]
+    expect(mars_rover.new_point.coordinates).to eq '[0 0]'
     expect(mars_rover.direction).to eq('N')
   end
 
@@ -85,7 +85,7 @@ describe MarsRover do
     mars_rover.execute_commands(%w[b])
 
     expect(mars_rover.point).to eq(OpenStruct.new(x: 0, y: 1))
-    expect(mars_rover.new_point.coordinates).to eq [0,1]
+    expect(mars_rover.new_point.coordinates).to eq '[0 1]'
     expect(mars_rover.direction).to eq('S')
   end
 end
