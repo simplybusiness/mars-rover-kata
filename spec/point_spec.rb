@@ -63,6 +63,15 @@ describe Point do
 
     expect(point.direction).to eq('N')
   end
+
+  it 'has a starting direction of North and a starting position of 0,0' do
+    pending('TODO')
+    point =  Point.new(0, 0, 'N')
+
+    point.move_y(1.0)
+
+    expect(point.coordinates_with_direction).to eq('[0 0 N]')
+  end
 end
 
 
