@@ -2,11 +2,13 @@
 
 class InvalidMarsRoverDirection < StandardError; end
 class InvalidMarsRoverGeoLocation < StandardError; end
+class BadRouteError < ArgumentError; end
 
 class MarsRover
   attr_reader :x_pos, :y_pos, :cardinal_direction
 
   CARDINAL_DIRECTIONS = %w[N E S W].freeze
+  ROUTE_COMMANDS = %w[f b l r].freeze
 
   def initialize(x_pos:, y_pos:, cardinal_direction:)
     raise InvalidMarsRoverDirection unless CARDINAL_DIRECTIONS.include?(cardinal_direction)
@@ -19,6 +21,7 @@ class MarsRover
 
   def change_position(routes_list)
     routes_list.route_steps.each do | route_step |
+      raise BadRouteError.new("invalid route command use f, b, l or r") unless ROUTE_COMMANDS.include?(route_step)
       if route_step == 'f'
         case cardinal_direction
         when 'N'
@@ -44,15 +47,15 @@ class MarsRover
       elsif route_step == 'l'
         case cardinal_direction
         when 'N'
-          @cardinal_direction = 'W'  
+          @cardinal_direction = 'W'
         when 'S'
-          @cardinal_direction = 'E'  
+          @cardinal_direction = 'E'
         when 'E'
-          @cardinal_direction = 'N'  
+          @cardinal_direction = 'N'
         when 'W'
-          @cardinal_direction = 'S'  
+          @cardinal_direction = 'S'
         end
-      end 
+      end
     end
   end
 end
