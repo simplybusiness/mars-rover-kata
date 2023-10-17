@@ -13,7 +13,7 @@ describe Rover do
 
         it "uses the initial position provided" do
             rover = Rover.new(position, "N")
-            expect(rover.position).to eq(position)
+            expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
         end
 
         it "raises an error for invalid direction -- eg. X (not N, S, W, E)" do
@@ -50,6 +50,25 @@ describe Rover do
         end
 
         context "for commands moving the rover" do
+
+            # ['N','E','S','W'].each do |direction|
+            #     context "when facing #{direction}" do
+
+            #     end
+            # end
+
+            # context 'when facing North' do
+            # end
+
+            # context 'when facing South' do
+            # end
+
+            # context 'when facing West' do
+            # end
+
+            # context 'when facing East' do
+            # end
+
             it "moves forward for f" do
                 initial_y = rover.position.y
                 rover.execute('f')
