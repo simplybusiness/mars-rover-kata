@@ -47,7 +47,7 @@ RSpec.describe MarsRover do
       directions_mapping_forward_single = { 'N' => [0,1], 'S' => [0,-1], 'E' => [1,0], 'W' => [-1,0] }
 
       directions_mapping_forward_single.each do | start_direction, expected_position |
-        it 'moves forward when receiving a single forward command and its facing #{start_direction}' do
+        it "moves forward when receiving a single forward command and its facing #{start_direction}" do
           mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['f'])
           mars_rover.change_position(valid_route)
@@ -61,7 +61,7 @@ RSpec.describe MarsRover do
       directions_mapping_forward_multiple = { 'N' => [0,2], 'S' => [0,-2], 'E' => [2,0], 'W' => [-2,0] }
 
       directions_mapping_forward_multiple.each do | start_direction, expected_position |
-        it 'moves forward when receiving multiple forward commands and its facing #{start_direction}' do
+        it "moves forward when receiving multiple forward commands and its facing #{start_direction}" do
           mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['f', 'f'])
           mars_rover.change_position(valid_route)
@@ -73,7 +73,7 @@ RSpec.describe MarsRover do
       end
 
       directions_mapping_backward_single = { 'N' => [0,-1], 'S' => [0,1], 'E' => [-1,0], 'W' => [1,0] }
-      
+
       directions_mapping_backward_single.each do | start_direction, expected_position |
         it 'moves backward when receiving a single backward command and its facing #{start_direction}' do
           mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
@@ -101,7 +101,7 @@ RSpec.describe MarsRover do
       end
 
       directions_mapping_left_single = { 'N' => 'W', 'S' => 'E', 'E' => 'N', 'W' => 'S' }
-      
+
       directions_mapping_left_single.each do | start_direction, expected_position |
         it 'turns left when receiving a single left command and its facing #{start_direction}' do
           mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
