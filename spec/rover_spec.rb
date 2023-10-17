@@ -178,6 +178,15 @@ describe Rover do
                     rover.execute('r')
                     expect(rover.direction).to eq('E')
                 end
+                it 'ends up in same direction for 4 * left' do
+                    rover.execute('llll')
+                    expect(rover.direction).to eq('N')
+                end
+
+                it 'ends up in same direction for 4 * right' do
+                    rover.execute('rrrr')
+                    expect(rover.direction).to eq('N')
+                end
             end
 
             context 'when facing South' do
@@ -189,6 +198,15 @@ describe Rover do
                 it 'changes direction to West for right' do
                     rover.execute('r')
                     expect(rover.direction).to eq('W')
+                end
+
+                it 'ends up in same direction for 4 * left' do
+                    rover.execute('llll')
+                    expect(rover.direction).to eq('S')
+                end
+                it 'ends up in same direction for 4 * right' do
+                    rover.execute('rrrr')
+                    expect(rover.direction).to eq('S')
                 end
             end
 
@@ -202,6 +220,15 @@ describe Rover do
                     rover.execute('r')
                     expect(rover.direction).to eq('N')
                 end
+                it 'ends up in same direction for 4 * left' do
+                    rover.execute('llll')
+                    expect(rover.direction).to eq('W')
+                end
+
+                it 'ends up in same direction for 4 * right' do
+                    rover.execute('rrrr')
+                    expect(rover.direction).to eq('W')
+                end
             end
 
             context 'when facing East' do
@@ -213,6 +240,14 @@ describe Rover do
                 it 'changes direction to South for right' do
                     rover.execute('r')
                     expect(rover.direction).to eq('S')
+                end
+                it 'ends up in same direction for 4 * left' do
+                    rover.execute('llll')
+                    expect(rover.direction).to eq('E')
+                end
+                it 'ends up in same direction for 4 * right' do
+                    rover.execute('rrrr')
+                    expect(rover.direction).to eq('E')
                 end
             end
         end
