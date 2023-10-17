@@ -145,6 +145,10 @@ RSpec.describe MarsRover do
           valid_route = RoverRoute.new(route_steps: ['l', 'r', 'x'])
           expect {mars_rover.change_position(valid_route)}.to raise_error(BadRouteError, 'invalid route command use f, b, l or r')
       end
+
+      xit "does not face a new direction when nor does it change position" do
+
+      end
     end
   end
 end
