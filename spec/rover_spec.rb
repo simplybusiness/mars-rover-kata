@@ -170,11 +170,11 @@ describe Rover do
         context 'for commands turning the rover' do
             context 'when facing North' do
                 let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'N')}
-                it 'changes direction to West when turning left' do
+                it 'changes direction to West for left' do
                     rover.execute('l')
                     expect(rover.direction).to eq('W')
                 end
-                it 'changes direction to East when turning right' do
+                it 'changes direction to East for right' do
                     rover.execute('r')
                     expect(rover.direction).to eq('E')
                 end
@@ -182,11 +182,11 @@ describe Rover do
 
             context 'when facing South' do
                 let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'S')}
-                it 'changes direction to East when turning left' do
+                it 'changes direction to East for left' do
                     rover.execute('l')
                     expect(rover.direction).to eq('E')
                 end
-                it 'changes direction to West when turning right' do
+                it 'changes direction to West for right' do
                     rover.execute('r')
                     expect(rover.direction).to eq('W')
                 end
@@ -194,14 +194,20 @@ describe Rover do
 
             context 'when facing West' do
                 let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'W')}
-                it 'changes direction to South when turning left'
-                it 'changes direction to North when turning right'
+                it 'changes direction to South for left' do
+                    rover.execute('l')
+                    expect(rover.direction).to eq('S')
+                end
+                it 'changes direction to North for right' do
+                    rover.execute('r')
+                    expect(rover.direction).to eq('N')
+                end
             end
 
             context 'when facing East' do
                 let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'E')}
-                it 'changes direction to North when turning left'
-                it 'changes direction to South when turning right'
+                it 'changes direction to North for left'
+                it 'changes direction to South for right'
             end
         end
     end
