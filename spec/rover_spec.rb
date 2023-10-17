@@ -78,7 +78,7 @@ describe Rover do
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
 
-                it 'executes complex commands correct -- eg. ffbfbff' do
+                it 'executes complex commands correctly -- eg. ffbfbff' do
                     rover.execute('ffbfbff')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 3))
                 end
@@ -112,7 +112,7 @@ describe Rover do
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
 
-                it 'executes complex commands correct -- eg. ffbfbff' do
+                it 'executes complex commands correctly -- eg. ffbfbff' do
                     rover.execute('ffbfbff')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: -3))
                 end
@@ -146,7 +146,7 @@ describe Rover do
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
 
-                it 'executes complex commands correct -- eg. ffbfbff' do
+                it 'executes complex commands correctly -- eg. ffbfbff' do
                     rover.execute('ffbfbff')
                     expect(rover.position).to eq(Coordinates.new(x: -3, y: 0))
                 end
@@ -180,7 +180,7 @@ describe Rover do
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
 
-                it 'executes complex commands correct -- eg. ffbfbff' do
+                it 'executes complex commands correctly -- eg. ffbfbff' do
                     rover.execute('ffbfbff')
                     expect(rover.position).to eq(Coordinates.new(x: 3, y: 0))
                 end
