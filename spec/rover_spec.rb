@@ -77,6 +77,11 @@ describe Rover do
                     rover.execute('xyz')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
+
+                it 'executes complex commands correct -- eg. ffbfbff' do
+                    rover.execute('ffbfbff')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 3))
+                end
             end
 
             context 'when facing South' do
@@ -105,6 +110,11 @@ describe Rover do
                 it 'does nothing for invalid commands -- eg. x + y + z' do
                     rover.execute('xyz')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'executes complex commands correct -- eg. ffbfbff' do
+                    rover.execute('ffbfbff')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: -3))
                 end
             end
 
@@ -135,6 +145,11 @@ describe Rover do
                     rover.execute('xyz')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
+
+                it 'executes complex commands correct -- eg. ffbfbff' do
+                    rover.execute('ffbfbff')
+                    expect(rover.position).to eq(Coordinates.new(x: -3, y: 0))
+                end
             end
 
             context 'when facing East' do
@@ -163,6 +178,11 @@ describe Rover do
                 it 'does nothing for invalid commands -- eg. x + y + z' do
                     rover.execute('xyz')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'executes complex commands correct -- eg. ffbfbff' do
+                    rover.execute('ffbfbff')
+                    expect(rover.position).to eq(Coordinates.new(x: 3, y: 0))
                 end
             end
         end
