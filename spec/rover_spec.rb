@@ -44,19 +44,12 @@ describe Rover do
         end
 
         [0, 0.5, {A: 'a'}].each do |commands|
-            it "raises an error for wrong input -- eg. '#{commands}'" do
+            it "raises an error for wrong input type -- eg. '#{commands}'" do
                 expect { rover.execute(commands) }.to raise_error ArgumentError
             end
         end
 
         context "for commands moving the rover" do
-
-            # ['N','E','S','W'].each do |direction|
-            #     context "when facing #{direction}" do
-
-            #     end
-            # end
-
             context 'when facing North' do
                 let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'N')}
 
@@ -68,6 +61,21 @@ describe Rover do
                 it 'decreases Y-axis value for backward' do
                     rover.execute('b')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: -1))
+                end
+
+                it 'ends up in the same position for forward + backward' do
+                    rover.execute('fb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'ends up in the same position for 2 * forward + 2 * backward' do
+                    rover.execute('ffbb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'does nothing for invalid commands -- eg. x + y + z' do
+                    rover.execute('xyz')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
             end
 
@@ -83,6 +91,21 @@ describe Rover do
                     rover.execute('b')
                     expect(rover.position).to eq(Coordinates.new(x: 0, y: 1))
                 end
+
+                it 'ends up in the same position for forward + backward' do
+                    rover.execute('fb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'ends up in the same position for 2 * forward + 2 * backward' do
+                    rover.execute('ffbb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'does nothing for invalid commands -- eg. x + y + z' do
+                    rover.execute('xyz')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
             end
 
             context 'when facing West' do
@@ -96,6 +119,21 @@ describe Rover do
                 it 'increases X-axis value for backward' do
                     rover.execute('b')
                     expect(rover.position).to eq(Coordinates.new(x: 1, y: 0))
+                end
+
+                it 'ends up in the same position for forward + backward' do
+                    rover.execute('fb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'ends up in the same position for 2 * forward + 2 * backward' do
+                    rover.execute('ffbb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'does nothing for invalid commands -- eg. x + y + z' do
+                    rover.execute('xyz')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
                 end
             end
 
@@ -111,14 +149,22 @@ describe Rover do
                     rover.execute('b')
                     expect(rover.position).to eq(Coordinates.new(x: -1, y: 0))
                 end
+
+                it 'ends up in the same position for forward + backward' do
+                    rover.execute('fb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'ends up in the same position for 2 * forward + 2 * backward' do
+                    rover.execute('ffbb')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
+
+                it 'does nothing for invalid commands -- eg. x + y + z' do
+                    rover.execute('xyz')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 0))
+                end
             end
-
-            it "ends up in same position for f-b"
         end
-
-        context "for commands other than f,b,l,r" do
-            it "does nothing"
-        end
-
     end
 end
