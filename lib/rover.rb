@@ -58,6 +58,8 @@ class Rover
             @direction = 'S' if command == 'l'
             @direction = 'N' if command == 'r'
         when 'E'
+            @direction = 'N' if command == 'l'
+            @direction = 'S' if command == 'r'
         end
     end
 end
