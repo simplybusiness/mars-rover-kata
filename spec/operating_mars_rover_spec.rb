@@ -54,7 +54,6 @@ RSpec.describe 'Operating a Mars Rover' do
 
   describe 'moving forwards' do
     it 'moves forwards when facing north from the origin' do
-      pending('Next test to get passing')
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
 
       mars_rover.execute(['f'])
