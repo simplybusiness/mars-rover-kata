@@ -10,7 +10,7 @@ class MarsRover
   end
 
   def execute(commands)
-    @current_position = Coordinates.new(x: 0, y: 1)
+    @current_position = Coordinates.new(x: 0, y: @current_position.y + 1)
   end
 
   def inspect
