@@ -37,7 +37,7 @@ RSpec.describe MarsRover do
   describe '#change_position' do
     let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
 
-    context '[when commands are valid]' do
+    context '[when route commands are valid]' do
 
       it 'does not raise an error' do
         valid_routes_list = RoverRoute.new(route_steps: ['f'])
@@ -114,9 +114,20 @@ RSpec.describe MarsRover do
         end
       end
 
-      xit "turns left when receiving multiple left commands" do
+      directions_mapping_left_multiple = { 'N' => 'S', 'S' => 'N', 'E' => 'W', 'W' => 'E' }
 
+      directions_mapping_left_multiple.each do | start_direction, expected_position |
+        it "faces a new when receiving two left commands and having been facing #{start_direction} originally" do
+          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          valid_route = RoverRoute.new(route_steps: ['l', 'l'])
+          mars_rover.change_position(valid_route)
+
+          expect(mars_rover.cardinal_direction).to eq(expected_position)
+          expect(mars_rover.x_pos).to eq(0)
+          expect(mars_rover.y_pos).to eq(0)
+        end
       end
+
 
       xit "turns right when receiving a single right command" do
 
