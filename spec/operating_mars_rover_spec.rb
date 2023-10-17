@@ -52,7 +52,11 @@ RSpec.describe 'Operating a Mars Rover' do
     expect(mars_rover).to respond_to(:execute).with(1)
   end
 
-  it 'cannot interpret commands when they are a string'
+  it 'cannot interpret commands when they are a string' do
+    pending 'Discussion with the customer'
+    expect { MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'W').execute('f') }
+      .to raise_error('A command must consist of a list of individual commands e.g. %w{f b l r}')
+  end
 
   describe 'moving forwards' do
     it 'moves forwards when facing north from the origin' do
