@@ -29,8 +29,6 @@ class Rover
     end
 
     def move(command)
-        # return @position.y += 1 if command == 'f'
-        # return @position.x += 1 if command == 'b'
         case @direction
         when 'N'
             @position.y += 1 if command == 'f'

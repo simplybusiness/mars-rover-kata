@@ -57,28 +57,60 @@ describe Rover do
             #     end
             # end
 
-            # context 'when facing North' do
-            # end
+            context 'when facing North' do
+                let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'N')}
 
-            # context 'when facing South' do
-            # end
+                it 'increases Y-axis value for forward' do
+                    rover.execute('f')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 1))
+                end
 
-            # context 'when facing West' do
-            # end
+                it 'decreases Y-axis value for backward' do
+                    rover.execute('b')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: -1))
+                end
+            end
 
-            # context 'when facing East' do
-            # end
+            context 'when facing South' do
+                let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'S')}
 
-            it "moves forward for f" do
-                initial_y = rover.position.y
-                rover.execute('f')
-                expect(rover.position.y).to eq(initial_y + 1)
-            end 
+                it 'decreases Y-axis value for forward' do
+                    rover.execute('f')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: -1))
+                end
 
-            it "moves backwards for b" do
-                initial_y = rover.position.y
-                rover.execute('b')
-                expect(rover.position.y).to eq(initial_y - 1)
+                it 'increases Y-axis value for backward' do
+                    rover.execute('b')
+                    expect(rover.position).to eq(Coordinates.new(x: 0, y: 1))
+                end
+            end
+
+            context 'when facing West' do
+                let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'W')}
+
+                it 'decreases X-axis value for forward' do
+                    rover.execute('f')
+                    expect(rover.position).to eq(Coordinates.new(x: -1, y: 0))
+                end
+
+                it 'increases X-axis value for backward' do
+                    rover.execute('b')
+                    expect(rover.position).to eq(Coordinates.new(x: 1, y: 0))
+                end
+            end
+
+            context 'when facing East' do
+                let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'E')}
+
+                it 'increases X-axis value for forward' do
+                    rover.execute('f')
+                    expect(rover.position).to eq(Coordinates.new(x: 1, y: 0))
+                end
+
+                it 'decreases X-axis value for backward' do
+                    rover.execute('b')
+                    expect(rover.position).to eq(Coordinates.new(x: -1, y: 0))
+                end
             end
 
             it "ends up in same position for f-b"
