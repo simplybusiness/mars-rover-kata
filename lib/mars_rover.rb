@@ -26,23 +26,31 @@ class MarsRover
         case cardinal_direction
         when 'N'
           @y_pos += 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos, y: @coordinates.y_pos + 1)
         when 'S'
           @y_pos -= 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos, y: @coordinates.y_pos - 1)
         when 'E'
           @x_pos += 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos + 1, y: @coordinates.y_pos)
         when 'W'
           @x_pos -= 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos - 1, y: @coordinates.y_pos)
         end
       elsif route_step == 'b'
         case cardinal_direction
         when 'N'
           @y_pos -= 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos, y: @coordinates.y_pos - 1)
         when 'S'
           @y_pos += 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos, y: @coordinates.y_pos + 1)
         when 'E'
           @x_pos -= 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos - 1, y: @coordinates.y_pos)
         when 'W'
           @x_pos += 1
+          @coordinates = Coordinates.new(x: @coordinates.x_pos + 1, y: @coordinates.y_pos)
         end
       elsif route_step == 'l'
         case cardinal_direction
