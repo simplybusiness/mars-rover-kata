@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BadCoordinatesError < ArgumentError; end
 
 class Coordinates

@@ -44,12 +44,9 @@ class Rover
   end
 
   def change_position(command)
-    case @direction
-    when 'N', 'S'
-      @position.y += INCREMENTS[command]
-    when 'W', 'E'
-      @position.x += INCREMENTS[command]
-    end
+    return @position.y += INCREMENTS[command] if %w[N S].include?(direction)
+
+    @position.x += INCREMENTS[command] if %w[W E].include?(direction)
   end
 
   def change_direction(command)
