@@ -14,7 +14,17 @@ RSpec.describe Coordinates do
       expect(coordinates).to eq(equal_coordinates)
       expect(equal_coordinates).to eq(coordinates)
     end
-    it 'is transitive'
+
+    it 'is transitive' do
+      coordinates = Coordinates.new(x: -4, y: 4)
+      equal_coordinates = Coordinates.new(x: -4, y: 4)
+      another_equal_coordinates = Coordinates.new(x: -4, y: 4)
+
+      expect(coordinates).to eq(equal_coordinates)
+      expect(equal_coordinates).to eq(another_equal_coordinates)
+      expect(another_equal_coordinates).to eq(coordinates)
+    end
+
     specify 'two coordinates with the same x- and y-coordinates are equal' do
       coordinate = Coordinates.new(x: 0, y: 0)
       same_coordinate = Coordinates.new(x: 0, y: 0)
