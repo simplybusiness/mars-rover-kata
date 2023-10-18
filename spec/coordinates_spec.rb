@@ -11,7 +11,12 @@ RSpec.describe Coordinates do
       expect(coordinate).to eq(same_coordinate)
     end
 
-    specify 'two coordinates with the same x-coordinates but different y are unequal'
+    specify 'two coordinates with the same x-coordinates but different y are unequal' do
+      coordinate = Coordinates.new(x: 0, y: 2)
+      coordinate_with_different_y = Coordinates.new(x: 0, y: -1)
+
+      expect(coordinate).not_to eq(coordinate_with_different_y)
+    end
     specify 'two coordinates with the same y-coordinates but different x are unequal'
     ['(1, 1)', [1, 2], {x: 1, y: 2}, 1].each do |object_of_different_type|
       specify "coordinates are not equal to an object of a different type e.g. #{object_of_different_type}"
