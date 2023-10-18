@@ -104,7 +104,11 @@ RSpec.describe 'Operating a Mars Rover' do
       expect(mars_rover).to be_located_at(expected_position)
     end
 
-    it 'never changes direction'
+    it 'never changes direction' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'W')
+
+      expect { mars_rover.execute(['f']) }.not_to change(mars_rover, :direction)
+    end
   end
 
   describe 'moving backwards' do
