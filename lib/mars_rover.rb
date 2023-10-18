@@ -7,6 +7,16 @@ class MarsRover
   end
 
   def execute(commands)
+    move_forwards
+  end
+
+  def inspect
+    "a Mars Rover located at #{@current_position} facing #{@direction}"
+  end
+
+  private
+
+  def move_forwards
     case @direction
     when 'W'
       @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
@@ -17,9 +27,5 @@ class MarsRover
     when 'N'
       @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     end
-  end
-
-  def inspect
-    "a Mars Rover located at #{@current_position} facing #{@direction}"
   end
 end
