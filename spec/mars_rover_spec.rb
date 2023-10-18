@@ -128,13 +128,32 @@ RSpec.describe MarsRover do
         end
       end
 
+      directions_mapping_right_single = { 'N' => 'E', 'S' => 'W', 'E' => 'S', 'W' => 'N' }
 
-      xit "turns right when receiving a single right command" do
+      directions_mapping_right_single.each do | start_direction, expected_position |
+        it "turns left when receiving a single right command and its facing #{start_direction}" do
+          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          valid_route = RoverRoute.new(route_steps: ['r'])
+          mars_rover.change_position(valid_route)
 
+          expect(mars_rover.cardinal_direction).to eq(expected_position)
+          expect(mars_rover.x_pos).to eq(0)
+          expect(mars_rover.y_pos).to eq(0)
+        end
       end
 
-      xit "turns right when receiving multiple right commands" do
+      directions_mapping_right_multiple = { 'N' => 'S', 'S' => 'N', 'E' => 'W', 'W' => 'E' }
 
+      directions_mapping_right_multiple.each do | start_direction, expected_position |
+        it "faces a new when receiving two right commands and having been facing #{start_direction} originally" do
+          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          valid_route = RoverRoute.new(route_steps: ['r', 'r'])
+          mars_rover.change_position(valid_route)
+
+          expect(mars_rover.cardinal_direction).to eq(expected_position)
+          expect(mars_rover.x_pos).to eq(0)
+          expect(mars_rover.y_pos).to eq(0)
+        end
       end
 
     end

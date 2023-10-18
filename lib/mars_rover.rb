@@ -55,6 +55,17 @@ class MarsRover
         when 'W'
           @cardinal_direction = 'S'
         end
+      elsif route_step == 'r'
+        case cardinal_direction
+        when 'N'
+          @cardinal_direction = 'E'
+        when 'S'
+          @cardinal_direction = 'W'
+        when 'E'
+          @cardinal_direction = 'S'
+        when 'W'
+          @cardinal_direction = 'N'
+        end
       end
     end
   end
