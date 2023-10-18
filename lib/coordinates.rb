@@ -1,8 +1,8 @@
 class Coordinates
   attr_reader :x_pos, :y_pos
-
-  def initialize(xpos:, ypos:)
-    @x_pos = xpos
-    @y_pos = ypos
+  
+  def initialize(x:, y:)
+    @x_pos = x
+    @y_pos = y
   end
 end

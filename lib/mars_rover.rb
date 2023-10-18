@@ -10,13 +10,13 @@ class MarsRover
   CARDINAL_DIRECTIONS = %w[N E S W].freeze
   ROUTE_COMMANDS = %w[f b l r].freeze
 
-  def initialize(x_pos:, y_pos:, cardinal_direction:, coordinates: Coordinates.new(xpos: x_pos, ypos: y_pos))
+  def initialize(x_pos:, y_pos:, cardinal_direction:, coordinates: Coordinates.new(x: x_pos, y: y_pos))
     raise InvalidMarsRoverDirection unless CARDINAL_DIRECTIONS.include?(cardinal_direction)
     raise InvalidMarsRoverGeoLocation unless numeric?(x_pos) && numeric?(y_pos)
 
     @x_pos = x_pos.to_i
     @y_pos = y_pos.to_i
-    @coordinates = Coordinates.new(xpos: x_pos, ypos: y_pos)
+    @coordinates = coordinates
     @cardinal_direction = cardinal_direction.to_s
   end
 
