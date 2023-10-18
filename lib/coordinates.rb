@@ -7,7 +7,7 @@ class Coordinates
   end
 
   def ==(other_coordinates)
-    y == other_coordinates.y
+    y == other_coordinates.y && x == other_coordinates.x
   end
 
   def to_s
