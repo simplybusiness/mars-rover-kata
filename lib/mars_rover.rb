@@ -10,7 +10,7 @@ class MarsRover
     commands.each do |command|
       case command
       when 'b'
-        @current_position = Coordinates.new(x: 0, y: @current_position.y - 1)
+        @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
       when 'f'
         move_forwards
       end
