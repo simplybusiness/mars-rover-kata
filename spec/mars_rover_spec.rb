@@ -6,14 +6,14 @@ require_relative '../lib/rover_route'
 RSpec.describe MarsRover do
   describe '.new' do
     context 'when the mars rover is initialised' do
-      subject(:mars_rover) { described_class.new(x_pos: 1, y_pos: '2', cardinal_direction: 'E') }
+      subject(:mars_rover) { described_class.new(coordinates: Coordinates.new(x: 1, y: 2), cardinal_direction: 'E') }
 
       it 'returns mars rover entity' do
         expect(mars_rover).not_to be_nil
       end
       it 'contains a starting point' do
-        expect(mars_rover.x_pos).to eq(1)
-        expect(mars_rover.y_pos).to eq(2)
+        expect(mars_rover.coordinates.x_pos).to eq(1)
+        expect(mars_rover.coordinates.y_pos).to eq(2)
       end
 
       it 'contains a direction' do
