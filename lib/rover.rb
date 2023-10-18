@@ -8,6 +8,7 @@ class Rover
 
   MOVE_COMMANDS = %w[f b].freeze
   TURN_COMMANDS = %w[r l].freeze
+  SUPPORTED_COMMANDS = MOVE_COMMANDS + TURN_COMMANDS
   COORDINATES = %w[W N E S].freeze
   INCREMENTS = {
     'l' => -1,
@@ -36,22 +37,26 @@ class Rover
 
   def move(commands)
     commands.each do |command|
-      next unless MOVE_COMMANDS.include?(command) || TURN_COMMANDS.include?(command)
+      next unless SUPPORTED_COMMANDS.include?(command)
 
-      change_position(command) if MOVE_COMMANDS.include?(command)
-      @direction = change_direction(command) if TURN_COMMANDS.include?(command)
+      change_possition(command)
+      change_direction(command)
     end
   end
 
-  def change_position(command)
+  def change_possition(command)
     return @position.y += INCREMENTS[command] if %w[N S].include?(direction)
 
     @position.x += INCREMENTS[command] if %w[W E].include?(direction)
   end
 
   def change_direction(command)
+    @direction = setup_direction(command)
+  end
+
+  def setup_direction(command)
     index = COORDINATES.index(direction)
-    return COORDINATES[0] if index == COORDINATES.length - 1 && INCREMENTS[command].possitive?
+    return COORDINATES[0] if index == COORDINATES.length - 1 && INCREMENTS[command].positive?
     return COORDINATES[-1] if index.zero? && INCREMENTS[command].negative?
 
     COORDINATES[index + INCREMENTS[command]]
