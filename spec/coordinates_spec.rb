@@ -25,7 +25,11 @@ RSpec.describe Coordinates do
     end
 
     ['(1, 1)', [1, 2], {x: 1, y: 2}, 1].each do |object_of_different_type|
-      specify "coordinates are not equal to an object of a different type e.g. #{object_of_different_type.inspect}"
+      specify "coordinates are not equal to an object of a different type e.g. #{object_of_different_type.inspect}" do
+        coordinate = Coordinates.new(x: -1, y: 10)
+
+        expect(coordinate).not_to eq(object_of_different_type)
+      end
     end
   end
 end

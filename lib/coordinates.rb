@@ -7,6 +7,8 @@ class Coordinates
   end
 
   def ==(other_coordinates)
+    return false if ! other_coordinates.is_a?(Coordinates)
+
     y == other_coordinates.y && x == other_coordinates.x
   end
 
