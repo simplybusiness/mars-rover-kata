@@ -11,7 +11,9 @@ class Rover
   COORDINATES = %w[W N E S].freeze
   INCREMENTS = {
     'l' => -1,
-    'r' => 1
+    'r' => 1,
+    'f' => 1,
+    'b' => -1
   }.freeze
 
   def initialize(position, direction)
@@ -44,11 +46,9 @@ class Rover
   def change_position(command)
     case @direction
     when 'N', 'S'
-      @position.y += 1 if command == 'f'
-      @position.y -= 1 if command == 'b'
+      @position.y += INCREMENTS[command]
     when 'W', 'E'
-      @position.x -= 1 if command == 'f'
-      @position.x += 1 if command == 'b'
+      @position.x += INCREMENTS[command]
     end
   end
 
