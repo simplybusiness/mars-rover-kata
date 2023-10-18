@@ -7,7 +7,14 @@ class MarsRover
   end
 
   def execute(commands)
-    commands.each { |_| move_forwards }
+    commands.each do |command|
+      case command
+      when 'b'
+        @current_position = Coordinates.new(x: 0, y: -1)
+      when 'f'
+        move_forwards
+      end
+    end
   end
 
   def inspect
