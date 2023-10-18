@@ -8,7 +8,11 @@ class Rover
 
   MOVE_COMMANDS = %w[f b].freeze
   TURN_COMMANDS = %w[r l].freeze
-  COORDINATES = %w[N E S W].freeze
+  COORDINATES = %w[W N E S].freeze
+  INCREMENTS = {
+    'l' => -1,
+    'r' => 1
+  }.freeze
 
   def initialize(position, direction)
     raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
@@ -33,7 +37,7 @@ class Rover
       next unless MOVE_COMMANDS.include?(command) || TURN_COMMANDS.include?(command)
 
       change_position(command) if MOVE_COMMANDS.include?(command)
-      change_direction(command) if TURN_COMMANDS.include?(command)
+      @direction = change_direction(command) if TURN_COMMANDS.include?(command)
     end
   end
 
@@ -49,14 +53,10 @@ class Rover
   end
 
   def change_direction(command)
-    return @direction = 'W' if direction == 'N' && command == 'l'
-    return @direction = 'E' if direction == 'N' && command == 'r'
-    return @direction = 'S' if direction == 'W' && command == 'l'
-    return @direction = 'N' if direction == 'W' && command == 'r'
-    return @direction = 'E' if direction == 'S' && command == 'l'
-    return @direction = 'W' if direction == 'S' && command == 'r'
-    return @direction = 'N' if direction == 'E' && command == 'l'
+    index = COORDINATES.index(direction)
+    return COORDINATES[0] if index == COORDINATES.length - 1 && INCREMENTS[command].possitive?
+    return COORDINATES[-1] if index.zero? && INCREMENTS[command].negative?
 
-    @direction = 'S' if direction == 'E' && command == 'r'
+    COORDINATES[index + INCREMENTS[command]]
   end
 end
