@@ -25,14 +25,14 @@ class MarsRover
 
   def move_forwards
     case @direction
-    when 'W'
-      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
-    when 'S'
-      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
-    when 'E'
-      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
     when 'N'
       @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+    when 'E'
+      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
+    when 'S'
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+    when 'W'
+      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     end
   end
 end
