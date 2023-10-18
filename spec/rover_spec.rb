@@ -275,5 +275,81 @@ describe Rover do
         end
       end
     end
+
+    context "for commands moving and turning the rover" do
+      context "when facing North" do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'N') }
+        it "correctly follows complex commands -- eg. fflfrbll" do
+          rover.execute('fflfrbll')
+          expect(rover.direction). to eq('S')
+          expect(rover.position). to eq(Coordinates.new(x: -1, y: 1))
+        end
+
+        it "correctly follows complex commands -- eg. lffffrbbbb" do
+          rover.execute('lffffrbbbb')
+          expect(rover.direction). to eq('N')
+          expect(rover.position). to eq(Coordinates.new(x: -4, y: -4))
+        end
+      end
+
+      context "when facing South" do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'S') }
+        it "correctly follows complex commands -- eg. fflfrbll" do
+          rover.execute('fflfrbll')
+          expect(rover.direction). to eq('N')
+          expect(rover.position). to eq(Coordinates.new(x: 1, y: -1))
+        end
+
+        it "correctly follows complex commands -- eg. lffffrbbbb" do
+          rover.execute('lffffrbbbb')
+          expect(rover.direction). to eq('S')
+          expect(rover.position). to eq(Coordinates.new(x: 4, y: 4))
+        end
+      end
+
+      context "when facing West" do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'W') }
+        it "correctly follows complex commands -- eg. fflfrbll" do
+          rover.execute('fflfrbll')
+          expect(rover.direction). to eq('E')
+          expect(rover.position). to eq(Coordinates.new(x: -1, y: -1))
+        end
+
+        it "correctly follows complex commands -- eg. lffffrbbbb" do
+          rover.execute('lffffrbbbb')
+          expect(rover.direction). to eq('W')
+          expect(rover.position). to eq(Coordinates.new(x: 4, y: -4))
+        end
+      end
+
+      context "when facing East" do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'E') }
+        it "correctly follows complex commands -- eg. fflfrbll" do
+          rover.execute('fflfrbll')
+          expect(rover.direction). to eq('W')
+          expect(rover.position). to eq(Coordinates.new(x: 1, y: 1))
+        end
+
+        it "correctly follows complex commands -- eg. lffffrbbbb" do
+          rover.execute('lffffrbbbb')
+          expect(rover.direction). to eq('E')
+          expect(rover.position). to eq(Coordinates.new(x: -4, y: 4))
+        end
+      end
+    end
+
+    context "for a mixture of correct and incorrect commands" do
+      let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'N') }
+      it "correctly follows ffxlfyrblzl starting with North direction" do
+        rover.execute('ffxlfyrblzl')
+        expect(rover.direction). to eq('S')
+        expect(rover.position). to eq(Coordinates.new(x: -1, y: 1))
+      end
+      it "correctly follows lfx0ff0fyr0bb0bzb starting with North direction" do
+        rover.execute('lfx0ff0fyr0bb0bzb')
+        expect(rover.direction). to eq('N')
+        expect(rover.position). to eq(Coordinates.new(x: -4, y: -4))
+      end
+    end
   end
 end

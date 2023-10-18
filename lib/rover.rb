@@ -6,11 +6,11 @@ class Rover
 
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
-  COORDINATES = %w[N E S W]
+  DIRECTIONS = %w[N E S W]
 
   def initialize(position, direction)
     raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
-    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)' unless COORDINATES.include?(direction)
+    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)' unless DIRECTIONS.include?(direction)
 
     @position = position
     @direction = direction
@@ -21,8 +21,6 @@ class Rover
     (commands.is_a? Array) || (commands.is_a? String)
 
     for i in 0...commands.length do
-      next unless (MOVE_COMMANDS.include? commands[i]) || (TURN_COMMANDS.include? commands[i])
-
       move(commands[i]) if MOVE_COMMANDS.include? commands[i]
       turn(commands[i]) if TURN_COMMANDS.include? commands[i]
     end
@@ -48,9 +46,9 @@ class Rover
   def turn(command)
     case command
     when 'l'
-      @direction = COORDINATES[(COORDINATES.index(@direction) - 1) % 4]
+      @direction = DIRECTIONS[(DIRECTIONS.index(@direction) - 1) % 4]
     when 'r'
-      @direction = COORDINATES[(COORDINATES.index(@direction) + 1) % 4]
+      @direction = DIRECTIONS[(DIRECTIONS.index(@direction) + 1) % 4]
     end
   end
 end
