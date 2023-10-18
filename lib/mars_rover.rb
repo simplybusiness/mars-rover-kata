@@ -7,7 +7,7 @@ class MarsRover
   end
 
   def execute(commands)
-    move_forwards
+    commands.each { |_| move_forwards }
   end
 
   def inspect

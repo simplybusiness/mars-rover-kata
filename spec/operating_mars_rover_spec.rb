@@ -111,6 +111,14 @@ RSpec.describe 'Operating a Mars Rover' do
         expect { mars_rover.execute(['f']) }.not_to change(mars_rover, :direction)
       end
     end
+
+    it 'can move forwards multiple times' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
+
+      mars_rover.execute(%w{f f f f})
+
+      expect(mars_rover).to be_located_at(Coordinates.new(x: 0, y: 4))
+    end
   end
 
   describe 'moving backwards' do
