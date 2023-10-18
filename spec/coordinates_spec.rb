@@ -7,7 +7,13 @@ RSpec.describe Coordinates do
       expect(coordinates).to eq(coordinates)
     end
 
-    it 'is associative'
+    it 'is symmetric' do
+      coordinates = Coordinates.new(x: 3, y: 1)
+      equal_coordinates = Coordinates.new(x: 3, y: 1)
+
+      expect(coordinates).to eq(equal_coordinates)
+      expect(equal_coordinates).to eq(coordinates)
+    end
     it 'is transitive'
     specify 'two coordinates with the same x- and y-coordinates are equal' do
       coordinate = Coordinates.new(x: 0, y: 0)
