@@ -35,11 +35,11 @@ describe Rover do
     describe "when taking commands" do
         let(:rover) {described_class.new(Coordinates.new(x: 0, y: 0), 'N')}
 
-        it "expects an array of characters" do
+        it "accepts an array of characters" do
             expect { rover.execute(['f', 'f', 'r']) }.not_to raise_error
         end
 
-        it "expects a string" do
+        it "accepts a string" do
             expect { rover.execute("ffr") }.not_to raise_error
         end
 
