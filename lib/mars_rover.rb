@@ -5,7 +5,7 @@ class InvalidMarsRoverGeoLocation < StandardError; end
 class BadRouteError < ArgumentError; end
 
 class MarsRover
-  attr_reader :x_pos, :y_pos, :cardinal_direction
+  attr_reader :x_pos, :y_pos, :cardinal_direction, :coordinates
 
   CARDINAL_DIRECTIONS = %w[N E S W].freeze
   ROUTE_COMMANDS = %w[f b l r].freeze
@@ -16,6 +16,7 @@ class MarsRover
 
     @x_pos = x_pos.to_i
     @y_pos = y_pos.to_i
+    @coordinates = Coordinates.new(xpos: x_pos, ypos: y_pos)
     @cardinal_direction = cardinal_direction.to_s
   end
 
