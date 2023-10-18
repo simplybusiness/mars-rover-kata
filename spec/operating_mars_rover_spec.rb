@@ -99,6 +99,7 @@ RSpec.describe 'Operating a Mars Rover' do
     match do |mars_rover|
       # SMELL: the matcher does not need to know how to equate two coordinates
       mars_rover.current_position.x == expected_position.x && mars_rover.current_position.y == expected_position.y
+      mars_rover.current_position == expected_position
     end
   end
 end
