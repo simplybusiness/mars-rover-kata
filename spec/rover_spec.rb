@@ -45,6 +45,8 @@ describe Rover do
 
     it 'expects a string' do
       expect { rover.execute('ffr') }.not_to raise_error
+      expect { rover.execute('f f r') }.not_to raise_error
+      expect { rover.execute('f, f r; r') }.not_to raise_error
     end
 
     [0, 0.5, { A: 'a' }].each do |commands|
@@ -54,24 +56,6 @@ describe Rover do
     end
 
     context 'for commands moving the rover' do
-      # ['N','E','S','W'].each do |direction|
-      #     context "when facing #{direction}" do
-
-      #     end
-      # end
-
-      # context 'when facing North' do
-      # end
-
-      # context 'when facing South' do
-      # end
-
-      # context 'when facing West' do
-      # end
-
-      # context 'when facing East' do
-      # end
-
       it 'moves forward for f' do
         initial_y = rover.position.y
         rover.execute('f')
