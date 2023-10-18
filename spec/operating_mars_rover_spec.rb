@@ -151,7 +151,14 @@ RSpec.describe 'Operating a Mars Rover' do
       expect(mars_rover).to be_located_at(expected_coordinates)
     end
 
-    it 'moves backwards when facing east'
+    it 'moves backwards when facing east' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 2, y: 0), direction: 'E')
+
+      mars_rover.execute(['b'])
+
+      expected_coordinates = Coordinates.new(x: 1, y: 0)
+      expect(mars_rover).to be_located_at(expected_coordinates)
+    end
     it 'moves backwards when facing south'
     it 'moves backwards when facing west'
     it 'never changes direction'
