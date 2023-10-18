@@ -1,7 +1,7 @@
 require_relative '../lib/coordinates'
 RSpec.describe Coordinates do
   describe 'equals' do
-    it 'is symmetric' do
+    it 'is reflexive' do
       coordinates = Coordinates.new(x: -1, y: -2)
 
       expect(coordinates).to eq(coordinates)
