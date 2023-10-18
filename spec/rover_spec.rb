@@ -75,6 +75,24 @@ describe Rover do
       end
     end
 
+    context 'for commands turning the rover' do
+      it 'turns right for r' do
+        rover.execute('r')
+        expect(rover.direction).to eq('E')
+      end
+
+      it 'turns left for l' do
+        rover.execute('l')
+        expect(rover.direction).to eq('W')
+      end
+
+      it 'ends up in same position for r-l' do
+        initial_direction = rover.direction
+        rover.execute('rlrl')
+        expect(rover.direction).to eq(initial_direction)
+      end
+    end
+
     context 'for commands other than f,b,l,r' do
       it 'does nothing' do
         initial_y = rover.position.y

@@ -23,15 +23,21 @@ class Rover
     commands = commands.split if commands.is_a? String
     raise ArgumentError, 'Commands should be of Char Array or String format' unless commands.is_a? Array
 
-    # for i in 0...commands.length do
+    move(commands)
+  end
+
+  private
+
+  def move(commands)
     commands.each do |command|
       next unless MOVE_COMMANDS.include?(command) || TURN_COMMANDS.include?(command)
 
-      move(command) if MOVE_COMMANDS.include?(command)
+      change_position(command) if MOVE_COMMANDS.include?(command)
+      change_direction(command) if TURN_COMMANDS.include?(command)
     end
   end
 
-  def move(command)
+  def change_position(command)
     case @direction
     when 'N', 'S'
       @position.y += 1 if command == 'f'
@@ -42,6 +48,15 @@ class Rover
     end
   end
 
-  # def turn(command)
-  # end
+  def change_direction(command)
+    return @direction = 'W' if direction == 'N' && command == 'l'
+    return @direction = 'E' if direction == 'N' && command == 'r'
+    return @direction = 'S' if direction == 'W' && command == 'l'
+    return @direction = 'N' if direction == 'W' && command == 'r'
+    return @direction = 'E' if direction == 'S' && command == 'l'
+    return @direction = 'W' if direction == 'S' && command == 'r'
+    return @direction = 'N' if direction == 'E' && command == 'l'
+
+    @direction = 'S' if direction == 'E' && command == 'r'
+  end
 end
