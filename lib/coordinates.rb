@@ -6,6 +6,10 @@ class Coordinates
     @y = y
   end
 
+  def ==(other_coordinates)
+    true
+  end
+
   def to_s
     "(#{@x},#{@y})"
   end
