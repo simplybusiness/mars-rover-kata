@@ -7,7 +7,11 @@ class MarsRover
   end
 
   def execute(commands)
-    @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+    if @direction == 'E'
+      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
+    else
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+    end
   end
 
   def inspect
