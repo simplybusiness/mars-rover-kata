@@ -7,6 +7,7 @@ class Rover
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
+  BOUNDARY = 100
 
   def initialize(position, direction)
     raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
@@ -40,6 +41,10 @@ class Rover
     when 'E'
       @position.x += 1 if command == 'f'
       @position.x -= 1 if command == 'b'
+    end
+
+    if @position.x > BOUNDARY
+      @position.x = -1 * @position.x  + 2 * (@position.x - BOUNDARY)
     end
   end
 

@@ -352,4 +352,17 @@ describe Rover do
       end
     end
   end
+
+  describe 'when wrapping up edges' do
+    context 'for rover reaching the edges' do
+      context 'when reaching east boundary' do
+        let(:rover) { described_class.new(Coordinates.new(x: 100, y: 0), 'E') }
+        it 'move rover start from west boundary' do
+          rover.execute('ff')
+          expect(rover.direction).to eq('E')
+          expect(rover.position). to eq(Coordinates.new(x:-98, y: 0))
+        end
+      end
+    end
+  end
 end
