@@ -1,7 +1,12 @@
 require_relative '../lib/coordinates'
 RSpec.describe Coordinates do
   describe 'equals' do
-    it 'is symmetric'
+    it 'is symmetric' do
+      coordinates = Coordinates.new(x: -1, y: -2)
+
+      expect(coordinates).to eq(coordinates)
+    end
+
     it 'is associative'
     it 'is transitive'
     specify 'two coordinates with the same x- and y-coordinates are equal' do
