@@ -21,7 +21,6 @@ class MarsRover
 
   def change_position(routes_list)
     routes_list.route_steps.each do | route_step |
-      raise BadRouteError.new("invalid route command use f, b, l or r") unless ROUTE_COMMANDS.include?(route_step)
       if route_step == 'f'
         case cardinal_direction
         when 'N'

@@ -159,14 +159,13 @@ RSpec.describe MarsRover do
     end
 
     context "[when the route contains an invalid command (e.g. something other than f, b, l or r)]" do
-      it "throws a Bad Route Error with the message 'invalid route command use f, b, l or r'" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: "N")
-          invalid_route = RoverRoute.new(route_steps: ['l', 'r', 'x'])
-          expect {mars_rover.change_position(invalid_route)}.to raise_error(BadRouteError, 'invalid route command use f, b, l or r')
-      end
-
-      xit "does not face a new direction when nor does it change position" do
-
+      it "ignores the invalid commands but execute all valid commands" do
+        mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: "N")
+        route = RoverRoute.new(route_steps: ['l', 'f', 'x', 'f', 'f'])
+        mars_rover.change_position(route)
+        expect(mars_rover.cardinal_direction).to eq('W')
+        expect(mars_rover.x_pos).to eq(-3)
+        expect(mars_rover.y_pos).to eq(0)
       end
     end
   end
