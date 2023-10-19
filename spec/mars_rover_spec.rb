@@ -118,8 +118,9 @@ RSpec.describe "Mars Rover" do
     example 'moving forwards when facing south' do
       mars_rover = MarsRover.new(0, 0,'S')
       forwards(mars_rover)
-      expect(mars_rover.coordinates.x).to eq(0)
-      expect(mars_rover.coordinates.y).to eq(-1)
+      expected_coordinates = Coordinates.new(x: 0, y: -1)
+      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
+      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
       expect(mars_rover.direction).to eq('S')
     end
 
@@ -127,9 +128,9 @@ RSpec.describe "Mars Rover" do
       mars_rover = MarsRover.new(1, 1, 'E')
 
       forwards(mars_rover)
-
-      expect(mars_rover.coordinates.x).to eq(2)
-      expect(mars_rover.coordinates.y).to eq(1)
+      expected_coordinates = Coordinates.new(x: 2, y: 1)
+      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
+      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
       expect(mars_rover.direction).to eq('E')
     end
   end
@@ -137,8 +138,9 @@ RSpec.describe "Mars Rover" do
     example 'moving backward when facing north' do
       mars_rover = MarsRover.new(0, 0, 'N')
       backwards(mars_rover)
-      expect(mars_rover.coordinates.x).to eq(0)
-      expect(mars_rover.coordinates.y).to eq(-1)
+      expected_coordinates = Coordinates.new(x: 0, y: -1)
+      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
+      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
       expect(mars_rover.direction).to eq('N')
     end
 
