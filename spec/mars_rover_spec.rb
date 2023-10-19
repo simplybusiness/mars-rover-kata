@@ -6,6 +6,10 @@ RSpec.describe "Mars Rover" do
       @x = x
       @y = y
     end
+
+    def inspect
+      "(#{x},#{y})"
+    end
   end
 
   class MarsRover
@@ -17,6 +21,10 @@ RSpec.describe "Mars Rover" do
 
       @coordinates = Coordinates.new(x: x, y: y)
       @direction = direction
+    end
+
+    def inspect
+      "Mars rover at coordinates #{coordinates.inspect} facing #{direction}"
     end
 
     def move(commands)
@@ -104,14 +112,14 @@ RSpec.describe "Mars Rover" do
     def forwards(mars_rover)
       mars_rover.move(['f'])
     end
+
     example 'moving forwards when facing north' do
       mars_rover = MarsRover.new(0, 0, 'N')
 
       forwards(mars_rover)
 
       expected_coordinates = Coordinates.new(x: 0, y: 1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('N')
     end
 
@@ -119,8 +127,7 @@ RSpec.describe "Mars Rover" do
       mars_rover = MarsRover.new(0, 0,'S')
       forwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 0, y: -1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('S')
     end
 
@@ -129,9 +136,17 @@ RSpec.describe "Mars Rover" do
 
       forwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 2, y: 1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('E')
+    end
+    example 'moving forwards when facing west' do
+      pending
+      mars_rover = MarsRover.new(1, 1, 'W')
+
+      forwards(mars_rover)
+      expected_coordinates = Coordinates.new(x: 2, y: 1)
+      expect(mars_rover).to have_position(expected_coordinates)
+      expect(mars_rover.direction).to eq('W')
     end
   end
   describe 'Mars rover moving backwards' do
@@ -148,6 +163,12 @@ RSpec.describe "Mars Rover" do
 
     def backwards(mars_rover)
       mars_rover.move(['b'])
+    end
+  end
+  private
+  RSpec::Matchers.define :have_position do |expected_coordinates|
+    match do |mars_rover|
+      mars_rover.coordinates.x == expected_coordinates.x && mars_rover.coordinates.y == expected_coordinates.y
     end
   end
 end
