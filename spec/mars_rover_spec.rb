@@ -21,9 +21,10 @@ RSpec.describe "Mars Rover" do
 
     def move(commands)
       commands.each do |command|
-        if command == 'f'
+        case command
+        when 'f'
           move_forwards
-        elsif command == 'b'
+        when 'b'
           @coordinates = Coordinates.new(x: 0, y: -1)
         end
       end
