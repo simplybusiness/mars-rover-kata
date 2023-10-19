@@ -33,7 +33,10 @@ RSpec.describe "Mars Rover" do
         when 'f'
           move_forwards
         when 'b'
-          @coordinates = Coordinates.new(x: 0, y: -1)
+          case @direction
+          when 'N'
+            @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y - 1)
+          end
         end
       end
     end
@@ -155,16 +158,14 @@ RSpec.describe "Mars Rover" do
       mars_rover = MarsRover.new(0, 0, 'N')
       backwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 0, y: -1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('N')
     end
 
     example 'moving backwards when facing north from any point on the planet' do
-      pending('Next test to get passing')
       mars_rover = MarsRover.new(2, 1, 'N')
       backwards(mars_rover)
-      expected_coordinates = Coordinates.new(x: 1, y: 1)
+      expected_coordinates = Coordinates.new(x: 2, y: 0)
       expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('N')
     end
