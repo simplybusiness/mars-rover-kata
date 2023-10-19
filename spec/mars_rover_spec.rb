@@ -160,6 +160,15 @@ RSpec.describe "Mars Rover" do
       expect(mars_rover.direction).to eq('N')
     end
 
+    example 'moving backwards when facing north from any point on the planet' do
+      pending('Next test to get passing')
+      mars_rover = MarsRover.new(2, 1, 'N')
+      backwards(mars_rover)
+      expected_coordinates = Coordinates.new(x: 1, y: 1)
+      expect(mars_rover).to have_position(expected_coordinates)
+      expect(mars_rover.direction).to eq('N')
+    end
+
     private
 
     def backwards(mars_rover)
