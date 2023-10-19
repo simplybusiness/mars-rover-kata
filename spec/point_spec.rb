@@ -87,6 +87,20 @@ describe Point do
 
     expect(new_point.coordinates).to eq('[0 1 E]')
   end
+
+  it 'returns true when equals is called on a point with another point with the same coordinates' do
+    point_1 =  Point.new(0, 0, 'E')
+    point_2 =  Point.new(0, 0, 'E')
+
+    expect(point_1).to eq(point_2)
+  end
+
+  it 'returns false when equals is called on a point with another point with different coordinates' do
+    point_1 =  Point.new(0, 0, 'E')
+    point_2 =  Point.new(0, 0, 'W')
+
+    expect(point_1).to_not eq(point_2)
+  end
 end
 
 

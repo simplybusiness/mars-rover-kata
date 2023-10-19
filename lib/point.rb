@@ -9,6 +9,10 @@ class Point
     @direction = direction
   end
 
+  def ==(other)
+    coordinates == other.coordinates
+  end
+
   def coordinates
     '[%d %d %s]' % [@x, @y, @direction]
   end
