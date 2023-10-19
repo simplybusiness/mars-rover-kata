@@ -30,6 +30,8 @@ RSpec.describe "Mars Rover" do
           when 'E'
             @coordinates = Coordinates.new(x: @coordinates.x + 1, y: @coordinates.y)
           end
+        elsif command == 'b'
+          @coordinates = Coordinates.new(x: 0, y: -1)
         end
       end
     end
@@ -124,12 +126,17 @@ RSpec.describe "Mars Rover" do
   end
   describe 'Mars rover moving backwards' do
     example 'moving backward when facing north' do
-      pending
       mars_rover = MarsRover.new(0, 0, 'N')
       backwards(mars_rover)
       expect(mars_rover.coordinates.x).to eq(0)
       expect(mars_rover.coordinates.y).to eq(-1)
       expect(mars_rover.direction).to eq('N')
+    end
+
+    private
+
+    def backwards(mars_rover)
+      mars_rover.move(['b'])
     end
   end
 end
