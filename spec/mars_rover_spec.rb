@@ -42,6 +42,8 @@ RSpec.describe "Mars Rover" do
 
     def move_forwards
       case @direction
+      when 'W'
+        @coordinates = Coordinates.new(x: @coordinates.x + 1, y: @coordinates.y)
       when 'S'
         @coordinates = Coordinates.new(x: @coordinates.x, y: @coordinates.y - 1)
       when 'N'
@@ -140,7 +142,6 @@ RSpec.describe "Mars Rover" do
       expect(mars_rover.direction).to eq('E')
     end
     example 'moving forwards when facing west' do
-      pending
       mars_rover = MarsRover.new(1, 1, 'W')
 
       forwards(mars_rover)
