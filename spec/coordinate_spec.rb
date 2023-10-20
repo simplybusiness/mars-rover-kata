@@ -17,4 +17,9 @@ describe "Coordinate" do
         end
     end
 
+    context "when initialised with invalid parameters (not integers)" do
+        it "throws an argument error with a descriptive message" do
+            expect{Coordinate.new(x_pos: 3, y_pos: 'S')}.to raise_error(ArgumentError, 'coordinates must be integers')
+        end
+    end
 end
