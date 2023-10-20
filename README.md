@@ -26,8 +26,8 @@ Develop an API that translates the commands sent from earth to instructions that
 
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-13-Oct: we were begining to use the coordinate object rather than a two dimensional array (primitive obsession)
-        Next task is to use mars_rover's @coordinate_position instance variable (which contains a coordinate class) instead of @position in specs
+20-Oct: We have completed our parrallel change for replacing two dimensional array with coordinate object
+        Next we should look for other code smells (potentially look at our repeated use of x and y on coordinate position. Maybe write our own matcher)
         NEXT TURN: Steve
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
