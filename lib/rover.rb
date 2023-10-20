@@ -12,14 +12,8 @@ class Rover
     EAST = 'E'
     SOUTH = 'S'
 
-    def initialize (coordinates:[0,0], direction: NORTH)
-      if coordinates.is_a?(Coordinate)
-        @coordinate_position = coordinates
-        @position = [coordinates.x, coordinates.y]
-      else
-        @position = coordinates
-        @coordinate_position = Coordinate.new(x = coordinates[0], y = coordinates[1])
-      end
+    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH)
+      @coordinate_position = coordinates
       @direction = direction
     end
 
@@ -50,46 +44,33 @@ class Rover
     end
 
     def move_forward
-      # determine which element of position gets changed
-      current_x = @position[0]
-      current_y = @position[1]
       current_x = @coordinate_position.x
       current_y = @coordinate_position.y
 
       case @direction
       when SOUTH
-        @position[1] = current_y - 1
         @coordinate_position.y = current_y - 1
       when NORTH
-        @position[1] = current_y + 1
         @coordinate_position.y = current_y + 1
       when EAST
-        @position[0] = current_x + 1
         @coordinate_position.x = current_x + 1
       when WEST
-        @position[0] = current_x - 1
         @coordinate_position.x = current_x - 1
       end
     end
 
     def move_backward
-      current_x = @position[0]
-      current_y = @position[1]
       current_x = @coordinate_position.x
       current_y = @coordinate_position.y
 
       case @direction
       when SOUTH
-        @position[1] = current_y + 1
         @coordinate_position.y = current_y + 1
       when NORTH
-        @position[1] = current_y - 1
         @coordinate_position.y = current_y - 1
       when EAST
-        @position[0] = current_x - 1
         @coordinate_position.x = current_x - 1
       when WEST
-        @position[0] = current_x + 1
         @coordinate_position.x = current_x + 1
       end
     end
