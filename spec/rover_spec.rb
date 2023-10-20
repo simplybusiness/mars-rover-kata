@@ -9,10 +9,9 @@ describe Rover do
     end
 
     it 'has position matching the coordinates it was initialized with' do
-      # rover = Rover.new(coordinates:[3,5])
       rover = Rover.new(coordinates: Coordinate.new(3, 5))
-      expect(rover.position[0]).to eq(3)
-      expect(rover.position[1]).to eq(5)
+      expect(rover.coordinate_position.x).to eq(3)
+      expect(rover.coordinate_position.y).to eq(5)
     end
 
     it 'has initially faces North when not given any direction' do
