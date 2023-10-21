@@ -146,11 +146,13 @@ RSpec.describe 'Operating a Mars Rover' do
         expect(mars_rover).to be_located_at(row[:expected_position])
       end
     end
+    %w{N E S W}.each do |direction|
+      it "never changes direction e.g. it remains facing #{direction}" do
+        anywhere = Coordinates.new(x: -1, y: 2)
+        mars_rover = MarsRover.new(starting_position: anywhere, direction: direction)
 
-    it 'never changes direction' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: 2), direction: 'N')
-
-      expect { mars_rover.execute(['b']) }.not_to change(mars_rover, :direction)
+        expect { mars_rover.execute(['b']) }.not_to change(mars_rover, :direction)
+      end
     end
   end
 
