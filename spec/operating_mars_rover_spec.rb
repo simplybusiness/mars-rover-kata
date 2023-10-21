@@ -197,7 +197,15 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   describe 'Turning right' do
-    example 'a Mars rover facing N turns right to face E'
+    example 'a Mars rover facing N turns right to face E' do
+      anywhere = Coordinates.new(x: 0, y: 0)
+      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'N')
+
+      mars_rover.execute(['r'])
+
+      expect(mars_rover).to be_facing('E')
+    end
+
     example 'a Mars rover facing E turns right to face S'
     example 'a Mars rover facing S turns right to face W'
     example 'a Mars rover facing W turns right to face N'
