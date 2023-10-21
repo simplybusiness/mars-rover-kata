@@ -147,7 +147,11 @@ RSpec.describe 'Operating a Mars Rover' do
       end
     end
 
-    it 'never changes direction'
+    it 'never changes direction' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: 2), direction: 'N')
+
+      expect { mars_rover.execute(['b']) }.not_to change(mars_rover, :direction)
+    end
   end
 
   it 'does not execute any commands it does not recognise'
