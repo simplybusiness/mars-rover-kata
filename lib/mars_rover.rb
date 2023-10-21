@@ -52,16 +52,13 @@ class MarsRover
     case @direction
     when 'N'
       move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
-      @current_position = move_forwards_command.call(self)
     when 'E'
       move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
-      @current_position = move_forwards_command.call(self)
     when 'S'
       move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
-      @current_position = move_forwards_command.call(self)
     when 'W'
       move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
-      @current_position = move_forwards_command.call(self)
     end
+    @current_position = move_forwards_command.call(self)
   end
 end
