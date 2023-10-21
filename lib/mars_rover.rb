@@ -26,15 +26,12 @@ class MarsRover
   private
 
   def turn_left
-    if @direction == 'W'
-      @direction = 'S'
-    elsif @direction == 'S'
-      @direction = 'E'
-    elsif @direction == 'E'
-      @direction = 'N'
-    elsif @direction == 'N'
-      @direction = 'W'
-    end
+    @direction = {
+      'N' => 'W',
+      'E' => 'N',
+      'S' => 'E',
+      'W' => 'S'
+    }[@direction]
   end
 
   def move_backwards
