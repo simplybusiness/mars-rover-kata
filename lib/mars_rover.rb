@@ -10,14 +10,7 @@ class MarsRover
     commands.each do |command|
       case command
       when 'b'
-        case @direction
-        when 'N'
-          @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
-        when 'E'
-          @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
-        when 'S'
-          @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
-        end
+        move_backwards
       when 'f'
         move_forwards
       end
@@ -29,6 +22,17 @@ class MarsRover
   end
 
   private
+
+  def move_backwards
+    case @direction
+    when 'N'
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+    when 'E'
+      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
+    when 'S'
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+    end
+  end
 
   def move_forwards
     case @direction
