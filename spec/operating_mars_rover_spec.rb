@@ -157,40 +157,31 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   describe 'Turning left' do
-    example "a Mars rover facing N turns left to face W" do
-      anywhere = Coordinates.new(x: 1, y: 2)
-      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'N')
+    [
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 1, y: 2), direction: 'N'),
+        expected_direction: 'W'
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: -1, y: 2), direction: 'E'),
+        expected_direction: 'N'
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 1, y: -2), direction: 'S'),
+        expected_direction: 'E'
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: -1, y: -2), direction: 'W'),
+        expected_direction: 'S'
+      }
+    ].each do |row|
+      example "a Mars rover facing #{row[:mars_rover].direction} turns left to face #{row[:expected_direction]}" do
+        mars_rover = row[:mars_rover]
 
-      mars_rover.execute(['l'])
+        mars_rover.execute(['l'])
 
-      expect(mars_rover).to be_facing('W')
-    end
-
-    example "a Mars rover facing E turns left to face N" do
-      anywhere = Coordinates.new(x: -1, y: 2)
-      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'E')
-
-      mars_rover.execute(['l'])
-
-      expect(mars_rover).to be_facing('N')
-    end
-
-    example "a Mars rover facing S turns left to face E" do
-      anywhere = Coordinates.new(x: 1, y: -2)
-      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'S')
-
-      mars_rover.execute(['l'])
-
-      expect(mars_rover).to be_facing('E')
-    end
-
-    example "a Mars rover facing W turn left to face S" do
-      anywhere = Coordinates.new(x: -1, y: -2)
-      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'W')
-
-      mars_rover.execute(['l'])
-
-      expect(mars_rover).to be_facing('S')
+        expect(mars_rover).to be_facing(row[:expected_direction])
+      end
     end
 
     it 'remains at its current position'
