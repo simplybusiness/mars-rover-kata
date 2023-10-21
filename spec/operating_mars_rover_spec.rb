@@ -184,7 +184,12 @@ RSpec.describe 'Operating a Mars Rover' do
       end
     end
 
-    it 'remains at its current position'
+    it 'remains at its current position' do
+      anywhere = Coordinates.new(x: 4, y: 6)
+      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'N')
+
+      expect { mars_rover.execute(['l']) }.not_to change(mars_rover, :current_position)
+    end
   end
 
   describe 'Turning right' do
