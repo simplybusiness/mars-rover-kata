@@ -69,6 +69,10 @@ RSpec.describe 'Operating a Mars Rover' do
         expected_position: Coordinates.new(x: 0, y: 3)
       },
       {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 1, y: 2), direction: 'N'),
+        expected_position: Coordinates.new(x: 1, y: 3)
+      },
+      {
         mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'E'),
         expected_position: Coordinates.new(x: 1, y: 0)
       },
