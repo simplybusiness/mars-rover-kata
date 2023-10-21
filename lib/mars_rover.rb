@@ -14,15 +14,7 @@ class MarsRover
       when 'f'
         move_forwards
       when 'l'
-        if @direction == 'W'
-          @direction = 'S'
-        elsif @direction == 'S'
-          @direction = 'E'
-        elsif @direction == 'E'
-          @direction = 'N'
-        elsif @direction == 'N'
-          @direction = 'W'
-        end
+        turn_left
       end
     end
   end
@@ -32,6 +24,18 @@ class MarsRover
   end
 
   private
+
+  def turn_left
+    if @direction == 'W'
+      @direction = 'S'
+    elsif @direction == 'S'
+      @direction = 'E'
+    elsif @direction == 'E'
+      @direction = 'N'
+    elsif @direction == 'N'
+      @direction = 'W'
+    end
+  end
 
   def move_backwards
     case @direction
