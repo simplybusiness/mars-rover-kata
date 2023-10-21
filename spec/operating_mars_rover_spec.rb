@@ -156,6 +156,13 @@ RSpec.describe 'Operating a Mars Rover' do
     end
   end
 
+  describe 'Turning left' do
+    example "a Mars rover facing N turns left to face W"
+    example "a Mars rover facing E turns left to face N"
+    example "a Mars rover facing S turns left to face E"
+    example "a Mars rover facing W turn left to face S"
+  end
+
   it 'does not execute any commands it does not recognise'
   it 'fails to execute any commands it does not recognise by raising an exception'
 
