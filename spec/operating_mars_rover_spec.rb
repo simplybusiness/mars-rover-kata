@@ -193,7 +193,15 @@ RSpec.describe 'Operating a Mars Rover' do
       expect(mars_rover).to be_facing('S')
     end
 
-    example 'turning left does not change the current position'
+    it 'does not change the current position'
+  end
+
+  describe 'Turning right' do
+    example 'a Mars rover facing N turns right to face E'
+    example 'a Mars rover facing E turns right to face S'
+    example 'a Mars rover facing S turns right to face W'
+    example 'a Mars rover facing W turns right to face N'
+    it 'does not change the current position'
   end
 
   it 'does not execute any commands it does not recognise'
