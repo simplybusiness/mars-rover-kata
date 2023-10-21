@@ -26,7 +26,7 @@ class MarsRover
   private
 
   def turn_left
-    turn_left_command = ->(mars_rover) do
+    command = ->(mars_rover) do
         {
           'N' => 'W',
           'E' => 'N',
@@ -35,21 +35,21 @@ class MarsRover
         }[mars_rover.direction]
     end
 
-    @direction = turn_left_command.call(self)
+    @direction = command.call(self)
   end
 
   def move_backwards
     case @direction
     when 'N'
-      move_backwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
+      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
     when 'E'
-      move_backwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
+      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
     when 'S'
-      move_backwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
+      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
     when 'W'
-      move_backwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
+      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
     end
-    @current_position = move_backwards_command.call(self)
+    @current_position = command.call(self)
   end
 
   def move_forwards
