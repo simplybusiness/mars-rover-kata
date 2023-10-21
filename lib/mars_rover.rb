@@ -26,12 +26,16 @@ class MarsRover
   private
 
   def turn_left
-    @direction = {
-      'N' => 'W',
-      'E' => 'N',
-      'S' => 'E',
-      'W' => 'S'
-    }[@direction]
+    turn_left_command = ->(mars_rover) do
+        {
+          'N' => 'W',
+          'E' => 'N',
+          'S' => 'E',
+          'W' => 'S'
+        }[mars_rover.direction]
+    end
+
+    @direction = turn_left_command.call(self)
   end
 
   def move_backwards
