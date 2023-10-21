@@ -26,43 +26,37 @@ class MarsRover
   private
 
   def turn_left
-    command = ->(mars_rover) do
-        {
-          'N' => 'W',
-          'E' => 'N',
-          'S' => 'E',
-          'W' => 'S'
-        }[mars_rover.direction]
-    end
-
-    @direction = command.call(self)
+    @direction = {
+      'N' => 'W',
+      'E' => 'N',
+      'S' => 'E',
+      'W' => 'S'
+    }[@direction]
   end
 
   def move_backwards
     case @direction
     when 'N'
-      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
     when 'E'
-      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
+      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     when 'S'
-      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     when 'W'
-      command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
+      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
     end
-    @current_position = command.call(self)
   end
 
   def move_forwards
     case @direction
     when 'N'
-      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     when 'E'
-      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
+      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
     when 'S'
-      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
+      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
     when 'W'
-      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
+      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     end
-    @current_position = move_forwards_command.call(self)
   end
 end
