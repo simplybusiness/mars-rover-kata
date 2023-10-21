@@ -51,13 +51,17 @@ class MarsRover
   def move_forwards
     case @direction
     when 'N'
-      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1) }
+      @current_position = move_forwards_command.call(self)
     when 'E'
-      @current_position = Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
+      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y) }
+      @current_position = move_forwards_command.call(self)
     when 'S'
-      @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1) }
+      @current_position = move_forwards_command.call(self)
     when 'W'
-      @current_position = Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
+      move_forwards_command = ->(mars_rover) { Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y) }
+      @current_position = move_forwards_command.call(self)
     end
   end
 end
