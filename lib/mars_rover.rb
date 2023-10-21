@@ -16,7 +16,7 @@ class MarsRover
       when 'l'
         if @direction == 'E'
           @direction = 'N'
-        else
+        elsif @direction == 'N'
           @direction = 'W'
         end
       end
