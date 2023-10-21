@@ -112,59 +112,39 @@ RSpec.describe 'Operating a Mars Rover' do
   end
 
   describe 'moving backwards' do
-    # Obsolete test?
-    it 'moves backwards when facing north from the origin' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
+    [
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N'),
+        expected_position: Coordinates.new(x: 0, y: -1)
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 2), direction: 'N'),
+        expected_position: Coordinates.new(x: 0, y: 1)
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 2, y: 3), direction: 'N'),
+        expected_position: Coordinates.new(x: 2, y: 2)
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 2, y: 0), direction: 'E'),
+        expected_position: Coordinates.new(x: 1, y: 0)
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'S'),
+        expected_position: Coordinates.new(x: 0, y: 1)
+      },
+      {
+        mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'W'),
+        expected_position: Coordinates.new(x: 1, y: 0)
+      }
+    ].each do |row|
+      example "#{row[:mars_rover].inspect} moves backwards to #{row[:expected_position]}" do
+        mars_rover = row[:mars_rover]
 
-      mars_rover.execute(['b'])
+        mars_rover.execute(['b'])
 
-      expected_coordinates = Coordinates.new(x: 0, y: -1)
-      expect(mars_rover).to be_located_at(expected_coordinates)
-    end
-
-    # Obsolete test?
-    it 'moves backwards when facing north at any starting point on the y-axis' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 2), direction: 'N')
-
-      mars_rover.execute(['b'])
-
-      expected_coordinates = Coordinates.new(x: 0, y: 1)
-      expect(mars_rover).to be_located_at(expected_coordinates)
-    end
-
-    it 'moves backwards when facing north from any starting point in the coordinates system' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 2, y: 3), direction: 'N')
-
-      mars_rover.execute(['b'])
-
-      expected_coordinates = Coordinates.new(x: 2, y: 2)
-      expect(mars_rover).to be_located_at(expected_coordinates)
-    end
-
-    it 'moves backwards when facing east' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 2, y: 0), direction: 'E')
-
-      mars_rover.execute(['b'])
-
-      expected_coordinates = Coordinates.new(x: 1, y: 0)
-      expect(mars_rover).to be_located_at(expected_coordinates)
-    end
-
-    it 'moves backwards when facing south' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'S')
-      mars_rover.execute(['b'])
-
-      expected_location = Coordinates.new(x: 0, y: 1)
-      expect(mars_rover).to be_located_at(expected_location)
-    end
-
-    it 'moves backwards when facing west' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'W')
-
-      mars_rover.execute(['b'])
-
-      expected_location = Coordinates.new(x: 1, y: 0)
-      expect(mars_rover).to be_located_at(expected_location)
+        expect(mars_rover).to be_located_at(row[:expected_position])
+      end
     end
 
     it 'never changes direction'
