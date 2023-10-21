@@ -164,6 +164,7 @@ RSpec.describe 'Operating a Mars Rover' do
       mars_rover.execute(['l'])
 
       expect(mars_rover.direction).to eq('W')
+      expect(mars_rover).to be_facing('W')
     end
 
     example "a Mars rover facing E turns left to face N" do
@@ -192,5 +193,9 @@ RSpec.describe 'Operating a Mars Rover' do
 
   RSpec::Matchers.define(:be_located_at) do |expected_position|
     match { |mars_rover| mars_rover.current_position == expected_position }
+  end
+
+  RSpec::Matchers.define(:be_facing) do |expected_direction|
+    match { |mars_rover| mars_rover.direction == expected_direction }
   end
 end
