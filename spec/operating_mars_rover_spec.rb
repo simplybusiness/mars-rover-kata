@@ -163,7 +163,6 @@ RSpec.describe 'Operating a Mars Rover' do
 
       mars_rover.execute(['l'])
 
-      expect(mars_rover.direction).to eq('W')
       expect(mars_rover).to be_facing('W')
     end
 
