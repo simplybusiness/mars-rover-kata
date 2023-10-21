@@ -14,7 +14,9 @@ class MarsRover
       when 'f'
         move_forwards
       when 'l'
-        if @direction == 'S'
+        if @direction == 'W'
+          @direction = 'S'
+        elsif @direction == 'S'
           @direction = 'E'
         elsif @direction == 'E'
           @direction = 'N'
