@@ -192,6 +192,8 @@ RSpec.describe 'Operating a Mars Rover' do
 
       expect(mars_rover).to be_facing('S')
     end
+
+    example 'turning left does not change the current position'
   end
 
   it 'does not execute any commands it does not recognise'
