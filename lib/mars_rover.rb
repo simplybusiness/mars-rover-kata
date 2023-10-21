@@ -13,6 +13,8 @@ class MarsRover
         move_backwards
       when 'f'
         move_forwards
+      when 'l'
+        @direction = 'W'
       end
     end
   end
