@@ -16,15 +16,7 @@ class MarsRover
       when 'l'
         turn_left
       when 'r'
-        if @direction == 'W'
-          @direction = 'N'
-        elsif @direction == 'S'
-          @direction = 'W'
-        elsif @direction == 'E'
-          @direction = 'S'
-        elsif @direction == 'N'
-          @direction = 'E'
-        end
+        turn_right
       end
     end
   end
@@ -34,6 +26,18 @@ class MarsRover
   end
 
   private
+
+  def turn_right
+    if @direction == 'W'
+      @direction = 'N'
+    elsif @direction == 'S'
+      @direction = 'W'
+    elsif @direction == 'E'
+      @direction = 'S'
+    elsif @direction == 'N'
+      @direction = 'E'
+    end
+  end
 
   def turn_left
     @direction = {
