@@ -236,8 +236,14 @@ RSpec.describe 'Operating a Mars Rover' do
 
 
   describe "Moving towards and past the planet's edges" do
-    it 'can move to the right-hand most edge of the planet'
-    it 'can move from the right-hand most edge of the planet and reappear at the left edge'
+    it 'can move to the right-hand edge of the planet'
+    it 'can move from the right-hand edge of the planet and reappear at the left-hand edge'
+    it 'can move to the left-hand edge of the planet'
+    it 'can move from the left-hand edge of the planet and reappear at the right-hand edge'
+    it 'can move to the top edge of the planet'
+    it 'can move from the top edge of the planet and reappear at the bottom edge'
+    it 'can move to the bottom edge of the planet'
+    it 'can move from the bottom edge of the planet and reappear at the top edge'
   end
 
 
