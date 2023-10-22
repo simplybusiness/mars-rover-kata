@@ -41,7 +41,7 @@ class MarsRover
   end
 
   def move_backwards
-      @current_position = @current_position.backwards(@direction)
+    @current_position = @current_position.backwards(@direction)
   end
 
   def move_forwards
