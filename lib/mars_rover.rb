@@ -7,6 +7,7 @@ class MarsRover
     'S' => 'E',
     'W' => 'S'
   }.freeze
+  private_constant :TURN_LEFT
 
   def initialize(starting_position:, direction:)
     @current_position = starting_position
