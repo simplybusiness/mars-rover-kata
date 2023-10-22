@@ -224,7 +224,11 @@ RSpec.describe 'Operating a Mars Rover' do
       end
     end
 
-    it 'remains at its current position'
+    it 'remains at its current position' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
+
+      expect { mars_rover.execute(['r']) }.not_to change(mars_rover, :current_position)
+    end
   end
 
   it 'does not execute any commands it does not recognise'
