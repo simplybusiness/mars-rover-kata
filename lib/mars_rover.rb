@@ -1,6 +1,13 @@
 class MarsRover
   attr_reader :current_position, :direction
 
+  TURN_LEFT = {
+    'N' => 'W',
+    'E' => 'N',
+    'S' => 'E',
+    'W' => 'S'
+  }.freeze
+
   def initialize(starting_position:, direction:)
     @current_position = starting_position
     @direction = direction
@@ -37,12 +44,7 @@ class MarsRover
   end
 
   def turn_left
-    @direction = {
-      'N' => 'W',
-      'E' => 'N',
-      'S' => 'E',
-      'W' => 'S'
-    }[@direction]
+    @direction = TURN_LEFT[@direction]
   end
 
   def move_backwards
