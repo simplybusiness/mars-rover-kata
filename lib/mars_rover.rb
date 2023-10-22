@@ -35,12 +35,7 @@ class MarsRover
   private
 
   def turn_right
-    @direction = {
-      'N' => 'E',
-      'E' => 'S',
-      'S' => 'W',
-      'W' => 'N'
-    }[@direction]
+    @direction = TURN_LEFT.invert[@direction]
   end
 
   def turn_left
