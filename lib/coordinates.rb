@@ -6,19 +6,6 @@ class Coordinates
     @y = y
   end
 
-  def forwards(direction)
-    case direction
-    when 'N'
-      Coordinates.new(x: x, y: y + 1)
-    when 'E'
-      Coordinates.new(x: x + 1, y: y)
-    when 'S'
-      Coordinates.new(x: x, y: y - 1)
-    when 'W'
-      Coordinates.new(x: x - 1, y: y)
-    end
-  end
-
   def backwards(direction)
     case direction
     when 'N'
