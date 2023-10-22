@@ -231,7 +231,12 @@ RSpec.describe 'Operating a Mars Rover' do
     end
   end
 
-  it 'does not execute any commands it does not recognise'
+  it 'does not execute any commands it does not recognise' do
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: 5), direction: 'W')
+
+    expect { mars_rover.execute(['x']) }.not_to change(mars_rover, :direction)
+    expect { mars_rover.execute(['z']) }.not_to change(mars_rover, :current_position)
+  end
   it 'fails to execute any commands it does not recognise by raising an exception'
 
 
