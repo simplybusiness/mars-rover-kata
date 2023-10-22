@@ -223,7 +223,16 @@ RSpec.describe 'Operating a Mars Rover' do
 
       expect(mars_rover).to be_facing('W')
     end
-    example 'a Mars rover facing W turns right to face N'
+
+    example 'a Mars rover facing W turns right to face N' do
+      anywhere = Coordinates.new(x: -1, y: 3)
+      mars_rover = MarsRover.new(starting_position: anywhere, direction: 'W')
+
+      mars_rover.execute(['r'])
+
+      expect(mars_rover).to be_facing('N')
+    end
+
     it 'remains at its current position'
   end
 
