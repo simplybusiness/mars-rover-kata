@@ -58,7 +58,7 @@ RSpec.describe 'Operating a Mars Rover' do
       .to raise_error('A command must consist of a list of individual commands e.g. %w{f b l r}')
   end
 
-  describe 'moving forwards' do
+  describe 'Moving forwards' do
     [
       {
         mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N'),
@@ -111,7 +111,7 @@ RSpec.describe 'Operating a Mars Rover' do
     end
   end
 
-  describe 'moving backwards' do
+  describe 'Moving backwards' do
     [
       {
         mars_rover: MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N'),
