@@ -18,9 +18,9 @@ class MarsRover
     commands.each do |command|
       case command
       when 'b'
-        move_backwards
+        @current_position = move_backwards
       when 'f'
-        move_forwards
+        @current_position = move_forwards
       when 'l'
         turn_left
       when 'r'
@@ -44,10 +44,10 @@ class MarsRover
   end
 
   def move_backwards
-    @current_position = @current_position.backwards(@direction)
+    @current_position.backwards(@direction)
   end
 
   def move_forwards
-    @current_position = @current_position.forwards(@direction)
+    @current_position.forwards(@direction)
   end
 end
