@@ -20,17 +20,13 @@ class MarsRover
     commands.inject(self) do |mars_rover, command|
       case command
       when 'b'
-        new_position = move_backwards(mars_rover)
-        mars_rover = MarsRover.new(starting_position: new_position, direction: mars_rover.direction)
+        mars_rover = MarsRover.new(starting_position: move_backwards(mars_rover), direction: mars_rover.direction)
       when 'f'
-        new_position = move_forwards(mars_rover)
-        mars_rover = MarsRover.new(starting_position: new_position, direction: mars_rover.direction)
+        mars_rover = MarsRover.new(starting_position: move_forwards(mars_rover), direction: mars_rover.direction)
       when 'l'
-        new_direction = turn_left(mars_rover)
-        mars_rover = MarsRover.new(starting_position: mars_rover.current_position, direction: new_direction)
+        mars_rover = MarsRover.new(starting_position: mars_rover.current_position, direction: turn_left(mars_rover))
       when 'r'
-        new_direction = turn_right(mars_rover)
-        mars_rover = MarsRover.new(starting_position: mars_rover.current_position, direction: new_direction)
+        mars_rover = MarsRover.new(starting_position: mars_rover.current_position, direction: turn_right(mars_rover))
       end
       mars_rover
     end
