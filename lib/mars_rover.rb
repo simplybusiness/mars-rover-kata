@@ -48,11 +48,11 @@ class MarsRover
 
   def translate_backwards(mars_rover)
     MarsRover.new(
-      starting_position: move_backwards(mars_rover, current_position: mars_rover.current_position, direction: mars_rover.direction),
+      starting_position: move_backwards(current_position: mars_rover.current_position, direction: mars_rover.direction),
       direction: mars_rover.direction)
   end
 
-  def move_backwards(mars_rover, current_position:, direction:)
+  def move_backwards(mars_rover = nil, current_position:, direction:)
     case direction
     when 'N'
       Coordinates.new(x: current_position.x, y: current_position.y - 1)
