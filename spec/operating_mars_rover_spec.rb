@@ -96,9 +96,11 @@ RSpec.describe 'Operating a Mars Rover' do
 
     %w{N E S W}.each do | direction |
       it "never changes direction from #{direction}" do
-        mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: direction)
+        immutable_mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: direction)
 
-        expect { mars_rover.execute(['f']) }.not_to change(mars_rover, :direction)
+        mars_rover_after_execution = immutable_mars_rover.execute(['f'])
+
+        expect(mars_rover_after_execution).to be_facing(direction)
       end
     end
 
