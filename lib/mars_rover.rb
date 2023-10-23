@@ -29,6 +29,7 @@ class MarsRover
         @direction = turn_right
       end
     end
+    MarsRover.new(starting_position: @current_position, direction: @direction)
   end
 
   def inspect
