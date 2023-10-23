@@ -24,7 +24,7 @@ class MarsRover
       when 'f'
         @current_position = move_forwards(mars_rover)
       when 'l'
-        @direction = turn_left
+        @direction = turn_left(mars_rover)
       when 'r'
         @direction = turn_right
       end
@@ -42,8 +42,8 @@ class MarsRover
     TURN_LEFT.invert[@direction]
   end
 
-  def turn_left
-    TURN_LEFT[@direction]
+  def turn_left(mars_rover)
+    TURN_LEFT[mars_rover.direction]
   end
 
   def move_backwards(mars_rover)
