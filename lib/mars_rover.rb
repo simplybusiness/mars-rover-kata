@@ -17,18 +17,18 @@ class MarsRover
   end
 
   def execute(commands)
-    commands.inject(self) do |memo, command|
+    commands.inject(self) do |mars_rover, command|
       case command
       when 'b'
-        @current_position = move_backwards(memo)
+        @current_position = move_backwards(mars_rover)
       when 'f'
-        @current_position = move_forwards(memo)
+        @current_position = move_forwards(mars_rover)
       when 'l'
         @direction = turn_left
       when 'r'
         @direction = turn_right
       end
-      memo = MarsRover.new(starting_position: @current_position, direction: @direction)
+      mars_rover = MarsRover.new(starting_position: @current_position, direction: @direction)
     end
   end
 
