@@ -237,8 +237,11 @@ RSpec.describe 'Operating a Mars Rover' do
 
     it 'remains at its current position' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
+      immutable_mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
 
       expect { mars_rover.execute(['r']) }.not_to change(mars_rover, :current_position)
+      original_position = Coordinates.new(x: -3, y: -4)
+      expect(immutable_mars_rover).to be_located_at(original_position)
     end
   end
 
