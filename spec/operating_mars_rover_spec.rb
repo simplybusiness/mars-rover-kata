@@ -105,11 +105,11 @@ RSpec.describe 'Operating a Mars Rover' do
     end
 
     it 'can move forwards multiple times' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
+      immutable_mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
 
-      mars_rover.execute(%w{f f f f})
+      new_mars_rover = immutable_mars_rover.execute(%w{f f f f})
 
-      expect(mars_rover).to be_located_at(Coordinates.new(x: 0, y: 4))
+      expect(new_mars_rover).to be_located_at(Coordinates.new(x: 0, y: 4))
     end
   end
 
