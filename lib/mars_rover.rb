@@ -63,7 +63,7 @@ class MarsRover
     when 'N'
       Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     when 'E'
-      if @current_position.x == @right_hand_edge
+      if at_right_hand_edge?(@current_position)
         Coordinates.new(x: @left_hand_edge, y: 0)
       else
         Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
@@ -73,5 +73,9 @@ class MarsRover
     when 'W'
       Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     end
+  end
+
+  def at_right_hand_edge?(position)
+    position.x == @right_hand_edge
   end
 end
