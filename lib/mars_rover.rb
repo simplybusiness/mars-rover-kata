@@ -22,7 +22,7 @@ class MarsRover
       when 'b'
         @current_position = move_backwards(memo)
       when 'f'
-        @current_position = move_forwards
+        @current_position = move_forwards(memo)
       when 'l'
         @direction = turn_left
       when 'r'
@@ -59,7 +59,7 @@ class MarsRover
     end
   end
 
-  def move_forwards
+  def move_forwards(mars_rover)
     case @direction
     when 'N'
       Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
