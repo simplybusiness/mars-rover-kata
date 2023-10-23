@@ -229,9 +229,9 @@ RSpec.describe 'Operating a Mars Rover' do
       example "a Mars rover facing #{row[:mars_rover].direction} turns right to face #{row[:expected_direction]}" do
         mars_rover = row[:mars_rover]
 
-        mars_rover.execute(['r'])
+        new_mars_rover = mars_rover.execute(['r'])
 
-        expect(mars_rover).to be_facing(row[:expected_direction])
+        expect(new_mars_rover).to be_facing(row[:expected_direction])
       end
     end
 
