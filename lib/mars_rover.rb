@@ -20,7 +20,7 @@ class MarsRover
     commands.inject(self) do |memo, command|
       case command
       when 'b'
-        @current_position = move_backwards
+        @current_position = move_backwards(memo)
       when 'f'
         @current_position = move_forwards
       when 'l'
