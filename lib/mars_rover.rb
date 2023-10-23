@@ -53,15 +53,15 @@ class MarsRover
   end
 
   def move_backwards(mars_rover, current_position: nil, direction: nil)
-    case mars_rover.direction
+    case direction
     when 'N'
-      Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1)
+      Coordinates.new(x: current_position.x, y: current_position.y - 1)
     when 'E'
-      Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y)
+      Coordinates.new(x: current_position.x - 1, y: current_position.y)
     when 'S'
-      Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1)
+      Coordinates.new(x: current_position.x, y: current_position.y + 1)
     when 'W'
-      Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y)
+      Coordinates.new(x: current_position.x + 1, y: current_position.y)
     end
   end
 
