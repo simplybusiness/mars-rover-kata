@@ -39,19 +39,11 @@ class MarsRover
   private
 
   def rotate_right(mars_rover)
-    MarsRover.new(starting_position: mars_rover.current_position, direction: turn_right(mars_rover))
-  end
-
-  def turn_right(mars_rover)
-    TURN_LEFT.invert[mars_rover.direction]
+    MarsRover.new(starting_position: mars_rover.current_position, direction: TURN_LEFT.invert[mars_rover.direction])
   end
 
   def rotate_left(mars_rover)
-    MarsRover.new(starting_position: mars_rover.current_position, direction: turn_left(mars_rover))
-  end
-
-  def turn_left(mars_rover)
-    TURN_LEFT[mars_rover.direction]
+    MarsRover.new(starting_position: mars_rover.current_position, direction: TURN_LEFT[mars_rover.direction])
   end
 
   def translate_backwards(mars_rover)
