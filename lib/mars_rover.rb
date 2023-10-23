@@ -46,7 +46,7 @@ class MarsRover
     TURN_LEFT[@direction]
   end
 
-  def move_backwards(mars_rover = nil)
+  def move_backwards(mars_rover)
     case @direction
     when 'N'
       Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1)
