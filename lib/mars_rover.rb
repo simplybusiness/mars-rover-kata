@@ -22,7 +22,7 @@ class MarsRover
       when 'b'
         mars_rover = translate_backwards(mars_rover)
       when 'f'
-        mars_rover = MarsRover.new(starting_position: move_forwards(mars_rover), direction: mars_rover.direction)
+        mars_rover = translate_forwards(mars_rover)
       when 'l'
         mars_rover = MarsRover.new(starting_position: mars_rover.current_position, direction: turn_left(mars_rover))
       when 'r'
@@ -61,6 +61,10 @@ class MarsRover
     when 'W'
       Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y)
     end
+  end
+
+  def translate_forwards(mars_rover)
+    MarsRover.new(starting_position: move_forwards(mars_rover), direction: mars_rover.direction)
   end
 
   def move_forwards(mars_rover)
