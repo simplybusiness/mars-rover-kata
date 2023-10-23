@@ -10,6 +10,8 @@ class MarsRover
   private_constant :TURN_LEFT
 
   def initialize(starting_position:, direction:)
+    @right_hand_edge = 10
+    @left_hand_edge = -10
     @current_position = starting_position
     @direction = direction
   end
@@ -61,8 +63,6 @@ class MarsRover
     when 'N'
       Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     when 'E'
-      @right_hand_edge = 10
-      @left_hand_edge = -10
       if @current_position.x == @right_hand_edge
         Coordinates.new(x: @left_hand_edge, y: 0)
       else
