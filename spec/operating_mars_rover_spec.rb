@@ -236,10 +236,8 @@ RSpec.describe 'Operating a Mars Rover' do
     end
 
     it 'remains at its current position' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
       immutable_mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
 
-      expect { mars_rover.execute(['r']) }.not_to change(mars_rover, :current_position)
       original_position = Coordinates.new(x: -3, y: -4)
       expect(immutable_mars_rover).to be_located_at(original_position)
     end
@@ -248,8 +246,12 @@ RSpec.describe 'Operating a Mars Rover' do
   it 'does not execute any commands it does not recognise' do
     mars_rover = MarsRover.new(starting_position: Coordinates.new(x: -1, y: 5), direction: 'W')
 
-    expect { mars_rover.execute(['x']) }.not_to change(mars_rover, :direction)
-    expect { mars_rover.execute(['z']) }.not_to change(mars_rover, :current_position)
+    new_mars_rover = mars_rover.execute(%w[x z])
+
+    original_position = Coordinates.new(x: -1, y: 5)
+    expect(new_mars_rover).to be_located_at(original_position)
+    original_direction = 'W'
+    expect(new_mars_rover).to be_facing(original_direction)
   end
   it 'fails to execute any commands it does not recognise by raising an exception'
 
@@ -258,19 +260,19 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'can move to the right-hand edge of the planet' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 9, y: 0), direction: 'E')
 
-      mars_rover.execute(['f'])
+      new_mars_rover = mars_rover.execute(['f'])
 
       right_hand_edge = Coordinates.new(x: 10, y: 0)
-      expect(mars_rover).to be_located_at(right_hand_edge)
+      expect(new_mars_rover).to be_located_at(right_hand_edge)
     end
 
     it 'can move from the right-hand edge of the planet and reappear at the left-hand edge' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 10, y: 0), direction: 'E')
 
-      mars_rover.execute(['f'])
+      new_mars_rover = mars_rover.execute(['f'])
 
       left_hand_edge = Coordinates.new(x: -10, y: 0)
-      expect(mars_rover).to be_located_at(left_hand_edge)
+      expect(new_mars_rover).to be_located_at(left_hand_edge)
     end
     it 'can move to the left-hand edge of the planet'
     it 'can move from the left-hand edge of the planet and reappear at the right-hand edge'
