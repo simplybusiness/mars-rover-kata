@@ -60,19 +60,19 @@ class MarsRover
   end
 
   def move_forwards(mars_rover)
-    case @direction
+    case mars_rover.direction
     when 'N'
-      Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+      Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y + 1)
     when 'E'
-      if at_right_hand_edge?(@current_position)
+      if at_right_hand_edge?(mars_rover.current_position)
         Coordinates.new(x: @left_hand_edge, y: 0)
       else
-        Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
+        Coordinates.new(x: mars_rover.current_position.x + 1, y: mars_rover.current_position.y)
       end
     when 'S'
-      Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+      Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1)
     when 'W'
-      Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
+      Coordinates.new(x: mars_rover.current_position.x - 1, y: mars_rover.current_position.y)
     end
   end
 
