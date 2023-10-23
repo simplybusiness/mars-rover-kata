@@ -86,9 +86,9 @@ RSpec.describe 'Operating a Mars Rover' do
       }
     ].each do |row|
       example "#{row[:mars_rover].inspect} moves forwards to #{row[:expected_position]}" do
-        mars_rover = row[:mars_rover]
+        immutable_mars_rover = row[:mars_rover]
 
-        new_mars_rover = mars_rover.execute(['f'])
+        new_mars_rover = immutable_mars_rover.execute(['f'])
 
         expect(new_mars_rover).to be_located_at(row[:expected_position])
       end
@@ -141,9 +141,9 @@ RSpec.describe 'Operating a Mars Rover' do
       }
     ].each do |row|
       example "#{row[:mars_rover].inspect} moves backwards to #{row[:expected_position]}" do
-        mars_rover = row[:mars_rover]
+        immutable_mars_rover = row[:mars_rover]
 
-        new_mars_rover = mars_rover.execute(['b'])
+        new_mars_rover = immutable_mars_rover.execute(['b'])
 
         expect(new_mars_rover).to be_located_at(row[:expected_position])
       end
@@ -184,11 +184,11 @@ RSpec.describe 'Operating a Mars Rover' do
       }
     ].each do |row|
       example "a Mars rover facing #{row[:mars_rover].direction} turns left to face #{row[:expected_direction]}" do
-        mars_rover = row[:mars_rover]
+        immutable_mars_rover = row[:mars_rover]
 
-        mars_rover.execute(['l'])
+        new_mars_rover = immutable_mars_rover.execute(['l'])
 
-        expect(mars_rover).to be_facing(row[:expected_direction])
+        expect(new_mars_rover).to be_facing(row[:expected_direction])
       end
     end
 
