@@ -20,7 +20,7 @@ class MarsRover
     commands.inject(self) do |mars_rover, command|
       case command
       when 'b'
-        mars_rover = MarsRover.new(starting_position: move_backwards(mars_rover), direction: mars_rover.direction)
+        mars_rover = translate_backwards(mars_rover)
       when 'f'
         mars_rover = MarsRover.new(starting_position: move_forwards(mars_rover), direction: mars_rover.direction)
       when 'l'
@@ -44,6 +44,10 @@ class MarsRover
 
   def turn_left(mars_rover)
     TURN_LEFT[mars_rover.direction]
+  end
+
+  def translate_backwards(mars_rover)
+    MarsRover.new(starting_position: move_backwards(mars_rover), direction: mars_rover.direction)
   end
 
   def move_backwards(mars_rover)
