@@ -61,8 +61,10 @@ class MarsRover
     when 'N'
       Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
     when 'E'
-      if @current_position.x == 10
-        Coordinates.new(x: -10, y: 0)
+      @right_hand_edge = 10
+      @left_hand_edge = -10
+      if @current_position.x == @right_hand_edge
+        Coordinates.new(x: @left_hand_edge, y: 0)
       else
         Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
       end
