@@ -143,9 +143,9 @@ RSpec.describe 'Operating a Mars Rover' do
       example "#{row[:mars_rover].inspect} moves backwards to #{row[:expected_position]}" do
         mars_rover = row[:mars_rover]
 
-        mars_rover.execute(['b'])
+        new_mars_rover = mars_rover.execute(['b'])
 
-        expect(mars_rover).to be_located_at(row[:expected_position])
+        expect(new_mars_rover).to be_located_at(row[:expected_position])
       end
     end
     %w{N E S W}.each do |direction|
