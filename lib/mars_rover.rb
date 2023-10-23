@@ -50,7 +50,7 @@ class MarsRover
     MarsRover.new(starting_position: move_backwards(mars_rover), direction: mars_rover.direction)
   end
 
-  def move_backwards(mars_rover)
+  def move_backwards(mars_rover, current_position: nil, direction: nil)
     case mars_rover.direction
     when 'N'
       Coordinates.new(x: mars_rover.current_position.x, y: mars_rover.current_position.y - 1)
