@@ -17,7 +17,7 @@ class MarsRover
   end
 
   def execute(commands)
-    commands.each do |command|
+    mars_rover = commands.inject(self) do |memo, command|
       case command
       when 'b'
         @current_position = move_backwards
@@ -28,8 +28,9 @@ class MarsRover
       when 'r'
         @direction = turn_right
       end
+      memo = MarsRover.new(starting_position: @current_position, direction: @direction)
     end
-    MarsRover.new(starting_position: @current_position, direction: @direction)
+    mars_rover
   end
 
   def inspect
