@@ -88,9 +88,9 @@ RSpec.describe 'Operating a Mars Rover' do
       example "#{row[:mars_rover].inspect} moves forwards to #{row[:expected_position]}" do
         mars_rover = row[:mars_rover]
 
-        mars_rover_after_execution = mars_rover.execute(['f'])
+        new_mars_rover = mars_rover.execute(['f'])
 
-        expect(mars_rover_after_execution).to be_located_at(row[:expected_position])
+        expect(new_mars_rover).to be_located_at(row[:expected_position])
       end
     end
 
@@ -98,9 +98,9 @@ RSpec.describe 'Operating a Mars Rover' do
       it "never changes direction from #{direction}" do
         immutable_mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: direction)
 
-        mars_rover_after_execution = immutable_mars_rover.execute(['f'])
+        new_mars_rover = immutable_mars_rover.execute(['f'])
 
-        expect(mars_rover_after_execution).to be_facing(direction)
+        expect(new_mars_rover).to be_facing(direction)
       end
     end
 
