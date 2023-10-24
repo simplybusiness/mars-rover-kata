@@ -23,6 +23,8 @@ class Map
     end
   end
 
+  private
+
   def at_right_hand_edge?(position)
     position.x == @right_hand_edge
   end
