@@ -19,7 +19,11 @@ class Map
     when 'S'
       Coordinates.new(x: current_position.x, y: current_position.y - 1)
     when 'W'
-      Coordinates.new(x: current_position.x - 1, y: current_position.y)
+      if current_position.x == @left_hand_edge
+        Coordinates.new(x: @right_hand_edge, y: 0)
+      else
+        Coordinates.new(x: current_position.x - 1, y: current_position.y)
+      end
     end
   end
 

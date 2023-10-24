@@ -282,7 +282,6 @@ RSpec.describe 'Operating a Mars Rover' do
     end
 
     it 'can move from the left-hand edge of the planet and reappear at the right-hand edge' do
-      pending('Next test to get passing')
       mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -10, y: 0), direction: 'W')
 
       mars_rover.execute(['f'])
