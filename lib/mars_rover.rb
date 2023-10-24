@@ -20,15 +20,16 @@ class MarsRover
     commands.inject(self) do |mars_rover, command|
       case command
       when 'b'
-        mars_rover = translate_backwards(mars_rover)
+        translate_backwards(mars_rover)
       when 'f'
-        mars_rover = translate_forwards(mars_rover)
+        translate_forwards(mars_rover)
       when 'l'
-        mars_rover = rotate_left(mars_rover)
+        rotate_left(mars_rover)
       when 'r'
-        mars_rover = rotate_right(mars_rover)
+        rotate_right(mars_rover)
+      else
+        mars_rover
       end
-      mars_rover
     end
   end
 
