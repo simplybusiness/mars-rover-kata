@@ -245,7 +245,7 @@ RSpec.describe 'Operating a Mars Rover' do
 
 
   describe "Wrapping at the planet's edges" do
-    it 'can move to the right-hand edge of the planet' do
+    it 'can move to the right-hand edge of the planet from the x-axis' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 9, y: 0), direction: 'E')
 
       mars_rover.execute(['f'])
@@ -254,7 +254,7 @@ RSpec.describe 'Operating a Mars Rover' do
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
-    it 'can move from the right-hand edge of the planet and reappear at the left-hand edge' do
+    it 'can move from the right-hand edge of the planet and reappear at the left-hand edge from the x-axis' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(x: 10, y: 0), direction: 'E')
 
       mars_rover.execute(['f'])
