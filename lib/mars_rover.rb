@@ -74,8 +74,7 @@ class MarsRover
     )
   end
 
-  # TODO: remove the default settings now that client has been migrated
-  def move_forwards(mars_rover, current_position:, direction:)
+  def move_forwards(mars_rover = nil, current_position:, direction:)
     case direction
     when 'N'
       Coordinates.new(x: current_position.x, y: current_position.y + 1)
