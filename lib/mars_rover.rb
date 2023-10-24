@@ -69,7 +69,7 @@ class MarsRover
 
   def translate_forwards(mars_rover)
     MarsRover.new(
-      starting_position: move_forwards(mars_rover, current_position: mars_rover.current_position, direction: mars_rover.direction),
+      starting_position: move_forwards(current_position: mars_rover.current_position, direction: mars_rover.direction),
       direction: mars_rover.direction
     )
   end
