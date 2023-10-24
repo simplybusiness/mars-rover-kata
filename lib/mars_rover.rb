@@ -1,4 +1,3 @@
-require 'map'
 class MarsRover
   attr_reader :current_position, :direction
 
@@ -74,5 +73,4 @@ class MarsRover
       Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     end
   end
-
 end
