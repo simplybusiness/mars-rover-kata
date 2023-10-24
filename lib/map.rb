@@ -19,7 +19,7 @@ class Map
     when 'S'
       Coordinates.new(x: current_position.x, y: current_position.y - 1)
     when 'W'
-      if current_position.x == @left_hand_edge
+      if at_left_hand_edge?(current_position)
         Coordinates.new(x: @right_hand_edge, y: 0)
       else
         Coordinates.new(x: current_position.x - 1, y: current_position.y)
@@ -28,6 +28,10 @@ class Map
   end
 
   private
+
+  def at_left_hand_edge?(current_position)
+    current_position.x == @left_hand_edge
+  end
 
   def at_right_hand_edge?(position)
     position.x == @right_hand_edge
