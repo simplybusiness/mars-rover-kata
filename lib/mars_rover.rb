@@ -78,6 +78,6 @@ class MarsRover
   end
 
   def at_right_hand_edge?(position)
-    position.x == @right_hand_edge
+    @map.at_right_hand_edge?(position)
   end
 end
