@@ -33,7 +33,7 @@ RSpec.describe 'Operating a Mars Rover' do
   ['Unsupported', 'A', 1, {direction: 'north'}].each do |direction|
     it "cannot be operated when it has a direction that is not north, east, south or west e.g. '#{direction}'" do
       pending 'Discussion with the customer'
-      expect { MarsRover.new(starting_position: Coordinates.new(x: 1, y: -1), direction: direction) }
+      expect { MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: -1), direction: direction) }
         .to raise_error('Direction must be one of N, E, S or W')
     end
 
@@ -42,7 +42,7 @@ RSpec.describe 'Operating a Mars Rover' do
   [nil, '(1, 1)', 1, 2.4].each do |starting_point|
     it "cannot be operated when it is not given a starting position e.g. #{starting_point.inspect}" do
       pending 'Discussion with the customer'
-      expect { MarsRover.new(starting_position: starting_point, direction: 'W') }
+      expect { MarsRover.new(map: Map.new, starting_position: starting_point, direction: 'W') }
         .to raise_error('A starting position in the form of coordinates must be provided')
     end
   end
@@ -55,7 +55,7 @@ RSpec.describe 'Operating a Mars Rover' do
 
   it 'cannot interpret commands when they are a string' do
     pending 'Discussion with the customer'
-    expect { MarsRover.new(starting_position: Coordinates.new(x: 0, y: 0), direction: 'W').execute('f') }
+    expect { MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'W').execute('f') }
       .to raise_error('A command must consist of a list of individual commands e.g. %w{f b l r}')
   end
 
@@ -244,7 +244,6 @@ RSpec.describe 'Operating a Mars Rover' do
   end
   it 'fails to execute any commands it does not recognise by raising an exception'
 
-
   describe "Wrapping at the planet's edges" do
     it 'can move to the right-hand edge of the planet from the x-axis' do
       mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 9, y: 0), direction: 'E')
@@ -297,6 +296,7 @@ RSpec.describe 'Operating a Mars Rover' do
     it 'can move from the bottom edge of the planet and reappear at the top edge'
   end
 
+  private
 
   RSpec::Matchers.define(:be_located_at) do |expected_position|
     match { |mars_rover| mars_rover.current_position == expected_position }
