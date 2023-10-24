@@ -111,7 +111,7 @@ RSpec.describe 'Operating a Mars Rover' do
       expect(mars_rover).to be_located_at(Coordinates.new(x: 0, y: 4))
     end
 
-    context "when the rover is at the planet's edges" do
+    context "when the rover is at or near the planet's edges" do
       it 'can move to the right-hand edge of the planet from the x-axis' do
         mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 9, y: 0), direction: 'E')
 
