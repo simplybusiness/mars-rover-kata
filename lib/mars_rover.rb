@@ -10,7 +10,7 @@ class MarsRover
   }.freeze
   private_constant :TURN_LEFT
 
-  def initialize(starting_position:, direction:, map: Map.new)
+  def initialize(starting_position:, direction:, map:)
     @map = map
     @current_position = starting_position
     @direction = direction
