@@ -1,3 +1,4 @@
+require 'map'
 class MarsRover
   attr_reader :current_position, :direction
 
@@ -12,6 +13,7 @@ class MarsRover
   def initialize(starting_position:, direction:)
     @right_hand_edge = 10
     @left_hand_edge = -10
+    @map = Map.new
     @current_position = starting_position
     @direction = direction
   end
