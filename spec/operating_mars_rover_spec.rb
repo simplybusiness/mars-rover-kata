@@ -289,6 +289,16 @@ RSpec.describe 'Operating a Mars Rover' do
       right_hand_edge = Coordinates.new(x: 10, y: 0)
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
+
+    it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge' do
+      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -10, y: -1), direction: 'W')
+
+      mars_rover.execute(['f'])
+
+      right_hand_edge = Coordinates.new(x: 10, y: -1)
+      expect(mars_rover).to be_located_at(right_hand_edge)
+    end
+
     it 'can move to the top edge of the planet'
     it 'can move from the top edge of the planet and reappear at the bottom edge'
     it 'can move to the bottom edge of the planet'

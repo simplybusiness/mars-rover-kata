@@ -20,7 +20,7 @@ class Map
       Coordinates.new(x: current_position.x, y: current_position.y - 1)
     when 'W'
       if at_left_hand_edge?(current_position)
-        Coordinates.new(x: @right_hand_edge, y: 0)
+        Coordinates.new(x: @right_hand_edge, y: current_position.y)
       else
         Coordinates.new(x: current_position.x - 1, y: current_position.y)
       end
