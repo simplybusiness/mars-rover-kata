@@ -11,8 +11,6 @@ class MarsRover
   private_constant :TURN_LEFT
 
   def initialize(starting_position:, direction:)
-    @right_hand_edge = 10
-    @left_hand_edge = -10
     @map = Map.new
     @current_position = starting_position
     @direction = direction
