@@ -72,5 +72,7 @@ class MarsRover
     when 'W'
       Coordinates.new(x: @current_position.x - 1, y: @current_position.y)
     end
+
+    @map.move_forwards(current_position: @current_position, direction: @direction)
   end
 end
