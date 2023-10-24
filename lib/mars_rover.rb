@@ -74,7 +74,7 @@ class MarsRover
     )
   end
 
-  def move_forwards(mars_rover = nil, current_position:, direction:)
+  def move_forwards(current_position:, direction:)
     case direction
     when 'N'
       Coordinates.new(x: current_position.x, y: current_position.y + 1)
