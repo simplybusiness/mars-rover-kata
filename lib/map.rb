@@ -6,7 +6,7 @@ class Map
     @left_hand_edge = -10
   end
 
-  def move_forwards(current_position:, direction:)
+  def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
       Coordinates.new(x: current_position.x, y: current_position.y + 1)

@@ -58,6 +58,6 @@ class MarsRover
   end
 
   def move_forwards
-    @map.move_forwards(current_position: @current_position, direction: @direction)
+    @map.next_coordinate_forwards(current_position: @current_position, direction: @direction)
   end
 end
