@@ -40,7 +40,7 @@ class MarsRover
   end
 
   def inspect
-    "a Mars Rover located at #{@current_position} facing #{@direction}"
+    "a Mars Rover located at #{@current_location.coordinates} facing #{@current_location.direction}"
   end
 
   private
