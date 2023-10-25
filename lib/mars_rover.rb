@@ -16,18 +16,16 @@ class MarsRover
 
   def execute(commands)
     commands.each do |command|
-      @current_location = case command
-                          when 'b'
-                            backwards
-                          when 'f'
-                            forwards
-                          when 'l'
-                            rotate_left
-                          when 'r'
-                            rotate_right
-                          else
-                            @current_location
-                          end
+      case command
+      when 'b'
+        @current_location = backwards
+      when 'f'
+        @current_location = forwards
+      when 'l'
+        @current_location = rotate_left
+      when 'r'
+        @current_location = rotate_right
+      end
     end
   end
 
