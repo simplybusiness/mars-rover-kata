@@ -1,6 +1,4 @@
 class Map
-  attr_reader :left_hand_edge, :right_hand_edge
-
   def initialize(top_edge: 10, bottom_edge: 0, left_hand_edge: 0, right_hand_edge: 10)
     @right_hand_edge = right_hand_edge
     @left_hand_edge = left_hand_edge
@@ -12,7 +10,7 @@ class Map
     case direction
     when 'N'
       if at_top_edge?(current_position)
-        Coordinates.new(x: current_position.x, y: @bottom_edge)
+        Coordinates.new(x: current_position.x, y: bottom_edge)
       else
         Coordinates.new(x: current_position.x, y: current_position.y + 1)
       end
@@ -24,13 +22,13 @@ class Map
       end
     when 'S'
       if at_bottom_edge?(current_position)
-        Coordinates.new(x: current_position.x, y: @top_edge)
+        Coordinates.new(x: current_position.x, y: top_edge)
       else
         Coordinates.new(x: current_position.x, y: current_position.y - 1)
       end
     when 'W'
       if at_left_hand_edge?(current_position)
-        Coordinates.new(x: @right_hand_edge, y: current_position.y)
+        Coordinates.new(x: right_hand_edge, y: current_position.y)
       else
         Coordinates.new(x: current_position.x - 1, y: current_position.y)
       end
@@ -51,6 +49,8 @@ class Map
   end
 
   private
+
+  attr_reader :left_hand_edge, :right_hand_edge, :top_edge, :bottom_edge
 
   def at_top_edge?(current_position)
     current_position.y == @top_edge
