@@ -22,12 +22,16 @@ class MarsRover
       case command
       when 'b'
         @current_position = move_backwards
+        @current_location = backwards
       when 'f'
         @current_position = move_forwards
+        @current_location = forwards
       when 'l'
         @direction = turn_left
+        @current_location = rotate_left
       when 'r'
         @direction = turn_right
+        @current_location = rotate_right
       end
     end
   end
@@ -47,7 +51,29 @@ class MarsRover
   end
 
   def forwards
-    @map.next_coordinate_forwards(current_position: @current_location.coordinates, direction: @current_location.direction)
+    Location.new(
+      coordinates: @map.next_coordinate_forwards(current_position: @current_location.coordinates, direction: @current_location.direction),
+      direction: @current_location.direction
+    )
+  end
+
+  def backwards
+    Location.new(
+      coordinates: @map.next_coordinate_backwards(current_position: @current_location.coordinates, direction: @current_location.direction),
+      direction: @current_location.direction
+    )
+  end
+
+  def rotate_left
+    Location.new(
+      coordinates: @current_location.coordinates, direction: TURN_LEFT[@current_location.direction]
+    )
+  end
+
+  def rotate_right
+    Location.new(
+      coordinates: @current_location.coordinates, direction: TURN_LEFT.invert[@current_location.direction]
+    )
   end
 
   def move_backwards
