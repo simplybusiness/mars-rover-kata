@@ -1,11 +1,11 @@
 class Map
   attr_reader :left_hand_edge, :right_hand_edge
 
-  def initialize(left_hand_edge: 0, right_hand_edge: 10)
+  def initialize(top_edge: 10, bottom_edge: 0, left_hand_edge: 0, right_hand_edge: 10)
     @right_hand_edge = right_hand_edge
     @left_hand_edge = left_hand_edge
-    @top_edge = 10
-    @bottom_edge = 0
+    @top_edge = top_edge
+    @bottom_edge = bottom_edge
   end
 
   def next_coordinate_forwards(current_position:, direction:)
