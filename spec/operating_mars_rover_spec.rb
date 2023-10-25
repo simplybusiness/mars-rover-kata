@@ -216,6 +216,14 @@ RSpec.describe 'Operating a Mars Rover' do
         expect(mars_rover).to be_located_at(row[:expected_position])
       end
     end
+
+    it 'can move backwards multiple times' do
+      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 3, y: 1), direction: 'E')
+
+      expected_location = Coordinates.new(x: 0, y: 1)
+      expect { mars_rover.execute(%w{b b b}) }.to change(mars_rover, :current_position).to expected_location
+    end
+
     %w{N E S W}.each do |direction|
       it "never changes direction e.g. it remains facing #{direction}" do
         anywhere = Coordinates.new(x: -1, y: 2)
@@ -258,6 +266,13 @@ RSpec.describe 'Operating a Mars Rover' do
       end
     end
 
+    it 'can turn left multiple times' do
+      anywhere = Coordinates.new(x: 0, y: 0)
+      mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'N')
+
+      expect { mars_rover.execute(%w{l l}) }.to change(mars_rover, :direction).to 'S'
+    end
+
     it 'remains at its current position' do
       anywhere = Coordinates.new(x: 4, y: 6)
       mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'N')
@@ -298,6 +313,13 @@ RSpec.describe 'Operating a Mars Rover' do
       end
     end
 
+    it 'can turn right multiple times' do
+      anywhere = Coordinates.new(x: 3, y: 5)
+      mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'S')
+
+      expect { mars_rover.execute(%w{r r r}) }.to change(mars_rover, :direction).to 'E'
+    end
+
     it 'remains at its current position' do
       mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -3, y: -4), direction: 'E')
 
@@ -312,6 +334,14 @@ RSpec.describe 'Operating a Mars Rover' do
     expect { mars_rover.execute(['z']) }.not_to change(mars_rover, :current_position)
   end
   it 'fails to execute any commands it does not recognise by raising an exception'
+
+  it 'can traverse a complicated path consisting of all supported commands f, b, l and r' do
+    mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
+
+    mars_rover.execute(%w{f r f f r f l b})
+    expect(mars_rover).to be_located_at(Coordinates.new(x: 1, y: 0))
+    expect(mars_rover).to be_facing('E')
+  end
 
   private
 
