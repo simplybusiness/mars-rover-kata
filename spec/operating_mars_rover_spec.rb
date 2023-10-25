@@ -1,7 +1,7 @@
 require_relative '../lib/coordinates'
 require_relative '../lib/map'
 require_relative '../lib/mars_rover'
-require 'mars_rover_matchers'
+require 'mars_rover_helper'
 RSpec.describe 'Operating a Mars Rover' do
   it 'has a starting position at the origin' do
     mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'E')

@@ -1,7 +1,7 @@
 require_relative '../lib/coordinates'
 require_relative '../lib/map'
 require_relative '../lib/mars_rover'
-require 'mars_rover_matchers'
+require 'mars_rover_helper'
 describe 'Moving backwards' do
   [
     {
