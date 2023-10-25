@@ -1,7 +1,7 @@
 class Map
   attr_reader :left_hand_edge, :right_hand_edge
 
-  def initialize(left_hand_edge: -10, right_hand_edge: 10)
+  def initialize(left_hand_edge: 0, right_hand_edge: 10)
     @right_hand_edge = right_hand_edge
     @left_hand_edge = left_hand_edge
   end

@@ -126,7 +126,7 @@ RSpec.describe 'Operating a Mars Rover' do
 
         mars_rover.execute(['f'])
 
-        left_hand_edge = Coordinates.new(x: -10, y: 0)
+        left_hand_edge = Coordinates.new(x: 0, y: 0)
         expect(mars_rover).to be_located_at(left_hand_edge)
       end
 
@@ -135,21 +135,21 @@ RSpec.describe 'Operating a Mars Rover' do
 
         mars_rover.execute(['f'])
 
-        left_hand_edge = Coordinates.new(x: -10, y: 5)
+        left_hand_edge = Coordinates.new(x: 0, y: 5)
         expect(mars_rover).to be_located_at(left_hand_edge)
       end
 
       it 'can move to the left-hand edge of the planet' do
-        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -9, y: 5), direction: 'W')
+        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: 5), direction: 'W')
 
         mars_rover.execute(['f'])
 
-        left_hand_edge = Coordinates.new(x: -10, y: 5)
+        left_hand_edge = Coordinates.new(x: 0, y: 5)
         expect(mars_rover).to be_located_at(left_hand_edge)
       end
 
       it 'can move from the left-hand edge of the planet and reappear at the right-hand edge' do
-        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -10, y: 0), direction: 'W')
+        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'W')
 
         mars_rover.execute(['f'])
 
@@ -158,11 +158,11 @@ RSpec.describe 'Operating a Mars Rover' do
       end
 
       it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge' do
-        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: -10, y: -1), direction: 'W')
+        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 1), direction: 'W')
 
         mars_rover.execute(['f'])
 
-        right_hand_edge = Coordinates.new(x: 10, y: -1)
+        right_hand_edge = Coordinates.new(x: 10, y: 1)
         expect(mars_rover).to be_located_at(right_hand_edge)
       end
 
