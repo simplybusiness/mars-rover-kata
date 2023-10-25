@@ -59,13 +59,15 @@ class MarsRover
 
   def rotate_left
     Location.new(
-      coordinates: @current_location.coordinates, direction: TURN_LEFT[@current_location.direction]
+      coordinates: @current_location.coordinates,
+      direction: TURN_LEFT[@current_location.direction]
     )
   end
 
   def rotate_right
     Location.new(
-      coordinates: @current_location.coordinates, direction: TURN_LEFT.invert[@current_location.direction]
+      coordinates: @current_location.coordinates,
+      direction: TURN_LEFT.invert[@current_location.direction]
     )
   end
 end
