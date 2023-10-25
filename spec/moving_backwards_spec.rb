@@ -52,7 +52,14 @@ describe 'Moving backwards' do
   end
 
   context "when the rover is at or near the planet's edges" do
-    it 'can move to the right-hand edge of the planet from the x-axis'
+    it 'can move to the right-hand edge of the planet from the x-axis' do
+      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 9, y: 0), direction: 'W')
+
+      mars_rover.execute(['b'])
+
+      right_hand_edge = Coordinates.new(x: 10, y: 0)
+      expect(mars_rover).to be_located_at(right_hand_edge)
+    end
     it 'can move from the right-hand edge of the planet and reappear at the left-hand edge from the x-axis'
     it 'can move from the right-hand edge of the planet and reappear at the left hand from anywhere on the planet'
     it 'can move to the left-hand edge of the planet'
