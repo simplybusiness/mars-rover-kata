@@ -27,6 +27,19 @@ class Map
     end
   end
 
+  def next_coordinate_backwards(current_position:, direction:)
+    case direction
+    when 'N'
+      Coordinates.new(x: current_position.x, y: current_position.y - 1)
+    when 'E'
+      Coordinates.new(x: current_position.x - 1, y: current_position.y)
+    when 'S'
+      Coordinates.new(x: current_position.x, y: current_position.y + 1)
+    when 'W'
+      Coordinates.new(x: current_position.x + 1, y: current_position.y)
+    end
+  end
+
   private
 
   def at_left_hand_edge?(current_position)

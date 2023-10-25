@@ -55,6 +55,7 @@ class MarsRover
     when 'W'
       Coordinates.new(x: @current_position.x + 1, y: @current_position.y)
     end
+    @map.next_coordinate_backwards(current_position: @current_position, direction: @direction)
   end
 
   def move_forwards
