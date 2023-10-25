@@ -1,14 +1,6 @@
 require 'location'
 class MarsRover
 
-  TURN_LEFT = {
-    'N' => 'W',
-    'E' => 'N',
-    'S' => 'E',
-    'W' => 'S'
-  }.freeze
-  private_constant :TURN_LEFT
-
   def initialize(starting_position:, direction:, map:)
     @map = map
     @current_location = Location.new(coordinates: starting_position, direction: direction)
