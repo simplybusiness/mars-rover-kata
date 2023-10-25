@@ -29,7 +29,8 @@ class Map
       next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
       Coordinates.new(x: next_x, y: current_position.y)
     when 'S'
-      Coordinates.new(x: current_position.x, y: current_position.y + 1)
+      next_y = at_top_edge?(current_position) ? @y_domain.begin : current_position.y + 1
+      Coordinates.new(x: current_position.x, y: next_y)
     when 'W'
       next_x = at_right_hand_edge?(current_position) ? @x_domain.begin : current_position.x + 1
       Coordinates.new(x: next_x, y: current_position.y)

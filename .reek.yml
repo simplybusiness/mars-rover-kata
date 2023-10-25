@@ -1,0 +1,10 @@
+---
+detectors:
+  IrresponsibleModule:
+    enabled: false
+  ControlParameter:
+    enabled: false
+  UncommunicativeParameterName:
+    accept:
+      - x
+      - y
