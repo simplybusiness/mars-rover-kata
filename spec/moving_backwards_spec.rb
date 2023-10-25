@@ -97,7 +97,6 @@ describe 'Moving backwards' do
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
-    it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge'
     it 'can move to the top edge of the planet'
     it 'can move from the top edge of the planet and reappear at the bottom edge'
     it 'can move to the bottom edge of the planet'
