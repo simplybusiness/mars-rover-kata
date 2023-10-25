@@ -23,9 +23,9 @@ class MarsRover
         when 'f'
           forwards(current_location: location)
         when 'l'
-          rotate_left(current_location: location)
+          location.rotate_left
         when 'r'
-          rotate_right(current_location: location)
+          location.rotate_right
         else
           location
         end
@@ -58,13 +58,5 @@ class MarsRover
       coordinates: @map.next_coordinate_backwards(current_position: current_location.coordinates, direction: current_location.direction),
       direction: current_location.direction
     )
-  end
-
-  def rotate_left(current_location:)
-    current_location.rotate_left
-  end
-
-  def rotate_right(current_location:)
-    current_location.rotate_right
   end
 end
