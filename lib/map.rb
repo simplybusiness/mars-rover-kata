@@ -1,7 +1,7 @@
 class Map
-  def initialize(top_edge: 10, bottom_edge: 0, left_hand_edge: 0, right_hand_edge: 10)
-    @x_domain = (left_hand_edge..right_hand_edge)
-    @y_domain = (bottom_edge..top_edge)
+  def initialize(x_domain: (0..10), y_domain: (0..10))
+    @x_domain = x_domain
+    @y_domain = y_domain
   end
 
   def next_coordinate_forwards(current_position:, direction:)
