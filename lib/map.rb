@@ -7,11 +7,8 @@ class Map
   def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
-      if at_top_edge?(current_position)
-        Coordinates.new(x: current_position.x, y: @y_domain.begin)
-      else
-        Coordinates.new(x: current_position.x, y: current_position.y + 1)
-      end
+      next_y = at_top_edge?(current_position) ? @y_domain.begin : current_position.y + 1
+      Coordinates.new(x: current_position.x, y: next_y)
     when 'E'
       if at_right_hand_edge?(current_position)
         Coordinates.new(x: @x_domain.begin, y: current_position.y)
