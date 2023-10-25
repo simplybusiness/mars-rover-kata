@@ -3,7 +3,7 @@
 class BadCoordinatesError < ArgumentError; end
 
 class Coordinates
-  attr_accessor :x, :y
+  attr_reader :x, :y
 
   def initialize(x:, y:)
     raise BadCoordinatesError, 'Position should have Integer coordinates' unless x.is_a?(Integer) && y.is_a?(Integer)
@@ -16,5 +16,10 @@ class Coordinates
     self.class == other.class &&
       @x == other.x &&
       @y == other.y
+  end
+
+  def new_position(coordinates)
+    @x = coordinates.x
+    @y = coordinates.y
   end
 end
