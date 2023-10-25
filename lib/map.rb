@@ -11,7 +11,7 @@ class Map
   def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
-      if current_position.y == @top_edge
+      if at_top_edge?(current_position)
         Coordinates.new(x: current_position.x, y: @bottom_edge)
       else
         Coordinates.new(x: current_position.x, y: current_position.y + 1)
@@ -23,7 +23,7 @@ class Map
         Coordinates.new(x: current_position.x + 1, y: current_position.y)
       end
     when 'S'
-      if current_position.y == @bottom_edge
+      if at_bottom_edge?(current_position)
         Coordinates.new(x: current_position.x, y: @top_edge)
       else
         Coordinates.new(x: current_position.x, y: current_position.y - 1)
@@ -51,6 +51,14 @@ class Map
   end
 
   private
+
+  def at_top_edge?(current_position)
+    current_position.y == @top_edge
+  end
+
+  def at_bottom_edge?(current_position)
+    current_position.y == @bottom_edge
+  end
 
   def at_left_hand_edge?(current_position)
     current_position.x == @left_hand_edge
