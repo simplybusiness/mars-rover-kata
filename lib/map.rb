@@ -24,7 +24,8 @@ class Map
   def next_coordinate_backwards(current_position:, direction:)
     case direction
     when 'N'
-      Coordinates.new(x: current_position.x, y: current_position.y - 1)
+      next_y = at_bottom_edge?(current_position) ? @y_domain.last : current_position.y - 1
+      Coordinates.new(x: current_position.x, y: next_y)
     when 'E'
       next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
       Coordinates.new(x: next_x, y: current_position.y)
