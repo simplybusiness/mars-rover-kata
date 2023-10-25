@@ -9,8 +9,10 @@ class Map
   def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
-      if current_position.y == 10
-        Coordinates.new(x: current_position.x, y: 0)
+      @top_edge = 10
+      @bottom_edge = 0
+      if current_position.y == @top_edge
+        Coordinates.new(x: current_position.x, y: @bottom_edge)
       else
         Coordinates.new(x: current_position.x, y: current_position.y + 1)
       end
