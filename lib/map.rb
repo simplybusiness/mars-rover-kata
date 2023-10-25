@@ -26,7 +26,8 @@ class Map
     when 'N'
       Coordinates.new(x: current_position.x, y: current_position.y - 1)
     when 'E'
-      Coordinates.new(x: current_position.x - 1, y: current_position.y)
+      next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
+      Coordinates.new(x: next_x, y: current_position.y)
     when 'S'
       Coordinates.new(x: current_position.x, y: current_position.y + 1)
     when 'W'
