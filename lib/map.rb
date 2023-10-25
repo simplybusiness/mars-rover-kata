@@ -30,7 +30,8 @@ class Map
     when 'S'
       Coordinates.new(x: current_position.x, y: current_position.y + 1)
     when 'W'
-      Coordinates.new(x: current_position.x + 1, y: current_position.y)
+      next_x = at_right_hand_edge?(current_position) ? @x_domain.begin : current_position.x + 1
+      Coordinates.new(x: next_x, y: current_position.y)
     end
   end
 
