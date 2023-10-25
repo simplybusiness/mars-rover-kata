@@ -2,6 +2,8 @@ class Map
   def initialize(top_edge: 10, bottom_edge: 0, left_hand_edge: 0, right_hand_edge: 10)
     @right_hand_edge = right_hand_edge
     @left_hand_edge = left_hand_edge
+    @x_domain = (left_hand_edge..right_hand_edge)
+    @y_domain = (bottom_edge..top_edge)
     @top_edge = top_edge
     @bottom_edge = bottom_edge
   end
@@ -10,13 +12,13 @@ class Map
     case direction
     when 'N'
       if at_top_edge?(current_position)
-        Coordinates.new(x: current_position.x, y: bottom_edge)
+        Coordinates.new(x: current_position.x, y: @y_domain.begin)
       else
         Coordinates.new(x: current_position.x, y: current_position.y + 1)
       end
     when 'E'
       if at_right_hand_edge?(current_position)
-        Coordinates.new(x: left_hand_edge, y: current_position.y)
+        Coordinates.new(x: @x_domain.begin, y: current_position.y)
       else
         Coordinates.new(x: current_position.x + 1, y: current_position.y)
       end
@@ -53,18 +55,18 @@ class Map
   attr_reader :left_hand_edge, :right_hand_edge, :top_edge, :bottom_edge
 
   def at_top_edge?(current_position)
-    current_position.y == @top_edge
+    current_position.y == @y_domain.end
   end
 
   def at_bottom_edge?(current_position)
-    current_position.y == @bottom_edge
+    current_position.y == @y_domain.begin
   end
 
   def at_left_hand_edge?(current_position)
-    current_position.x == @left_hand_edge
+    current_position.x == @x_domain.begin
   end
 
   def at_right_hand_edge?(position)
-    position.x == @right_hand_edge
+    position.x == @x_domain.end
   end
 end
