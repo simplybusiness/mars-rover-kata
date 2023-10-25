@@ -132,6 +132,13 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(bottom_edge)
     end
 
-    it 'can move from the bottom edge of the planet and reappear at the top edge'
+    it 'can move from the bottom edge of the planet and reappear at the top edge' do
+      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 5, y: 0), direction: 'S')
+
+      mars_rover.execute(['f'])
+
+      bottom_edge = Coordinates.new(x: 5, y: 10)
+      expect(mars_rover).to be_located_at(bottom_edge)
+    end
   end
 end

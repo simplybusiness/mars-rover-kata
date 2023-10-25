@@ -23,7 +23,11 @@ class Map
         Coordinates.new(x: current_position.x + 1, y: current_position.y)
       end
     when 'S'
-      Coordinates.new(x: current_position.x, y: current_position.y - 1)
+      if current_position.y == @bottom_edge
+        Coordinates.new(x: current_position.x, y: @top_edge)
+      else
+        Coordinates.new(x: current_position.x, y: current_position.y - 1)
+      end
     when 'W'
       if at_left_hand_edge?(current_position)
         Coordinates.new(x: @right_hand_edge, y: current_position.y)
