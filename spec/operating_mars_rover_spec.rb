@@ -1,6 +1,7 @@
 require_relative '../lib/coordinates'
 require_relative '../lib/map'
 require_relative '../lib/mars_rover'
+require 'mars_rover_matchers'
 RSpec.describe 'Operating a Mars Rover' do
   it 'has a starting position at the origin' do
     mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'E')
@@ -218,15 +219,5 @@ RSpec.describe 'Operating a Mars Rover' do
 
     mars_rover.execute(%w{f r f f r f l b})
     expect(mars_rover).to be_located_at(Coordinates.new(x: 1, y: 0)).and be_facing('E')
-  end
-
-  private
-
-  RSpec::Matchers.define(:be_located_at) do |expected_position|
-    match { |mars_rover| mars_rover.current_position == expected_position }
-  end
-
-  RSpec::Matchers.define(:be_facing) do |expected_direction|
-    match { |mars_rover| mars_rover.direction == expected_direction }
   end
 end

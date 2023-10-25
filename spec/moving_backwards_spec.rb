@@ -1,6 +1,7 @@
 require_relative '../lib/coordinates'
 require_relative '../lib/map'
 require_relative '../lib/mars_rover'
+require 'mars_rover_matchers'
 describe 'Moving backwards' do
   [
     {
@@ -51,15 +52,5 @@ describe 'Moving backwards' do
 
       expect { mars_rover.execute(['b']) }.not_to change(mars_rover, :direction)
     end
-  end
-
-  private
-
-  RSpec::Matchers.define(:be_located_at) do |expected_position|
-    match { |mars_rover| mars_rover.current_position == expected_position }
-  end
-
-  RSpec::Matchers.define(:be_facing) do |expected_direction|
-    match { |mars_rover| mars_rover.direction == expected_direction }
   end
 end
