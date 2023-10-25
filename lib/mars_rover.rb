@@ -43,28 +43,28 @@ class MarsRover
 
   private
 
-  def forwards
+  def forwards(current_location: nil)
     Location.new(
       coordinates: @map.next_coordinate_forwards(current_position: @current_location.coordinates, direction: @current_location.direction),
       direction: @current_location.direction
     )
   end
 
-  def backwards
+  def backwards(current_location: nil)
     Location.new(
       coordinates: @map.next_coordinate_backwards(current_position: @current_location.coordinates, direction: @current_location.direction),
       direction: @current_location.direction
     )
   end
 
-  def rotate_left
+  def rotate_left(current_location: nil)
     Location.new(
       coordinates: @current_location.coordinates,
       direction: TURN_LEFT[@current_location.direction]
     )
   end
 
-  def rotate_right
+  def rotate_right(current_location: nil)
     Location.new(
       coordinates: @current_location.coordinates,
       direction: TURN_LEFT.invert[@current_location.direction]
