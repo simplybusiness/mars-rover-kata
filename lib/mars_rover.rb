@@ -1,6 +1,5 @@
 require 'location'
 class MarsRover
-  attr_reader :direction
 
   TURN_LEFT = {
     'N' => 'W',
@@ -38,6 +37,10 @@ class MarsRover
 
   def current_position
     @current_location.coordinates
+  end
+
+  def direction
+    @current_location.direction
   end
 
   def inspect
