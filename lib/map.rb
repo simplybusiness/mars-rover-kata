@@ -4,13 +4,13 @@ class Map
   def initialize(left_hand_edge: 0, right_hand_edge: 10)
     @right_hand_edge = right_hand_edge
     @left_hand_edge = left_hand_edge
+    @top_edge = 10
+    @bottom_edge = 0
   end
 
   def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
-      @top_edge = 10
-      @bottom_edge = 0
       if current_position.y == @top_edge
         Coordinates.new(x: current_position.x, y: @bottom_edge)
       else
