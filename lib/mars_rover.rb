@@ -11,8 +11,6 @@ class MarsRover
 
   def initialize(starting_position:, direction:, map:)
     @map = map
-    @current_position = starting_position
-    @direction = direction
     @current_location = Location.new(coordinates: starting_position, direction: direction)
   end
 
@@ -20,16 +18,12 @@ class MarsRover
     commands.each do |command|
       case command
       when 'b'
-        @current_position = move_backwards
         @current_location = backwards
       when 'f'
-        @current_position = move_forwards
         @current_location = forwards
       when 'l'
-        @direction = turn_left
         @current_location = rotate_left
       when 'r'
-        @direction = turn_right
         @current_location = rotate_right
       end
     end
@@ -48,14 +42,6 @@ class MarsRover
   end
 
   private
-
-  def turn_right
-    TURN_LEFT.invert[@direction]
-  end
-
-  def turn_left
-    TURN_LEFT[@direction]
-  end
 
   def forwards
     Location.new(
@@ -81,13 +67,5 @@ class MarsRover
     Location.new(
       coordinates: @current_location.coordinates, direction: TURN_LEFT.invert[@current_location.direction]
     )
-  end
-
-  def move_backwards
-    @map.next_coordinate_backwards(current_position: @current_position, direction: @direction)
-  end
-
-  def move_forwards
-    @map.next_coordinate_forwards(current_position: @current_position, direction: @direction)
   end
 end
