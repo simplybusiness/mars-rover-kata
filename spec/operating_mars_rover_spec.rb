@@ -339,8 +339,7 @@ RSpec.describe 'Operating a Mars Rover' do
     mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 0), direction: 'N')
 
     mars_rover.execute(%w{f r f f r f l b})
-    expect(mars_rover).to be_located_at(Coordinates.new(x: 1, y: 0))
-    expect(mars_rover).to be_facing('E')
+    expect(mars_rover).to be_located_at(Coordinates.new(x: 1, y: 0)).and be_facing('E')
   end
 
   private
