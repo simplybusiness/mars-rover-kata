@@ -183,7 +183,15 @@ RSpec.describe 'Operating a Mars Rover' do
         bottom_edge = Coordinates.new(x: 0, y: 0)
         expect(mars_rover).to be_located_at(bottom_edge)
       end
-      it 'can move to the bottom edge of the planet'
+      it 'can move to the bottom edge of the planet' do
+        mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: 1), direction: 'S')
+
+        mars_rover.execute(['f'])
+
+        bottom_edge = Coordinates.new(x: 1, y: 0)
+        expect(mars_rover).to be_located_at(bottom_edge)
+      end
+
       it 'can move from the bottom edge of the planet and reappear at the top edge'
     end
   end
