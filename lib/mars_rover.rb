@@ -18,13 +18,13 @@ class MarsRover
     commands.each do |command|
       case command
       when 'b'
-        @current_location = backwards
+        @current_location = backwards(current_location: @current_location)
       when 'f'
-        @current_location = forwards
+        @current_location = forwards(current_location: @current_location)
       when 'l'
-        @current_location = rotate_left
+        @current_location = rotate_left(current_location: @current_location)
       when 'r'
-        @current_location = rotate_right
+        @current_location = rotate_right(current_location: @current_location)
       end
     end
   end
