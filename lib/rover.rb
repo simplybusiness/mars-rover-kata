@@ -45,14 +45,15 @@ class Rover
   end
 
   def change_possition(command)
+    @position.change_position(setup_coordinates(command))
+  end
+
+  def setup_coordinates(command)
     new_y_position = @position.y
     new_x_position = @position.x
     new_y_position += INCREMENTS[command] if %w[N S].include?(direction)
     new_x_position += INCREMENTS[command] if %w[W E].include?(direction)
-    new_coordinates = Coordinates.new(x: new_x_position, y: new_y_position)
-    return if @position == new_coordinates
-
-    @position.new_position(new_coordinates)
+    Coordinates.new(x: new_x_position, y: new_y_position)
   end
 
   def change_direction(command)

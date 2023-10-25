@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Req 1: You are given the initial starting point (x,y) of a rover and the direction (N,S,E,W) it is facing.
 require_relative 'spec_helper'
 require_relative '../lib/coordinates'
@@ -24,7 +26,16 @@ describe Coordinates do
       it 'sets new position' do
         new_coordinates = Coordinates.new(x: 1, y: 2)
         expect(coordinates == new_coordinates).to eq(false)
-        coordinates.new_position(new_coordinates)
+        coordinates.change_position(new_coordinates)
+        expect(coordinates == new_coordinates).to eq(true)
+      end
+    end
+
+    context 'when the new coordinates stayed the same' do
+      it 'sets new position' do
+        new_coordinates = Coordinates.new(x: 0, y: 1)
+        expect(coordinates == new_coordinates).to eq(true)
+        coordinates.change_position(new_coordinates)
         expect(coordinates == new_coordinates).to eq(true)
       end
     end

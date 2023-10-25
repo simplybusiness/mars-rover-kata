@@ -18,7 +18,9 @@ class Coordinates
       @y == other.y
   end
 
-  def new_position(coordinates)
+  def change_position(coordinates)
+    return if self == coordinates
+
     @x = coordinates.x
     @y = coordinates.y
   end
