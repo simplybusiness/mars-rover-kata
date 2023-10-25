@@ -50,4 +50,18 @@ describe 'Moving backwards' do
       expect { mars_rover.execute(['b']) }.not_to change(mars_rover, :direction)
     end
   end
+
+  context "when the rover is at or near the planet's edges" do
+    it 'can move to the right-hand edge of the planet from the x-axis'
+    it 'can move from the right-hand edge of the planet and reappear at the left-hand edge from the x-axis'
+    it 'can move from the right-hand edge of the planet and reappear at the left hand from anywhere on the planet'
+    it 'can move to the left-hand edge of the planet'
+    it 'can move from the left-hand edge of the planet and reappear at the right-hand edge'
+    it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge'
+    it 'can move to the top edge of the planet'
+    it 'can move from the top edge of the planet and reappear at the bottom edge'
+    it 'can move to the bottom edge of the planet'
+    it 'can move from the bottom edge of the planet and reappear at the top edge'
+    it 'can move along any edge of the planet'
+  end
 end
