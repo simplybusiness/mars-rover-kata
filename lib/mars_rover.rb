@@ -1,3 +1,4 @@
+require 'location'
 class MarsRover
   attr_reader :current_position, :direction
 
@@ -13,6 +14,7 @@ class MarsRover
     @map = map
     @current_position = starting_position
     @direction = direction
+    @current_location = Location.new(coordinates: starting_position, direction: direction)
   end
 
   def execute(commands)
@@ -42,6 +44,10 @@ class MarsRover
 
   def turn_left
     TURN_LEFT[@direction]
+  end
+
+  def forwards
+    @map.next_coordinate_forwards(current_position: @current_location.coordinates, direction: @current_location.direction)
   end
 
   def move_backwards
