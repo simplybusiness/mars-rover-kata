@@ -26,7 +26,7 @@ class Rover
   end
 
   def execute(commands)
-    # TODO: Probably it requires input sanitization to remove special charachters like comas, semicolons etc.
+    # TODO: Probably it requires input sanitization to remove special characters like comas, semicolons etc.
     commands = commands.split if commands.is_a? String
     raise ArgumentError, 'Commands should be of Char Array or String format' unless commands.is_a? Array
 
@@ -45,9 +45,14 @@ class Rover
   end
 
   def change_possition(command)
-    return @position.y += INCREMENTS[command] if %w[N S].include?(direction)
+    new_y_position = @position.y
+    new_x_position = @position.x
+    new_y_position += INCREMENTS[command] if %w[N S].include?(direction)
+    new_x_position += INCREMENTS[command] if %w[W E].include?(direction)
+    new_coordinates = Coordinates.new(x: new_x_position, y: new_y_position)
+    return if @position == new_coordinates
 
-    @position.x += INCREMENTS[command] if %w[W E].include?(direction)
+    @position.new_position(new_coordinates)
   end
 
   def change_direction(command)
