@@ -1,10 +1,10 @@
 require 'mars_rover_helper'
 describe 'Rotating a mars rover' do
-  describe 'Turning left' do
-    def self.mars_rover_facing(direction:)
-      MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: 2), direction: direction)
-    end
+  def self.mars_rover_facing(direction:)
+    MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: 2), direction: direction)
+  end
 
+  describe 'Turning left' do
     [
       {
         mars_rover: mars_rover_facing(direction: 'N'),
@@ -48,10 +48,6 @@ describe 'Rotating a mars rover' do
   end
 
   describe 'Turning right' do
-    def self.mars_rover_facing(direction:)
-      MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 1, y: 2), direction: direction)
-    end
-
     [
       {
         mars_rover: mars_rover_facing(direction: 'N'),
