@@ -1,10 +1,7 @@
 require 'mars_rover_helper'
 describe 'Moving forwards' do
   def self.mars_rover(located_at:)
-    MarsRover.new(
-      map: Map.new,
-      starting_location: located_at
-    )
+    MarsRover.new(map: Map.new, starting_location: located_at)
   end
   private_class_method :mars_rover
 
