@@ -109,16 +109,14 @@ RSpec.describe "Mars Rover" do
 
       forwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 0, y: 1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('N')
     end
     example 'moving forwards when facing south' do
       mars_rover = MarsRover.new(0, 0,'S')
       forwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 0, y: -1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('S')
     end
 
@@ -128,8 +126,7 @@ RSpec.describe "Mars Rover" do
       forwards(mars_rover)
 
       expected_coordinates = Coordinates.new(x: 2, y: 1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('E')
     end
   end
@@ -138,8 +135,7 @@ RSpec.describe "Mars Rover" do
       mars_rover = MarsRover.new(0, 0, 'N')
       backwards(mars_rover)
       expected_coordinates = Coordinates.new(x: 0, y: -1)
-      expect(mars_rover.coordinates.x).to eq(expected_coordinates.x)
-      expect(mars_rover.coordinates.y).to eq(expected_coordinates.y)
+      expect(mars_rover).to have_position(expected_coordinates)
       expect(mars_rover.direction).to eq('N')
     end
 
@@ -147,6 +143,12 @@ RSpec.describe "Mars Rover" do
 
     def backwards(mars_rover)
       mars_rover.move(['b'])
+    end
+
+    RSpec::Matchers.define :have_position do |expected_coordinates|
+      match do |mars_rover|
+        mars_rover.coordinates.x == expected_coordinates.x && mars_rover.coordinates.y == expected_coordinates.y
+      end
     end
   end
 end
