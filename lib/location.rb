@@ -27,4 +27,8 @@ class Location
       direction: TURN_LEFT.invert[direction]
     )
   end
+
+  def inspect
+    "#{coordinates} facing #{direction}"
+  end
 end
