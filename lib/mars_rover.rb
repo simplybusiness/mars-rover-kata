@@ -1,9 +1,9 @@
 require 'location'
 class MarsRover
 
-  def initialize(starting_position:, direction:, map:)
+  def initialize(starting_position:, direction:, map:, starting_location: Location.new(coordinates: starting_position, direction: direction))
     @map = map
-    @current_location = Location.new(coordinates: starting_position, direction: direction)
+    @current_location = starting_location
   end
 
   def execute(commands)
