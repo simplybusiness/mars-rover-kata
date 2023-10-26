@@ -1,7 +1,7 @@
 require 'mars_rover_helper'
 describe 'Rotating a mars rover' do
   def self.mars_rover_facing(direction:)
-    MarsRover.new(map: Map.new, starting_location: Location.new(coordinates: Coordinates.new(x: 1, y: 2), direction: direction))
+    MarsRover.new(map: Map.new(x_domain: (0..10), y_domain: (0..10)), starting_location: Location.new(coordinates: Coordinates.new(x: 1, y: 2), direction: direction))
   end
 
   describe 'Turning left' do
@@ -92,6 +92,6 @@ describe 'Rotating a mars rover' do
   private
 
   def a_mars_rover(located_at:)
-    MarsRover.new(map: Map.new, starting_location: located_at)
+    MarsRover.new(map: Map.new(x_domain: (0..10), y_domain: (0..10)), starting_location: located_at)
   end
 end

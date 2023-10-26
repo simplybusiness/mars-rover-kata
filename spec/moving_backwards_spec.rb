@@ -1,7 +1,7 @@
 require 'mars_rover_helper'
 describe 'Moving backwards' do
   def self.mars_rover(located_at:)
-    MarsRover.new(map: Map.new, starting_location: located_at)
+    MarsRover.new(map: Map.new(x_domain: (0..10), y_domain: (0..10)), starting_location: located_at)
   end
   private_class_method :mars_rover
 
@@ -133,6 +133,6 @@ describe 'Moving backwards' do
   private
 
   def a_mars_rover(located_at:)
-    MarsRover.new(map: Map.new, starting_location: located_at)
+    MarsRover.new(map: Map.new(x_domain: (0..10), y_domain: (0..10)), starting_location: located_at)
   end
 end
