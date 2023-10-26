@@ -3,8 +3,6 @@ describe 'Moving forwards' do
   def self.mars_rover(located_at:)
     MarsRover.new(
       map: Map.new,
-      starting_position: located_at.coordinates,
-      direction: located_at.direction,
       starting_location: located_at
     )
   end
@@ -164,11 +162,6 @@ describe 'Moving forwards' do
   private
 
   def a_mars_rover(located_at:)
-    MarsRover.new(
-      map: Map.new,
-      starting_position: located_at.coordinates,
-      direction: located_at.direction,
-      starting_location: located_at
-    )
+    MarsRover.new(map: Map.new, starting_location: located_at)
   end
 end
