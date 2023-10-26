@@ -34,14 +34,14 @@ describe 'Rotating a mars rover' do
 
     it 'can turn left multiple times' do
       anywhere = Coordinates.new(x: 0, y: 0)
-      mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'N')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: anywhere, direction: 'N'))
 
       expect { mars_rover.execute(%w{l l}) }.to change(mars_rover, :direction).to 'S'
     end
 
     it 'remains at its current position' do
       anywhere = Coordinates.new(x: 4, y: 6)
-      mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'N')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: anywhere, direction: 'N'))
 
       expect { mars_rover.execute(['l']) }.not_to change(mars_rover, :current_position)
     end
@@ -81,15 +81,26 @@ describe 'Rotating a mars rover' do
 
     it 'can turn right multiple times' do
       anywhere = Coordinates.new(x: 3, y: 5)
-      mars_rover = MarsRover.new(map: Map.new, starting_position: anywhere, direction: 'S')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: anywhere, direction: 'S'))
 
       expect { mars_rover.execute(%w{r r r}) }.to change(mars_rover, :direction).to 'E'
     end
 
     it 'remains at its current position' do
-      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 4), direction: 'E')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 4), direction: 'E'))
 
       expect { mars_rover.execute(['r']) }.not_to change(mars_rover, :current_position)
     end
+  end
+
+  private
+
+  def a_mars_rover(located_at:)
+    MarsRover.new(
+      map: Map.new,
+      starting_position: located_at.coordinates,
+      direction: located_at.direction,
+      starting_location: located_at
+    )
   end
 end
