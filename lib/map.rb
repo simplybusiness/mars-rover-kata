@@ -1,5 +1,5 @@
 class Map
-  def initialize(x_domain: (0..10), y_domain: (0..10))
+  def initialize(x_domain:, y_domain:)
     @x_domain = x_domain
     @y_domain = y_domain
   end
