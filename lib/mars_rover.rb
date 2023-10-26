@@ -11,9 +11,9 @@ class MarsRover
       commands.inject(@current_location) do |location, command|
         case command
         when 'b'
-          backwards(current_location: location)
+          backwards(location)
         when 'f'
-          forwards(current_location: location)
+          forwards(location)
         when 'l'
           location.rotate_left
         when 'r'
@@ -38,14 +38,14 @@ class MarsRover
 
   private
 
-  def forwards(current_location:)
+  def forwards(current_location)
     Location.new(
       coordinates: @map.next_coordinate_forwards(current_position: current_location.coordinates, direction: current_location.direction),
       direction: current_location.direction
     )
   end
 
-  def backwards(current_location:)
+  def backwards(current_location)
     Location.new(
       coordinates: @map.next_coordinate_backwards(current_position: current_location.coordinates, direction: current_location.direction),
       direction: current_location.direction
