@@ -126,7 +126,7 @@ describe 'Moving backwards' do
     end
 
     it 'can move along any edge of the planet' do
-      mars_rover = MarsRover.new(map: Map.new, starting_position: Coordinates.new(x: 0, y: 5), direction: 'S')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 5), direction: 'S'))
 
       mars_rover.execute(%w{b b b})
 
