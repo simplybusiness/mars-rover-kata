@@ -5,7 +5,7 @@ describe Point do
   it 'returns a co-ordinate' do
     point =  Point.new(0, 0 ,'N')
 
-    expect(point.coordinates).to eq('[0 0 N]')
+    expect(point).to eq(Point.new(0, 0 ,'N'))
   end
 
   it 'moves the x coordinate by a specific positive number' do
