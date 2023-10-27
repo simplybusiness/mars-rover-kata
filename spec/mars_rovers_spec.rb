@@ -36,7 +36,6 @@ describe MarsRover do
 
     mars_rover.execute_commands(%w[f])
 
-    expect(mars_rover.point.coordinates).to eq '[-1 0 W]'
     expect(mars_rover.point).to eq Point.new(-1, 0,'W')
   end
 

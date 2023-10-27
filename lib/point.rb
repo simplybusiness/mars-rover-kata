@@ -10,11 +10,7 @@ class Point
   end
 
   def ==(other)
-    coordinates == other.coordinates
-  end
-
-  def coordinates
-    '[%d %d %s]' % [@x, @y, @direction]
+    (@x == other.x) && (@y == other.y) && (@direction ==other.direction)
   end
 
   def move_x(value)
