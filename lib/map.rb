@@ -33,31 +33,31 @@ class Map
     end
   end
 
-  def next_location_backwards(current_position:, direction:)
-    case direction
+  def next_location_backwards(location:)
+    case location.direction
     when 'N'
-      next_y = at_bottom_edge?(current_position) ? @y_domain.end : current_position.y - 1
+      next_y = at_bottom_edge?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
       Location.new(
-        coordinates: Coordinates.new(x: current_position.x, y: next_y),
-        direction: direction
+        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        direction: location.direction
       )
     when 'E'
-      next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
+      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: current_position.y),
-        direction: direction
+        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        direction: location.direction
       )
     when 'S'
-      next_y = at_top_edge?(current_position) ? @y_domain.begin : current_position.y + 1
+      next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
       Location.new(
-        coordinates: Coordinates.new(x: current_position.x, y: next_y),
-        direction: direction
+        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        direction: location.direction
       )
     when 'W'
-      next_x = at_right_hand_edge?(current_position) ? @x_domain.begin : current_position.x + 1
+      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: current_position.y),
-        direction: direction
+        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        direction: location.direction
       )
     end
   end
