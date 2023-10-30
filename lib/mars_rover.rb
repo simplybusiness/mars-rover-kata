@@ -43,6 +43,7 @@ class MarsRover
       coordinates: @map.next_coordinate_forwards(current_position: current_location.coordinates, direction: current_location.direction),
       direction: current_location.direction
     )
+    @map.next_location_forwards(current_position: current_location.coordinates, direction: current_location.direction)
   end
 
   def backwards(current_location)
