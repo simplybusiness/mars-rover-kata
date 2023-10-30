@@ -148,7 +148,6 @@ describe 'Moving forwards' do
     end
 
     it 'faces north upon reaching the south pole' do
-      pending('Pending discussion with domain expert')
       mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S'))
 
       mars_rover.execute(['f'])
