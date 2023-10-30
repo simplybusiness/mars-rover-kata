@@ -14,7 +14,7 @@ class MarsRover
           backwards(location)
         when 'f'
           new_location = forwards(location)
-          if at_north_pole?(new_location)
+          if @map.located_at_north_pole? new_location.coordinates
             Location.new(coordinates: Coordinates.new(x: 0, y: 9), direction: 'S')
           else
             new_location
@@ -42,11 +42,6 @@ class MarsRover
   end
 
   private
-
-  def at_north_pole?(new_location)
-    @map.located_at_north_pole? new_location.coordinates
-  end
-
 
   def forwards(current_location)
     @map.next_location_forwards(location: current_location)
