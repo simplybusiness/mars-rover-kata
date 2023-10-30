@@ -147,9 +147,16 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(Coordinates.new(x: 19, y: 8))
     end
 
-    it 'can move to the south pole of the planet'
+    it 'faces north upon reaching the south pole' do
+      pending('Pending discussion with domain expert')
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S'))
 
-    it 'faces north upon reaching the south pole'
+      mars_rover.execute(['f'])
+
+      expect(mars_rover).to be_facing('N')
+    end
+
+    it 'can move to the south pole of the planet'
   end
 
   private
