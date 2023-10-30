@@ -123,11 +123,11 @@ describe 'Moving forwards' do
 
   context 'moving towards the north and south pole' do
     it 'can move to the north pole of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 9), direction: 'N'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 8), direction: 'N'))
 
       mars_rover.execute(['f'])
 
-      top_edge = Coordinates.new(x: 0, y: 10)
+      top_edge = Coordinates.new(x: 18, y: 8)
       expect(mars_rover).to be_located_at(top_edge)
     end
 
