@@ -74,6 +74,7 @@ class Map
 
   def located_at_north_pole?(coordinates)
     @x_domain.map { |x| Coordinates.new(x: x, y: 9) }.include?(coordinates)
+    coordinates.y == 9
   end
 
   def located_at_south_pole?(coordinates)
