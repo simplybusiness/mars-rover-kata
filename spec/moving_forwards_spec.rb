@@ -131,32 +131,11 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(top_edge)
     end
 
-    it 'can move from the north pole of the planet and reappear at the south pole' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 10), direction: 'N'))
+    it 'faces south upon reaching the north pole'
 
-      mars_rover.execute(['f'])
+    it 'can move to the south pole of the planet'
 
-      bottom_edge = Coordinates.new(x: 0, y: 0)
-      expect(mars_rover).to be_located_at(bottom_edge)
-    end
-
-    it 'can move to the south pole of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 1, y: 1), direction: 'S'))
-
-      mars_rover.execute(['f'])
-
-      bottom_edge = Coordinates.new(x: 1, y: 0)
-      expect(mars_rover).to be_located_at(bottom_edge)
-    end
-
-    it 'can move from the south pole of the planet and reappear at the north pole' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 5, y: 0), direction: 'S'))
-
-      mars_rover.execute(['f'])
-
-      bottom_edge = Coordinates.new(x: 5, y: 10)
-      expect(mars_rover).to be_located_at(bottom_edge)
-    end
+    it 'faces north upon reaching the south pole'
   end
 
   private
