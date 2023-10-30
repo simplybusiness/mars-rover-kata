@@ -9,6 +9,9 @@ class Location
   }.freeze
   private_constant :TURN_LEFT
 
+  TURN_RIGHT = TURN_LEFT.invert
+  private_constant :TURN_RIGHT
+
   def initialize(coordinates:, direction:)
     @coordinates = coordinates
     @direction = direction
@@ -24,7 +27,7 @@ class Location
   def rotate_right
     Location.new(
       coordinates: coordinates,
-      direction: TURN_LEFT.invert[direction]
+      direction: TURN_RIGHT[direction]
     )
   end
 
