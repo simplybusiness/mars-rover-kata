@@ -160,7 +160,7 @@ describe 'Moving forwards' do
 
   private
 
-  def a_mars_rover(located_at:)
-    MarsRover.new(map: Map.new(x_domain: (0..10), y_domain: (-9..9)), starting_location: located_at)
+  def a_mars_rover(map: Map.new(x_domain: (0..10), y_domain: (-9..9)), located_at:)
+    MarsRover.new(map: map, starting_location: located_at)
   end
 end
