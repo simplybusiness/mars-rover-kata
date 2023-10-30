@@ -4,7 +4,7 @@ class Map
     @y_domain = y_domain
   end
 
-  def next_location_forwards(current_position:, direction:, location: nil)
+  def next_location_forwards(current_position:, direction:, location:)
     case location.direction
     when 'N'
       next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
