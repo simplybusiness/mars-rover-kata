@@ -73,7 +73,7 @@ class Map
   private
 
   def located_at_south_pole?(coordinates)
-    Coordinates.new(x: 0, y: -9) == coordinates
+    coordinates.y == -9
   end
 
   def at_north_pole?(current_position)
