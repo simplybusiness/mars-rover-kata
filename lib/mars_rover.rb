@@ -13,7 +13,12 @@ class MarsRover
         when 'b'
           backwards(location)
         when 'f'
-          forwards(location)
+          new_location = forwards(location)
+          if new_location.coordinates == Coordinates.new(x: 0, y: 9)
+            Location.new(coordinates: Coordinates.new(x: 0, y: 9), direction: 'S')
+          else
+            new_location
+          end
         when 'l'
           location.rotate_left
         when 'r'
