@@ -60,6 +60,10 @@ class Map
     end
   end
 
+  def located_at_north_pole?(coordinates)
+    coordinates == Coordinates.new(x: 0, y: 9)
+  end
+
   private
 
   def at_north_pole?(current_position)

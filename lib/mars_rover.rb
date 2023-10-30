@@ -44,7 +44,7 @@ class MarsRover
   private
 
   def at_north_pole?(new_location)
-    new_location.coordinates == Coordinates.new(x: 0, y: 9)
+    @map.located_at_north_pole? new_location.coordinates
   end
 
 
