@@ -4,6 +4,35 @@ class Map
     @y_domain = y_domain
   end
 
+  def next_location_forwards(current_position:, direction:)
+    case direction
+    when 'N'
+      next_y = at_top_edge?(current_position) ? @y_domain.begin : current_position.y + 1
+      Location.new(
+        coordinates: Coordinates.new(x: current_position.x, y: next_y),
+        direction: direction
+      )
+    when 'E'
+      next_x = at_right_hand_edge?(current_position) ? @x_domain.begin : current_position.x + 1
+      Location.new(
+        coordinates: Coordinates.new(x: next_x, y: current_position.y),
+        direction: direction
+      )
+    when 'S'
+      next_y = at_bottom_edge?(current_position) ? @y_domain.end : current_position.y - 1
+      Location.new(
+        coordinates: Coordinates.new(x: current_position.x, y: next_y),
+        direction: direction
+      )
+    when 'W'
+      next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
+      Location.new(
+        coordinates: Coordinates.new(x: next_x, y: current_position.y),
+        direction: direction
+      )
+    end
+  end
+
   def next_coordinate_forwards(current_position:, direction:)
     case direction
     when 'N'
