@@ -39,10 +39,6 @@ class MarsRover
   private
 
   def forwards(current_location)
-    Location.new(
-      coordinates: @map.next_coordinate_forwards(current_position: current_location.coordinates, direction: current_location.direction),
-      direction: current_location.direction
-    )
     @map.next_location_forwards(current_position: current_location.coordinates, direction: current_location.direction)
   end
 
