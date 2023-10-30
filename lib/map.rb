@@ -5,30 +5,30 @@ class Map
   end
 
   def next_location_forwards(current_position:, direction:, location: nil)
-    case direction
+    case location.direction
     when 'N'
       next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
-        direction: direction
+        direction: location.direction
       )
     when 'E'
       next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
       Location.new(
         coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
-        direction: direction
+        direction: location.direction
       )
     when 'S'
       next_y = at_bottom_edge?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
-        direction: direction
+        direction: location.direction
       )
     when 'W'
       next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
       Location.new(
         coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
-        direction: direction
+        direction: location.direction
       )
     end
   end
