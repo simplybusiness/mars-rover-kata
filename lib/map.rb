@@ -7,7 +7,7 @@ class Map
   def next_location_forwards(location:)
     case location.direction
     when 'N'
-      next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
+      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: location.direction
@@ -19,7 +19,7 @@ class Map
         direction: location.direction
       )
     when 'S'
-      next_y = at_bottom_edge?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
+      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: location.direction
@@ -36,7 +36,7 @@ class Map
   def next_location_backwards(location:)
     case location.direction
     when 'N'
-      next_y = at_bottom_edge?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
+      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: location.direction
@@ -48,7 +48,7 @@ class Map
         direction: location.direction
       )
     when 'S'
-      next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
+      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
       Location.new(
         coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: location.direction
@@ -64,11 +64,11 @@ class Map
 
   private
 
-  def at_top_edge?(current_position)
+  def at_north_pole?(current_position)
     current_position.y == @y_domain.end
   end
 
-  def at_bottom_edge?(current_position)
+  def at_south_pole?(current_position)
     current_position.y == @y_domain.begin
   end
 
