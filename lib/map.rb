@@ -7,27 +7,27 @@ class Map
   def next_location_forwards(current_position:, direction:, location: nil)
     case direction
     when 'N'
-      next_y = at_top_edge?(current_position) ? @y_domain.begin : current_position.y + 1
+      next_y = at_top_edge?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
       Location.new(
-        coordinates: Coordinates.new(x: current_position.x, y: next_y),
+        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: direction
       )
     when 'E'
-      next_x = at_right_hand_edge?(current_position) ? @x_domain.begin : current_position.x + 1
+      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: current_position.y),
+        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
         direction: direction
       )
     when 'S'
-      next_y = at_bottom_edge?(current_position) ? @y_domain.end : current_position.y - 1
+      next_y = at_bottom_edge?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
       Location.new(
-        coordinates: Coordinates.new(x: current_position.x, y: next_y),
+        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
         direction: direction
       )
     when 'W'
-      next_x = at_left_hand_edge?(current_position) ? @x_domain.end : current_position.x - 1
+      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: current_position.y),
+        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
         direction: direction
       )
     end
