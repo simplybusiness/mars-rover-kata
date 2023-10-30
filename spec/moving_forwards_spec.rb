@@ -111,6 +111,17 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
+    it 'can move along any edge of the planet' do
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 5, y: 10), direction: 'W'))
+
+      mars_rover.execute(%w{f f f})
+
+      point_on_the_edge = Coordinates.new(x: 2, y: 10)
+      expect(mars_rover).to be_located_at(point_on_the_edge)
+    end
+  end
+
+  context 'moving towards the north and south pole' do
     it 'can move to the top edge of the planet' do
       mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 9), direction: 'N'))
 
@@ -128,6 +139,7 @@ describe 'Moving forwards' do
       bottom_edge = Coordinates.new(x: 0, y: 0)
       expect(mars_rover).to be_located_at(bottom_edge)
     end
+
     it 'can move to the bottom edge of the planet' do
       mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 1, y: 1), direction: 'S'))
 
@@ -144,15 +156,6 @@ describe 'Moving forwards' do
 
       bottom_edge = Coordinates.new(x: 5, y: 10)
       expect(mars_rover).to be_located_at(bottom_edge)
-    end
-
-    it 'can move along any edge of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 5, y: 10), direction: 'W'))
-
-      mars_rover.execute(%w{f f f})
-
-      point_on_the_edge = Coordinates.new(x: 2, y: 10)
-      expect(mars_rover).to be_located_at(point_on_the_edge)
     end
   end
 
