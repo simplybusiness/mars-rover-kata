@@ -11,11 +11,7 @@ class Map
         coordinates: Coordinates.new(x: location.coordinates.x, y: (location.coordinates.y + 1)),
         direction: location.direction
       )
-      if at_north_pole? new_location.coordinates
-        Location.south_facing(coordinates: Coordinates.new(x: new_location.coordinates.x + 18, y: 8))
-      else
-        new_location
-      end
+      corrected_for_north_pole(new_location)
     when 'E'
       next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
       Location.new(
@@ -71,6 +67,14 @@ class Map
   end
 
   private
+
+  def corrected_for_north_pole(location)
+    if at_north_pole? location.coordinates
+      Location.south_facing(coordinates: Coordinates.new(x: location.coordinates.x + 18, y: 8))
+    else
+      location
+    end
+  end
 
   def located_at_south_pole?(coordinates)
     coordinates.y == -9
