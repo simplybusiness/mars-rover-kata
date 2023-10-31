@@ -7,8 +7,7 @@ class Map
   def next_location_forwards(location:)
     case location.direction
     when 'N'
-      new_location = location.forwards
-      corrected_for_north_pole(new_location)
+      corrected_for_north_pole(location.forwards)
     when 'E'
       next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
       Location.new(
@@ -16,8 +15,7 @@ class Map
         direction: location.direction
       )
     when 'S'
-      new_location = location.forwards
-      corrected_for_south_pole(new_location)
+      corrected_for_south_pole(location.forwards)
     when 'W'
       next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
       Location.new(
