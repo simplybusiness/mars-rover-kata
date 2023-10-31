@@ -75,7 +75,7 @@ class Map
   end
 
   def located_at_south_pole?(coordinates)
-    coordinates.y == -9
+    coordinates.y == @y_domain.begin
   end
 
   def at_north_pole?(current_position)
