@@ -22,10 +22,18 @@ class Location
   end
 
   def forwards
-    Location.new(
-      coordinates: Coordinates.new(x: coordinates.x, y: (coordinates.y + 1)),
-      direction: direction
-    )
+    case direction
+    when 'N'
+      Location.new(
+        coordinates: Coordinates.new(x: coordinates.x, y: (coordinates.y + 1)),
+        direction: direction
+      )
+    when 'S'
+      Location.new(
+        coordinates: Coordinates.new(x: coordinates.x, y: (coordinates.y - 1)),
+        direction: direction
+      )
+    end
   end
 
   def rotate_left

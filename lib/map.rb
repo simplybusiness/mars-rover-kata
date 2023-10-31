@@ -16,15 +16,8 @@ class Map
         direction: location.direction
       )
     when 'S'
-      new_location = Location.new(
-        coordinates: Coordinates.new(x: location.coordinates.x, y: (location.coordinates.y - 1)),
-        direction: location.direction
-      )
-      if located_at_south_pole? new_location.coordinates
-        Location.new(coordinates: Coordinates.new(x: 18, y: -8), direction: 'N')
-      else
-        new_location
-      end
+      new_location = location.forwards
+      corrected_for_south_pole(new_location)
     when 'W'
       next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
       Location.new(
@@ -64,6 +57,14 @@ class Map
   end
 
   private
+
+  def corrected_for_south_pole(location)
+    if located_at_south_pole? location.coordinates
+      Location.new(coordinates: Coordinates.new(x: 18, y: -8), direction: 'N')
+    else
+      location
+    end
+  end
 
   def corrected_for_north_pole(location)
     if at_north_pole? location.coordinates
