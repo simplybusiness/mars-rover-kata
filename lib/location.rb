@@ -12,6 +12,10 @@ class Location
   TURN_RIGHT = TURN_LEFT.invert
   private_constant :TURN_RIGHT
 
+  def self.south_facing(coordinates:)
+    new(coordinates: coordinates, direction: 'S')
+  end
+
   def initialize(coordinates:, direction:)
     @coordinates = coordinates
     @direction = direction
