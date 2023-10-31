@@ -56,8 +56,8 @@ describe 'Moving forwards' do
     expect(mars_rover).to be_located_at(Coordinates.new(x: 0, y: 4))
   end
 
-  context "when the rover is at or near the planet's edges" do
-    it 'can move to the right-hand edge of the planet from the x-axis' do
+  context "when the rover is travelling from eastern to western hemispheres along the lines of latitude" do
+    it 'can move to the eastern hemisphere boundary of the planet' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
@@ -70,7 +70,7 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
-    it 'can move from the right-hand edge of the planet and reappear at the left-hand edge from the x-axis' do
+    it 'can move from the eastern hemisphere boundary of the planet and reappear at the western hemisphere boundary from the x-axis' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
@@ -83,7 +83,7 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
-    it 'can move from the right-hand edge of the planet and reappear at the left hand from anywhere on the planet' do
+    it 'can move from the eastern hemisphere boundary of the planet and reappear at the western hemisphere boundary from anywhere on the planet' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
@@ -96,7 +96,7 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
-    it 'can move to the left-hand edge of the planet' do
+    it 'can move to the western hemisphere boundary of the planet' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
@@ -109,7 +109,7 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
-    it 'can move from the left-hand edge of the planet and reappear at the right-hand edge' do
+    it 'can move from the western hemisphere of the planet and reappear at in the eastern hemisphere' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
@@ -122,7 +122,7 @@ describe 'Moving forwards' do
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
-    it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge' do
+    it 'can move from the western hemisphere of the planet from anywhere and reappear in the eastern hemisphere' do
       mars_rover =
         a_mars_rover(
           map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
