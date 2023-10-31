@@ -59,7 +59,7 @@ class Map
   private
 
   def corrected_for_south_pole(location)
-    if located_at_south_pole? location.coordinates
+    if at_south_pole? location.coordinates
       Location.new(coordinates: Coordinates.new(x: 18, y: -8), direction: 'N')
     else
       location
@@ -72,10 +72,6 @@ class Map
     else
       location
     end
-  end
-
-  def located_at_south_pole?(coordinates)
-    coordinates.y == @y_domain.begin
   end
 
   def at_north_pole?(current_position)
