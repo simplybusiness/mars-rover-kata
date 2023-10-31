@@ -58,56 +58,56 @@ describe 'Moving forwards' do
 
   context "when the rover is at or near the planet's edges" do
     it 'can move to the right-hand edge of the planet from the x-axis' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 9, y: 0), direction: 'E'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 17, y: 0), direction: 'E'))
 
       mars_rover.execute(['f'])
 
-      right_hand_edge = Coordinates.new(x: 10, y: 0)
+      right_hand_edge = Coordinates.new(x: 18, y: 0)
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
     it 'can move from the right-hand edge of the planet and reappear at the left-hand edge from the x-axis' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 10, y: 0), direction: 'E'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 18, y: 0), direction: 'E'))
 
       mars_rover.execute(['f'])
 
-      left_hand_edge = Coordinates.new(x: 0, y: 0)
+      left_hand_edge = Coordinates.new(x: -18, y: 0)
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
     it 'can move from the right-hand edge of the planet and reappear at the left hand from anywhere on the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 10, y: 5), direction: 'E'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 18, y: 5), direction: 'E'))
 
       mars_rover.execute(['f'])
 
-      left_hand_edge = Coordinates.new(x: 0, y: 5)
+      left_hand_edge = Coordinates.new(x: -18, y: 5)
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
     it 'can move to the left-hand edge of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 1, y: 5), direction: 'W'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: -17, y: 5), direction: 'W'))
 
       mars_rover.execute(['f'])
 
-      left_hand_edge = Coordinates.new(x: 0, y: 5)
+      left_hand_edge = Coordinates.new(x: -18, y: 5)
       expect(mars_rover).to be_located_at(left_hand_edge)
     end
 
     it 'can move from the left-hand edge of the planet and reappear at the right-hand edge' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 0), direction: 'W'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: -18, y: 0), direction: 'W'))
 
       mars_rover.execute(['f'])
 
-      right_hand_edge = Coordinates.new(x: 10, y: 0)
+      right_hand_edge = Coordinates.new(x: 18, y: 0)
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
     it 'can move from the left-hand edge of the planet from anywhere on that edge and reappear on the right hand edge' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 1), direction: 'W'))
+      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: -18, y: 1), direction: 'W'))
 
       mars_rover.execute(['f'])
 
-      right_hand_edge = Coordinates.new(x: 10, y: 1)
+      right_hand_edge = Coordinates.new(x: 18, y: 1)
       expect(mars_rover).to be_located_at(right_hand_edge)
     end
 
@@ -166,7 +166,7 @@ describe 'Moving forwards' do
 
   private
 
-  def a_mars_rover(map: Map.new(x_domain: (0..10), y_domain: (-9..9)), located_at:)
+  def a_mars_rover(map: Map.new(x_domain: (-18..18), y_domain: (-9..9)), located_at:)
     MarsRover.new(map: map, starting_location: located_at)
   end
 end
