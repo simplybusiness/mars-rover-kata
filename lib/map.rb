@@ -9,11 +9,14 @@ class Map
     when 'N'
       corrected_for_north_pole(location.forwards)
     when 'E'
-      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
-      Location.new(
-        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
-        direction: location.direction
-      )
+      if at_right_hand_edge?(location.coordinates)
+        Location.new(
+          coordinates: Coordinates.new(x: @x_domain.begin, y: location.coordinates.y),
+          direction: location.direction
+        )
+      else
+        location.forwards
+      end
     when 'S'
       corrected_for_south_pole(location.forwards)
     when 'W'
