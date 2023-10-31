@@ -21,6 +21,13 @@ class Location
     @direction = direction
   end
 
+  def forwards
+    Location.new(
+      coordinates: Coordinates.new(x: coordinates.x, y: (coordinates.y + 1)),
+      direction: direction
+    )
+  end
+
   def rotate_left
     Location.new(
       coordinates: coordinates,
