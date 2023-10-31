@@ -28,7 +28,7 @@ class Map
         direction: location.direction
       )
       if located_at_south_pole? new_location.coordinates
-        Location.new(coordinates: new_location.coordinates, direction: 'N')
+        Location.new(coordinates: Coordinates.new(x: 18, y: -8), direction: 'N')
       else
         new_location
       end
