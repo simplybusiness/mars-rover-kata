@@ -123,7 +123,10 @@ describe 'Moving forwards' do
 
   context 'moving towards the north and south pole' do
     it 'can move to the north pole of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 8), direction: 'N'))
+      mars_rover =
+        a_mars_rover(
+          map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
+          located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 8), direction: 'N'))
 
       mars_rover.execute(['f'])
 
@@ -132,7 +135,11 @@ describe 'Moving forwards' do
     end
 
     it 'faces south upon reaching the north pole' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 8), direction: 'N'))
+      mars_rover =
+        a_mars_rover(
+          map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
+          located_at: Location.new(coordinates: Coordinates.new(x: 0, y: 8), direction: 'N')
+        )
 
       mars_rover.execute(['f'])
 
@@ -140,7 +147,11 @@ describe 'Moving forwards' do
     end
 
     it 'can move to the north pole from any longitude' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 1, y: 8), direction: 'N'))
+      mars_rover =
+        a_mars_rover(
+          map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
+          located_at: Location.new(coordinates: Coordinates.new(x: 1, y: 8), direction: 'N')
+        )
 
       mars_rover.execute(['f'])
 
@@ -148,7 +159,11 @@ describe 'Moving forwards' do
     end
 
     it 'faces north upon reaching the south pole' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S'))
+      mars_rover =
+        a_mars_rover(
+          map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
+          located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S')
+        )
 
       mars_rover.execute(['f'])
 
@@ -156,7 +171,11 @@ describe 'Moving forwards' do
     end
 
     it 'can move to the south pole of the planet' do
-      mars_rover = a_mars_rover(located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S'))
+      mars_rover =
+        a_mars_rover(
+          map: Map.new(x_domain: (-18..18), y_domain: (-9..9)),
+          located_at: Location.new(coordinates: Coordinates.new(x: 0, y: -8), direction: 'S')
+        )
 
       mars_rover.execute(['f'])
 
