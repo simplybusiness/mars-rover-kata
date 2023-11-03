@@ -362,5 +362,22 @@ describe Rover do
         expect(rover.position).to eq(Coordinates.new(x: -98, y: 0))
       end
     end
+    context 'West boundary' do
+      let(:rover) { described_class.new(Coordinates.new(x: -100, y: 0), 'W') }
+      it 'changes its position to East boundary' do
+        rover.execute('ff')
+        expect(rover.direction).to eq('W')
+        expect(rover.position).to eq(Coordinates.new(x: 98, y: 0))
+      end
+    end
+    context 'North boundary' do
+      let(:rover) { described_class.new(Coordinates.new(x: 0, y: 100), 'N') }
+      it 'changes its position to South boundary' do
+        pending
+        rover.execute('ff')
+        expect(rover.direction).to eq('N')
+        expect(rover.position).to eq(Coordinates.new(x: 0, y: -98))
+      end
+    end
   end
 end
