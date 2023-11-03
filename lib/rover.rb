@@ -7,13 +7,14 @@ class Rover
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
-  # BOUNDARY = 100
-  @@x_axis_max = 100
-  @@y_axis_max = 100
 
-  def self.update_map_size(x_axis_max:, y_axis_max:)
-    @@x_axis_max = x_axis_max
-    @@y_axis_max = y_axis_max
+  def self.me 
+    "#{@@x_axis_max} #{@@y_axis_max}"
+  end
+
+  def update_map_size(x_axis_max:, y_axis_max:)
+    @x_axis_max = x_axis_max
+    @y_axis_max = y_axis_max
   end
 
   def initialize(position, direction)
@@ -22,6 +23,8 @@ class Rover
 
     @position = position
     @direction = direction
+    @x_axis_max = 100
+    @y_axis_max = 100
   end
 
   def execute(commands)
@@ -54,13 +57,13 @@ class Rover
   end
 
   def check_and_wrap_edge
-    @position.x *= -1 if @position.x.abs == @@x_axis_max
-    @position.y *= -1 if @position.y.abs == @@y_axis_max
+    @position.x *= -1 if @position.x.abs == @x_axis_max
+    @position.y *= -1 if @position.y.abs == @y_axis_max
   end
 
   def remove_west_and_south_edge
-    @position.x *= -1 if @position.x == -@@x_axis_max
-    @position.y *= -1 if @position.y == -@@y_axis_max
+    @position.x *= -1 if @position.x == -@x_axis_max
+    @position.y *= -1 if @position.y == -@y_axis_max
   end
 
   def turn(command)

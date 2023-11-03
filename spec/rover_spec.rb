@@ -3,6 +3,7 @@ require_relative '../lib/coordinates'
 require_relative '../lib/rover'
 require 'pry-byebug'
 
+
 describe Rover do
   describe '🏎️ on initialization' do
     let(:position) { Coordinates.new(x: 0, y: 0) }
@@ -428,7 +429,7 @@ describe Rover do
       context 'East boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 1000, y: 0), 'E') }
         it 'changes its position to West boundary' do
-          Rover.update_map_size(x_axis_max:1000, y_axis_max:1000)
+          rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('E')
           expect(rover.position).to eq(Coordinates.new(x: -999, y: 0))
@@ -437,6 +438,7 @@ describe Rover do
       context 'West boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: -1000, y: 0), 'W') }
         it 'changes its position to East boundary' do
+          rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('W')
           expect(rover.position).to eq(Coordinates.new(x: 999, y: 0))
@@ -445,6 +447,7 @@ describe Rover do
       context 'North boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 0, y: 1000), 'N') }
         it 'changes its position to South boundary' do
+          rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('N')
           expect(rover.position).to eq(Coordinates.new(x: 0, y: -999))
@@ -453,10 +456,20 @@ describe Rover do
       context 'South boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 0, y: -1000), 'S') }
         it 'changes its position to North boundary' do
+          rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('S')
           expect(rover.position).to eq(Coordinates.new(x: 0, y: 999))
         end
+      end
+    end
+
+    describe 'eduards test' do
+      let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'E') }
+      it 'testing stuff' do
+
+        rover.execute('f')
+        expect(rover.position). to eq(Coordinates.new(x: 1, y: 0))
       end
     end
   end
