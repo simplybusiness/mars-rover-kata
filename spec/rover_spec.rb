@@ -355,7 +355,7 @@ describe Rover do
   end
 
   describe '🗺️ for map wrapping scenarios' do
-    describe 'when going beyond the limit of' do
+    describe 'when moving beyond the limit of' do
       context 'East boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 100, y: 0), 'E') }
         it 'changes its position to West boundary' do
@@ -389,11 +389,46 @@ describe Rover do
         end
       end
     end
+
+    describe 'when moving twice beyond the limit of' do
+      context 'East boundary' do
+        let(:rover) { described_class.new(Coordinates.new(x: 99, y: 0), 'E') }
+        it 'changes its position to West boundary' do
+          rover.execute('ff')
+          expect(rover.direction).to eq('E')
+          expect(rover.position).to eq(Coordinates.new(x: -99, y: 0))
+        end
+      end
+      context 'West boundary' do
+        let(:rover) { described_class.new(Coordinates.new(x: -99, y: 0), 'W') }
+        it 'changes its position to East boundary' do
+          rover.execute('ff')
+          expect(rover.direction).to eq('W')
+          expect(rover.position).to eq(Coordinates.new(x: 99, y: 0))
+        end
+      end
+      context 'North boundary' do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: 99), 'N') }
+        it 'changes its position to South boundary' do
+          rover.execute('ff')
+          expect(rover.direction).to eq('N')
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: -99))
+        end
+      end
+      context 'South boundary' do
+        let(:rover) { described_class.new(Coordinates.new(x: 0, y: -99), 'S') }
+        it 'changes its position to North boundary' do
+          rover.execute('ff')
+          expect(rover.direction).to eq('S')
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: 99))
+        end
+      end
+    end
   
-    describe 'when going beyond and back from' do
+    describe 'when moving beyond and back from' do
       context 'East boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 100, y: 0), 'E') }
-        it 'changes its position to East boundary' do
+        it 'retains position of East boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('E')
           expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
@@ -401,7 +436,7 @@ describe Rover do
       end
       context 'West boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: -100, y: 0), 'W') }
-        it 'changes its position to East boundary' do
+        it 'retains position of East boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('W')
           expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
@@ -409,7 +444,7 @@ describe Rover do
       end
       context 'North boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 0, y: 100), 'N') }
-        it 'changes its position to North boundary' do
+        it 'retains position of North boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('N')
           expect(rover.position).to eq(Coordinates.new(x: 0, y: 100))
@@ -417,7 +452,7 @@ describe Rover do
       end
       context 'South boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 0, y: -100), 'S') }
-        it 'changes its position to North boundary' do
+        it 'retains position of North boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('S')
           expect(rover.position).to eq(Coordinates.new(x: 0, y: 100))
@@ -461,15 +496,6 @@ describe Rover do
           expect(rover.direction).to eq('S')
           expect(rover.position).to eq(Coordinates.new(x: 0, y: 999))
         end
-      end
-    end
-
-    describe 'eduards test' do
-      let(:rover) { described_class.new(Coordinates.new(x: 0, y: 0), 'E') }
-      it 'testing stuff' do
-
-        rover.execute('f')
-        expect(rover.position). to eq(Coordinates.new(x: 1, y: 0))
       end
     end
   end

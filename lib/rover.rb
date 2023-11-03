@@ -8,8 +8,8 @@ class Rover
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
 
-  def self.me 
-    "#{@@x_axis_max} #{@@y_axis_max}"
+  def me 
+    "#{@x_axis_max} #{@y_axis_max}"
   end
 
   def update_map_size(x_axis_max:, y_axis_max:)
@@ -38,7 +38,6 @@ class Rover
   end
 
   def move(command)
-    check_and_wrap_edge
     case @direction
     when 'N'
       @position.y += 1 if command == 'f'
@@ -53,12 +52,15 @@ class Rover
       @position.x += 1 if command == 'f'
       @position.x -= 1 if command == 'b'
     end
+    adjust_coordinates_from_map_wrapping
     remove_west_and_south_edge
   end
 
-  def check_and_wrap_edge
-    @position.x *= -1 if @position.x.abs == @x_axis_max
-    @position.y *= -1 if @position.y.abs == @y_axis_max
+  def adjust_coordinates_from_map_wrapping
+    @position.x = (-@position.x + 2) if @position.x > @x_axis_max
+    @position.x = (-@position.x - 2) if @position.x < -@x_axis_max
+    @position.y = (-@position.y + 2) if @position.y > @y_axis_max
+    @position.y = (-@position.y - 2) if @position.y < -@y_axis_max
   end
 
   def remove_west_and_south_edge
