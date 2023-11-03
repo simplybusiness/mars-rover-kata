@@ -7,7 +7,14 @@ class Rover
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
-  BOUNDARY = 100
+  # BOUNDARY = 100
+  @@x_axis_max = 100
+  @@y_axis_max = 100
+
+  def self.update_map_size(x_axis_max:, y_axis_max:)
+    @@x_axis_max = x_axis_max
+    @@y_axis_max = y_axis_max
+  end
 
   def initialize(position, direction)
     raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
@@ -28,6 +35,10 @@ class Rover
   end
 
   def move(command)
+    if @position.x >= @@x_axis_max
+      @position.x *= -1
+    end
+
     case @direction
     when 'N'
       @position.y += 1 if command == 'f'
@@ -41,10 +52,6 @@ class Rover
     when 'E'
       @position.x += 1 if command == 'f'
       @position.x -= 1 if command == 'b'
-    end
-
-    if @position.x > BOUNDARY
-      @position.x = -1 * @position.x  + 2 * (@position.x - BOUNDARY)
     end
   end
 
