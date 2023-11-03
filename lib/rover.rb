@@ -35,9 +35,7 @@ class Rover
   end
 
   def move(command)
-    @position.x *= -1 if @position.x.abs == @@x_axis_max
-    @position.y *= -1 if @position.y.abs == @@y_axis_max
-
+    check_and_wrap_edge
     case @direction
     when 'N'
       @position.y += 1 if command == 'f'
@@ -52,6 +50,17 @@ class Rover
       @position.x += 1 if command == 'f'
       @position.x -= 1 if command == 'b'
     end
+    remove_west_and_south_edge
+  end
+
+  def check_and_wrap_edge
+    @position.x *= -1 if @position.x.abs == @@x_axis_max
+    @position.y *= -1 if @position.y.abs == @@y_axis_max
+  end
+
+  def remove_west_and_south_edge
+    @position.x *= -1 if @position.x == -@@x_axis_max
+    @position.y *= -1 if @position.y == -@@y_axis_max
   end
 
   def turn(command)
