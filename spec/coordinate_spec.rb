@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 require_relative '../lib/coordinates'
 
 describe Coordinates do
-  describe 'on initialization' do
+  describe '🧭 on initialization' do
     it 'raises an error when initialized with non-integers as initial position' do
       expect { Coordinates.new(x: 'abc', y: 'def') }.to raise_error BadCoordinatesError
     end
