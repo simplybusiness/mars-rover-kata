@@ -35,9 +35,8 @@ class Rover
   end
 
   def move(command)
-    if @position.x.abs >= @@x_axis_max
-      @position.x *= -1
-    end
+    @position.x *= -1 if @position.x.abs == @@x_axis_max
+    @position.y *= -1 if @position.y.abs == @@y_axis_max
 
     case @direction
     when 'N'
