@@ -424,7 +424,7 @@ describe Rover do
         end
       end
     end
-  
+
     describe 'when moving beyond and back from' do
       context 'East boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 100, y: 0), 'E') }
@@ -459,7 +459,7 @@ describe Rover do
         end
       end
     end
-  
+
     describe 'when changing map size and going beyond the limit of' do
       context 'East boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: 1000, y: 0), 'E') }

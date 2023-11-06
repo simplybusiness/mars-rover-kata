@@ -8,7 +8,7 @@ class Rover
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
 
-  def me 
+  def me
     "#{@x_axis_max} #{@y_axis_max}"
   end
 
@@ -45,11 +45,21 @@ class Rover
         @position.y += 1
         @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
       end
-      @position.y -= 1 if command == 'b'
+      if command == 'b'
+        @position.y -= 1
+        @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+      end
     when 'S'
-      @position.y -= 1 if command == 'f'
-      @position.y += 1 if command == 'b'
+      if command == 'f'
+        @position.y -= 1
+        @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y - 1)
+      end
+      if command == 'b'
+        @position.y += 1
+        @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+      end
     when 'W'
+
       @position.x -= 1 if command == 'f'
       @position.x += 1 if command == 'b'
     when 'E'
