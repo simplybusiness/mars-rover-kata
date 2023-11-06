@@ -22,6 +22,7 @@ class Rover
     raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)' unless DIRECTIONS.include?(direction)
 
     @position = position
+    @current_position = position
     @direction = direction
     @x_axis_max = 100
     @y_axis_max = 100
@@ -40,7 +41,10 @@ class Rover
   def move(command)
     case @direction
     when 'N'
-      @position.y += 1 if command == 'f'
+      if command == 'f'
+        @position.y += 1
+        @current_position = Coordinates.new(x: @current_position.x, y: @current_position.y + 1)
+      end
       @position.y -= 1 if command == 'b'
     when 'S'
       @position.y -= 1 if command == 'f'
