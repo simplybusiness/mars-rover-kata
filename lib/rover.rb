@@ -1,4 +1,4 @@
-require 'coordinates'
+require_relative 'coordinates'
 require 'pry-byebug'
 
 class Rover
