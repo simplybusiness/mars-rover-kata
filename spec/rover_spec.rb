@@ -436,7 +436,7 @@ describe Rover do
       end
       context 'West boundary' do
         let(:rover) { described_class.new(Coordinates.new(x: -100, y: 0), 'W') }
-        it 'retains position of East boundary' do
+        it 'retains position of Wast boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('W')
           expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
