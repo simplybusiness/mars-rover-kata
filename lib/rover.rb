@@ -8,8 +8,8 @@ class Rover
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
 
-  def me 
-    "#{@x_axis_max} #{@y_axis_max}"
+  def inspect_plane 
+    "x-axis max: #{@x_axis_max} | y-axis max: #{@y_axis_max}"
   end
 
   def update_map_size(x_axis_max:, y_axis_max:)
