@@ -8,7 +8,7 @@ class Rover
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
 
-  def inspect_plane 
+  def inspect_plane
     "x-axis max: #{@x_axis_max} | y-axis max: #{@y_axis_max}"
   end
 
@@ -31,7 +31,7 @@ class Rover
     raise ArgumentError, 'Commands should be of Char Array or String format' unless
     (commands.is_a? Array) || (commands.is_a? String)
 
-    for i in 0...commands.length do
+    (0...commands.length).each do |i|
       move(commands[i]) if MOVE_COMMANDS.include? commands[i]
       turn(commands[i]) if TURN_COMMANDS.include? commands[i]
     end

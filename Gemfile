@@ -6,3 +6,5 @@ group :test do
 end
 
 gem 'pry-byebug', '~> 3.10'
+
+gem 'rubocop', '~> 1.57'
