@@ -38,10 +38,15 @@ class MarsRover
   end
 
   def move_backward
-    if point.direction ==  'N'
-      @point = @point.new_move_y(-1)
-    elsif point.direction == 'S'
+    case point.direction
+    when 'E'
+      @point = @point.new_move_x(-1)
+    when 'S'
       @point = @point.new_move_y(1)
+    when 'W'
+      @point = @point.new_move_x(1)
+    when 'N'
+      @point = @point.new_move_y(-1)
     end
   end
 end
