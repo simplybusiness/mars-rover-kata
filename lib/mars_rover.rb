@@ -19,7 +19,7 @@ class MarsRover
       when 'b'
         move_backward
       when 'l'
-        move_left
+        turn_left
       when 'r'
         move_right
       end
@@ -54,7 +54,7 @@ class MarsRover
     end
   end
 
-  def move_left
+  def turn_left
     case point.direction
     when 'E'
       @point = Point.new(@point.x, @point.y, 'N')
