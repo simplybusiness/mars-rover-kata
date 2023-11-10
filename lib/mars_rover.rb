@@ -57,14 +57,16 @@ class MarsRover
   def turn_left
     case point.direction
     when 'E'
-      @point = Point.new(@point.x, @point.y, 'N')
+      new_direction = 'N'
     when 'S'
-      @point = Point.new(@point.x, @point.y, 'E')
+      new_direction = 'E'
     when 'W'
-      @point = Point.new(@point.x, @point.y, 'S')
+      new_direction = 'S'
     when 'N'
-      @point = Point.new(@point.x, @point.y, 'W')
+      new_direction = 'W'
     end
+
+    @point = Point.new(@point.x, @point.y, new_direction)
   end
 
 
