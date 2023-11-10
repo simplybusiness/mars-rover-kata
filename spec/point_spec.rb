@@ -61,7 +61,7 @@ describe Point do
 
     point.move_y(1.0)
 
-    expect(point.direction).to eq('N')
+    expect(point).to be_facing('N')
   end
 
   it 'has a starting direction of North and a starting position of 0,0' do
@@ -100,6 +100,15 @@ describe Point do
     point_2 =  Point.new(0, 0, 'W')
 
     expect(point_1).to_not eq(point_2)
+  end
+
+  RSpec::Matchers.define :be_facing do |expected_direction|
+    match do |point|
+      point.direction == expected_direction
+    end
+    failure_message do |point|
+      "expected that #{point} to be facing #{expected_direction}. It is instead facing #{point.direction}"
+    end
   end
 end
 
