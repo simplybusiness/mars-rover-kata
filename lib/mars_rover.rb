@@ -71,13 +71,13 @@ class MarsRover
   def move_right
     case point.direction
     when 'E'
-      @point = @point.new_move_y(-1)
+      @point = Point.new(@point.x, @point.y, 'S')
     when 'S'
-      @point = @point.new_move_x(-1)
+      @point = Point.new(@point.x, @point.y, 'W')
     when 'W'
-      @point = @point.new_move_y(1)
+      @point = Point.new(@point.x, @point.y, 'N')
     when 'N'
-      @point = @point.new_move_x(1)
+      @point = Point.new(@point.x, @point.y, 'E')
     end
   end
 end
