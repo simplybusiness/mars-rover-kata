@@ -5,6 +5,13 @@ require_relative 'point'
 class MarsRover
   attr_reader :point
 
+  LEFT_LOOKUP = {
+    'E' => 'N',
+    'S' => 'E',
+    'W' => 'S',
+    'N' => 'W'
+  }
+
   def initialize(point)
     @point = point
   end
@@ -55,18 +62,7 @@ class MarsRover
   end
 
   def turn_left
-    case point.direction
-    when 'E'
-      new_direction = 'N'
-    when 'S'
-      new_direction = 'E'
-    when 'W'
-      new_direction = 'S'
-    when 'N'
-      new_direction = 'W'
-    end
-
-    @point = Point.new(@point.x, @point.y, new_direction)
+    @point = Point.new(@point.x, @point.y, LEFT_LOOKUP[point.direction])
   end
 
 
