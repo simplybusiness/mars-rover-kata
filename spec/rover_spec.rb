@@ -13,6 +13,7 @@ describe Rover do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
       expect(rover).to be_located_at([0,0])
+      # expect(rover).to be_located_at(Coordinate.new(x = 0, y= 0)
     end
 
     it 'has position matching the coordinates it was initialized with' do
@@ -35,8 +36,7 @@ describe Rover do
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates: Coordinate.new(3,4))
       rover.move([])
-      expect(rover.coordinate_position.x).to eq(3)
-      expect(rover.coordinate_position.y).to eq(4)
+      expect(rover).to be_located_at([3,4])
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
@@ -106,8 +106,8 @@ describe Rover do
       it "does move forward when receives a single forward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['f'])
-        expect(rover.coordinate_position.x).to eq(expected_position.x)
-        expect(rover.coordinate_position.y).to eq(expected_position.y)
+        #TODO it should be like this: expect(rover).to be_located_at expected_position
+        expect(rover).to be_located_at [expected_position.x,expected_position.y]
       end
     end
 
@@ -120,8 +120,8 @@ describe Rover do
       it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['b'])
-        expect(rover.coordinate_position.x).to eq(expected_position.x)
-        expect(rover.coordinate_position.y).to eq(expected_position.y)
+        #TODO it should be like this: expect(rover).to be_located_at expected_position
+        expect(rover).to be_located_at [expected_position.x,expected_position.y]
       end
     end
 
