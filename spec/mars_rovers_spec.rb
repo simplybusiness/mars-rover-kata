@@ -97,11 +97,7 @@ describe MarsRover do
 
   RSpec::Matchers.define :be_located_at do |expected_point|
     match do |actual_point|
-      if actual_point.is_a?(MarsRover)
-        actual_point.point == expected_point
-      else
-        actual_point == expected_point
-      end
+      actual_point.point == expected_point
     end
     failure_message do |actual_point|
       "expected that #{actual_point} would have the same coordinates as #{expected_point}. Coordinates:\n
