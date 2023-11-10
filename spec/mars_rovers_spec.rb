@@ -68,7 +68,7 @@ describe MarsRover do
 
     mars_rover.execute_commands(%w[l])
 
-    expect(mars_rover.point).to be_located_at Point.new(-1, 0,'N')
+    expect(mars_rover).to be_located_at Point.new(-1, 0,'N')
   end
 
   it 'moves left when facing East' do
@@ -97,7 +97,11 @@ describe MarsRover do
 
   RSpec::Matchers.define :be_located_at do |expected_point|
     match do |actual_point|
-      actual_point == expected_point
+      if actual_point.is_a?(MarsRover)
+        actual_point.point == expected_point
+      else
+        actual_point == expected_point
+      end
     end
     failure_message do |actual_point|
       "expected that #{actual_point} would have the same coordinates as #{expected_point}. Coordinates:\n
