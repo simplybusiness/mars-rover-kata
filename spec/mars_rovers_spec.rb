@@ -96,15 +96,15 @@ describe MarsRover do
   end
 
   RSpec::Matchers.define :be_located_at do |expected_point|
-    match do |actual_point|
-      actual_point.point == expected_point
+    match do |mars_rover|
+      mars_rover.point == expected_point
     end
-    failure_message do |actual_point|
-      "expected that #{actual_point} would have the same coordinates as #{expected_point}. Coordinates:\n
+    failure_message do |mars_rover|
+      "expected that #{mars_rover} would have the same coordinates as #{expected_point}. Coordinates:\n
       ACTUAL | EXPECTED\n
-        X: #{actual_point.x} | #{expected_point.x}\n
-        Y: #{actual_point.y} | #{expected_point.y}\n
-        D: #{actual_point.direction} | #{expected_point.direction}\n"
+        X: #{mars_rover.point.x} | #{expected_point.x}\n
+        Y: #{mars_rover.point.y} | #{expected_point.y}\n
+        D: #{mars_rover.point.direction} | #{expected_point.direction}\n"
     end
   end
 end
