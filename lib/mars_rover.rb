@@ -18,6 +18,10 @@ class MarsRover
         move_forward
       when 'b'
         move_backward
+      when 'l'
+        move_left
+      when 'r'
+        move_right
       end
     end
   end
@@ -49,4 +53,34 @@ class MarsRover
       @point = @point.new_move_y(-1)
     end
   end
+
+  def move_left
+    case point.direction
+    when 'E'
+      @point = @point.new_move_y(1)
+    when 'S'
+      @point = @point.new_move_x(1)
+    when 'W'
+      @point = @point.new_move_y(-1)
+    when 'N'
+      @point = @point.new_move_x(-1)
+    end
+  end
+
+
+  def move_right
+    case point.direction
+    when 'E'
+      @point = @point.new_move_y(-1)
+    when 'S'
+      @point = @point.new_move_x(-1)
+    when 'W'
+      @point = @point.new_move_y(1)
+    when 'N'
+      @point = @point.new_move_x(1)
+    end
+  end
 end
+
+
+

@@ -64,8 +64,6 @@ describe MarsRover do
   end
 
   it 'moves left when facing North' do
-    pending("TODO")
-
     mars_rover = MarsRover.new(Point.new(0,0, 'N'))
 
     mars_rover.execute_commands(%w[l])
@@ -74,12 +72,26 @@ describe MarsRover do
   end
 
   it 'moves left when facing East' do
-    pending("TODO")
-
     mars_rover = MarsRover.new(Point.new(0,0, 'E'))
 
     mars_rover.execute_commands(%w[l])
 
     expect(mars_rover.point).to eq Point.new(0, 1,'E')
+  end
+
+  it 'moves right when facing South' do
+    mars_rover = MarsRover.new(Point.new(0,0, 'S'))
+
+    mars_rover.execute_commands(%w[r])
+
+    expect(mars_rover.point).to eq Point.new(-1, 0,'S')
+  end
+
+  it 'moves right when facing West' do
+    mars_rover = MarsRover.new(Point.new(0,0, 'W'))
+
+    mars_rover.execute_commands(%w[r])
+
+    expect(mars_rover.point).to eq Point.new(0, 1,'W')
   end
 end
