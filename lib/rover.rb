@@ -17,6 +17,10 @@ class Rover
       @direction = direction
     end
 
+    def inspect
+      "Coordinates: #{coordinate_position.inspect} Direction: #{direction}"
+    end
+
     def turn_right
       case @direction
       when SOUTH

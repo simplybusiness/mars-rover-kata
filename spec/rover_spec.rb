@@ -1,18 +1,22 @@
 require_relative '../lib/rover.rb'
 require_relative '../lib/coordinate.rb'
 
+RSpec::Matchers.define :be_located_at do |coordinates|
+  match do |rover|
+    rover.coordinate_position.x == coordinates[0] && rover.coordinate_position.y == coordinates[1]
+  end
+end
+
 describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
-      expect(rover.coordinate_position.x).to eq(0)
-      expect(rover.coordinate_position.y).to eq(0)
+      expect(rover).to be_located_at([0,1])
     end
 
     it 'has position matching the coordinates it was initialized with' do
       rover = Rover.new(coordinates: Coordinate.new(3, 5))
-      expect(rover.coordinate_position.x).to eq(3)
-      expect(rover.coordinate_position.y).to eq(5)
+      expect(rover).to be_located_at([3,5])
     end
 
     it 'has initially faces North when not given any direction' do

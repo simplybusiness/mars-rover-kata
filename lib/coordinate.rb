@@ -5,4 +5,8 @@ class Coordinate
         @x = x
         @y = y
     end
+
+    def inspect
+        "x: #{x} y: #{y}"
+    end
 end
