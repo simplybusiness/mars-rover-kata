@@ -9,4 +9,8 @@ class Coordinate
     def inspect
         "x: #{x} y: #{y}"
     end
+
+    def ==(coordinate)
+       self.x == coordinate.x && self.y == coordinate.y
+    end
 end
