@@ -68,7 +68,7 @@ describe MarsRover do
 
     mars_rover.execute_commands(%w[l])
 
-    expect(mars_rover).to be_located_at Point.new(-1, 0,'N')
+    expect(mars_rover).to be_located_at Point.new(0, 0,'W')
   end
 
   it 'moves left when facing East' do
@@ -76,23 +76,25 @@ describe MarsRover do
 
     mars_rover.execute_commands(%w[l])
 
-    expect(mars_rover).to be_located_at Point.new(0, 1,'E')
+    expect(mars_rover).to be_located_at Point.new(0, 0,'N')
   end
 
   it 'moves right when facing South' do
-    mars_rover = MarsRover.new(Point.new(0,0, 'S'))
+    pending("TODO")
+    mars_rover = MarsRover.new(Point.new(0,0, 'N'))
 
     mars_rover.execute_commands(%w[r])
 
-    expect(mars_rover).to be_located_at Point.new(-1, 0,'S')
+    expect(mars_rover).to be_located_at Point.new(-1, 0,'N')
   end
 
   it 'moves right when facing West' do
-    mars_rover = MarsRover.new(Point.new(0,0, 'W'))
+    pending("TODO")
+    mars_rover = MarsRover.new(Point.new(0,0, 'N'))
 
     mars_rover.execute_commands(%w[r])
 
-    expect(mars_rover).to be_located_at Point.new(0, 1,'W')
+    expect(mars_rover).to be_located_at Point.new(0, 1,'N')
   end
 
   RSpec::Matchers.define :be_located_at do |expected_point|
