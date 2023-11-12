@@ -7,6 +7,12 @@ class Rover
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
+  MOVEMENTS = {
+    'N' => { 'f' => ->(pos) { pos.y += 1 }, 'b' => ->(pos) { pos.y -= 1 } },
+    'S' => { 'f' => ->(pos) { pos.y -= 1 }, 'b' => ->(pos) { pos.y += 1 } },
+    'W' => { 'f' => ->(pos) { pos.x -= 1 }, 'b' => ->(pos) { pos.x += 1 } },
+    'E' => { 'f' => ->(pos) { pos.x += 1 }, 'b' => ->(pos) { pos.x -= 1 } }
+  }
 
   def inspect_plane
     "x-axis max: #{@x_axis_max} | y-axis max: #{@y_axis_max}"
@@ -38,20 +44,7 @@ class Rover
   end
 
   def move(command)
-    case @direction
-    when 'N'
-      @position.y += 1 if command == 'f'
-      @position.y -= 1 if command == 'b'
-    when 'S'
-      @position.y -= 1 if command == 'f'
-      @position.y += 1 if command == 'b'
-    when 'W'
-      @position.x -= 1 if command == 'f'
-      @position.x += 1 if command == 'b'
-    when 'E'
-      @position.x += 1 if command == 'f'
-      @position.x -= 1 if command == 'b'
-    end
+    MOVEMENTS[@direction][command].call(@position)
     adjust_coordinates_from_map_wrapping
     remove_west_and_south_edge
   end
