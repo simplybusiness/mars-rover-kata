@@ -24,8 +24,8 @@ class Rover
   end
 
   def initialize(position, direction)
-    raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
-    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)' unless DIRECTIONS.include?(direction)
+    raise ArgumentError, 'Position should be a Coordinate data type!' unless position.is_a?(Coordinates)
+    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)!' unless DIRECTIONS.include?(direction)
 
     @position = position
     @direction = direction
