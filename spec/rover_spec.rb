@@ -27,7 +27,7 @@ describe Rover do
 
     it 'has initially faces North when not given any direction' do
       rover = Rover.new
-      expect(rover.direction).to eq('N')
+      expect(rover).to be_facing ("N")
     end
 
     it 'has direction matching the one it was initialized with' do
