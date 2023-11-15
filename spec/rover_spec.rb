@@ -3,8 +3,7 @@ require_relative '../lib/coordinate.rb'
 
 RSpec::Matchers.define :be_located_at do |coordinates|
   match do |rover|
-    expected_coordinates = coordinates
-    rover.coordinate_position == expected_coordinates
+    rover.coordinate_position == coordinates
   end
 end
 
