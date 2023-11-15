@@ -29,3 +29,8 @@ Develop an API that translates the commands sent from earth to instructions that
 - Change roles (driver, navigator) after each TDD cycle.
 - No red phases while refactoring.
 - Be careful about edge cases and exceptions. We can not afford to lose a mars rover, just because the developers overlooked a null pointer.
+
+## Steve and Lucas Progress notes
+- Completed migrate part of parralel change for coordinates class
+- NEXT: Contract (remove old xpos and ypos code from rover class)
+- TODO: need to refactor coordinates so that it tests for invalid x and y rather than rover class.
