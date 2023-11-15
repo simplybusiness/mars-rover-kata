@@ -3,12 +3,7 @@ require_relative '../lib/coordinate.rb'
 
 RSpec::Matchers.define :be_located_at do |coordinates|
   match do |rover|
-    if coordinates.is_a? Array
-      expected_coordinates = Coordinate.new(x = coordinates[0], y = coordinates[1])
-    else
-      expected_coordinates = coordinates
-    end
-  
+    expected_coordinates = coordinates
     rover.coordinate_position == expected_coordinates
   end
 end
@@ -17,13 +12,12 @@ describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
-      expect(rover).to be_located_at([0,0])
       expect(rover).to be_located_at(Coordinate.new(0,0))
     end
 
     it 'has position matching the coordinates it was initialized with' do
       rover = Rover.new(coordinates: Coordinate.new(3, 5))
-      expect(rover).to be_located_at([3,5])
+      expect(rover).to be_located_at(Coordinate.new(3,5))
     end
 
     it 'has initially faces North when not given any direction' do
@@ -41,7 +35,7 @@ describe Rover do
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates: Coordinate.new(3,4))
       rover.move([])
-      expect(rover).to be_located_at([3,4])
+      expect(rover).to be_located_at(Coordinate.new(3,4))
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
@@ -111,8 +105,7 @@ describe Rover do
       it "does move forward when receives a single forward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['f'])
-        #TODO it should be like this: expect(rover).to be_located_at expected_position
-        expect(rover).to be_located_at [expected_position.x,expected_position.y]
+        expect(rover).to be_located_at(Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
@@ -125,8 +118,7 @@ describe Rover do
       it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['b'])
-        #TODO it should be like this: expect(rover).to be_located_at expected_position
-        expect(rover).to be_located_at [expected_position.x,expected_position.y]
+        expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
