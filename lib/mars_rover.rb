@@ -13,6 +13,7 @@ class MarsRover
   def initialize(x_pos: 0, y_pos: 0, cardinal_direction:, coordinates: Coordinates.new(x: 0, y: 0))
     raise InvalidMarsRoverDirection unless CARDINAL_DIRECTIONS.include?(cardinal_direction)
     raise InvalidMarsRoverGeoLocation unless numeric?(x_pos) && numeric?(y_pos)
+    raise InvalidMarsRoverGeoLocation unless numeric?(coordinates.x_pos) && numeric?(coordinates.y_pos)
 
     @x_pos = x_pos.to_i
     @y_pos = y_pos.to_i

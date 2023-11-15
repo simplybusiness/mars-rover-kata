@@ -23,12 +23,12 @@ RSpec.describe MarsRover do
 
     context 'when the mars rover is initialised with invalid arguments' do
       it 'raises an error for wrong directions' do
-        expect { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'X') }
-          .to raise_error InvalidMarsRoverDirection
+        expect { described_class.new(coordinates: Coordinates.new(x:0, y:0), cardinal_direction: 'X') }
+        .to raise_error InvalidMarsRoverDirection
       end
 
       it 'raises an error for wrong geo locations' do
-        expect { described_class.new(x_pos: 0, y_pos: 'Z', cardinal_direction: 'E') }
+        expect { described_class.new(coordinates: Coordinates.new(x:0, y:'Z'), cardinal_direction: 'E') }
           .to raise_error InvalidMarsRoverGeoLocation
       end
     end
