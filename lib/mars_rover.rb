@@ -5,17 +5,9 @@ class MarsRover
     def initialize(x, y, direction)
         directions = ["N", "S", "W", "E"]
 
-        if !x.is_a?(Integer) || !y.is_a?(Integer)
-            raise ArgumentError
-        end
-
-        if x < 0 || y < 0
-            raise ArgumentError
-        end 
-
-        if !directions.include?(direction) 
-            raise ArgumentError
-        end
+        raise ArgumentError unless x.is_a?(Integer) && y.is_a?(Integer)
+        raise ArgumentError unless x >= 0 && y >= 0
+        raise ArgumentError unless directions.include?(direction)
 
         @position = [x, y]
         @direction = direction
