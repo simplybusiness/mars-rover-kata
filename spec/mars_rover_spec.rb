@@ -15,7 +15,12 @@ describe MarsRover do
             expect(test_mars_rover_2.position).to eq([3, 5])
         end
 
+        it "starting point coordinates should be integer" do
+            expect { MarsRover.new("ab", 0.6) }.to raise_error(ArgumentError)
+        end
+
         it "starting point coordinates should not be negative" do
+            expect { MarsRover.new(-1, -1) }.to raise_error(ArgumentError)
         end
     end
 end
