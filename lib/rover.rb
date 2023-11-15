@@ -39,12 +39,12 @@ class Rover
     commands.each do |command|
       next unless SUPPORTED_COMMANDS.include?(command)
 
-      change_possition(command)
+      change_position(command)
       change_direction(command)
     end
   end
 
-  def change_possition(command)
+  def change_position(command)
     @position.change_position(setup_coordinates(command))
   end
 
