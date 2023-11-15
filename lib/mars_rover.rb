@@ -1,8 +1,10 @@
 class MarsRover
     attr_reader :position
+    attr_reader :direction
    
-    def initialize(x, y)
-        
+    def initialize(x, y, direction)
+        directions = ["N", "S", "W", "E"]
+
         if !x.is_a?(Integer) || !y.is_a?(Integer)
             raise ArgumentError
         end
@@ -11,7 +13,12 @@ class MarsRover
             raise ArgumentError
         end 
 
-        @position = [x, y]
-    end
+        if !directions.include?(direction) 
+            raise ArgumentError
+        end
 
+        @position = [x, y]
+        @direction = direction
+    end
+    
 end
