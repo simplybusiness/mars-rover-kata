@@ -8,6 +8,8 @@ describe MarsRover do
         end
 
         it "default starting point of x = 0 and y = 0" do
+            test_mars_rover = MarsRover.new(0, 0)
+            expect(test_mars_rover.position).to eq([0, 0])
         end
 
         it "starting point of x and y given by the starting position" do
