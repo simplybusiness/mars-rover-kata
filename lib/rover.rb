@@ -50,10 +50,12 @@ class Rover
   end
 
   def adjust_coordinates
-    @position = Coordinates.new(x: (-@position.x + 1), y: @position.y) if @position.x > @x_axis_max
-    @position = Coordinates.new(x: (-@position.x - 1), y: @position.y) if @position.x < -@x_axis_max
-    @position = Coordinates.new(x: @position.x, y: (-@position.y + 1)) if @position.y > @y_axis_max
-    @position = Coordinates.new(x: @position.x, y: (-@position.y - 1)) if @position.y < -@y_axis_max
+    @position = Coordinates.new(x: (-@position.x + abs_one(@position.x)), y: @position.y) if @position.x.abs > @x_axis_max
+    @position = Coordinates.new(x: @position.x, y: (-@position.y + abs_one(@position.y))) if @position.y.abs > @y_axis_max
+  end
+
+  def abs_one(value)
+    value.positive? ? 1 : -1
   end
 
   def turn(command)
