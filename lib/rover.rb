@@ -46,20 +46,14 @@ class Rover
 
   def move(command)
     MOVEMENTS[@direction][command].call(@position)
-    adjust_coordinates_from_map_wrapping
-    remove_west_and_south_edge
+    adjust_coordinates
   end
 
-  def adjust_coordinates_from_map_wrapping
-    @position.x = (-@position.x + 2) if @position.x > @x_axis_max
-    @position.x = (-@position.x - 2) if @position.x < -@x_axis_max
-    @position.y = (-@position.y + 2) if @position.y > @y_axis_max
-    @position.y = (-@position.y - 2) if @position.y < -@y_axis_max
-  end
-
-  def remove_west_and_south_edge
-    @position.x *= -1 if @position.x == -@x_axis_max
-    @position.y *= -1 if @position.y == -@y_axis_max
+  def adjust_coordinates 
+    @position.x = (-@position.x + 1) if @position.x > @x_axis_max
+    @position.x = (-@position.x - 1) if @position.x < -@x_axis_max
+    @position.y = (-@position.y + 1) if @position.y > @y_axis_max
+    @position.y = (-@position.y - 1) if @position.y < -@y_axis_max
   end
 
   def turn(command)

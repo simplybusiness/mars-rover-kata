@@ -361,7 +361,7 @@ describe Rover do
         it 'changes its position to West boundary' do
           rover.execute('f')
           expect(rover.direction).to eq('E')
-          expect(rover.position).to eq(Coordinates.new(x: -99, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: -100, y: 0))
         end
       end
       context 'West boundary' do
@@ -369,7 +369,7 @@ describe Rover do
         it 'changes its position to East boundary' do
           rover.execute('f')
           expect(rover.direction).to eq('W')
-          expect(rover.position).to eq(Coordinates.new(x: 99, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
         end
       end
       context 'North boundary' do
@@ -377,7 +377,7 @@ describe Rover do
         it 'changes its position to South boundary' do
           rover.execute('f')
           expect(rover.direction).to eq('N')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: -99))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: -100))
         end
       end
       context 'South boundary' do
@@ -385,7 +385,7 @@ describe Rover do
         it 'changes its position to North boundary' do
           rover.execute('f')
           expect(rover.direction).to eq('S')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: 99))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: 100))
         end
       end
     end
@@ -396,7 +396,7 @@ describe Rover do
         it 'changes its position to West boundary' do
           rover.execute('ff')
           expect(rover.direction).to eq('E')
-          expect(rover.position).to eq(Coordinates.new(x: -99, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: -100, y: 0))
         end
       end
       context 'West boundary' do
@@ -404,7 +404,7 @@ describe Rover do
         it 'changes its position to East boundary' do
           rover.execute('ff')
           expect(rover.direction).to eq('W')
-          expect(rover.position).to eq(Coordinates.new(x: 99, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
         end
       end
       context 'North boundary' do
@@ -412,7 +412,7 @@ describe Rover do
         it 'changes its position to South boundary' do
           rover.execute('ff')
           expect(rover.direction).to eq('N')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: -99))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: -100))
         end
       end
       context 'South boundary' do
@@ -420,7 +420,7 @@ describe Rover do
         it 'changes its position to North boundary' do
           rover.execute('ff')
           expect(rover.direction).to eq('S')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: 99))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: 100))
         end
       end
     end
@@ -439,7 +439,7 @@ describe Rover do
         it 'retains position of Wast boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('W')
-          expect(rover.position).to eq(Coordinates.new(x: 100, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: -100, y: 0))
         end
       end
       context 'North boundary' do
@@ -455,7 +455,7 @@ describe Rover do
         it 'retains position of North boundary' do
           rover.execute('fb')
           expect(rover.direction).to eq('S')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: 100))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: -100))
         end
       end
     end
@@ -467,7 +467,7 @@ describe Rover do
           rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('E')
-          expect(rover.position).to eq(Coordinates.new(x: -999, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: -1000, y: 0))
         end
       end
       context 'West boundary' do
@@ -476,7 +476,7 @@ describe Rover do
           rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('W')
-          expect(rover.position).to eq(Coordinates.new(x: 999, y: 0))
+          expect(rover.position).to eq(Coordinates.new(x: 1000, y: 0))
         end
       end
       context 'North boundary' do
@@ -485,7 +485,7 @@ describe Rover do
           rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('N')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: -999))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: -1000))
         end
       end
       context 'South boundary' do
@@ -494,7 +494,7 @@ describe Rover do
           rover.update_map_size(x_axis_max: 1000, y_axis_max: 1000)
           rover.execute('f')
           expect(rover.direction).to eq('S')
-          expect(rover.position).to eq(Coordinates.new(x: 0, y: 999))
+          expect(rover.position).to eq(Coordinates.new(x: 0, y: 1000))
         end
       end
     end
