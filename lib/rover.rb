@@ -49,11 +49,11 @@ class Rover
     adjust_coordinates
   end
 
-  def adjust_coordinates 
-    @position.x = (-@position.x + 1) if @position.x > @x_axis_max
-    @position.x = (-@position.x - 1) if @position.x < -@x_axis_max
-    @position.y = (-@position.y + 1) if @position.y > @y_axis_max
-    @position.y = (-@position.y - 1) if @position.y < -@y_axis_max
+  def adjust_coordinates
+    @position = Coordinates.new(x: (-@position.x + 1), y: @position.y) if @position.x > @x_axis_max
+    @position = Coordinates.new(x: (-@position.x - 1), y: @position.y) if @position.x < -@x_axis_max
+    @position = Coordinates.new(x: @position.x, y: (-@position.y + 1)) if @position.y > @y_axis_max
+    @position = Coordinates.new(x: @position.x, y: (-@position.y - 1)) if @position.y < -@y_axis_max
   end
 
   def turn(command)
