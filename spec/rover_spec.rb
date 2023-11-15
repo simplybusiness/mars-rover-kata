@@ -7,6 +7,12 @@ RSpec::Matchers.define :be_located_at do |coordinates|
   end
 end
 
+RSpec::Matchers.define :be_facing do |position|
+  match do |rover|
+    rover.direction == position
+  end
+end
+
 describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
