@@ -7,6 +7,7 @@ class Rover
   MOVE_COMMANDS = %w[f b]
   TURN_COMMANDS = %w[r l]
   DIRECTIONS = %w[N E S W]
+
   MOVEMENTS = {
     'N' => { 'f' => ->(pos) { pos.y += 1 }, 'b' => ->(pos) { pos.y -= 1 } },
     'S' => { 'f' => ->(pos) { pos.y -= 1 }, 'b' => ->(pos) { pos.y += 1 } },
@@ -24,8 +25,8 @@ class Rover
   end
 
   def initialize(position, direction)
-    raise ArgumentError, 'Position should be a Coordinate data type!' unless position.is_a?(Coordinates)
-    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)!' unless DIRECTIONS.include?(direction)
+    raise ArgumentError, 'Position should be a Coordinate data type' unless position.is_a?(Coordinates)
+    raise ArgumentError, 'Direction is not valid, use one of (N,S,E,W)' unless DIRECTIONS.include?(direction)
 
     @position = position
     @direction = direction
