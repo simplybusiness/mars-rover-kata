@@ -4,16 +4,16 @@ require 'pry-byebug'
 class Rover
   attr_reader :position, :direction
 
-  MOVE_COMMANDS = %w[f b]
-  TURN_COMMANDS = %w[r l]
-  DIRECTIONS = %w[N E S W]
+  MOVE_COMMANDS = %w[f b].freeze
+  TURN_COMMANDS = %w[r l].freeze
+  DIRECTIONS = %w[N E S W].freeze
 
   MOVEMENTS = {
     'N' => { 'f' => ->(pos) { pos.y += 1 }, 'b' => ->(pos) { pos.y -= 1 } },
     'S' => { 'f' => ->(pos) { pos.y -= 1 }, 'b' => ->(pos) { pos.y += 1 } },
     'W' => { 'f' => ->(pos) { pos.x -= 1 }, 'b' => ->(pos) { pos.x += 1 } },
     'E' => { 'f' => ->(pos) { pos.x += 1 }, 'b' => ->(pos) { pos.x -= 1 } }
-  }
+  }.freeze
 
   def inspect_plane
     "x-axis max: #{@x_axis_max} | y-axis max: #{@y_axis_max}"
