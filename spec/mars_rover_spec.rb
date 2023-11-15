@@ -14,5 +14,8 @@ describe MarsRover do
             test_mars_rover_2 = MarsRover.new(3, 5)
             expect(test_mars_rover_2.position).to eq([3, 5])
         end
+
+        it "starting point coordinates should not be negative" do
+        end
     end
 end
