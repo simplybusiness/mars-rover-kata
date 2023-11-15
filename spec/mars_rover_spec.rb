@@ -35,7 +35,7 @@ RSpec.describe MarsRover do
   end
 
   describe '#change_position' do
-    let(:mars_rover) { described_class.new(x_pos: 0, y_pos: 0, cardinal_direction: 'N') }
+    let(:mars_rover) { described_class.new(coordinates: Coordinates.new(x:0, y:0), cardinal_direction: 'N') }
 
     context '[when route commands are valid]' do
 
@@ -44,58 +44,58 @@ RSpec.describe MarsRover do
         expect { mars_rover.change_position(valid_routes_list) }.not_to raise_error
       end
 
-      directions_mapping_forward_single = { 'N' => [0,1], 'S' => [0,-1], 'E' => [1,0], 'W' => [-1,0] }
+      directions_mapping_forward_single = { 'N' => [1,2], 'S' => [1,0], 'E' => [2,1], 'W' => [0,1] }
 
       directions_mapping_forward_single.each do | start_direction, expected_position |
         it "moves forward when receiving a single forward command and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['f'])
           mars_rover.change_position(valid_route)
 
-          expect(mars_rover.x_pos).to eq(expected_position[0])
-          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.coordinates.x_pos).to eq(expected_position[0])
+          expect(mars_rover.coordinates.y_pos).to eq(expected_position[1])
           expect(mars_rover.cardinal_direction).to eq(start_direction)
         end
       end
 
-      directions_mapping_forward_multiple = { 'N' => [0,2], 'S' => [0,-2], 'E' => [2,0], 'W' => [-2,0] }
+      directions_mapping_forward_multiple = { 'N' => [1,3], 'S' => [1,-1], 'E' => [3,1], 'W' => [-1,1] }
 
       directions_mapping_forward_multiple.each do | start_direction, expected_position |
         it "moves forward when receiving multiple forward commands and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['f', 'f'])
           mars_rover.change_position(valid_route)
 
-          expect(mars_rover.x_pos).to eq(expected_position[0])
-          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.coordinates.x_pos).to eq(expected_position[0])
+          expect(mars_rover.coordinates.y_pos).to eq(expected_position[1])
           expect(mars_rover.cardinal_direction).to eq(start_direction)
         end
       end
 
-      directions_mapping_backward_single = { 'N' => [0,-1], 'S' => [0,1], 'E' => [-1,0], 'W' => [1,0] }
+      directions_mapping_backward_single = { 'N' => [1,0], 'S' => [1,2], 'E' => [0,1], 'W' => [2,1] }
 
       directions_mapping_backward_single.each do | start_direction, expected_position |
         it "moves backward when receiving a single backward command and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['b'])
           mars_rover.change_position(valid_route)
 
-          expect(mars_rover.x_pos).to eq(expected_position[0])
-          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.coordinates.x_pos).to eq(expected_position[0])
+          expect(mars_rover.coordinates.y_pos).to eq(expected_position[1])
           expect(mars_rover.cardinal_direction).to eq(start_direction)
         end
       end
 
-      directions_mapping_backward_multiple = { 'N' => [0,-2], 'S' => [0,2], 'E' => [-2,0], 'W' => [2,0] }
+      directions_mapping_backward_multiple = { 'N' => [1,-1], 'S' => [1,3], 'E' => [-1,1], 'W' => [3,1] }
 
       directions_mapping_backward_multiple.each do | start_direction, expected_position |
         it "moves backward when receiving multiple backward commands and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['b', 'b'])
           mars_rover.change_position(valid_route)
 
-          expect(mars_rover.x_pos).to eq(expected_position[0])
-          expect(mars_rover.y_pos).to eq(expected_position[1])
+          expect(mars_rover.coordinates.x_pos).to eq(expected_position[0])
+          expect(mars_rover.coordinates.y_pos).to eq(expected_position[1])
           expect(mars_rover.cardinal_direction).to eq(start_direction)
         end
       end
@@ -104,13 +104,13 @@ RSpec.describe MarsRover do
 
       directions_mapping_left_single.each do | start_direction, expected_position |
         it "turns left when receiving a single left command and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['l'])
           mars_rover.change_position(valid_route)
 
           expect(mars_rover.cardinal_direction).to eq(expected_position)
-          expect(mars_rover.x_pos).to eq(0)
-          expect(mars_rover.y_pos).to eq(0)
+          expect(mars_rover.coordinates.x_pos).to eq(1)
+          expect(mars_rover.coordinates.y_pos).to eq(1)
         end
       end
 
@@ -118,13 +118,13 @@ RSpec.describe MarsRover do
 
       directions_mapping_left_multiple.each do | start_direction, expected_position |
         it "faces a new when receiving two left commands and having been facing #{start_direction} originally" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['l', 'l'])
           mars_rover.change_position(valid_route)
 
           expect(mars_rover.cardinal_direction).to eq(expected_position)
-          expect(mars_rover.x_pos).to eq(0)
-          expect(mars_rover.y_pos).to eq(0)
+          expect(mars_rover.coordinates.x_pos).to eq(1)
+          expect(mars_rover.coordinates.y_pos).to eq(1)
         end
       end
 
@@ -132,13 +132,13 @@ RSpec.describe MarsRover do
 
       directions_mapping_right_single.each do | start_direction, expected_position |
         it "turns left when receiving a single right command and its facing #{start_direction}" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['r'])
           mars_rover.change_position(valid_route)
 
           expect(mars_rover.cardinal_direction).to eq(expected_position)
-          expect(mars_rover.x_pos).to eq(0)
-          expect(mars_rover.y_pos).to eq(0)
+          expect(mars_rover.coordinates.x_pos).to eq(1)
+          expect(mars_rover.coordinates.y_pos).to eq(1)
         end
       end
 
@@ -146,13 +146,13 @@ RSpec.describe MarsRover do
 
       directions_mapping_right_multiple.each do | start_direction, expected_position |
         it "faces a new when receiving two right commands and having been facing #{start_direction} originally" do
-          mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: start_direction)
+          mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: start_direction)
           valid_route = RoverRoute.new(route_steps: ['r', 'r'])
           mars_rover.change_position(valid_route)
 
           expect(mars_rover.cardinal_direction).to eq(expected_position)
-          expect(mars_rover.x_pos).to eq(0)
-          expect(mars_rover.y_pos).to eq(0)
+          expect(mars_rover.coordinates.x_pos).to eq(1)
+          expect(mars_rover.coordinates.y_pos).to eq(1)
         end
       end
 
@@ -160,12 +160,12 @@ RSpec.describe MarsRover do
 
     context "[when the route contains an invalid command (e.g. something other than f, b, l or r)]" do
       it "ignores the invalid commands but execute all valid commands" do
-        mars_rover = MarsRover.new(x_pos: 0, y_pos: 0, cardinal_direction: "N")
+        mars_rover = MarsRover.new(coordinates: Coordinates.new(x:1, y:1), cardinal_direction: "N")
         route = RoverRoute.new(route_steps: ['l', 'f', 'x', 'f', 'f'])
         mars_rover.change_position(route)
         expect(mars_rover.cardinal_direction).to eq('W')
-        expect(mars_rover.x_pos).to eq(-3)
-        expect(mars_rover.y_pos).to eq(0)
+        expect(mars_rover.coordinates.x_pos).to eq(-2)
+        expect(mars_rover.coordinates.y_pos).to eq(1)
       end
     end
   end
