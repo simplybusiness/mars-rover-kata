@@ -19,7 +19,7 @@ class Rover
     end
 
     def inspect
-      "Coordinates: #{coordinate_position.inspect} Direction: #{direction}"
+      "Coordinates: #{coordinates.inspect} Direction: #{direction}"
     end
 
     def turn_right
@@ -49,41 +49,33 @@ class Rover
     end
 
     def move_forward
-      current_x = @coordinate_position.x
-      current_y = @coordinate_position.y
+      current_x = @coordinates.x
+      current_y = @coordinates.y
 
       case @direction
       when SOUTH
-        # @coordinate_position.y = current_y - 1
         @coordinates = Coordinate.new(current_x, current_y - 1)
       when NORTH
-        # @coordinate_position.y = current_y + 1
         @coordinates = Coordinate.new(current_x, current_y + 1)
       when EAST
-        # @coordinate_position.x = current_x + 1
         @coordinates = Coordinate.new(current_x + 1, current_y)
       when WEST
-        # @coordinate_position.x = current_x - 1
         @coordinates = Coordinate.new(current_x - 1, current_y)
       end
     end
 
     def move_backward
-      current_x = @coordinate_position.x
-      current_y = @coordinate_position.y
+      current_x = @coordinates.x
+      current_y = @coordinates.y
 
       case @direction
       when SOUTH
-        # @coordinate_position.y = current_y + 1
         @coordinates = Coordinate.new(current_x, current_y + 1)
       when NORTH
-        # @coordinate_position.y = current_y - 1
         @coordinates = Coordinate.new(current_x, current_y - 1)
       when EAST
-        # @coordinate_position.x = current_x - 1
         @coordinates = Coordinate.new(current_x - 1 , current_y)
       when WEST
-        # @coordinate_position.x = current_x + 1
         @coordinates = Coordinate.new(current_x + 1 , current_y)
       end
     end

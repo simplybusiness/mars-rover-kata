@@ -3,12 +3,6 @@ require_relative '../lib/coordinate.rb'
 
 RSpec::Matchers.define :be_located_at do |coordinates|
   match do |rover|
-    rover.coordinate_position == coordinates
-  end
-end
-
-RSpec::Matchers.define :be_located_at_new do |coordinates|
-  match do |rover|
     rover.coordinates == coordinates
   end
 end
@@ -116,7 +110,7 @@ describe Rover do
       it "does move forward when receives a single forward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['f'])
-        expect(rover).to be_located_at_new(Coordinate.new(expected_position.x,expected_position.y))
+        expect(rover).to be_located_at(Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
@@ -129,7 +123,7 @@ describe Rover do
       it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['b'])
-        expect(rover).to be_located_at_new (Coordinate.new(expected_position.x,expected_position.y))
+        expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
