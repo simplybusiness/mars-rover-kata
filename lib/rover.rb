@@ -2,7 +2,7 @@ require 'coordinate'
 require 'pry'
 
 class Rover
-    attr_reader :position, :direction, :coordinate_position
+    attr_reader :position, :direction, :coordinate_position, :coordinates
     LEFT = 'l'
     RIGHT = 'r'
     FORWARD = 'f'
@@ -14,6 +14,7 @@ class Rover
 
     def initialize (coordinates: Coordinate.new(0,0), direction: NORTH)
       @coordinate_position = coordinates
+      @coordinates = coordinates
       @direction = direction
     end
 
@@ -53,13 +54,17 @@ class Rover
 
       case @direction
       when SOUTH
-        @coordinate_position.y = current_y - 1
+        # @coordinate_position.y = current_y - 1
+        @coordinates = Coordinate.new(current_x, current_y - 1)
       when NORTH
-        @coordinate_position.y = current_y + 1
+        # @coordinate_position.y = current_y + 1
+        @coordinates = Coordinate.new(current_x, current_y + 1)
       when EAST
-        @coordinate_position.x = current_x + 1
+        # @coordinate_position.x = current_x + 1
+        @coordinates = Coordinate.new(current_x + 1, current_y)
       when WEST
-        @coordinate_position.x = current_x - 1
+        # @coordinate_position.x = current_x - 1
+        @coordinates = Coordinate.new(current_x - 1, current_y)
       end
     end
 
@@ -69,13 +74,17 @@ class Rover
 
       case @direction
       when SOUTH
-        @coordinate_position.y = current_y + 1
+        # @coordinate_position.y = current_y + 1
+        @coordinates = Coordinate.new(current_x, current_y + 1)
       when NORTH
-        @coordinate_position.y = current_y - 1
+        # @coordinate_position.y = current_y - 1
+        @coordinates = Coordinate.new(current_x, current_y - 1)
       when EAST
-        @coordinate_position.x = current_x - 1
+        # @coordinate_position.x = current_x - 1
+        @coordinates = Coordinate.new(current_x - 1 , current_y)
       when WEST
-        @coordinate_position.x = current_x + 1
+        # @coordinate_position.x = current_x + 1
+        @coordinates = Coordinate.new(current_x + 1 , current_y)
       end
     end
 
