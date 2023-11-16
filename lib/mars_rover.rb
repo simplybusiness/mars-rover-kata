@@ -2,7 +2,7 @@ class MarsRover
     attr_reader :position
     attr_reader :direction
    
-    def initialize(x, y, direction)
+    def initialize(x, y, direction, coordinates = [0, 0])
         directions = ["N", "S", "W", "E"]
 
         raise ArgumentError unless x.is_a?(Integer) && y.is_a?(Integer)
