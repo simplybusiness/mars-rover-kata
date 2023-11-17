@@ -1,23 +1,36 @@
 require_relative '../lib/rover.rb'
 require_relative '../lib/coordinate.rb'
 
+
+RSpec::Matchers.define :be_located_at do |coordinates|
+  match do |rover|
+    rover.coordinates == coordinates
+  end
+end
+
+RSpec::Matchers.define :be_facing do |position|
+  match do |rover|
+    rover.direction == position
+  end
+end
+
 describe Rover do
   describe '#init' do
     it 'has an initial position of 0,0 when not given an explicit start point' do
       rover = Rover.new
-      expect(rover.coordinate_position.x).to eq(0)
-      expect(rover.coordinate_position.y).to eq(0)
+
+      expect(rover).to be_located_at(Coordinate.new(0,0))
     end
 
     it 'has position matching the coordinates it was initialized with' do
       rover = Rover.new(coordinates: Coordinate.new(3, 5))
-      expect(rover.coordinate_position.x).to eq(3)
-      expect(rover.coordinate_position.y).to eq(5)
+      expect(rover).to be_located_at(Coordinate.new(3,5))
     end
 
     it 'has initially faces North when not given any direction' do
       rover = Rover.new
-      expect(rover.direction).to eq('N')
+
+      expect(rover).to be_facing ("N")
     end
 
     it 'has direction matching the one it was initialized with' do
@@ -30,8 +43,7 @@ describe Rover do
     it 'does not move if it receives an empty route' do
       rover = Rover.new(coordinates: Coordinate.new(3,4))
       rover.move([])
-      expect(rover.coordinate_position.x).to eq(3)
-      expect(rover.coordinate_position.y).to eq(4)
+      expect(rover).to be_located_at(Coordinate.new(3,4))
     end
 
     it 'does raise an argument error exception if it receive an invalid route' do
@@ -101,8 +113,7 @@ describe Rover do
       it "does move forward when receives a single forward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['f'])
-        expect(rover.coordinate_position.x).to eq(expected_position.x)
-        expect(rover.coordinate_position.y).to eq(expected_position.y)
+        expect(rover).to be_located_at(Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
@@ -115,8 +126,7 @@ describe Rover do
       it "does move backward when receives a single backward command with direction #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['b'])
-        expect(rover.coordinate_position.x).to eq(expected_position.x)
-        expect(rover.coordinate_position.y).to eq(expected_position.y)
+        expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
