@@ -35,7 +35,7 @@ describe Rover do
 
     it 'has direction matching the one it was initialized with' do
       rover = Rover.new(direction:'S')
-      expect(rover.direction).to eq('S')
+      expect(rover).to be_facing('S')
     end
   end
 
@@ -69,7 +69,7 @@ describe Rover do
       it "does face #{expected_direction} when receives a single right command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['r'])
-        expect(rover.direction).to eq(expected_direction)
+        expect(rover).to be_facing(expected_direction)
       end
     end
 
@@ -78,7 +78,7 @@ describe Rover do
       it "does face #{expected_direction} when receives a single left command in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['l'])
-        expect(rover.direction).to eq(expected_direction)
+        expect(rover).to be_facing(expected_direction)
       end
     end
 
@@ -93,14 +93,14 @@ describe Rover do
       it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['r','r','r'])
-        expect(rover.direction).to eq(expected_direction)
+        expect(rover).to be_facing(expected_direction)
       end
     end
 
     it "does face North when receives a two right and two left commands in the route and starting direction of North" do
       rover = Rover.new(direction: 'N', coordinates: Coordinate.new(3,4))
       rover.move(['r','r','l','l'])
-      expect(rover.direction).to eq('N')
+      expect(rover).to be_facing('N')
     end
 
     directions_mapping_forward = { 'N' => Coordinate.new(3,5),
