@@ -1,6 +1,7 @@
 require 'coordinate'
 require 'pry'
 
+# Rover class controls position and movement of the Mars Rover
 class Rover
 
     attr_reader :position, :direction, :coordinate_position, :coordinates
@@ -21,7 +22,7 @@ class Rover
     end
 
     def inspect
-      "Coordinates: #{coordinates.inspect} Direction: #{direction}"
+      "Rover located at #{coordinates.inspect} facing #{direction}"
     end
 
     def turn_right

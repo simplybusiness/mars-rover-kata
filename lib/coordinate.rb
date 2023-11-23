@@ -9,7 +9,7 @@ class Coordinate
     end
 
     def inspect
-        "x: #{x} y: #{y}"
+        "(#{x}, #{y})"
     end
 
     def ==(coordinate)
