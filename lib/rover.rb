@@ -67,7 +67,8 @@ class Rover
         new_x = current_x == @east_edge ? @west_edge : current_x + 1
         @coordinates = Coordinate.new(new_x, current_y)
       when WEST
-        @coordinates = Coordinate.new(current_x - 1, current_y)
+        new_x = current_x == @west_edge ? @east_edge : current_x - 1
+        @coordinates = Coordinate.new(new_x, current_y)
       end
     end
 

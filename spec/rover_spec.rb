@@ -136,6 +136,24 @@ describe Rover do
       expect(rover).to be_located_at(Coordinate.new(-5,0))
     end
 
+    it "moves to east edge when starting at the west edge facing west and asked to move forward 1" do
+      rover = Rover.new(direction: 'W', coordinates: Coordinate.new(-5,0), planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(5,0))
+    end
+
+    xit "moves to south edge when starting at the north edge facing north and asked to move forward 1" do
+      rover = Rover.new(direction: 'W', coordinates: Coordinate.new(-5,0), planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(5,0))
+    end
+
+    xit "moves to north edge when starting at the south edge facing souyh and asked to move forward 1" do
+      rover = Rover.new(direction: 'W', coordinates: Coordinate.new(-5,0), planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(5,0))
+    end
+
     xit "returns to the start position when instructed to travel the entire equator" do
       rover = Rover.new(direction: 'E', coordinates: Coordinate.new(0,0))
       rover.move(['f','f','f','f','f','f','f','f','f','f','f'])
