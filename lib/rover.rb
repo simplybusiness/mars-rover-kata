@@ -60,7 +60,8 @@ class Rover
 
       case @direction
       when SOUTH
-        @coordinates = Coordinate.new(current_x, current_y - 1)
+        new_y = current_y==@south_edge ? @north_edge : current_y - 1
+        @coordinates = Coordinate.new(current_x, new_y)
       when NORTH
         @coordinates = Coordinate.new(current_x, current_y + 1)
       when EAST

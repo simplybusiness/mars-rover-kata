@@ -143,15 +143,15 @@ describe Rover do
     end
 
     xit "moves to south edge when starting at the north edge facing north and asked to move forward 1" do
-      rover = Rover.new(direction: 'W', coordinates: Coordinate.new(-5,0), planet_width: 10, planet_height: 10)
+      rover = Rover.new(direction: 'N', coordinates: Coordinate.new(0,5), planet_width: 10, planet_height: 10)
       rover.move(['f'])
-      expect(rover).to be_located_at(Coordinate.new(5,0))
+      expect(rover).to be_located_at(Coordinate.new(0,-5))
     end
 
-    xit "moves to north edge when starting at the south edge facing souyh and asked to move forward 1" do
-      rover = Rover.new(direction: 'W', coordinates: Coordinate.new(-5,0), planet_width: 10, planet_height: 10)
+    it "moves to north edge when starting at the south edge facing south and asked to move forward 1" do
+      rover = Rover.new(direction: 'S', coordinates: Coordinate.new(0,-5), planet_width: 10, planet_height: 10)
       rover.move(['f'])
-      expect(rover).to be_located_at(Coordinate.new(5,0))
+      expect(rover).to be_located_at(Coordinate.new(0,5))
     end
 
     xit "returns to the start position when instructed to travel the entire equator" do
