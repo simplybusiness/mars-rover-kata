@@ -131,8 +131,7 @@ describe Rover do
     end
 
     it "moves to west edge when starting at the east edge facing east and asked to move forward 1" do
-      pending "next test to make pass"
-      rover = Rover.new(direction: 'E', coordinates: Coordinate.new(5,0))
+      rover = Rover.new(direction: 'E', coordinates: Coordinate.new(5,0), planet_width: 10, planet_height: 10)
       rover.move(['f'])
       expect(rover).to be_located_at(Coordinate.new(-5,0))
     end

@@ -4,7 +4,7 @@ require 'pry'
 # Rover class controls position and movement of the Mars Rover
 class Rover
 
-    attr_reader :position, :direction, :coordinate_position, :coordinates
+    attr_reader :position, :direction, :coordinates
 
     LEFT = 'l'
     RIGHT = 'r'
@@ -15,10 +15,13 @@ class Rover
     EAST = 'E'
     SOUTH = 'S'
 
-    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH)
-      @coordinate_position = coordinates
+    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH, planet_width: 10, planet_height: 10)
       @coordinates = coordinates
       @direction = direction
+      @east_edge = planet_width / 2
+      @west_edge = (planet_width / 2) * -1
+      @north_edge = planet_height / 2
+      @south_edge = (planet_height / 2) * -1
     end
 
     def inspect
@@ -61,7 +64,8 @@ class Rover
       when NORTH
         @coordinates = Coordinate.new(current_x, current_y + 1)
       when EAST
-        @coordinates = Coordinate.new(current_x + 1, current_y)
+        new_x = current_x == @east_edge ? @west_edge : current_x + 1
+        @coordinates = Coordinate.new(new_x, current_y)
       when WEST
         @coordinates = Coordinate.new(current_x - 1, current_y)
       end
