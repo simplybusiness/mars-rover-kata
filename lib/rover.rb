@@ -55,23 +55,21 @@ class Rover
     end
 
     def move_forward
-      current_x = @coordinates.x
-      current_y = @coordinates.y
+      x_position = @coordinates.x
+      y_position = @coordinates.y
 
       case @direction
       when SOUTH
-        new_y = current_y==@south_edge ? @north_edge : current_y - 1
-        @coordinates = Coordinate.new(current_x, new_y)
+        y_position = y_position==@south_edge ? @north_edge : y_position - 1
       when NORTH
-        new_y = current_y==@north_edge ? @south_edge : current_y + 1
-        @coordinates = Coordinate.new(current_x, new_y)
+        y_position = y_position==@north_edge ? @south_edge : y_position + 1
       when EAST
-        new_x = current_x == @east_edge ? @west_edge : current_x + 1
-        @coordinates = Coordinate.new(new_x, current_y)
+        x_position = x_position == @east_edge ? @west_edge : x_position + 1
       when WEST
-        new_x = current_x == @west_edge ? @east_edge : current_x - 1
-        @coordinates = Coordinate.new(new_x, current_y)
+        x_position = x_position == @west_edge ? @east_edge : x_position - 1
       end
+
+      @coordinates = Coordinate.new(x_position, y_position)
     end
 
     def move_backward
