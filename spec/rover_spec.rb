@@ -142,7 +142,7 @@ describe Rover do
       expect(rover).to be_located_at(Coordinate.new(5,0))
     end
 
-    xit "moves to south edge when starting at the north edge facing north and asked to move forward 1" do
+    it "moves to south edge when starting at the north edge facing north and asked to move forward 1" do
       rover = Rover.new(direction: 'N', coordinates: Coordinate.new(0,5), planet_width: 10, planet_height: 10)
       rover.move(['f'])
       expect(rover).to be_located_at(Coordinate.new(0,-5))
