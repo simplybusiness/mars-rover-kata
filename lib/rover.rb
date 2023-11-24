@@ -1,4 +1,5 @@
 require 'coordinate'
+require 'planet'
 require 'pry'
 
 # Rover class controls position and movement of the Mars Rover
@@ -15,13 +16,10 @@ class Rover
     EAST = 'E'
     SOUTH = 'S'
 
-    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH, planet_width: 10, planet_height: 10)
+    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH, planet: Planet.new(10, 10))
       @coordinates = coordinates
       @direction = direction
-      @east_edge = planet_width / 2
-      @west_edge = (planet_width / 2) * -1
-      @north_edge = planet_height / 2
-      @south_edge = (planet_height / 2) * -1
+      @planet = planet
     end
 
     def inspect
@@ -57,16 +55,17 @@ class Rover
     def move_forward
       x_position = @coordinates.x
       y_position = @coordinates.y
-
+    
+      
       case @direction
       when SOUTH
-        y_position = y_position==@south_edge ? @north_edge : y_position - 1
+        y_position = y_position == @planet.south_edge ? @planet.north_edge : y_position - 1
       when NORTH
-        y_position = y_position==@north_edge ? @south_edge : y_position + 1
+        y_position = y_position==@planet.north_edge ? @planet.south_edge : y_position + 1
       when EAST
-        x_position = x_position == @east_edge ? @west_edge : x_position + 1
+        x_position = x_position == @planet.east_edge ? @planet.west_edge : x_position + 1
       when WEST
-        x_position = x_position == @west_edge ? @east_edge : x_position - 1
+        x_position = x_position == @planet.west_edge ? @planet.east_edge : x_position - 1
       end
 
       @coordinates = Coordinate.new(x_position, y_position)

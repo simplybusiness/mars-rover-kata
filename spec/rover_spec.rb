@@ -89,7 +89,6 @@ describe Rover do
     }
 
     directions_mapping_3x_right.each do |start_direction,expected_direction|
-      # puts directions
       it "does face #{expected_direction} when receives a three right commands in the route and starting direction of #{start_direction}" do
         rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
         rover.move(['r','r','r'])
@@ -110,7 +109,7 @@ describe Rover do
     }
     directions_mapping_backward.each do |start_direction,expected_position|
       it "does move backward when receives a single backward command with direction #{start_direction}" do
-        rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4), planet_width: 10, planet_height: 10)
+        rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4), planet: Planet.new(10,10))
         rover.move(['b'])
         expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
       end
@@ -130,7 +129,7 @@ describe Rover do
 
     move_forward_cases.each do |test_params|
       it "moves to #{test_params["expected_position"].inspect} from #{test_params["start_position"].inspect} when facing #{test_params["start_direction"]} and move by 1" do
-        rover = Rover.new(direction: test_params["start_direction"], coordinates: test_params["start_position"], planet_width: 10, planet_height: 10)
+        rover = Rover.new(direction: test_params["start_direction"], coordinates: test_params["start_position"], planet: Planet.new(10,10))
         rover.move(['f'])
         expect(rover).to be_located_at(test_params["expected_position"])
       end
