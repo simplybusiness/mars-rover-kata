@@ -124,17 +124,39 @@ describe Rover do
     }
     directions_mapping_backward.each do |start_direction,expected_position|
       it "does move backward when receives a single backward command with direction #{start_direction}" do
-        rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4))
+        rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4), planet_width: 10, planet_height: 10)
         rover.move(['b'])
         expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
       end
     end
 
     it "moves to west edge when starting at the east edge facing east and asked to move forward 1" do
-      pending "next test to make pass"
-      rover = Rover.new(direction: 'E', coordinates: Coordinate.new(5,0))
+      start_position = Coordinate.new(5,0)
+      start_direction = 'E'
+      expected_position = Coordinate.new(-5,0)
+      rover = Rover.new(direction: start_direction, coordinates: start_position, planet_width: 10, planet_height: 10)
       rover.move(['f'])
-      expect(rover).to be_located_at(Coordinate.new(-5,0))
+      expect(rover).to be_located_at(expected_position)
+    end
+
+    it "moves to east edge when starting at the west edge facing west and asked to move forward 1" do
+      start_position = Coordinate.new(-5,0)
+      start_direction = 'W'
+      rover = Rover.new(direction: start_direction, coordinates: start_position, planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(5,0))
+    end
+
+    it "moves to south edge when starting at the north edge facing north and asked to move forward 1" do
+      rover = Rover.new(direction: 'N', coordinates: Coordinate.new(0,5), planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(0,-5))
+    end
+
+    it "moves to north edge when starting at the south edge facing south and asked to move forward 1" do
+      rover = Rover.new(direction: 'S', coordinates: Coordinate.new(0,-5), planet_width: 10, planet_height: 10)
+      rover.move(['f'])
+      expect(rover).to be_located_at(Coordinate.new(0,5))
     end
 
     xit "returns to the start position when instructed to travel the entire equator" do

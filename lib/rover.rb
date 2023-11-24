@@ -4,7 +4,7 @@ require 'pry'
 # Rover class controls position and movement of the Mars Rover
 class Rover
 
-    attr_reader :position, :direction, :coordinate_position, :coordinates
+    attr_reader :position, :direction, :coordinates
 
     LEFT = 'l'
     RIGHT = 'r'
@@ -15,10 +15,13 @@ class Rover
     EAST = 'E'
     SOUTH = 'S'
 
-    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH)
-      @coordinate_position = coordinates
+    def initialize (coordinates: Coordinate.new(0,0), direction: NORTH, planet_width: 10, planet_height: 10)
       @coordinates = coordinates
       @direction = direction
+      @east_edge = planet_width / 2
+      @west_edge = (planet_width / 2) * -1
+      @north_edge = planet_height / 2
+      @south_edge = (planet_height / 2) * -1
     end
 
     def inspect
@@ -52,19 +55,21 @@ class Rover
     end
 
     def move_forward
-      current_x = @coordinates.x
-      current_y = @coordinates.y
+      x_position = @coordinates.x
+      y_position = @coordinates.y
 
       case @direction
       when SOUTH
-        @coordinates = Coordinate.new(current_x, current_y - 1)
+        y_position = y_position==@south_edge ? @north_edge : y_position - 1
       when NORTH
-        @coordinates = Coordinate.new(current_x, current_y + 1)
+        y_position = y_position==@north_edge ? @south_edge : y_position + 1
       when EAST
-        @coordinates = Coordinate.new(current_x + 1, current_y)
+        x_position = x_position == @east_edge ? @west_edge : x_position + 1
       when WEST
-        @coordinates = Coordinate.new(current_x - 1, current_y)
+        x_position = x_position == @west_edge ? @east_edge : x_position - 1
       end
+
+      @coordinates = Coordinate.new(x_position, y_position)
     end
 
     def move_backward
