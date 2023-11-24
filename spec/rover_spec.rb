@@ -135,6 +135,8 @@ describe Rover do
       end
     end
 
+    xit "moves backwards on the edge of the world"
+    
     xit "returns to the start position when instructed to travel the entire equator" do
       rover = Rover.new(direction: 'E', coordinates: Coordinate.new(0,0))
       rover.move(['f','f','f','f','f','f','f','f','f','f','f'])
