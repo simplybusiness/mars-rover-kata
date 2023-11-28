@@ -8,32 +8,32 @@ describe MarsRover do
         end
 
         it "starting point is correct given coordinates" do
-            test_mars_rover_1 = MarsRover.new(0, 0, "N", [5, 6])
+            test_mars_rover_1 = MarsRover.new("N", [5, 6])
             expect(test_mars_rover_1.coordinates).to eq([5, 6])
 
-            test_mars_rover_2 = MarsRover.new(3, 5, "N", [3, 5])
+            test_mars_rover_2 = MarsRover.new( "N", [3, 5])
             expect(test_mars_rover_2.coordinates).to eq([3, 5])
         end
 
         it "starting point coordinates should be array of integers" do
-            expect { MarsRover.new("ab", 0.6, "N", 3) }.to raise_error(ArgumentError)
-            expect { MarsRover.new("ab", 0.6, "N", ["a", 5]) }.to raise_error(ArgumentError)
-            expect { MarsRover.new("ab", 0.6, "N", [5, "c"]) }.to raise_error(ArgumentError)
-            expect { MarsRover.new("ab", 0.6, "N", ["a", "c"]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("N", 3) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("N", ["a", 5]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("N", [5, "c"]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("N", ["a", "c"]) }.to raise_error(ArgumentError)
         end
 
         it "starting point coordinates should not be negative" do
-            expect { MarsRover.new(-1, -1, "N", [-6, -5]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("N", [-6, -5]) }.to raise_error(ArgumentError)
         end
 
         it "directions should be provided" do
-            expect { MarsRover.new(0, 0, [5,7]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new([5,7]) }.to raise_error(ArgumentError)
         end
 
         it "directions should be either N, S, W, E" do
-            expect { MarsRover.new(0, 0, "A", [9, 0]) }.to raise_error(ArgumentError)
+            expect { MarsRover.new("A", [9, 0]) }.to raise_error(ArgumentError)
 
-            test_mars_rover = MarsRover.new(3, 5, "N", [8, 9])
+            test_mars_rover = MarsRover.new("N", [8, 9])
             expect(test_mars_rover.direction).to eq("N")
         end
     end
