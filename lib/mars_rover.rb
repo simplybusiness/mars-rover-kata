@@ -9,6 +9,7 @@ class MarsRover
         raise ArgumentError unless x.is_a?(Integer) && y.is_a?(Integer)
         raise ArgumentError unless x >= 0 && y >= 0
 
+        raise ArgumentError unless coordinates.is_a?(Array)
         raise ArgumentError unless coordinates[0].is_a?(Integer) && coordinates[1].is_a?(Integer)
         raise ArgumentError unless coordinates[0] >= 0 && coordinates[1] >= 0
 
