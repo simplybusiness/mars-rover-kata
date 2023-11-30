@@ -27,36 +27,18 @@ class Rover
     end
 
     def turn_right
-      case @direction
-      when SOUTH
-        @direction = WEST
-      when WEST
-        @direction = NORTH
-      when EAST
-        @direction = SOUTH
-      when NORTH
-        @direction = EAST
-      end
+      @direction = {SOUTH => WEST, WEST => NORTH, EAST => SOUTH, NORTH => EAST}[@direction]
     end
 
     def turn_left
-      case @direction
-      when SOUTH
-        @direction = EAST
-      when WEST
-        @direction = SOUTH
-      when EAST
-        @direction = NORTH
-      when NORTH
-        @direction = WEST
-      end
+      @direction = {SOUTH => EAST, WEST => SOUTH, EAST => NORTH, NORTH => WEST}[@direction]
     end
 
     def move_forward
       x_position = @coordinates.x
       y_position = @coordinates.y
-    
-      
+
+
       case @direction
       when SOUTH
         y_position = y_position == @planet.south_edge ? @planet.north_edge : y_position - 1
