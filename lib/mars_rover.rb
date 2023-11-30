@@ -14,5 +14,9 @@ class MarsRover
         @coordinates = coordinates
         @direction = direction
     end
+
+    def inspect
+        "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
+    end
     
 end

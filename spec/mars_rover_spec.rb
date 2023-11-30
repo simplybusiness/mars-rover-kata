@@ -37,4 +37,13 @@ describe MarsRover do
             expect(test_mars_rover.direction).to eq("N")
         end
     end
+
+    describe 'receiving commands from earth' do
+      it 'moves forwards when facing north' do
+        mars_rover = MarsRover.new('N')
+
+        expect(mars_rover).to respond_to(:execute)
+      end
+    end
+
 end
