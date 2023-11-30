@@ -52,6 +52,13 @@ describe MarsRover do
         expect(mars_rover.coordinates).to eq([0, 1])
       end
 
+      it 'moves forward one step from (0, 1) when command is f' do
+          mars_rover = MarsRover.new('N', [0, 1])
+          mars_rover.execute(['f'])
+
+          expect(mars_rover.coordinates).to eq([0, 2])
+      end
+
     end
 
 end
