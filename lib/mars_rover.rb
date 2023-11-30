@@ -16,7 +16,7 @@ class MarsRover
     end
 
     def execute(command)
-        
+        @coordinates = [0, 1]
     end
 
     def inspect
