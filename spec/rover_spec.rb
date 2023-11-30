@@ -117,26 +117,26 @@ describe Rover do
 
 
     move_forward_cases = [
-      {"start_position" => Coordinate.new(3,4), "start_direction" => 'N', "expected_position" => Coordinate.new(3,5)},
-      {"start_position" => Coordinate.new(3,4), "start_direction" => 'S', "expected_position" => Coordinate.new(3,3)},
-      {"start_position" => Coordinate.new(3,4), "start_direction" => 'W', "expected_position" => Coordinate.new(2,4)},
-      {"start_position" => Coordinate.new(3,4), "start_direction" => 'E', "expected_position" => Coordinate.new(4,4)},
-      {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "expected_position" => Coordinate.new(-5,0)},
-      {"start_position" => Coordinate.new(-5,0), "start_direction" => 'W', "expected_position" => Coordinate.new(5,0)},
-      {"start_position" => Coordinate.new(0,5), "start_direction" => 'N', "expected_position" => Coordinate.new(0,-5)},
-      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "expected_position" => Coordinate.new(0,5)}
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(3,5)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(3,3)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(2,4)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(4,4)},
+      {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(-5,0)},
+      {"start_position" => Coordinate.new(-5,0), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(5,0)},
+      {"start_position" => Coordinate.new(0,5), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,-5)},
+      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,5)}
     ]
 
     move_forward_cases.each do |test_params|
-      it "moves to #{test_params["expected_position"].inspect} from #{test_params["start_position"].inspect} when facing #{test_params["start_direction"]} and move by 1" do
+      it "moves to #{test_params["expected_position"].inspect} from #{test_params["start_position"].inspect} when facing #{test_params["start_direction"]} and given commands: #{test_params["move_instruction"]}" do
         rover = Rover.new(direction: test_params["start_direction"], coordinates: test_params["start_position"], planet: Planet.new(10,10))
-        rover.move(['f'])
+        rover.move(test_params["move_instruction"])
         expect(rover).to be_located_at(test_params["expected_position"])
       end
     end
 
     xit "moves backwards on the edge of the world"
-    
+
     xit "returns to the start position when instructed to travel the entire equator" do
       rover = Rover.new(direction: 'E', coordinates: Coordinate.new(0,0))
       rover.move(['f','f','f','f','f','f','f','f','f','f','f'])
