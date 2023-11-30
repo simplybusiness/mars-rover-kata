@@ -70,7 +70,7 @@ class Rover
     end
 
     def move (route)
-      if route.any?
+      # if route.any?
         route.each do |direction|
           case direction
           when LEFT
@@ -85,6 +85,6 @@ class Rover
             raise ArgumentError
           end
         end
-      end
+      # end
     end
 end
