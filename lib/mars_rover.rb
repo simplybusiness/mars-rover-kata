@@ -15,7 +15,7 @@ class MarsRover
         @direction = direction
     end
 
-    def execute
+    def execute(command)
         
     end
 
