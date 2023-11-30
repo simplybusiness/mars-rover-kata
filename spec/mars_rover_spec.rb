@@ -39,7 +39,7 @@ describe MarsRover do
     end
 
     describe 'receiving commands from earth' do
-      it 'moves forwards when facing north' do
+      it 'receives commands from earth' do
         mars_rover = MarsRover.new('N')
 
         expect(mars_rover).to respond_to(:execute).with(1)
