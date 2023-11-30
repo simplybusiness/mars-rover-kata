@@ -44,6 +44,14 @@ describe MarsRover do
 
         expect(mars_rover).to respond_to(:execute).with(1)
       end
+
+      it 'moves forward one step if command is f' do
+        mars_rover = MarsRover.new('N')
+        forward_command = ['f']
+        mars_rover.execute(forward_command)
+        expect(mars_rover.coordinates).to eq([0, 1])
+      end
+
     end
 
 end
