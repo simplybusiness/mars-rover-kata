@@ -42,7 +42,7 @@ describe MarsRover do
       it 'moves forwards when facing north' do
         mars_rover = MarsRover.new('N')
 
-        expect(mars_rover).to respond_to(:execute)
+        expect(mars_rover).to respond_to(:execute).with(1)
       end
     end
 
