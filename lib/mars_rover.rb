@@ -16,7 +16,9 @@ class MarsRover
     end
 
     def execute(command)
-        @coordinates = [0, 1]
+        command.each do |com|
+            @coordinates[1] += 1 if com == "f"
+        end 
     end
 
     def inspect
