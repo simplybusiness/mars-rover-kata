@@ -1,28 +1,28 @@
 class MarsRover
-    attr_reader :direction
-    attr_reader :coordinates
-   
-    def initialize(direction, coordinates = [0, 0])
-        directions = ["N", "S", "W", "E"]
+  attr_reader :direction
+  attr_reader :coordinates
+  
+  def initialize(direction, coordinates = [0, 0])
+    directions = ["N", "S", "W", "E"]
 
-        raise ArgumentError unless coordinates.is_a?(Array)
-        raise ArgumentError unless coordinates[0].is_a?(Integer) && coordinates[1].is_a?(Integer)
-        raise ArgumentError unless coordinates[0] >= 0 && coordinates[1] >= 0
+    raise ArgumentError unless coordinates.is_a?(Array)
+    raise ArgumentError unless coordinates[0].is_a?(Integer) && coordinates[1].is_a?(Integer)
+    raise ArgumentError unless coordinates[0] >= 0 && coordinates[1] >= 0
 
-        raise ArgumentError unless directions.include?(direction)
+    raise ArgumentError unless directions.include?(direction)
 
-        @coordinates = coordinates
-        @direction = direction
-    end
+    @coordinates = coordinates
+    @direction = direction
+  end
 
-    def execute(command)
-        command.each do |com|
-            @coordinates[1] += 1 if com == "f"
-        end 
-    end
+  def execute(command)
+    command.each do |com|
+        @coordinates[1] += 1 if com == "f"
+    end 
+  end
 
-    def inspect
-        "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
-    end
+  def inspect
+    "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
+  end
     
 end
