@@ -3,7 +3,7 @@ class MarsRover
   attr_reader :coordinates
   
   def initialize(direction, coordinates = [0, 0])
-    directions = ["N", "S", "W", "E"]
+    directions = ['N', 'S', 'W', 'E']
 
     raise ArgumentError unless coordinates.is_a?(Array)
     raise ArgumentError unless coordinates[0].is_a?(Integer) && coordinates[1].is_a?(Integer)
@@ -17,11 +17,16 @@ class MarsRover
 
   def execute(command)
     vertical_movement = {
-      "N" => 1,
-      "S" => -1
+      'N' => 1,
+      'S' => -1
+    }
+    horizontal_movement = {
+      'E' => 1,
+      'W' => -1
     }
     command.each do |com|
-        @coordinates[1] += vertical_movement[@direction] if com == "f"
+        @coordinates[1] += vertical_movement[@direction] if com == "f" and vertical_movement.has_key?(@direction)
+        @coordinates[0] += horizontal_movement[@direction] if com == "f" and horizontal_movement.has_key?(@direction)
     end 
   end
 
