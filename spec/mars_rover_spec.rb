@@ -59,6 +59,18 @@ describe MarsRover do
       expect(mars_rover.coordinates).to eq([0, 2])
     end
 
+    it 'moves upwards one step when command is f and facing north' do
+    end
+
+    it 'moves downwards one step when command is f and facing south' do
+    end
+
+    it 'moves leftwards one step when command is f and facing west' do
+    end
+    
+    it 'moves rightwards one step when command is f and facing east' do
+    end
+
   end
 
 end
