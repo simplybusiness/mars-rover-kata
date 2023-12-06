@@ -16,13 +16,18 @@ class MarsRover
   end
 
   def execute(command)
+    vertical_movement = {
+      "N" => 1,
+      "S" => -1
+    }
     command.each do |com|
-        @coordinates[1] += 1 if com == "f"
+        @coordinates[1] += vertical_movement[@direction] if com == "f"
     end 
   end
 
   def inspect
     "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
   end
+
     
 end
