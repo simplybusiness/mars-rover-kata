@@ -38,10 +38,7 @@ class Rover
       {@planet.south_edge => @planet.north_edge, @planet.west_edge => @planet.east_edge, @planet.east_edge => @planet.west_edge, @planet.north_edge => @planet.south_edge}[current_edge]
     end
 
-    def move_vertically y_position
-
-    end
-
+    #TODO find a way to remove duplication
     def move_forward
       x_position = @coordinates.x
       y_position = @coordinates.y
