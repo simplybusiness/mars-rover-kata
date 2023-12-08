@@ -102,21 +102,21 @@ describe Rover do
       expect(rover).to be_facing('N')
     end
 
-    directions_mapping_backward = { 'N' => Coordinate.new(3,3),
-      'S' => Coordinate.new(3,5),
-      'W' => Coordinate.new(4,4),
-      'E' => Coordinate.new(2,4)
-    }
-    directions_mapping_backward.each do |start_direction,expected_position|
-      it "does move backward when receives a single backward command with direction #{start_direction}" do
-        rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4), planet: Planet.new(10,10))
-        rover.move(['b'])
-        expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
-      end
-    end
+    # directions_mapping_backward = { 'N' => Coordinate.new(3,3),
+    #   'S' => Coordinate.new(3,5),
+    #   'W' => Coordinate.new(4,4),
+    #   'E' => Coordinate.new(2,4)
+    # }
+    # directions_mapping_backward.each do |start_direction,expected_position|
+    #   it "does move backward when receives a single backward command with direction #{start_direction}" do
+    #     rover = Rover.new(direction: start_direction, coordinates: Coordinate.new(3,4), planet: Planet.new(10,10))
+    #     rover.move(['b'])
+    #     expect(rover).to be_located_at (Coordinate.new(expected_position.x,expected_position.y))
+    #   end
+    # end
 
 
-    move_forward_cases = [
+    move_cases = [
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(3,5)},
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(3,3)},
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(2,4)},
@@ -124,10 +124,14 @@ describe Rover do
       {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(-5,0)},
       {"start_position" => Coordinate.new(-5,0), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(5,0)},
       {"start_position" => Coordinate.new(0,5), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,-5)},
-      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,5)}
+      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,5)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'N', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(3,3)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'S', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(3,5)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'W', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(4,4)},
+      {"start_position" => Coordinate.new(3,4), "start_direction" => 'E', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(2,4)}
     ]
 
-    move_forward_cases.each do |test_params|
+    move_cases.each do |test_params|
       it "moves to #{test_params["expected_position"].inspect} from #{test_params["start_position"].inspect} when facing #{test_params["start_direction"]} and given commands: #{test_params["move_instruction"]}" do
         rover = Rover.new(direction: test_params["start_direction"], coordinates: test_params["start_position"], planet: Planet.new(10,10))
         rover.move(test_params["move_instruction"])
