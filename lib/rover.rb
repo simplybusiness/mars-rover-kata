@@ -34,20 +34,29 @@ class Rover
       @direction = {SOUTH => EAST, WEST => SOUTH, EAST => NORTH, NORTH => WEST}[@direction]
     end
 
+    def flip_planet_edge current_edge
+      {@planet.south_edge => @planet.north_edge, @planet.west_edge => @planet.east_edge, @planet.east_edge => @planet.west_edge, @planet.north_edge => @planet.south_edge}[current_edge]
+    end
+
+    def move_vertically y_position
+
+    end
+
     def move_forward
       x_position = @coordinates.x
       y_position = @coordinates.y
 
-
+      move_effect = {SOUTH => -1, NORTH => + 1, WEST => -1, EAST => +1}
+      
       case @direction
       when SOUTH
-        y_position = y_position == @planet.south_edge ? @planet.north_edge : y_position - 1
+        y_position = y_position == @planet.south_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
       when NORTH
-        y_position = y_position==@planet.north_edge ? @planet.south_edge : y_position + 1
+        y_position = y_position == @planet.north_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
       when EAST
-        x_position = x_position == @planet.east_edge ? @planet.west_edge : x_position + 1
+        x_position = x_position == @planet.east_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
       when WEST
-        x_position = x_position == @planet.west_edge ? @planet.east_edge : x_position - 1
+        x_position = x_position == @planet.west_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
       end
 
       @coordinates = Coordinate.new(x_position, y_position)
