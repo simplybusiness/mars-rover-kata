@@ -34,8 +34,16 @@ class Rover
       @direction = {SOUTH => EAST, WEST => SOUTH, EAST => NORTH, NORTH => WEST}[@direction]
     end
 
-    def flip_planet_edge current_edge
-      {@planet.south_edge => @planet.north_edge, @planet.west_edge => @planet.east_edge, @planet.east_edge => @planet.west_edge, @planet.north_edge => @planet.south_edge}[current_edge]
+    def flip_planet_edge (current_edge)
+      {@planet.west_edge => @planet.east_edge, @planet.east_edge => @planet.west_edge, @planet.south_edge => @planet.north_edge, @planet.north_edge => @planet.south_edge}[current_edge]
+    end
+
+    def at_edge
+      if @direction == EAST || @direction == WEST
+        [@planet.east_edge, @planet.west_edge].include?(@coordinates.x)
+      else
+        [@planet.north_edge, @planet.south_edge].include?(@coordinates.y)
+      end
     end
 
     #TODO find a way to remove duplication
@@ -47,13 +55,17 @@ class Rover
 
       case @direction
       when SOUTH
-        y_position = y_position == @planet.south_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
+        y_position = at_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
+        # y_position = y_position == @planet.south_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
       when NORTH
-        y_position = y_position == @planet.north_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
+        y_position = at_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
+        # y_position = y_position == @planet.north_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
       when EAST
-        x_position = x_position == @planet.east_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
+        x_position = at_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
+        # x_position = x_position == @planet.east_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
       when WEST
-        x_position = x_position == @planet.west_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
+        x_position = at_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
+        # x_position = x_position == @planet.west_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
       end
 
       @coordinates = Coordinate.new(x_position, y_position)
