@@ -44,7 +44,7 @@ class Rover
       y_position = @coordinates.y
 
       move_effect = {SOUTH => -1, NORTH => + 1, WEST => -1, EAST => +1}
-      
+
       case @direction
       when SOUTH
         y_position = y_position == @planet.south_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
@@ -60,20 +60,41 @@ class Rover
     end
 
     def move_backward
-      current_x = @coordinates.x
-      current_y = @coordinates.y
+      x_position = @coordinates.x
+      y_position = @coordinates.y
+
+      move_effect = {SOUTH => -1, NORTH => + 1, WEST => -1, EAST => +1}
 
       case @direction
-      when SOUTH
-        @coordinates = Coordinate.new(current_x, current_y + 1)
       when NORTH
-        @coordinates = Coordinate.new(current_x, current_y - 1)
-      when EAST
-        @coordinates = Coordinate.new(current_x - 1 , current_y)
+        y_position = y_position == @planet.south_edge ? flip_planet_edge(y_position) : y_position - move_effect[@direction]
+      when SOUTH
+        y_position = y_position == @planet.north_edge ? flip_planet_edge(y_position) : y_position - move_effect[@direction]
       when WEST
-        @coordinates = Coordinate.new(current_x + 1 , current_y)
+        x_position = x_position == @planet.east_edge ? flip_planet_edge(x_position): x_position - move_effect[@direction]
+      when EAST
+        x_position = x_position == @planet.west_edge ? flip_planet_edge(x_position) : x_position - move_effect[@direction]
       end
+
+      @coordinates = Coordinate.new(x_position, y_position)
     end
+
+
+    # def move_backward
+    #   current_x = @coordinates.x
+    #   current_y = @coordinates.y
+
+    #   case @direction
+    #   when SOUTH
+    #     @coordinates = Coordinate.new(current_x, current_y + 1)
+    #   when NORTH
+    #     @coordinates = Coordinate.new(current_x, current_y - 1)
+    #   when EAST
+    #     @coordinates = Coordinate.new(current_x - 1 , current_y)
+    #   when WEST
+    #     @coordinates = Coordinate.new(current_x + 1 , current_y)
+    #   end
+    # end
 
     def move (route)
         route.each do |move_instruction|
