@@ -27,15 +27,12 @@ class MarsRover
   private
 
   def move_forwards
-      vertical_movement = {
+      forward_movement = {
         'N' => 1,
-        'S' => -1
-      }
-      horizontal_movement = {
+        'S' => -1,
         'E' => 1,
         'W' => -1
       }
-      forward_movement = vertical_movement.merge(horizontal_movement)
       case @direction
       when 'N'
           @coordinates[1] += forward_movement[@direction]
