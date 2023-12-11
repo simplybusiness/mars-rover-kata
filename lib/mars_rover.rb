@@ -28,13 +28,13 @@ class MarsRover
         forward_movement = vertical_movement.merge(horizontal_movement)
         case @direction
         when 'N'
-            @coordinates[1] += forward_movement[@direction] if com == "f"
+            @coordinates[1] += forward_movement[@direction]
         when 'S'
-            @coordinates[1] += forward_movement[@direction] if com == "f"
+            @coordinates[1] += forward_movement[@direction]
         when 'E'
-            @coordinates[0] += forward_movement[@direction] if com == "f"
+            @coordinates[0] += forward_movement[@direction]
         when 'W'
-            @coordinates[0] += forward_movement[@direction] if com == "f"
+            @coordinates[0] += forward_movement[@direction]
         end
     end
   end
@@ -43,5 +43,5 @@ class MarsRover
     "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
   end
 
-    
+
 end
