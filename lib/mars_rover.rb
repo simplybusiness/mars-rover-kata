@@ -26,9 +26,17 @@ class MarsRover
     }
     forward_movement = vertical_movement.merge(horizontal_movement)
     command.each do |com|
-        @coordinates[1] += forward_movement[@direction] if com == "f" and vertical_movement.has_key?(@direction)
-        @coordinates[0] += forward_movement[@direction] if com == "f" and horizontal_movement.has_key?(@direction)
-    end 
+        case @direction
+        when 'N'
+            @coordinates[1] += forward_movement[@direction] if com == "f"
+        when 'S'
+            @coordinates[1] += forward_movement[@direction] if com == "f"
+        when 'E'
+            @coordinates[0] += forward_movement[@direction] if com == "f"
+        when 'W'
+            @coordinates[0] += forward_movement[@direction] if com == "f"
+        end
+    end
   end
 
   def inspect
