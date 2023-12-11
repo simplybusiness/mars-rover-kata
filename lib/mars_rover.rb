@@ -16,7 +16,8 @@ class MarsRover
   end
 
   def execute(command)
-    move_forwards
+    size_of_command = command.length()
+    size_of_command.times { move_forwards }
   end
 
   def inspect

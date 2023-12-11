@@ -80,6 +80,13 @@ describe MarsRover do
       expect(mars_rover.coordinates).to eq([2, 1])
     end
 
+    it 'moves upwards three steps when command is fff and facing north' do
+      mars_rover = MarsRover.new('N', [0, 0])
+      mars_rover.execute(['f', 'f', 'f'])
+      
+      expect(mars_rover.coordinates).to eq([0, 3])
+    end
+
   end
 
 end
