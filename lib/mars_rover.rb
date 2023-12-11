@@ -16,9 +16,7 @@ class MarsRover
   end
 
   def execute(command)
-    command.each do |com|
-        move_forwards
-    end
+    move_forwards
   end
 
   def inspect
@@ -48,5 +46,4 @@ class MarsRover
           @coordinates[0] += forward_movement[@direction]
       end
   end
-
 end
