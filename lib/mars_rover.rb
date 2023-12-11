@@ -16,16 +16,16 @@ class MarsRover
   end
 
   def execute(command)
-    vertical_movement = {
-      'N' => 1,
-      'S' => -1
-    }
-    horizontal_movement = {
-      'E' => 1,
-      'W' => -1
-    }
-    forward_movement = vertical_movement.merge(horizontal_movement)
     command.each do |com|
+        vertical_movement = {
+          'N' => 1,
+          'S' => -1
+        }
+        horizontal_movement = {
+          'E' => 1,
+          'W' => -1
+        }
+        forward_movement = vertical_movement.merge(horizontal_movement)
         case @direction
         when 'N'
             @coordinates[1] += forward_movement[@direction] if com == "f"
