@@ -15,9 +15,15 @@ class MarsRover
     @direction = direction
   end
 
-  def execute(command)
-    size_of_command = command.length()
-    size_of_command.times { move_forwards }
+  def execute(commands)
+    commands.each do | command |
+      case command
+      when 'f'
+        move_forwards
+      when 'b'
+        move_backwards
+      end
+    end
   end
 
   def inspect
@@ -25,6 +31,16 @@ class MarsRover
   end
 
   private
+
+  def move_backwards
+    backward_movement = {
+      'N' => -1
+    }
+    case @direction
+    when 'N'
+      @coordinates[1] += backward_movement[@direction]
+    end
+  end
 
   def move_forwards
       forward_movement = {
