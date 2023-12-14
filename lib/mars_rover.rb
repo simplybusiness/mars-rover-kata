@@ -36,7 +36,8 @@ class MarsRover
     backward_movement = {
       'N' => -1,
       'S' => 1,
-      'W' => 1
+      'W' => 1,
+      'E' => -1,
     }
     case @direction
     when 'N'
@@ -44,6 +45,8 @@ class MarsRover
     when 'S'
       @coordinates[1] += backward_movement[@direction]
     when 'W'
+      @coordinates[0] += backward_movement[@direction]
+    when 'E'
       @coordinates[0] += backward_movement[@direction]
     end
   end
