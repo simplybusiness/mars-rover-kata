@@ -34,10 +34,13 @@ class MarsRover
 
   def move_backwards
     backward_movement = {
-      'N' => -1
+      'N' => -1,
+      'S' => 1
     }
     case @direction
     when 'N'
+      @coordinates[1] += backward_movement[@direction]
+    when 'S'
       @coordinates[1] += backward_movement[@direction]
     end
   end
