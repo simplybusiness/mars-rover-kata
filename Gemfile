@@ -4,6 +4,7 @@ group :test do
   gem "rspec"
   gem "pry"
   gem "pry-byebug"
+  gem "simplecov", require: false
 end
 group :development do
   gem "rubycritic", require: false

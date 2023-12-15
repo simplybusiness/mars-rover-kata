@@ -108,10 +108,12 @@ describe Rover do
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(2,4)},
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(4,4)},
 
-      {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(-5,0)},
-      {"start_position" => Coordinate.new(-5,0), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(5,0)},
-      {"start_position" => Coordinate.new(0,5), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,-5)},
-      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,5)},
+      {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(-4,0)},
+      {"start_position" => Coordinate.new(-5,0), "start_direction" => 'W', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(4,0)},
+      {"start_position" => Coordinate.new(0,5), "start_direction" => 'N', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,-4)},
+      {"start_position" => Coordinate.new(0,-5), "start_direction" => 'S', "move_instruction" => ['f'] ,"expected_position" => Coordinate.new(0,4)},
+      {"start_position" => Coordinate.new(5,0), "start_direction" => 'E', "move_instruction" => Array.new(2, 'f') ,"expected_position" => Coordinate.new(-3,0)},
+      {"start_position" => Coordinate.new(3,0), "start_direction" => 'E', "move_instruction" => Array.new(3, 'f') ,"expected_position" => Coordinate.new(-4,0)},
 
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'N', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(3,3)},
       {"start_position" => Coordinate.new(3,4), "start_direction" => 'S', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(3,5)},
@@ -121,7 +123,9 @@ describe Rover do
       {"start_position" => Coordinate.new(-5,0), "start_direction" => 'E', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(5,0)},
       {"start_position" => Coordinate.new(5,0), "start_direction" => 'W', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(-5,0)},
       {"start_position" => Coordinate.new(0,-5), "start_direction" => 'N', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(0,5)},
-      {"start_position" => Coordinate.new(0,5), "start_direction" => 'S', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(0,-5)}
+      {"start_position" => Coordinate.new(0,5), "start_direction" => 'S', "move_instruction" => ['b'] ,"expected_position" => Coordinate.new(0,-5)},
+
+      # {"start_position" => Coordinate.new(0,0), "start_direction" => 'N', "move_instruction" => Array.new(10, 'f') ,"expected_position" => Coordinate.new(0,0)}
     ]
 
     move_cases.each do |test_params|
@@ -132,7 +136,7 @@ describe Rover do
       end
     end
 
-    xit "moves backwards on the edge of the world"
+    # xit "moves backwards on the edge of the world"
 
     xit "returns to the start position when instructed to travel the entire equator" do
       rover = Rover.new(direction: 'E', coordinates: Coordinate.new(0,0))
