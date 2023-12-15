@@ -38,7 +38,7 @@ class Rover
       {@planet.west_edge => @planet.east_edge, @planet.east_edge => @planet.west_edge, @planet.south_edge => @planet.north_edge, @planet.north_edge => @planet.south_edge}[current_edge]
     end
 
-    def at_edge
+    def is_at_edge
       if @direction == EAST || @direction == WEST
         [@planet.east_edge, @planet.west_edge].include?(@coordinates.x)
       else
@@ -51,24 +51,19 @@ class Rover
       x_position = @coordinates.x
       y_position = @coordinates.y
 
-      move_effect = {SOUTH => -1, NORTH => + 1, WEST => -1, EAST => +1}
+      puts "Before - " + @coordinates.to_str
 
-      case @direction
-      when SOUTH
-        y_position = at_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
-        # y_position = y_position == @planet.south_edge ?  flip_planet_edge(y_position) : y_position + move_effect[@direction]
-      when NORTH
-        y_position = at_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
-        # y_position = y_position == @planet.north_edge ? flip_planet_edge(y_position) : y_position + move_effect[@direction]
-      when EAST
-        x_position = at_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
-        # x_position = x_position == @planet.east_edge ? flip_planet_edge(x_position): x_position + move_effect[@direction]
-      when WEST
-        x_position = at_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
-        # x_position = x_position == @planet.west_edge ? flip_planet_edge(x_position) : x_position + move_effect[@direction]
+      move_effect = {SOUTH => -1, NORTH => + 1, WEST => -1, EAST => +1}[@direction]
+
+      if @direction == EAST || @direction == WEST
+        @coordinates = Coordinate.new(x_position = is_at_edge ? flip_planet_edge(x_position) + move_effect : x_position + move_effect, y_position)
+        # @coordinates = Coordinate.new(x_position = is_at_edge ? flip_planet_edge(x_position) : x_position + move_effect, y_position)
+      else
+        @coordinates = Coordinate.new(x_position, y_position = is_at_edge ? flip_planet_edge(y_position) + move_effect : y_position + move_effect)
+        # @coordinates = Coordinate.new(x_position, y_position = is_at_edge ? flip_planet_edge÷(y_position) : y_position + move_effect)
       end
 
-      @coordinates = Coordinate.new(x_position, y_position)
+      puts "After - " + @coordinates.to_str
     end
 
     def move_backward
@@ -91,22 +86,6 @@ class Rover
       @coordinates = Coordinate.new(x_position, y_position)
     end
 
-
-    # def move_backward
-    #   current_x = @coordinates.x
-    #   current_y = @coordinates.y
-
-    #   case @direction
-    #   when SOUTH
-    #     @coordinates = Coordinate.new(current_x, current_y + 1)
-    #   when NORTH
-    #     @coordinates = Coordinate.new(current_x, current_y - 1)
-    #   when EAST
-    #     @coordinates = Coordinate.new(current_x - 1 , current_y)
-    #   when WEST
-    #     @coordinates = Coordinate.new(current_x + 1 , current_y)
-    #   end
-    # end
 
     def move (route)
         route.each do |move_instruction|

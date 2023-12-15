@@ -15,4 +15,8 @@ class Coordinate
     def ==(coordinate)
        self.x == coordinate.x && self.y == coordinate.y
     end
+
+    def to_str
+        "(#{x}, #{y})"
+    end
 end

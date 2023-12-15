@@ -1,0 +1,24 @@
+### Generic smell configuration
+
+# Configuration at this level applies to all ruby files in the project
+detectors:
+  # This detector requires a comment describing the module, without it a smell is reported
+  IrresponsibleModule:
+    enabled: false
+
+  # This detector looks for too many statements in a method (https://github.com/troessner/reek/blob/master/docs/Too-Many-Statements.md)
+  TooManyStatements:
+    enabled: true
+    exclude:
+      - initialize
+    max_statements: 10
+
+# Configuration can be specified for directories and overrised the top level configuration
+directories:
+  "app/controllers":
+    TooManyStatements:
+      max_statements: 10
+
+# Directories and files below will not be scanned at all
+exclude_paths:
+  - config/environments
