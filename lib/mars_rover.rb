@@ -52,6 +52,7 @@ class MarsRover
       @coordinates_new.y += backward_movement[@direction]
     when 'W'
       @coordinates[0] += backward_movement[@direction]
+      @coordinates_new.x += backward_movement[@direction]
     when 'E'
       @coordinates[0] += backward_movement[@direction]
     end
