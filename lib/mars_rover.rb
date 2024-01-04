@@ -46,7 +46,7 @@ class MarsRover
     case @direction
     when 'N'
       @coordinates[1] += backward_movement[@direction]
-      @coordinates_new.y=backward_movement[@direction]
+      @coordinates_new.y += backward_movement[@direction]
     when 'S'
       @coordinates[1] += backward_movement[@direction]
     when 'W'

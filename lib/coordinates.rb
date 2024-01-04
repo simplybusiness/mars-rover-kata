@@ -1,12 +1,9 @@
 class Coordinates
-  attr_reader :x, :y
+  attr_reader :x
+  attr_accessor :y
 
   def initialize(x:, y:)
     @x = x
     @y = y
-  end
-
-  def y=(distance)
-    @y += distance
   end
 end
