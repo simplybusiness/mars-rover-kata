@@ -10,9 +10,13 @@ describe MarsRover do
     it "starting point is correct given coordinates" do
       test_mars_rover_1 = MarsRover.new("N", [5, 6])
       expect(test_mars_rover_1.coordinates).to eq([5, 6])
+      expect(test_mars_rover_1.coordinates_new.x).to eq(5)
+      expect(test_mars_rover_1.coordinates_new.y).to eq(6)
 
       test_mars_rover_2 = MarsRover.new( "N", [3, 5])
       expect(test_mars_rover_2.coordinates).to eq([3, 5])
+      expect(test_mars_rover_2.coordinates_new.x).to eq(3)
+      expect(test_mars_rover_2.coordinates_new.y).to eq(5)
     end
 
     it "starting point coordinates should be array of integers" do
