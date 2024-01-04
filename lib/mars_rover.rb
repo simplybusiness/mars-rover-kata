@@ -3,6 +3,7 @@ require 'coordinates'
 class MarsRover
   attr_reader :direction
   attr_reader :coordinates
+  attr_reader :coordinates_new
   
   def initialize(direction, coordinates = [0, 0])
     directions = ['N', 'S', 'W', 'E']

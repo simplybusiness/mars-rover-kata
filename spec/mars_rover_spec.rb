@@ -120,6 +120,8 @@ describe MarsRover do
       mars_rover.execute(['b', 'b', 'b'])
       
       expect(mars_rover.coordinates).to eq([3, 0])
+      expect(mars_rover.coordinates_new.x).to eq(3)
+      expect(mars_rover.coordinates_new.y).to eq(0)
     end
   end
 
