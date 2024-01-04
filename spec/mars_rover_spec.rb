@@ -9,12 +9,10 @@ describe MarsRover do
 
     it "starting point is correct given coordinates" do
       test_mars_rover_1 = MarsRover.new("N", [5, 6])
-      expect(test_mars_rover_1.coordinates).to eq([5, 6])
       expect(test_mars_rover_1.coordinates_new.x).to eq(5)
       expect(test_mars_rover_1.coordinates_new.y).to eq(6)
 
       test_mars_rover_2 = MarsRover.new( "N", [3, 5])
-      expect(test_mars_rover_2.coordinates).to eq([3, 5])
       expect(test_mars_rover_2.coordinates_new.x).to eq(3)
       expect(test_mars_rover_2.coordinates_new.y).to eq(5)
     end
@@ -53,7 +51,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('N')
       forward_command = ['f']
       mars_rover.execute(forward_command)
-      expect(mars_rover.coordinates).to eq([0, 1])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(1)
     end
@@ -62,7 +59,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('N', [0, 1])
       mars_rover.execute(['f'])
 
-      expect(mars_rover.coordinates).to eq([0, 2])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(2)
     end
@@ -71,7 +67,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('S', [0, 1])
       mars_rover.execute(['f'])
 
-      expect(mars_rover.coordinates).to eq([0, 0])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(0)
     end
@@ -80,7 +75,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('W', [1, 1])
       mars_rover.execute(['f'])
 
-      expect(mars_rover.coordinates).to eq([0, 1])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(1)
     end
@@ -89,7 +83,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('E', [1, 1])
       mars_rover.execute(['f'])
 
-      expect(mars_rover.coordinates).to eq([2, 1])
       expect(mars_rover.coordinates_new.x).to eq(2)
       expect(mars_rover.coordinates_new.y).to eq(1)
     end
@@ -98,7 +91,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('N', [0, 0])
       mars_rover.execute(['f', 'f', 'f'])
       
-      expect(mars_rover.coordinates).to eq([0, 3])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(3)
     end
@@ -107,7 +99,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('N', [1, 1])
       mars_rover.execute(['b'])
       
-      expect(mars_rover.coordinates).to eq([1, 0])
       expect(mars_rover.coordinates_new.x).to eq(1)
       expect(mars_rover.coordinates_new.y).to eq(0)
     end
@@ -116,7 +107,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('S', [1, 1])
       mars_rover.execute(['b'])
       
-      expect(mars_rover.coordinates).to eq([1, 2])
       expect(mars_rover.coordinates_new.x).to eq(1)
       expect(mars_rover.coordinates_new.y).to eq(2)
     end
@@ -125,7 +115,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('W', [1, 1])
       mars_rover.execute(['b'])
       
-      expect(mars_rover.coordinates).to eq([2, 1])
       expect(mars_rover.coordinates_new.x).to eq(2)
       expect(mars_rover.coordinates_new.y).to eq(1)
     end
@@ -134,7 +123,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('E', [1, 1])
       mars_rover.execute(['b'])
       
-      expect(mars_rover.coordinates).to eq([0, 1])
       expect(mars_rover.coordinates_new.x).to eq(0)
       expect(mars_rover.coordinates_new.y).to eq(1)
     end
@@ -143,7 +131,6 @@ describe MarsRover do
       mars_rover = MarsRover.new('N', [3, 3])
       mars_rover.execute(['b', 'b', 'b'])
       
-      expect(mars_rover.coordinates).to eq([3, 0])
       expect(mars_rover.coordinates_new.x).to eq(3)
       expect(mars_rover.coordinates_new.y).to eq(0)
     end
