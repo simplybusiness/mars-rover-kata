@@ -1,3 +1,5 @@
+require 'coordinates'
+
 class MarsRover
   attr_reader :direction
   attr_reader :coordinates
@@ -11,6 +13,7 @@ class MarsRover
 
     raise ArgumentError unless directions.include?(direction)
 
+    @coordinates_new = Coordinates.new(x: coordinates[0], y: coordinates[1])
     @coordinates = coordinates
     @direction = direction
   end
@@ -28,6 +31,7 @@ class MarsRover
 
   def inspect
     "a Mars rover at (#{coordinates[0]}, #{coordinates[1]}) facing #{direction}"
+    "a Mars rover at (#{coordinates_new.x}, #{coordinates_new.y}) facing #{direction}"
   end
 
   private
@@ -42,6 +46,7 @@ class MarsRover
     case @direction
     when 'N'
       @coordinates[1] += backward_movement[@direction]
+      @coordinates_new.y=backward_movement[@direction]
     when 'S'
       @coordinates[1] += backward_movement[@direction]
     when 'W'
