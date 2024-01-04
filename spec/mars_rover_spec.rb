@@ -50,6 +50,8 @@ describe MarsRover do
       forward_command = ['f']
       mars_rover.execute(forward_command)
       expect(mars_rover.coordinates).to eq([0, 1])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(1)
     end
 
     it 'moves upwards one step when command is f and facing north' do
@@ -57,6 +59,8 @@ describe MarsRover do
       mars_rover.execute(['f'])
 
       expect(mars_rover.coordinates).to eq([0, 2])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(2)
     end
 
     it 'moves downwards one step when command is f and facing south' do
@@ -64,6 +68,8 @@ describe MarsRover do
       mars_rover.execute(['f'])
 
       expect(mars_rover.coordinates).to eq([0, 0])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(0)
     end
 
     it 'moves leftwards one step when command is f and facing west' do
@@ -71,6 +77,8 @@ describe MarsRover do
       mars_rover.execute(['f'])
 
       expect(mars_rover.coordinates).to eq([0, 1])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(1)
     end
 
     it 'moves rightwards one step when command is f and facing east' do
@@ -78,6 +86,8 @@ describe MarsRover do
       mars_rover.execute(['f'])
 
       expect(mars_rover.coordinates).to eq([2, 1])
+      expect(mars_rover.coordinates_new.x).to eq(2)
+      expect(mars_rover.coordinates_new.y).to eq(1)
     end
 
     it 'moves upwards three steps when command is fff and facing north' do
@@ -85,6 +95,8 @@ describe MarsRover do
       mars_rover.execute(['f', 'f', 'f'])
       
       expect(mars_rover.coordinates).to eq([0, 3])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(3)
     end
 
     it 'moves downwards one step when command is b and facing north' do
@@ -92,6 +104,8 @@ describe MarsRover do
       mars_rover.execute(['b'])
       
       expect(mars_rover.coordinates).to eq([1, 0])
+      expect(mars_rover.coordinates_new.x).to eq(1)
+      expect(mars_rover.coordinates_new.y).to eq(0)
     end
 
     it 'moves upwards one step when command is b and facing south' do
@@ -99,6 +113,8 @@ describe MarsRover do
       mars_rover.execute(['b'])
       
       expect(mars_rover.coordinates).to eq([1, 2])
+      expect(mars_rover.coordinates_new.x).to eq(1)
+      expect(mars_rover.coordinates_new.y).to eq(2)
     end
 
     it 'moves rightwards one step when command is b and facing west' do
@@ -106,6 +122,8 @@ describe MarsRover do
       mars_rover.execute(['b'])
       
       expect(mars_rover.coordinates).to eq([2, 1])
+      expect(mars_rover.coordinates_new.x).to eq(2)
+      expect(mars_rover.coordinates_new.y).to eq(1)
     end
 
     it 'moves leftwards one step when command is b and facing east' do
@@ -113,6 +131,8 @@ describe MarsRover do
       mars_rover.execute(['b'])
       
       expect(mars_rover.coordinates).to eq([0, 1])
+      expect(mars_rover.coordinates_new.x).to eq(0)
+      expect(mars_rover.coordinates_new.y).to eq(1)
     end
 
     it 'moves downwards three steps when command is bbb and facing north' do
