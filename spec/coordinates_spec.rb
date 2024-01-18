@@ -25,6 +25,11 @@ describe Coordinates do
       different_coordinates = Coordinates.new(x: 2, y: 2)
       expect(coordinates).not_to eq(different_coordinates)
     end
-    it 'returns false if compared with anything that is not a Coordinates object'
+
+    it 'returns false if compared with anything that is not a Coordinates object' do
+      coordinates = Coordinates.new(x: 1, y: 1)
+      coordinates_array = [1, 1]
+      expect(coordinates).not_to eq(coordinates_array)
+    end
   end
 end
