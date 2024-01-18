@@ -2,7 +2,7 @@ require 'coordinates'
 
 class MarsRover
   attr_reader :direction
-  attr_reader :coordinates_new
+  attr_reader :coordinates
   
   def initialize(direction, coordinates = [0, 0])
     directions = ['N', 'S', 'W', 'E']
@@ -13,7 +13,7 @@ class MarsRover
 
     raise ArgumentError unless directions.include?(direction)
 
-    @coordinates_new = Coordinates.new(x: coordinates[0], y: coordinates[1])
+    @coordinates = Coordinates.new(x: coordinates[0], y: coordinates[1])
     @direction = direction
   end
 
@@ -29,7 +29,7 @@ class MarsRover
   end
 
   def inspect
-    "a Mars rover at (#{coordinates_new.x}, #{coordinates_new.y}) facing #{direction}"
+    "a Mars rover at (#{coordinates.x}, #{coordinates.y}) facing #{direction}"
   end
 
   private
@@ -43,13 +43,13 @@ class MarsRover
     }
     case @direction
     when 'N'
-      @coordinates_new.y += backward_movement[@direction]
+      @coordinates.y += backward_movement[@direction]
     when 'S'
-      @coordinates_new.y += backward_movement[@direction]
+      @coordinates.y += backward_movement[@direction]
     when 'W'
-      @coordinates_new.x += backward_movement[@direction]
+      @coordinates.x += backward_movement[@direction]
     when 'E'
-      @coordinates_new.x += backward_movement[@direction]
+      @coordinates.x += backward_movement[@direction]
     end
   end
 
@@ -62,13 +62,13 @@ class MarsRover
       }
       case @direction
       when 'N'
-          @coordinates_new.y += forward_movement[@direction]
+          @coordinates.y += forward_movement[@direction]
       when 'S'
-          @coordinates_new.y += forward_movement[@direction]
+          @coordinates.y += forward_movement[@direction]
       when 'E'
-          @coordinates_new.x += forward_movement[@direction]
+          @coordinates.x += forward_movement[@direction]
       when 'W'
-          @coordinates_new.x += forward_movement[@direction]
+          @coordinates.x += forward_movement[@direction]
       end
   end
 end
