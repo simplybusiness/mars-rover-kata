@@ -7,7 +7,7 @@ class Coordinates
   end
 
   def ==(coordinates)
-    true
+    @y == coordinates.y
   end
 
   def inspect
