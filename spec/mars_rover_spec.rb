@@ -133,7 +133,13 @@ describe MarsRover do
       expected_coordinates = Coordinates.new(x: 3, y: 0)
 
       expect(mars_rover.coordinates).to eq(expected_coordinates)
+      expect(mars_rover).to be_at(expected_coordinates)
     end
   end
 
+  RSpec::Matchers.define :be_at do |coordinates|
+    match do |mars_rover|
+      mars_rover.coordinates == coordinates
+    end
+  end
 end
