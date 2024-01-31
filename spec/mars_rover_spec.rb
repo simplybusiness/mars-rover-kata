@@ -1,4 +1,5 @@
-require_relative '../lib/mars_rover'
+$LOAD_PATH << '../lib'
+require 'mars_rover'
 
 describe 'Exploration with Mars Rover' do
   it 'has a current position on the planet' do
