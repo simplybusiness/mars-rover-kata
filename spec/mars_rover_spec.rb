@@ -7,4 +7,10 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.x).to eq(0)
     expect(mars_rover.y).to eq(0)
   end
+
+  it 'has a position and a direcion' do
+    mars_rover = MarsRover.new(direction: 'N')
+    expect(mars_rover.direction).not_to be_nil
+    expect(mars_rover.direction).to eq('N')
+  end
 end
