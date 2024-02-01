@@ -75,6 +75,11 @@ class MarsRover
   end
 
   def move_leftwards
-    @coordinates.x -= 1
+    case @direction
+    when 'N'
+      @coordinates.x -= 1
+    when 'S'
+      @coordinates.x += 1
+    end
   end
 end
