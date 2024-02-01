@@ -179,6 +179,13 @@ describe MarsRover do
         expected_coordinates = Coordinates.new(x: 2, y: 1)
         expect(mars_rover).to be_at(expected_coordinates)
       end
+
+      it 'moves leftwards one step when command is r and facing south' do
+        mars_rover = MarsRover.new('S', [1, 1])
+        mars_rover.execute(['r'])
+        expected_coordinates = Coordinates.new(x: 0, y: 1)
+        expect(mars_rover).to be_at(expected_coordinates)
+      end
     end
   end
 
