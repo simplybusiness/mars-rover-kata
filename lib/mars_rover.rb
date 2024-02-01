@@ -26,6 +26,8 @@ class MarsRover
         move_backwards
       when 'l'
         move_leftwards
+      when 'r'
+        move_rightwards
       end
     end
   end
@@ -85,5 +87,9 @@ class MarsRover
     when 'W'
       @coordinates.y -= 1
     end
+  end
+
+  def move_rightwards
+    @coordinates.x += 1
   end
 end
