@@ -187,8 +187,15 @@ describe MarsRover do
         expect(mars_rover).to be_at(expected_coordinates)
       end
 
-      it 'moves downwards one step when command is r and facing west' do
+      it 'moves upwards one step when command is r and facing west' do
         mars_rover = MarsRover.new('W', [1, 1])
+        mars_rover.execute(['r'])
+        expected_coordinates = Coordinates.new(x: 1, y: 2)
+        expect(mars_rover).to be_at(expected_coordinates)
+      end
+
+      it 'moves downwards one step when command is r and facing east' do
+        mars_rover = MarsRover.new('E', [1, 1])
         mars_rover.execute(['r'])
         expected_coordinates = Coordinates.new(x: 1, y: 0)
         expect(mars_rover).to be_at(expected_coordinates)
