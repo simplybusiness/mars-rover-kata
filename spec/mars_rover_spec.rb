@@ -133,6 +133,15 @@ describe MarsRover do
         expect(mars_rover).to be_at(expected_coordinates)
       end
     end
+
+    context 'when command is l' do
+      it 'moves leftwards one step when command is l and facing north' do
+        mars_rover = MarsRover.new('N', [1, 1])
+        mars_rover.execute(['l'])
+        expected_coordinates = Coordinates.new(x: 0, y: 1)
+        expect(mars_rover).to be_at(expected_coordinates)
+      end
+    end
   end
 
   RSpec::Matchers.define :be_at do |coordinates|
