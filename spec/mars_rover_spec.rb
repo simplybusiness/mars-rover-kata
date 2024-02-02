@@ -178,40 +178,45 @@ describe MarsRover do
     end
 
     context 'when command is r' do
-      it 'moves rightwards when command is r and facing north' do
+      it 'turns to east when command is r and facing north' do
         mars_rover = MarsRover.new('N', [1, 1])
         mars_rover.execute(['r'])
-        expected_coordinates = Coordinates.new(x: 2, y: 1)
+        expected_coordinates = Coordinates.new(x: 1, y: 1)
         expect(mars_rover).to be_at(expected_coordinates)
+        expect(mars_rover.direction).to eq('E')
       end
 
-      it 'moves leftwards one step when command is r and facing south' do
+      it 'turns to west one step when command is r and facing south' do
         mars_rover = MarsRover.new('S', [1, 1])
         mars_rover.execute(['r'])
-        expected_coordinates = Coordinates.new(x: 0, y: 1)
+        expected_coordinates = Coordinates.new(x: 1, y: 1)
         expect(mars_rover).to be_at(expected_coordinates)
+        expect(mars_rover.direction).to eq('W')
       end
 
-      it 'moves upwards one step when command is r and facing west' do
+      it 'turns to north when command is r and facing west' do
         mars_rover = MarsRover.new('W', [1, 1])
         mars_rover.execute(['r'])
-        expected_coordinates = Coordinates.new(x: 1, y: 2)
+        expected_coordinates = Coordinates.new(x: 1, y: 1)
         expect(mars_rover).to be_at(expected_coordinates)
+        expect(mars_rover.direction).to eq('N')
       end
 
-      it 'moves downwards one step when command is r and facing east' do
+      it 'turns to south when command is r and facing east' do
         mars_rover = MarsRover.new('E', [1, 1])
         mars_rover.execute(['r'])
-        expected_coordinates = Coordinates.new(x: 1, y: 0)
+        expected_coordinates = Coordinates.new(x: 1, y: 1)
         expect(mars_rover).to be_at(expected_coordinates)
+        expect(mars_rover.direction).to eq('S')
       end
 
       it 'moves rightwards three steps when command is rrr and facing north' do
         mars_rover = MarsRover.new('N', [3, 3])
         mars_rover.execute(['r', 'r', 'r'])
-        expected_coordinates = Coordinates.new(x: 6, y: 3)
+        expected_coordinates = Coordinates.new(x: 3, y: 3)
 
         expect(mars_rover).to be_at(expected_coordinates)
+        expect(mars_rover.direction).to eq('W')
       end
     end
   end

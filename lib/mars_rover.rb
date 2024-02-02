@@ -27,7 +27,7 @@ class MarsRover
       when 'l'
         turn_leftwards
       when 'r'
-        move_rightwards
+        turn_rightwards
       end
     end
   end
@@ -89,16 +89,16 @@ class MarsRover
     end
   end
 
-  def move_rightwards
+  def turn_rightwards
     case @direction
     when 'N'
-      @coordinates.x += 1
+      @direction = 'E'
     when 'S'
-      @coordinates.x -= 1
+      @direction = 'W'
     when 'W'
-      @coordinates.y += 1
+      @direction = 'N'
     when 'E'
-      @coordinates.y -= 1
+      @direction = 'S'
     end
   end
 end
