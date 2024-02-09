@@ -52,21 +52,15 @@ class MarsRover
   end
 
   def move_forwards
-      forward_movement = {
-        'N' => 1,
-        'S' => -1,
-        'E' => 1,
-        'W' => -1
-      }
       case @direction
       when 'N'
-          @coordinates.y += forward_movement[@direction]
+          @coordinates.y += 1
       when 'S'
-          @coordinates.y += forward_movement[@direction]
+          @coordinates.y += -1
       when 'E'
-          @coordinates.x += forward_movement[@direction]
+          @coordinates.x += 1
       when 'W'
-          @coordinates.x += forward_movement[@direction]
+          @coordinates.x += -1
       end
   end
 
