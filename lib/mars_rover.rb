@@ -23,7 +23,7 @@ class MarsRover
       when 'f'
         move_forwards
       when 'b'
-        move_backwards
+        move(-1)
       when 'l'
         turn_leftwards
       when 'r'
@@ -37,6 +37,19 @@ class MarsRover
   end
 
   private
+
+  def move(step)
+    case @direction
+    when 'N'
+      @coordinates.y += step
+    when 'S'
+      @coordinates.y -= step
+    when 'E'
+      @coordinates.x += step
+    when 'W'
+      @coordinates.x -= step
+    end
+  end
 
   def move_backwards
     case @direction
