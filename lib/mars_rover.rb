@@ -44,10 +44,10 @@ class MarsRover
       @coordinates.y += -1
     when 'S'
       @coordinates.y += 1
-    when 'W'
-      @coordinates.x += 1
     when 'E'
       @coordinates.x += -1
+    when 'W'
+      @coordinates.x += 1
     end
   end
 
