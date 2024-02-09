@@ -39,21 +39,15 @@ class MarsRover
   private
 
   def move_backwards
-    backward_movement = {
-      'N' => -1,
-      'S' => 1,
-      'W' => 1,
-      'E' => -1,
-    }
     case @direction
     when 'N'
-      @coordinates.y += backward_movement[@direction]
+      @coordinates.y += -1
     when 'S'
-      @coordinates.y += backward_movement[@direction]
+      @coordinates.y += 1
     when 'W'
-      @coordinates.x += backward_movement[@direction]
+      @coordinates.x += 1
     when 'E'
-      @coordinates.x += backward_movement[@direction]
+      @coordinates.x += -1
     end
   end
 
