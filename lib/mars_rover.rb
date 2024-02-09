@@ -21,7 +21,7 @@ class MarsRover
     commands.each do | command |
       case command
       when 'f'
-        move_forwards
+        move(1)
       when 'b'
         move(-1)
       when 'l'
