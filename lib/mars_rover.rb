@@ -51,32 +51,6 @@ class MarsRover
     end
   end
 
-  def move_backwards
-    case @direction
-    when 'N'
-      @coordinates.y += -1
-    when 'S'
-      @coordinates.y += 1
-    when 'E'
-      @coordinates.x += -1
-    when 'W'
-      @coordinates.x += 1
-    end
-  end
-
-  def move_forwards
-      case @direction
-      when 'N'
-          @coordinates.y += 1
-      when 'S'
-          @coordinates.y += -1
-      when 'E'
-          @coordinates.x += 1
-      when 'W'
-          @coordinates.x += -1
-      end
-  end
-
   def turn_leftwards
     case @direction
     when 'N'
