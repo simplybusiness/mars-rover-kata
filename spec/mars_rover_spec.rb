@@ -15,6 +15,7 @@ describe 'Exploration with Mars Rover' do
   end
 
   it 'receives an array of commands from Earth' do
+    mars_rover = MarsRover.new
     expect(mars_rover).to respond_to(:execute).with(1).argument
   end
 end

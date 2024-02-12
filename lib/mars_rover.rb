@@ -6,4 +6,7 @@ class MarsRover
     @y = y
     @direction = direction
   end
+
+  def execute(commands)
+  end
 end
