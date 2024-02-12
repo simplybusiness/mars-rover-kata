@@ -13,4 +13,8 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.direction).not_to be_nil
     expect(mars_rover.direction).to eq('N')
   end
+
+  it 'receives an array of commands from Earth' do
+    expect(mars_rover).to respond_to(:execute).with(1).argument
+  end
 end
