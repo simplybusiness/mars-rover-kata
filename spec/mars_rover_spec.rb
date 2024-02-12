@@ -18,4 +18,6 @@ describe 'Exploration with Mars Rover' do
     mars_rover = MarsRover.new
     expect(mars_rover).to respond_to(:execute).with(1).argument
   end
+
+  it 'increases y position and stays in the same x position'
 end
