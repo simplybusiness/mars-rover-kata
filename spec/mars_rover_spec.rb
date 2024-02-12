@@ -19,7 +19,11 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover).to respond_to(:execute).with(1).argument
   end
 
-  it 'increases y position and stays in the same x position when moving forward facing North'
+  it 'increases Y position and stays in the same X position when moving forward and facing North'
 
-  it 'decreases y position and stays in the same x position when moving backwards facing North'
+  it 'increases X position and stays the same Y position when moving forward and facing East'
+  
+  it 'decreases X position and stays the same Y position when moving forward and facing West'
+
+  it 'decreases Y position and stays in the same X position when moving forward and facing South'
 end
