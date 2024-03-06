@@ -51,6 +51,7 @@ describe 'Exploration with Mars Rover' do
       expect(mr.x).to eq(0)
       expect(mr.y).to eq(1)
       expect(mr.x).to eq(expected_anwers[0][0])
+      expect(mr.y).to eq(expected_anwers[0][1])
     end
   end
 
