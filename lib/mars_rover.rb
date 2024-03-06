@@ -8,5 +8,6 @@ class MarsRover
   end
 
   def execute(commands)
+    @y = 1
   end
 end
