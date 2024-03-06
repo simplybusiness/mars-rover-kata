@@ -28,6 +28,13 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.x).to eq(0)
   end
 
+  it 'increases Y facing N starting from 0,2' do
+    mars_rover = MarsRover.new(x: 0, y: 2, direction: 'N')
+    mars_rover.execute(['f'])
+    expect(mars_rover.y).to eq(3)
+    expect(mars_rover.x).to eq(0)
+  end
+
   it 'increases X position and stays the same Y position when moving forward and facing East'
   
   it 'decreases X position and stays the same Y position when moving forward and facing West'
