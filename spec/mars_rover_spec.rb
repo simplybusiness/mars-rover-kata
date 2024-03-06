@@ -1,3 +1,4 @@
+require 'pry'
 $LOAD_PATH << '../lib'
 require 'mars_rover'
 
@@ -40,6 +41,15 @@ describe 'Exploration with Mars Rover' do
     mars_rover.execute(['f'])
     expect(mars_rover.y).to eq(3)   
     expect(mars_rover.x).to eq(1)   
+  end
+
+  mars_rover = [MarsRover.new(x: 0, y: 0, direction: 'N')]
+  it 'Moves forward facing north without changing its X position' do
+    mars_rover.each do |mr| 
+      mr.execute(['f'])
+      expect(mr.x).to eq(0)
+      expect(mr.y).to eq(1)
+    end
   end
 
   it 'increases X position and stays the same Y position when moving forward and facing East'
