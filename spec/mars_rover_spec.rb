@@ -20,15 +20,6 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover).to respond_to(:execute).with(1).argument
   end
 
-  it 'increases Y position and stays in the same X position when moving forward and facing North' do
-    # execute f while facing north, will y++ & x stay the same
-    
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
-    mars_rover.execute(['f'])
-    expect(mars_rover.y).to eq(1)
-    expect(mars_rover.x).to eq(0)
-  end
-
   it 'increases Y facing N starting from 0,2' do
     mars_rover = MarsRover.new(x: 0, y: 2, direction: 'N')
     mars_rover.execute(['f'])
