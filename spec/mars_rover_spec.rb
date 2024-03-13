@@ -20,20 +20,14 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover).to respond_to(:execute).with(1).argument
   end
 
-  it 'Moves forward with starting point of 1,2' do
-    mars_rover = MarsRover.new(x: 1, y: 2, direction: 'N')
-    mars_rover.execute(['f'])
-    expect(mars_rover.y).to eq(3)   
-    expect(mars_rover.x).to eq(1)   
-  end
-
   mars_rovers = [
     MarsRover.new(x: 0, y: 0, direction: 'N'),
     MarsRover.new(x: 0, y: 2, direction: 'N'),
+    MarsRover.new(x: 1, y: 2, direction: 'N'),
     MarsRover.new(x: 21, y: 11, direction: 'N')
   ]
 
-  expected_answers = [[0, 1], [0, 3], [21, 12]]
+  expected_answers = [[0, 1], [0, 3], [1, 3], [21, 12]]
   it 'Moves forward facing north without changing its X position' do
     mars_rovers.each_with_index do |mr, index| 
       mr.execute(['f'])
