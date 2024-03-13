@@ -40,4 +40,9 @@ describe 'Exploration with Mars Rover' do
   it 'decreases X position and stays the same Y position when moving forward and facing West'
 
   it 'decreases Y position and stays in the same X position when moving forward and facing South'
+
+  example 'Moving backwards when facing north'
+  example 'Moving backwards when facing east'
+  example 'Moving backwards when facing south'
+  example 'Moving backwards when facing west'
 end
