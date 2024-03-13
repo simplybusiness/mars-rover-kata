@@ -10,4 +10,8 @@ class MarsRover
   def execute(commands)
     @y += 1
   end
+
+  def coordinates
+    [x, y]
+  end
 end
