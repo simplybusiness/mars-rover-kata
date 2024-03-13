@@ -31,10 +31,12 @@ describe 'Exploration with Mars Rover' do
   mars_rovers.each_with_index do |mr, index|
     it "Moves forward facing north starting at (#{mr.x}, #{mr.y}) without changing its X position" do
       mr.execute(['f'])
+      coordinates = [mr.x, mr.y]
       expected_x_coordinate = expected_coordinates[index][0]
       expect(mr.x).to eq(expected_x_coordinate)
       expected_y_coordinate = expected_coordinates[index][1]
       expect(mr.y).to eq(expected_y_coordinate)
+      expect(coordinates).to eq(expected_coordinates[index])
     end
   end
 
