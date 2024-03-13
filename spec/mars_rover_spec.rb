@@ -44,13 +44,15 @@ describe 'Exploration with Mars Rover' do
   end
 
   mars_rover = [MarsRover.new(x: 0, y: 0, direction: 'N')]
-  expected_anwers = [[0,1], [1,0]]
+  expected_anwers = [[0,1], [1,1]]
   it 'Moves forward facing north without changing its X position' do
     mars_rover.each do |mr| 
       mr.execute(['f'])
       expect(mr.x).to eq(expected_anwers[0][0])
       expect(mr.y).to eq(expected_anwers[0][1])
-      expect(mr.y).to eq(expected_anwers[1][0])
+
+      # expect(mr.x).to eq(expected_anwers[1][0])
+      expect(mr.y).to eq(expected_anwers[1][1])
     end
   end
 
