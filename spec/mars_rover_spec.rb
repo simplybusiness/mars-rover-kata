@@ -28,8 +28,8 @@ describe 'Exploration with Mars Rover' do
   ]
 
   expected_answers = [[0, 1], [0, 3], [1, 3], [21, 12]]
-  it 'Moves forward facing north without changing its X position' do
-    mars_rovers.each_with_index do |mr, index| 
+  mars_rovers.each_with_index do |mr, index|
+    it "Moves forward facing north starting at (#{mr.x}, #{mr.y}) without changing its X position" do
       mr.execute(['f'])
       expect(mr.x).to eq(expected_answers[index][0])
       expect(mr.y).to eq(expected_answers[index][1])
