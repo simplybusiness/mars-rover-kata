@@ -7,27 +7,27 @@ class Map
   def next_location_forwards(location:)
     case location.direction
     when 'N'
-      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
+      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.y + 1
       Location.new(
-        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        coordinates: Coordinates.new(x: location.x, y: next_y),
         direction: location.direction
       )
     when 'E'
-      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
+      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.x + 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        coordinates: Coordinates.new(x: next_x, y: location.y),
         direction: location.direction
       )
     when 'S'
-      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
+      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.y - 1
       Location.new(
-        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        coordinates: Coordinates.new(x: location.x, y: next_y),
         direction: location.direction
       )
     when 'W'
-      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
+      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.x - 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        coordinates: Coordinates.new(x: next_x, y: location.y),
         direction: location.direction
       )
     end
@@ -36,27 +36,27 @@ class Map
   def next_location_backwards(location:)
     case location.direction
     when 'N'
-      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.coordinates.y - 1
+      next_y = at_south_pole?(location.coordinates) ? @y_domain.end : location.y - 1
       Location.new(
-        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        coordinates: Coordinates.new(x: location.x, y: next_y),
         direction: location.direction
       )
     when 'E'
-      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.coordinates.x - 1
+      next_x = at_left_hand_edge?(location.coordinates) ? @x_domain.end : location.x - 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        coordinates: Coordinates.new(x: next_x, y: location.y),
         direction: location.direction
       )
     when 'S'
-      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.coordinates.y + 1
+      next_y = at_north_pole?(location.coordinates) ? @y_domain.begin : location.y + 1
       Location.new(
-        coordinates: Coordinates.new(x: location.coordinates.x, y: next_y),
+        coordinates: Coordinates.new(x: location.x, y: next_y),
         direction: location.direction
       )
     when 'W'
-      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.coordinates.x + 1
+      next_x = at_right_hand_edge?(location.coordinates) ? @x_domain.begin : location.x + 1
       Location.new(
-        coordinates: Coordinates.new(x: next_x, y: location.coordinates.y),
+        coordinates: Coordinates.new(x: next_x, y: location.y),
         direction: location.direction
       )
     end
