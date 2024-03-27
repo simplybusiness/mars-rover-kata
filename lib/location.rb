@@ -1,6 +1,10 @@
+require 'forwardable'
 class Location
+  extend Forwardable
   attr_reader :coordinates, :direction
 
+  def_delegators :@coordinates, :x, :y
+  
   TURN_LEFT = {
     'N' => 'W',
     'E' => 'N',
