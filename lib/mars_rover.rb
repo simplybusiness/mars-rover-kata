@@ -10,10 +10,10 @@ class MarsRover
 
   def execute(commands)
     displacement_table = {
-      'N' => {x: 0, y: 1},
-      'E' => {x: 1, y: 0},
-      'S' => {x: 0, y: -1},
-      'W' => {x: -1, y: 0}
+      'N' => {dx: 0, dy: 1},
+      'E' => {dx: 1, dy: 0},
+      'S' => {dx: 0, dy: -1},
+      'W' => {dx: -1, dy: 0}
     }
 
     if displacement_table.key?(@direction)
