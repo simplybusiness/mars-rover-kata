@@ -9,13 +9,6 @@ class MarsRover
   end
 
   def execute(commands)
-    direction_table = {
-      'N' => [0, 1],
-      'E' => [1, 0],
-      'S' => [0, -1],
-      'W' => [-1, 0]
-    }
-
     displacement_table = {
       'N' => {x: 0, y: 1},
       'E' => {x: 1, y: 0},
