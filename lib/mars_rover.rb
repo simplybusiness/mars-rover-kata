@@ -24,7 +24,9 @@ class MarsRover
     }
 
     if direction_table.key?(@direction)
-      dx, dy = direction_table[@direction]
+      dx, dy = displacement_table[@direction].values
+      puts dx
+      puts dy
       @x += dx
       @y += dy
     end
