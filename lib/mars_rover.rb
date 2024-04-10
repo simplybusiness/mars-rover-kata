@@ -27,16 +27,20 @@ class MarsRover
         @x -= dx
         @y -= dy
       when 'r'
-        if @direction == 'N' 
-          @x += 1
-        elsif @direction == 'E'
-          @y -= 1
-        elsif @direction == 'S'
-          @x -= 1
-        elsif @direction == 'W'
-          @y += 1
-        end
+        move_right
       end
+    end
+  end
+
+  def move_right
+    if @direction == 'N' 
+      @x += 1
+    elsif @direction == 'E'
+      @y -= 1
+    elsif @direction == 'S'
+      @x -= 1
+    elsif @direction == 'W'
+      @y += 1
     end
   end
 end
