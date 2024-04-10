@@ -32,6 +32,8 @@ class MarsRover
     end
   end
 
+  private
+
   def move_right
     if @direction == 'N' 
       @x += 1
