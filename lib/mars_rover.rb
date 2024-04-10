@@ -1,5 +1,5 @@
 class MarsRover
-  attr_accessor :x, :y, :direction
+  attr_accessor :x, :y, :direction, :coordinates
 
   def initialize(x: 0, y: 0, direction: 'N', coordinates: {x: x, y: y})
     @x = x
