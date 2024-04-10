@@ -79,7 +79,13 @@ describe 'Exploration with Mars Rover' do
   end
 
   # Backwards command test
-  it 'decreases Y position and stays the same on X facing N by going backwards'
+  it 'decreases Y position and stays the same on X facing N by going backwards' do
+    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
+    mars_rover.execute(['b'])
+    expect(mars_rover.y).to eq(-1)
+    expect(mars_rover.x).to eq(0)
+  end
+
   it 'increases X position and stays the same on Y facing E by going backwards'
   it 'increases Y position and stays the same on X facing S by going backwards'
   it 'decreases X position and stays the same on Y facing W by going backwards'

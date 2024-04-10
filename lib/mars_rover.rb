@@ -16,10 +16,17 @@ class MarsRover
       'W' => {dx: -1, dy: 0}
     }
 
-    if displacement_table.key?(@direction)
-      dx, dy = displacement_table[@direction].values
-      @x += dx
-      @y += dy
+    commands.each do |command|
+      case command
+      when 'f'
+        dx, dy = displacement_table[@direction].values
+        @x += dx
+        @y += dy
+      when 'b'
+        dx, dy = displacement_table[@direction].values
+        @x -= dx
+        @y -= dy
+      end
     end
   end
 end
