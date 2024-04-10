@@ -8,6 +8,14 @@ class MarsRover
   end
 
   def execute(commands)
-    @y += 1
+    if @direction == 'N'
+      @y += 1
+    elsif @direction == 'E'
+      @x += 1
+    elsif @direction == 'S'
+      @y -= 1
+    elsif @direction == 'W'
+      @x -= 1
+    end
   end
 end
