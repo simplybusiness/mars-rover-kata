@@ -15,7 +15,7 @@ class MarsRover
       'S' => {dx: 0, dy: -1},
       'W' => {dx: -1, dy: 0}
     }
-    
+
     dx, dy = displacement_table[@direction].values
 
     commands.each do |command|
@@ -26,6 +26,16 @@ class MarsRover
       when 'b'
         @x -= dx
         @y -= dy
+      when 'r'
+        if @direction == 'N' 
+          @x += 1
+        elsif @direction == 'E'
+          @y -= 1
+        elsif @direction == 'S'
+          @x -= 1
+        elsif @direction == 'W'
+          @y += 1
+        end
       end
     end
   end
