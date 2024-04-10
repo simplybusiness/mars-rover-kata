@@ -28,6 +28,8 @@ class MarsRover
         @y -= dy
       when 'r'
         move_right
+      when 'l'
+        move_left
       end
     end
   end
@@ -43,6 +45,18 @@ class MarsRover
       @x -= 1
     elsif @direction == 'W'
       @y += 1
+    end
+  end
+
+  def move_left
+    if @direction == 'N' 
+      @x -= 1
+    elsif @direction == 'E'
+      @y += 1
+    elsif @direction == 'S'
+      @x += 1
+    elsif @direction == 'W'
+      @y -= 1
     end
   end
 end

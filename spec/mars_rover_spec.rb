@@ -135,4 +135,12 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.y).to eq(1)
     expect(mars_rover.x).to eq(0) 
   end
+
+  # Going left tests
+  it 'decreases X position and stays the same on Y when facing North and going left' do
+    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
+    mars_rover.execute(['l'])
+    expect(mars_rover.y).to eq(0)
+    expect(mars_rover.x).to eq(-1) 
+  end
 end
