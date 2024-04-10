@@ -8,14 +8,17 @@ class MarsRover
   end
 
   def execute(commands)
-    if @direction == 'N'
-      @y += 1
-    elsif @direction == 'E'
-      @x += 1
-    elsif @direction == 'S'
-      @y -= 1
-    elsif @direction == 'W'
-      @x -= 1
+    direction_table = {
+      'N' => [0, 1],
+      'E' => [1, 0],
+      'S' => [0, -1],
+      'W' => [-1, 0]
+    }
+
+    if direction_table.key?(@direction)
+      dx, dy = direction_table[@direction]
+      @x += dx
+      @y += dy
     end
   end
 end
