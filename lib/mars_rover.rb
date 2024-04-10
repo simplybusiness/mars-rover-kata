@@ -16,6 +16,13 @@ class MarsRover
       'W' => [-1, 0]
     }
 
+    displacement_table = {
+      'N' => {},
+      'E' => {},
+      'W' => {},
+      'S' => {}
+    }
+
     if direction_table.key?(@direction)
       dx, dy = direction_table[@direction]
       @x += dx
