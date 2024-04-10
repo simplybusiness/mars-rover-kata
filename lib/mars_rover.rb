@@ -27,36 +27,24 @@ class MarsRover
         @x -= dx
         @y -= dy
       when 'r'
-        move_right
+        move_sideways(command)
       when 'l'
-        move_left
+        move_sideways(command)
       end
     end
   end
 
   private
 
-  def move_right
+  def move_sideways(command)
     if @direction == 'N' 
-      @x += 1
+      command == 'r' ? @x += 1 : @x -= 1
     elsif @direction == 'E'
-      @y -= 1
+      command == 'r' ? @y -= 1 : @y += 1
     elsif @direction == 'S'
-      @x -= 1
+      command == 'r' ? @x -= 1 : @x += 1
     elsif @direction == 'W'
-      @y += 1
-    end
-  end
-
-  def move_left
-    if @direction == 'N' 
-      @x -= 1
-    elsif @direction == 'E'
-      @y += 1
-    elsif @direction == 'S'
-      @x += 1
-    elsif @direction == 'W'
-      @y -= 1
+      command == 'r' ? @y += 1 : @y -= 1
     end
   end
 end
