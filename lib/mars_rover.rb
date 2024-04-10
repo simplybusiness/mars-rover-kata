@@ -5,7 +5,7 @@ class MarsRover
     @x = x
     @y = y
     @direction = direction
-  
+    @coordinates = coordinates
   end
 
   def execute(commands)
