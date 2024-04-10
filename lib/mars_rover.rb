@@ -15,15 +15,15 @@ class MarsRover
       'S' => {dx: 0, dy: -1},
       'W' => {dx: -1, dy: 0}
     }
+    
+    dx, dy = displacement_table[@direction].values
 
     commands.each do |command|
       case command
       when 'f'
-        dx, dy = displacement_table[@direction].values
         @x += dx
         @y += dy
       when 'b'
-        dx, dy = displacement_table[@direction].values
         @x -= dx
         @y -= dy
       end
