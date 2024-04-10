@@ -26,9 +26,7 @@ class MarsRover
       when 'b'
         @x -= dx
         @y -= dy
-      when 'r'
-        move_sideways(command)
-      when 'l'
+      else
         move_sideways(command)
       end
     end
