@@ -34,15 +34,6 @@ class MarsRover
 
   private
 
-  def rotate(command)
-    case command
-    when 'r'
-      rotate_right(command)
-    when 'l'
-      rotate_left(command)
-    end
-  end
-
   def rotate_sideways(command)
     rotations = {
       'N' => command == 'r' ? 'E' : 'W',
@@ -53,6 +44,15 @@ class MarsRover
 
     @direction = rotations[@direction]
   end
+
+  # def rotate(command)
+  #   case command
+  #   when 'r'
+  #     rotate_right(command)
+  #   when 'l'
+  #     rotate_left(command)
+  #   end
+  # end
 
   # def rotate_right(command)
   #   rotations = {
