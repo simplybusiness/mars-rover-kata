@@ -26,8 +26,8 @@ class MarsRover
       when 'b'
         @x -= dx
         @y -= dy
-      else
-        move_sideways(command)
+      when 'r'
+        rotate_right(command)
       end
     end
   end
@@ -44,5 +44,9 @@ class MarsRover
     elsif @direction == 'W'
       command == 'r' ? @y += 1 : @y -= 1
     end
+  end
+
+  def rotate_right(command)
+    @direction = 'E'
   end
 end

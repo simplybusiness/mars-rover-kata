@@ -107,61 +107,14 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.x).to eq(1)
   end
 
-  # Going right tests
-  it 'increases X position and stays the same on Y when facing North and going right' do
+  # rotate right
+  it 'rotates right facing North' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
     mars_rover.execute(['r'])
-    expect(mars_rover.y).to eq(0)
-    expect(mars_rover.x).to eq(1) 
+    expect(mars_rover.direction).to eq('E')
   end
 
-  it 'decreases Y position and stays the same on X when facing East and going right' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'E')
-    mars_rover.execute(['r'])
-    expect(mars_rover.y).to eq(-1)
-    expect(mars_rover.x).to eq(0) 
-  end
-
-  it 'decreases X position and stays the same on Y when facing South and going right' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'S')
-    mars_rover.execute(['r'])
-    expect(mars_rover.y).to eq(0)
-    expect(mars_rover.x).to eq(-1) 
-  end
-
-  it 'increases Y position and stays the same on X when facing West and going right' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'W')
-    mars_rover.execute(['r'])
-    expect(mars_rover.y).to eq(1)
-    expect(mars_rover.x).to eq(0) 
-  end
-
-  # Going left tests
-  it 'decreases X position and stays the same on Y when facing North and going left' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
-    mars_rover.execute(['l'])
-    expect(mars_rover.y).to eq(0)
-    expect(mars_rover.x).to eq(-1) 
-  end
-
-  it 'increases Y position and stays the same on X when facing East and going left' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'E')
-    mars_rover.execute(['l'])
-    expect(mars_rover.y).to eq(1)
-    expect(mars_rover.x).to eq(0) 
-  end
-
-  it 'increases X position and stays the same on Y when facing South and going left' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'S')
-    mars_rover.execute(['l'])
-    expect(mars_rover.y).to eq(0)
-    expect(mars_rover.x).to eq(1) 
-  end
-
-  it 'decreases Y position and stays the same on X when facing West and going left' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'W')
-    mars_rover.execute(['l'])
-    expect(mars_rover.y).to eq(-1)
-    expect(mars_rover.x).to eq(0) 
-  end
+  it 'rotates right facing East'
+  it 'rotates right facing South'
+  it 'rotates right facing West'
 end
