@@ -26,15 +26,22 @@ class MarsRover
       when 'b'
         @x -= dx
         @y -= dy
-      when 'r'
-        rotate_right(command)
-      when 'l'
-        rotate_left(command)
+      else
+        rotate(command)
       end
     end
   end
 
   private
+
+  def rotate(command)
+    case command
+    when 'r'
+      rotate_right(command)
+    when 'l'
+      rotate_left(command)
+    end
+  end
 
   def rotate_right(command)
     rotations = {
