@@ -50,7 +50,8 @@ class MarsRover
   def rotate_left(command)
     rotations = {
       'N' => 'W',
-      'E' => 'N'
+      'E' => 'N',
+      'S' => 'E'
     }
     @direction = rotations[@direction]
   end
