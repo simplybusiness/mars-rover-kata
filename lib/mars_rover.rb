@@ -27,7 +27,7 @@ class MarsRover
         @x -= dx
         @y -= dy
       else
-        rotate(command)
+        rotate_sideways(command)
       end
     end
   end
@@ -41,6 +41,17 @@ class MarsRover
     when 'l'
       rotate_left(command)
     end
+  end
+
+  def rotate_sideways(command)
+      rotations = {
+        'N' => command == 'r' ? 'E' : 'W',
+        'E' => command == 'r' ? 'S' : 'N',
+        'S' => command == 'r' ? 'W' : 'E',
+        'W' => command == 'r' ? 'N' : 'S'
+      }
+
+    @direction = rotations[@direction]
   end
 
   def rotate_right(command)
