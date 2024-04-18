@@ -109,19 +109,19 @@ describe 'Exploration with Mars Rover' do
 
   # rotate right
   it 'rotates right facing North' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
+    mars_rover = MarsRover.new(direction: 'N')
     mars_rover.execute(['r'])
     expect(mars_rover.direction).to eq('E')
   end
 
   it 'rotates right facing East' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'E')
+    mars_rover = MarsRover.new(direction: 'E')
     mars_rover.execute(['r'])
     expect(mars_rover.direction).to eq('S')
   end
 
   it 'rotates right facing South' do
-    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'S')
+    mars_rover = MarsRover.new(direction: 'S')
     mars_rover.execute(['r'])
     expect(mars_rover.direction).to eq('W')
   end
