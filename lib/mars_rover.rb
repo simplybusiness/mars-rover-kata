@@ -35,7 +35,12 @@ class MarsRover
   private
 
   def rotate(command)
-    command == 'r' ? rotate_right : rotate_left
+    case command
+    when 'r'
+      rotate_right
+    when 'l'
+      rotate_left
+    end
   end
 
   def rotate_right
