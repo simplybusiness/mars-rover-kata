@@ -28,6 +28,8 @@ class MarsRover
         @y -= dy
       when 'r'
         rotate_right(command)
+      when 'l'
+        rotate_left(command)
       end
     end
   end
@@ -43,5 +45,9 @@ class MarsRover
     }
     
     @direction = rotations[@direction]
+  end
+
+  def rotate_left(command)
+    @direction = 'W'
   end
 end
