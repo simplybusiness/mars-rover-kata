@@ -34,18 +34,6 @@ class MarsRover
 
   private
 
-  def move_sideways(command)
-    if @direction == 'N' 
-      command == 'r' ? @x += 1 : @x -= 1
-    elsif @direction == 'E'
-      command == 'r' ? @y -= 1 : @y += 1
-    elsif @direction == 'S'
-      command == 'r' ? @x -= 1 : @x += 1
-    elsif @direction == 'W'
-      command == 'r' ? @y += 1 : @y -= 1
-    end
-  end
-
   def rotate_right(command)
     @direction = 'E'
   end
