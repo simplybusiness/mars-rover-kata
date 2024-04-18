@@ -151,5 +151,9 @@ describe 'Exploration with Mars Rover' do
     expect(mars_rover.direction).to eq('E') 
   end
 
-  it 'rotates left facing West'
+  it 'rotates left facing West' do
+    mars_rover = MarsRover.new(direction: 'W')
+    mars_rover.execute(['l'])
+    expect(mars_rover.direction).to eq('S') 
+  end
 end

@@ -51,7 +51,8 @@ class MarsRover
     rotations = {
       'N' => 'W',
       'E' => 'N',
-      'S' => 'E'
+      'S' => 'E',
+      'W' => 'S'
     }
     @direction = rotations[@direction]
   end
