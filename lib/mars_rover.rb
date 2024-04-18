@@ -29,7 +29,7 @@ class MarsRover
       when 'r', 'l'
         rotate(command)
       else
-        raise 'something'
+        raise 'This is a non-existing command. Supported commands are f, b, r and l'
       end
     end
   end
