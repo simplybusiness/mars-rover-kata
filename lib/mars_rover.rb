@@ -35,12 +35,20 @@ class MarsRover
   private
 
   def rotate(command)
+    rotations = {
+      'N' => 'E',
+      'E' => 'S',
+      'S' => 'W',
+      'W' => 'N'
+    }
+
     case command
-    when 'r'
-      rotate_right
+    when 'r'      
+      @direction = rotations[@direction]
     when 'l'
-      rotate_left
+      @direction = rotations.invert[@direction]
     end
+
   end
 
   def rotate_right
