@@ -121,5 +121,6 @@ describe 'Exploration with Mars Rover' do
   end
 
   it 'rotates right facing South'
+
   it 'rotates right facing West'
 end
