@@ -44,34 +44,34 @@ class MarsRover
   end
 
   def rotate_sideways(command)
-      rotations = {
-        'N' => command == 'r' ? 'E' : 'W',
-        'E' => command == 'r' ? 'S' : 'N',
-        'S' => command == 'r' ? 'W' : 'E',
-        'W' => command == 'r' ? 'N' : 'S'
-      }
+    rotations = {
+      'N' => command == 'r' ? 'E' : 'W',
+      'E' => command == 'r' ? 'S' : 'N',
+      'S' => command == 'r' ? 'W' : 'E',
+      'W' => command == 'r' ? 'N' : 'S'
+    }
 
     @direction = rotations[@direction]
   end
 
-  def rotate_right(command)
-    rotations = {
-      'N' => 'E',
-      'E' => 'S',
-      'S' => 'W',
-      'W' => 'N'
-    }
+  # def rotate_right(command)
+  #   rotations = {
+  #     'N' => 'E',
+  #     'E' => 'S',
+  #     'S' => 'W',
+  #     'W' => 'N'
+  #   }
     
-    @direction = rotations[@direction]
-  end
+  #   @direction = rotations[@direction]
+  # end
 
-  def rotate_left(command)
-    rotations = {
-      'N' => 'W',
-      'E' => 'N',
-      'S' => 'E',
-      'W' => 'S'
-    }
-    @direction = rotations[@direction]
-  end
+  # def rotate_left(command)
+  #   rotations = {
+  #     'N' => 'W',
+  #     'E' => 'N',
+  #     'S' => 'E',
+  #     'W' => 'S'
+  #   }
+  #   @direction = rotations[@direction]
+  # end
 end
