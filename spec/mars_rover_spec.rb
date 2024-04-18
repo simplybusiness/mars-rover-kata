@@ -156,4 +156,9 @@ describe 'Exploration with Mars Rover' do
     mars_rover.execute(['l'])
     expect(mars_rover.direction).to eq('S') 
   end
+
+  it 'handles non-existing commands with an error message' do
+    mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
+    expect{ mars_rover.execute(['1'])}.to raise_error
+  end
 end

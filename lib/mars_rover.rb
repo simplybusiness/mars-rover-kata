@@ -26,8 +26,10 @@ class MarsRover
       when 'b'
         @x -= dx
         @y -= dy
-      else
+      when 'r', 'l'
         rotate(command)
+      else
+        raise 'something'
       end
     end
   end
