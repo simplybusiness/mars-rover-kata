@@ -49,17 +49,4 @@ class MarsRover
       @direction = rotations.invert[@direction]
     end
   end
-
-  
-
-  def rotate_left
-    rotations = {
-      'N' => 'E',
-      'E' => 'S',
-      'S' => 'W',
-      'W' => 'N'
-    }.invert
-
-    @direction = rotations[@direction]
-  end
 end
