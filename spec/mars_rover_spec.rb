@@ -53,8 +53,9 @@ describe 'Exploration with Mars Rover' do
     mars_rovers.each_with_index do |mr, index| 
       mr.execute(['f'])
       expected_coordinates = {x: expected_answers[index][0], y: expected_answers[index][1]}
-      expect(mr.x).to eq(expected_coordinates[:x])
-      expect(mr.y).to eq(expected_coordinates[:y])
+      # expect(mr.x).to eq(expected_coordinates[:x])
+      # expect(mr.y).to eq(expected_coordinates[:y])
+      assert_located_at(expected_coordinates, mr)
     end
   end
 
