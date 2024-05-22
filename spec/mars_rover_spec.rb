@@ -53,8 +53,6 @@ describe 'Exploration with Mars Rover' do
     mars_rovers.each_with_index do |mr, index| 
       mr.execute(['f'])
       expected_coordinates = {x: expected_answers[index][0], y: expected_answers[index][1]}
-      # expect(mr.x).to eq(expected_coordinates[:x])
-      # expect(mr.y).to eq(expected_coordinates[:y])
       assert_located_at(expected_coordinates, mr)
     end
   end
@@ -62,8 +60,8 @@ describe 'Exploration with Mars Rover' do
   it 'increases X position and stays the same Y position when moving forward and facing East' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'E')
     mars_rover.execute(['f'])
-    expect(mars_rover.x).to eq(1)
-    expect(mars_rover.y).to eq(0)
+    expected_coordinates = {x: 1, y: 0}
+    assert_located_at(expected_coordinates, mars_rover)
   end
   
   it 'decreases X position and stays the same Y position when moving forward and facing West' do
