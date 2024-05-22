@@ -75,8 +75,7 @@ describe 'Exploration with Mars Rover' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'S')
     mars_rover.execute(['f'])
     expected_coordinates = {x: 0, y: -1}
-    expect(mars_rover.x).to eq(expected_coordinates[:x])
-    expect(mars_rover.y).to eq(expected_coordinates[:y])
+    assert_located_at(expected_coordinates, mars_rover)
   end
 
   # Backwards command test
