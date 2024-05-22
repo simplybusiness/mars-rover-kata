@@ -67,8 +67,9 @@ describe 'Exploration with Mars Rover' do
   it 'decreases X position and stays the same Y position when moving forward and facing West' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'W')
     mars_rover.execute(['f'])
-    expect(mars_rover.x).to eq(-1)
-    expect(mars_rover.y).to eq(0)
+    expected_coordinates = {x: -1, y: 0}
+    expect(mars_rover.x).to eq(expected_coordinates[:x])
+    expect(mars_rover.y).to eq(expected_coordinates[:y])
   end
 
   it 'decreases Y position and stays in the same X position when moving forward and facing South' do
