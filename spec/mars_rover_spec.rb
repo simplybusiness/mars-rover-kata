@@ -83,7 +83,7 @@ describe 'Exploration with Mars Rover' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
     mars_rover.execute(['b'])
     expected_coordinates = {x: 0, y: -1}
-    assert_located_at expected_coordinates, mars_rover
+    assert_located_at(expected_coordinates, mars_rover)
   end
 
   it 'decreases X position and stays the same on Y facing E by going backwards' do
