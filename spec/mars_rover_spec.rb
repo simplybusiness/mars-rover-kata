@@ -52,8 +52,9 @@ describe 'Exploration with Mars Rover' do
   it 'Moves forward facing north without changing its X position' do
     mars_rovers.each_with_index do |mr, index| 
       mr.execute(['f'])
-      expect(mr.x).to eq(expected_answers[index][0])
-      expect(mr.y).to eq(expected_answers[index][1])
+      expected_coordinates = {x: expected_answers[index][0], y: expected_answers[index][1]}
+      expect(mr.x).to eq(expected_coordinates[:x])
+      expect(mr.y).to eq(expected_coordinates[:y])
     end
   end
 
