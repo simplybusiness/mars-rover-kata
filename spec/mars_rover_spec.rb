@@ -5,8 +5,9 @@ require 'mars_rover'
 describe 'Exploration with Mars Rover' do
   it 'has a current position on the planet' do
     mars_rover = MarsRover.new(x: 0, y: 0)
-    expect(mars_rover.x).to eq(0)
-    expect(mars_rover.y).to eq(0)
+    expected_coordinates = {x: 0, y: 0}
+    expect(mars_rover.x).to eq(expected_coordinates[:x])
+    expect(mars_rover.y).to eq(expected_coordinates[:y])
   end
 
   it 'has a position and a direcion' do
@@ -25,15 +26,17 @@ describe 'Exploration with Mars Rover' do
     
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
     mars_rover.execute(['f'])
-    expect(mars_rover.y).to eq(1)
-    expect(mars_rover.x).to eq(0)
+    expected_coordinates = {x: 0, y: 1}
+    expect(mars_rover.x).to eq(expected_coordinates[:x])
+    expect(mars_rover.y).to eq(expected_coordinates[:y])
   end
 
   it 'increases Y facing N starting from 0,2' do
     mars_rover = MarsRover.new(x: 0, y: 2, direction: 'N')
     mars_rover.execute(['f'])
-    expect(mars_rover.y).to eq(3)
-    expect(mars_rover.x).to eq(0)
+    expected_coordinates = {x: 0, y: 3}
+    expect(mars_rover.x).to eq(expected_coordinates[:x])
+    expect(mars_rover.y).to eq(expected_coordinates[:y])
   end
 
   it 'Moves forward with starting point of 1,2' do
