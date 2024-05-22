@@ -6,8 +6,7 @@ describe 'Exploration with Mars Rover' do
   it 'has a current position on the planet' do
     mars_rover = MarsRover.new(x: 0, y: 0)
     expected_coordinates = {x: 0, y: 0}
-    expect(mars_rover.x).to eq(expected_coordinates[:x])
-    expect(mars_rover.y).to eq(expected_coordinates[:y])
+    assert_located_at(expected_coordinates, mars_rover)
   end
 
   it 'has a position and a direcion' do
@@ -27,16 +26,14 @@ describe 'Exploration with Mars Rover' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
     mars_rover.execute(['f'])
     expected_coordinates = {x: 0, y: 1}
-    expect(mars_rover.x).to eq(expected_coordinates[:x])
-    expect(mars_rover.y).to eq(expected_coordinates[:y])
+    assert_located_at(expected_coordinates, mars_rover)
   end
 
   it 'increases Y facing N starting from 0,2' do
     mars_rover = MarsRover.new(x: 0, y: 2, direction: 'N')
     mars_rover.execute(['f'])
     expected_coordinates = {x: 0, y: 3}
-    expect(mars_rover.x).to eq(expected_coordinates[:x])
-    expect(mars_rover.y).to eq(expected_coordinates[:y])
+    assert_located_at(expected_coordinates, mars_rover)
   end
 
   it 'Moves forward with starting point of 1,2' do
@@ -163,5 +160,12 @@ describe 'Exploration with Mars Rover' do
   it 'handles non-existing commands with an error message' do
     mars_rover = MarsRover.new(x: 0, y: 0, direction: 'N')
     expect{ mars_rover.execute(['1'])}.to raise_error
+  end
+
+  private
+
+  def assert_located_at(expected_coordinates, mars_rover)
+    expect(mars_rover.x).to eq(expected_coordinates[:x])
+    expect(mars_rover.y).to eq(expected_coordinates[:y])
   end
 end
