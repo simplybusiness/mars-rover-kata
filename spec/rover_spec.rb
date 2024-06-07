@@ -6,7 +6,20 @@ RSpec.describe 'Rover Class Tests' do
 
 
   context "Initializing the rover" do
-    it 'has an initial position at the origin'
+    it 'has an initial position at the origin' do
+      class MarsRover
+        def initialize(x, y)
+
+        end
+
+        def position(x, y)
+          return x, y
+        end
+      end
+      rover = MarsRover.new(0, 0)
+      expect(rover.position(0, 0)).to eq [0,0]
+    end
+
     it 'has an initial position away from the origin'
     it 'initially faces north'
     it 'initially faces east'
