@@ -6,18 +6,18 @@ RSpec.describe 'Rover Class Tests' do
 
 
   context "Initializing the rover" do
-    it 'has an initial position at the origin' do
-      class MarsRover
-        def initialize(x, y)
-          @x = x
-          @y = y
-        end
-
-        def position
-          return @x, @y
-        end
+    class MarsRover
+      def initialize(x, y)
+        @x = x
+        @y = y
       end
 
+      def position
+        return @x, @y
+      end
+    end
+
+    it 'has an initial position at the origin' do
       rover = MarsRover.new(0, 0)
 
       expect(rover.position).to eq [0,0]
