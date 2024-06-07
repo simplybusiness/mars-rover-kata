@@ -13,12 +13,14 @@ RSpec.describe 'Rover Class Tests' do
           @y = y
         end
 
-        def position()
+        def position
           return @x, @y
         end
       end
+
       rover = MarsRover.new(0, 0)
-      expect(rover.position()).to eq [0,0]
+
+      expect(rover.position).to eq [0,0]
     end
 
     it 'has an initial position away from the origin'
