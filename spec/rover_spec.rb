@@ -3,7 +3,10 @@ require_relative '../rover'
 RSpec.describe 'Rover' do
 
   describe "Setting the rover" do
-    it 'has an initial point'
+    it 'has an initial point' do
+      expect(Rover.new(0, 0).initial_points).to eq([0, 0])
+    end
+
     it 'knows the direction'
     it 'errors when does not know the coordinates'
     it 'errors when direction is unavailable'
