@@ -3,7 +3,7 @@ class MarsRover
   def initialize(x, y, direction)
     @x = x
     @y = y
-    @direction = direction
+    setDirection direction
   end
 
   def position
