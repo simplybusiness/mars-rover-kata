@@ -5,13 +5,12 @@ RSpec.describe 'Rover Class Tests' do
   before(:context) do
   end
 
-
   context "Initializing the rover" do
-
-    it 'has an initial position at the origin' do
-      rover = MarsRover.new(0, 0)
+    it 'has an initial position at the origin, with a direction' do
+      rover = MarsRover.new(0, 0, 'east')
 
       expect(rover.position).to eq [0,0]
+      expect(rover.direction).to eq "east"
     end
 
     it 'has an initial position away from the origin'
