@@ -13,6 +13,28 @@ RSpec.describe 'Rover Class Tests' do
       expect(rover.direction).to eq "east"
     end
 
+    it 'can only have a direction of north, south, east and west' do
+      rover = MarsRover.new(0, 0, 'north')
+
+      expect(rover.direction).to eq "north"
+
+      rover.setDirection('south')
+
+      expect(rover.direction).to eq "south"
+
+      rover.setDirection('east')
+
+      expect(rover.direction).to eq "east"
+
+      rover.setDirection('west')
+
+      expect(rover.direction).to eq "west"
+
+      expect{
+        rover.setDirection('notavaliddirection')
+      }.to raise_error("Invalid direction: 'notavaliddirection'")
+    end
+
     it 'has an initial position away from the origin'
     it 'initially faces north'
     it 'initially faces east'
