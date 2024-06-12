@@ -11,9 +11,10 @@ class MarsRover
   end
 
   def setDirection(direction)
-    if not ['north', 'south', 'east', 'west'].include? direction
+    unless ['north', 'south', 'east', 'west'].include? direction
       raise Exception.new, "Invalid direction: '#{direction}'"
     end
+
     @direction = direction
   end
 end
