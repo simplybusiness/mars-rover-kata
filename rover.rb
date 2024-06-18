@@ -7,7 +7,7 @@ class Rover
   end
 
   def direction
-    raise StandardError unless @direction == 'N' || @direction == 'S' || @direction == 'E' || @direction == 'W'
+    raise StandardError unless ['N', 'S', 'E', 'W'].include?@direction
 
     @direction
   end
