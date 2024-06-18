@@ -7,7 +7,9 @@ RSpec.describe 'Rover' do
       expect(Rover.new(0, 0).initial_points).to eq([0, 0])
     end
 
-    it 'knows the direction'
+    it 'knows the direction' do
+      expect(Rover.new(0, 0).direction).to eq('N')
+    end
 
     it 'errors when does not know the coordinates' do
       expect{ Rover.new().initial_points }.to raise_error

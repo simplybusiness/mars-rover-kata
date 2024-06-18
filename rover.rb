@@ -6,4 +6,8 @@ class Rover
   def initial_points
     @coordinates
   end
+
+  def direction
+    'N'
+  end
 end
