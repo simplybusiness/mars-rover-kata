@@ -1,6 +1,7 @@
 class Rover
   def initialize(x, y)
     @coordinates = [x, y]
+    @direction = 'N'
   end
 
   def initial_points
@@ -8,6 +9,6 @@ class Rover
   end
 
   def direction
-    'N'
+    @direction
   end
 end
