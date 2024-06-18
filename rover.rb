@@ -1,4 +1,6 @@
 class Rover
+  attr_reader :direction
+
   def initialize(x, y, direction = 'N')
     @coordinates = [x, y]
     @direction = direction
@@ -6,9 +8,5 @@ class Rover
 
   def initial_points
     @coordinates
-  end
-
-  def direction
-    @direction
   end
 end
