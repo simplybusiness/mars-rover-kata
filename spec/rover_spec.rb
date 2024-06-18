@@ -11,6 +11,10 @@ RSpec.describe 'Rover' do
       expect(Rover.new(0, 0).direction).to eq('N')
     end
 
+    it 'faces any direction' do
+      expect(Rover.new(0, 0, 'S').direction).to eq('S')
+    end
+
     it 'errors when does not know the coordinates' do
       expect{ Rover.new().coordinates }.to raise_error
     end
