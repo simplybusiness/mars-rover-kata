@@ -20,6 +20,9 @@ RSpec.describe 'Rover' do
     end
 
     it 'errors when direction is unavailable'
-    it 'errors when the direction is not one of the cardinal directions'
+
+    it 'errors when the direction is not one of the cardinal directions' do
+      expect{Rover.new(0, 0, 'B').direction}.to raise_error
+    end
   end
 end
