@@ -10,6 +10,8 @@ class MarsRover
     return @x, @y
   end
 
+  private
+
   def setPosition(x, y)
     unless x.is_a?(Integer) && y.is_a?(Integer)
       raise ArgumentError, 'Invalid x or y position, both must be an integer'
@@ -18,6 +20,8 @@ class MarsRover
     @x = x
     @y = y
   end
+
+  public
 
   def setDirection(direction)
     unless ['north', 'south', 'east', 'west'].include? direction
