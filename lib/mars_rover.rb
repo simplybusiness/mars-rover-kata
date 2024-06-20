@@ -18,6 +18,10 @@ class MarsRover
     @y = @y + 1
   end
 
+  def backward
+    @y = @y - 1
+  end
+
   private
 
   def set_position(x, y)
