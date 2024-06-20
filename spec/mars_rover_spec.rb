@@ -47,8 +47,14 @@ RSpec.describe 'Rover Class Tests' do
       }.to raise_error(ArgumentError)
     end
 
-    it 'has an initial position away from the origin' do
+    example 'has an initial position away from the origin' do
+      rover = MarsRover.new(2, 3, 'E')
 
+      x, y = rover.position
+
+      expect(x).to eq 2
+      expect(y).to eq 3
+      expect(rover.direction).to eq 'E'
     end
 
     it 'initially faces N'
