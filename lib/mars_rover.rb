@@ -10,14 +10,16 @@ class MarsRover
     return @x, @y
   end
 
+  def inspect
+    "(#{@x},#{@y}, #{@direction})"
+  end
+
   private
 
   def set_position(x, y)
     unless x.is_a?(Integer) && y.is_a?(Integer)
       raise ArgumentError, 'Invalid x or y position, both must be an integer'
     end
-
-    
 
     @x = x
     @y = y
