@@ -21,8 +21,6 @@ class MarsRover
     @y = y
   end
 
-  public
-
   def setDirection(direction)
     unless ['north', 'south', 'east', 'west'].include? direction
       ## TODO change to argument error
