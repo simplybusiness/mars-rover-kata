@@ -29,6 +29,10 @@ class MarsRover
     @y = @direction.y
   end
 
+  def left
+    @direction = load_direction(@direction.left, @x, @y)
+  end
+
   private
 
   def set_position(x, y)
@@ -46,6 +50,10 @@ class MarsRover
       raise ArgumentError, "Invalid direction: '#{direction}', 'N, S, E, W' accepted"
     end
 
-    @direction = Object.const_get('Direction' + direction).new(@x, @y)
+    @direction = load_direction(direction, @x, @y)
+  end
+
+  def load_direction(direction, x, y)
+    Object.const_get('Direction' + direction).new(x, y)
   end
 end
