@@ -1,6 +1,6 @@
 class DirectionS < Direction
   def forward
-    @y += -1
+    @y -= 1
   end
 
   def backward

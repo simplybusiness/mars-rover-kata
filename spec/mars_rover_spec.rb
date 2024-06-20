@@ -137,5 +137,25 @@ RSpec.describe 'Rover Class Tests' do
       expect(y).to eq 3
       expect(rover.direction).to eq 'S'
     end
+
+    example 'the rover can move forwards, facing S' do
+      rover = MarsRover.new(1, 1, 'S')
+
+      rover.forward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq 0
+      expect(rover.direction).to eq 'S'
+
+      rover.forward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq -1
+      expect(rover.direction).to eq 'S'
+    end
   end
 end

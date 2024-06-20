@@ -4,7 +4,7 @@ class DirectionN < Direction
   end
 
   def backward
-    @y += -1
+    @y -= 1
   end
 
   def name
