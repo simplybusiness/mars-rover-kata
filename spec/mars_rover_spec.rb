@@ -1,5 +1,10 @@
 require 'rspec'
 require 'mars_rover'
+require 'direction'
+require 'direction_n'
+require 'direction_s'
+require 'direction_e'
+require 'direction_w'
 
 RSpec.describe 'Rover Class Tests' do
   before(:context) do
@@ -91,6 +96,46 @@ RSpec.describe 'Rover Class Tests' do
       expect(x).to eq 0
       expect(y).to eq -1
       expect(rover.direction).to eq 'N'
+    end
+
+    example 'the rover can move forwards, facing E' do
+      rover = MarsRover.new(0, 0, 'E')
+
+      rover.forward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq 0
+      expect(rover.direction).to eq 'E'
+
+      rover.forward
+
+      x, y = rover.position
+
+      expect(x).to eq 2
+      expect(y).to eq 0
+      expect(rover.direction).to eq 'E'
+    end
+
+    example 'the rover can move backwards, facing S' do
+      rover = MarsRover.new(1, 1, 'S')
+
+      rover.backward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq 2
+      expect(rover.direction).to eq 'S'
+
+      rover.backward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq 3
+      expect(rover.direction).to eq 'S'
     end
   end
 end

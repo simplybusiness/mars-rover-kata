@@ -1,5 +1,4 @@
 class MarsRover
-  attr_reader :direction
 
   def initialize(x, y, direction)
     set_position(x, y)
@@ -10,16 +9,24 @@ class MarsRover
     return @x, @y
   end
 
+  def direction
+    @direction.name
+  end
+
   def inspect
-    "(#{@x},#{@y}, #{@direction})"
+    "(#{@x},#{@y}, #{@direction.name})"
   end
 
   def forward
-    @y = @y + 1
+    @direction.forward
+    @x = @direction.x
+    @y = @direction.y
   end
 
   def backward
-    @y = @y - 1
+    @direction.backward
+    @x = @direction.x
+    @y = @direction.y
   end
 
   private
@@ -39,6 +46,6 @@ class MarsRover
       raise ArgumentError, "Invalid direction: '#{direction}', 'N, S, E, W' accepted"
     end
 
-    @direction = direction
+    @direction = Object.const_get('Direction' + direction).new(@x, @y)
   end
 end
