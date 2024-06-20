@@ -26,7 +26,7 @@ class MarsRover
   end
 
   def set_direction(direction)
-    unless ['north', 'south', 'east', 'west'].include? direction
+    unless ['N', 'S', 'E', 'W'].include? direction
       ## TODO change to argument error
       raise Exception.new, "Invalid direction: '#{direction}'"
     end

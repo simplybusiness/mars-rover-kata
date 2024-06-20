@@ -7,28 +7,28 @@ RSpec.describe 'Rover Class Tests' do
 
   context "Initializing the rover" do
     it 'has an initial position at the origin, with a direction' do
-      rover = MarsRover.new(0, 0, 'east')
+      rover = MarsRover.new(0, 0, 'E')
 
       expect(rover.position).to eq [0,0]
-      expect(rover.direction).to eq "east"
+      expect(rover.direction).to eq "E"
     end
 
     it 'raises an exception when the initial direction is outside the cardinal four' do
-      rover = MarsRover.new(0, 0, 'north')
+      rover = MarsRover.new(0, 0, 'N')
 
-      expect(rover.direction).to eq "north"
+      expect(rover.direction).to eq "N"
 
-      rover = MarsRover.new(0, 0,'south')
+      rover = MarsRover.new(0, 0,'S')
 
-      expect(rover.direction).to eq "south"
+      expect(rover.direction).to eq "S"
 
-      rover = MarsRover.new(0, 0,'east')
+      rover = MarsRover.new(0, 0,'E')
 
-      expect(rover.direction).to eq "east"
+      expect(rover.direction).to eq "E"
 
-      rover = MarsRover.new(0, 0,'west')
+      rover = MarsRover.new(0, 0,'W')
 
-      expect(rover.direction).to eq "west"
+      expect(rover.direction).to eq "W"
 
       expect{
         rover = MarsRover.new(0, 0, 'notavaliddirection')
@@ -37,18 +37,18 @@ RSpec.describe 'Rover Class Tests' do
 
     it 'raises an exception when an invalid x position is initialised' do
       expect{
-        rover = MarsRover.new('a', 1, 'north')
+        rover = MarsRover.new('a', 1, 'N')
       }.to raise_error(ArgumentError)
     end
 
     it 'raises an exception when an invalid y position is initialised' do
       expect{
-        rover = MarsRover.new(1, 'b', 'north')
+        rover = MarsRover.new(1, 'b', 'N')
       }.to raise_error(ArgumentError)
     end
 
     it 'has an initial position away from the origin'
-    it 'initially faces north'
-    it 'initially faces east'
+    it 'initially faces N'
+    it 'initially faces E'
   end
 end
