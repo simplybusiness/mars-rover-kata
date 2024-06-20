@@ -13,7 +13,7 @@ RSpec.describe 'Rover Class Tests' do
       expect(rover.direction).to eq "east"
     end
 
-    it 'can only have a direction of north, south, east and west' do
+    it 'raises an exception when the direction is outside the cardinal four' do
       rover = MarsRover.new(0, 0, 'north')
 
       expect(rover.direction).to eq "north"
@@ -35,7 +35,7 @@ RSpec.describe 'Rover Class Tests' do
       }.to raise_error("Invalid direction: 'notavaliddirection'")
     end
 
-    it 'can only give an valid direction on initialisation' do
+    it 'raises an exception when the initial direction is outside the cardinal four' do
       rover = MarsRover.new(0, 0, 'north')
 
       expect(rover.direction).to eq "north"
@@ -57,10 +57,14 @@ RSpec.describe 'Rover Class Tests' do
       }.to raise_error("Invalid direction: 'notavaliddirection'")
     end
 
+    it 'raises an exception when there is no initial position is specified' do
+      expect{
+        rover = MarsRover.new('a', 1, 'north')
+      }.to raise_error(ArgumentError)
+    end
+
     it 'has an initial position away from the origin'
     it 'initially faces north'
     it 'initially faces east'
-    it 'raises an exception when the direction is outside the cardinal four'
-    it 'raises an exception when there is no initial position is specified'
   end
 end
