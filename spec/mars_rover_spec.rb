@@ -189,5 +189,18 @@ RSpec.describe 'Rover Class Tests' do
 
       expect(rover.direction).to eq 'S'
     end
+
+    it 'can turn right fron N then go forward E, from 0,0 to 1,0' do
+      rover = MarsRover.new(0, 0, 'N')
+
+      rover.right
+      rover.forward
+
+      x, y = rover.position
+
+      expect(x).to eq 1
+      expect(y).to eq 0
+      expect(rover.direction).to eq 'E'
+    end
   end
 end
