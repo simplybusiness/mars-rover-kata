@@ -13,5 +13,9 @@ class Direction
   def backward
     throw new Exception 'Backward not implemented'
   end
+
+  def left
+    throw new Exception 'Left not implemented'
+  end
 end
 

@@ -10,4 +10,8 @@ class DirectionS < Direction
   def name
     'S'
   end
+
+  def left
+    'E'
+  end
 end
