@@ -57,7 +57,16 @@ RSpec.describe 'Rover Class Tests' do
       expect(rover.direction).to eq 'E'
     end
 
-    it 'initially faces N'
-    it 'initially faces E'
+    example 'initially faces N' do
+      rover = MarsRover.new(2, 3, 'N')
+
+      expect(rover.direction).to eq 'N'
+    end
+
+    it 'initially faces E' do
+      rover = MarsRover.new(2, 3, 'E')
+
+      expect(rover.direction).to eq 'E'
+    end
   end
 end
