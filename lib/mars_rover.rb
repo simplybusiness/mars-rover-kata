@@ -14,6 +14,10 @@ class MarsRover
     "(#{@x},#{@y}, #{@direction})"
   end
 
+  def forward
+    @y = @y + 1
+  end
+
   private
 
   def set_position(x, y)
