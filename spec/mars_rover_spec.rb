@@ -57,9 +57,15 @@ RSpec.describe 'Rover Class Tests' do
       }.to raise_error("Invalid direction: 'notavaliddirection'")
     end
 
-    it 'raises an exception when there is no initial position is specified' do
+    it 'raises an exception when an invalid x position is initialised' do
       expect{
         rover = MarsRover.new('a', 1, 'north')
+      }.to raise_error(ArgumentError)
+    end
+
+    it 'raises an exception when an invalid y position is initialised' do
+      expect{
+        rover = MarsRover.new(1, 'b', 'north')
       }.to raise_error(ArgumentError)
     end
 

@@ -15,6 +15,10 @@ class MarsRover
       raise ArgumentError, 'Invalid x position, must be an integer'
     end
 
+    unless y.is_a? Integer
+      raise ArgumentError, 'Invalid y position, must be an integer'
+    end
+
     @x = x
     @y = y
   end
