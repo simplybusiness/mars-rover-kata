@@ -11,12 +11,8 @@ class MarsRover
   end
 
   def setPosition(x, y)
-    unless x.is_a? Integer
-      raise ArgumentError, 'Invalid x position, must be an integer'
-    end
-
-    unless y.is_a? Integer
-      raise ArgumentError, 'Invalid y position, must be an integer'
+    unless x.is_a?(Integer) && y.is_a?(Integer)
+      raise ArgumentError, 'Invalid x or y position, both must be an integer'
     end
 
     @x = x
