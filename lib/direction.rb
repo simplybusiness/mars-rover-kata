@@ -17,5 +17,9 @@ class Direction
   def left
     throw new Exception 'Left not implemented'
   end
+
+  def right
+    throw new Exception 'Right not implemented'
+  end
 end
 

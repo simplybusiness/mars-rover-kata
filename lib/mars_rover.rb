@@ -33,6 +33,10 @@ class MarsRover
     @direction = load_direction(@direction.left, @x, @y)
   end
 
+  def right
+    @direction = load_direction(@direction.right, @x, @y)
+  end
+
   private
 
   def set_position(x, y)

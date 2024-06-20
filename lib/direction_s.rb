@@ -14,4 +14,8 @@ class DirectionS < Direction
   def left
     'E'
   end
+
+  def right
+    'W'
+  end
 end
