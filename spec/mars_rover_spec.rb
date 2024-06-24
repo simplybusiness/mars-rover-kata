@@ -3,7 +3,7 @@ describe 'Mars Rover' do
     def initialize(current_position)
       @current_position = current_position
     end
-    def current_position(coordinates = nil)
+    def current_position
       @current_position
     end
   end
