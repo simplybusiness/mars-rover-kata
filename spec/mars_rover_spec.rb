@@ -1,5 +1,8 @@
 describe 'Mars Rover' do
   class MarsRover
+    def initialize(current_position = [1, 2])
+      @current_position = current_position
+    end
     def current_position(coordinates)
       coordinates
     end
