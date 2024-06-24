@@ -14,7 +14,7 @@ describe 'Mars Rover' do
   end
 
   it 'set the current direction as south' do
-    mars_rover = MarsRover.new([1, 2], 'S')
+    mars_rover = MarsRover.new([5, 0], 'S')
     expect(mars_rover.current_direction).to eq('S')
   end
   it 'cannot have a direction outside of N, E, S or W'
