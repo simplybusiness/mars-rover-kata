@@ -3,8 +3,8 @@ describe 'Mars Rover' do
     def initialize(current_position = [1, 2])
       @current_position = current_position
     end
-    def current_position(coordinates)
-      coordinates
+    def current_position(coordinates = nil)
+      @current_position
     end
   end
   let(:mars_rover) { MarsRover.new }
