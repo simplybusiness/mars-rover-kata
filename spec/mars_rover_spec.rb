@@ -18,8 +18,8 @@ describe 'Mars Rover' do
   end
 
   it 'set the current direction as south' do
-    mars_rover = MarsRover.new([1, 2], 'N')
-    expect(mars_rover.current_direction).to eq('N')
+    mars_rover = MarsRover.new([1, 2], 'S')
+    expect(mars_rover.current_direction).to eq('S')
   end
   it 'cannot have a direction outside of N, E, S or W'
   it 'cannot have a null position'
