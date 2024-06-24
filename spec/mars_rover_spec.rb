@@ -1,13 +1,14 @@
 describe 'Mars Rover' do
   class MarsRover
-    def initialize(current_position)
+    def initialize(current_position, current_direction = 'N')
       @current_position = current_position
+      @current_direction = current_direction
     end
     def current_position
       @current_position
     end
     def current_direction
-      'N'
+      @current_direction
     end
   end
 
@@ -19,6 +20,11 @@ describe 'Mars Rover' do
   it 'has a direction that it is facing' do
     mars_rover = MarsRover.new([1, 2])
     expect(mars_rover.current_direction).to eq('N')
+  end
+
+  it 'set the current direction as south' do
+    mars_rover = MarsRover.new([1, 2], 'S')
+    expect(mars_rover.current_direction).to eq('S')
   end
   it 'cannot have a direction outside of N, E, S or W'
   it 'cannot have a null position'
