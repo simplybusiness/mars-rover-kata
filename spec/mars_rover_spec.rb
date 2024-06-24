@@ -1,6 +1,6 @@
 describe 'Mars Rover' do
   class MarsRover
-    def initialize(current_position, current_direction = 'N')
+    def initialize(current_position, current_direction)
       @current_position = current_position
       @current_direction = current_direction
     end
