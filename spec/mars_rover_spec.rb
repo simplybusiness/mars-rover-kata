@@ -9,7 +9,7 @@ describe 'Mars Rover' do
   end
 
   it 'has an initial position' do
-    mars_rover = MarsRover.new
+    mars_rover = MarsRover.new([1, 2])
     expect(mars_rover.current_position).to eq([1, 2])
   end
 
