@@ -15,6 +15,7 @@ describe 'Mars Rover' do
   end
 
   it 'has an initial position at any point on the planet' do
+    mars_rover = MarsRover.new([0, 0])
     expect(mars_rover.current_position([0, 0])).to eq([0, 0])
   end
 
