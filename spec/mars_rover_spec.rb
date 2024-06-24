@@ -1,14 +1,10 @@
 describe 'Mars Rover' do
   class MarsRover
+    attr_reader :current_position, :current_direction
+
     def initialize(current_position, current_direction)
       @current_position = current_position
       @current_direction = current_direction
-    end
-    def current_position
-      @current_position
-    end
-    def current_direction
-      @current_direction
     end
   end
 
@@ -23,4 +19,5 @@ describe 'Mars Rover' do
   end
   it 'cannot have a direction outside of N, E, S or W'
   it 'cannot have a null position'
+
 end
