@@ -7,7 +7,6 @@ describe 'Mars Rover' do
       @current_position
     end
   end
-  let(:mars_rover) { MarsRover.new }
 
   it 'has an initial position' do
     mars_rover = MarsRover.new
