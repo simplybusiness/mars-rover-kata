@@ -1,12 +1,10 @@
 describe 'Mars Rover' do
-  attr_reader :current_position
   class MarsRover
     def initialize(current_position = [0, 0])
       @current_position = current_position
     end
-    def current_position
-      @current_position
-    end
+
+    attr_reader :current_position
   end
 
   it 'has an initial position' do
