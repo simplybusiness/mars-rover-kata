@@ -1,10 +1,11 @@
 describe 'Mars Rover' do
+  attr_reader :current_position
   class MarsRover
-    def initialize(coordinates = [0, 0])
-      @coordinates = coordinates
+    def initialize(current_position = [0, 0])
+      @current_position = current_position
     end
     def current_position
-      @coordinates
+      @current_position
     end
   end
 
