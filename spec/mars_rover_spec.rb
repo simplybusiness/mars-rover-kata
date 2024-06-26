@@ -4,7 +4,7 @@ describe 'Mars Rover' do
       @coordinates = coordinates
     end
     def current_position(coordinates)
-      coordinates
+      @coordinates
     end
   end
 
