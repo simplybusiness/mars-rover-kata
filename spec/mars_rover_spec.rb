@@ -216,7 +216,19 @@ RSpec.describe 'Rover Class Tests' do
 
       x, y = rover.position
 
+      expect(x).to eq 0
       expect(y).to eq 2
+    end
+
+    it 'can take multiple forward commands through the execute method in a single string' do
+      rover = MarsRover.new(0, 0, 'E')
+
+      rover.execute('f f')
+
+      x, y = rover.position
+
+      expect(x).to eq 2
+      expect(y).to eq 0
     end
   end
 end
