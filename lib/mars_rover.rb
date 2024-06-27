@@ -17,18 +17,6 @@ class MarsRover
     "A MarsRover located at: (#{@x},#{@y}), facing #{@direction.name}"
   end
 
-  def forward
-    @direction.forward
-    @x = @direction.x
-    @y = @direction.y
-  end
-
-  def backward
-    @direction.backward
-    @x = @direction.x
-    @y = @direction.y
-  end
-
   def left
     @direction = Direction.load_direction(@direction.left, @x, @y)
   end
@@ -45,6 +33,18 @@ class MarsRover
   end
 
   private
+
+  def forward
+    @direction.forward
+    @x = @direction.x
+    @y = @direction.y
+  end
+
+  def backward
+    @direction.backward
+    @x = @direction.x
+    @y = @direction.y
+  end
 
   def set_position(x, y)
     unless x.is_a?(Integer) && y.is_a?(Integer)
