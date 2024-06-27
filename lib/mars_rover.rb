@@ -17,6 +17,17 @@ class MarsRover
     "A MarsRover located at: (#{@x},#{@y}), facing #{@direction.name}"
   end
 
+  def execute(instruction)
+    case instruction
+      when 'f' then forward
+      when 'b' then backward
+      when 'l' then left
+      when 'r' then right
+    end
+  end
+
+  private
+
   def left
     @direction = Direction.load_direction(@direction.left, @x, @y)
   end
@@ -24,15 +35,6 @@ class MarsRover
   def right
     @direction = Direction.load_direction(@direction.right, @x, @y)
   end
-
-  def execute(instruction)
-    case instruction
-      when 'f' then forward
-      when 'b' then backward
-    end
-  end
-
-  private
 
   def forward
     @direction.forward

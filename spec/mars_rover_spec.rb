@@ -161,7 +161,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can turn left, from N to W' do
       rover = MarsRover.new(0, 0, 'N')
 
-      rover.left
+      rover.execute('l')
 
       expect(rover.direction).to eq 'W'
     end
@@ -169,7 +169,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can turn left, from W to S' do
       rover = MarsRover.new(0, 0, 'W')
 
-      rover.left
+      rover.execute('l')
 
       expect(rover.direction).to eq 'S'
     end
@@ -177,7 +177,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can turn right, from N to E' do
       rover = MarsRover.new(0, 0, 'N')
 
-      rover.right
+      rover.execute('r')
 
       expect(rover.direction).to eq 'E'
     end
@@ -185,7 +185,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can turn right, from E to S' do
       rover = MarsRover.new(0, 0, 'E')
 
-      rover.right
+      rover.execute('r')
 
       expect(rover.direction).to eq 'S'
     end
@@ -193,7 +193,7 @@ RSpec.describe 'Rover Class Tests' do
     it 'can turn right fron N then go forward E, from 0,0 to 1,0' do
       rover = MarsRover.new(0, 0, 'N')
 
-      rover.right
+      rover.execute('r')
       rover.execute('f')
 
       x, y = rover.position
