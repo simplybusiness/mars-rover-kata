@@ -14,7 +14,7 @@ class MarsRover
   end
 
   def inspect
-    "(#{@x},#{@y}, #{@direction.name})"
+    "A MarsRover located at: (#{@x},#{@y}), facing #{@direction.name}"
   end
 
   def forward
@@ -35,6 +35,10 @@ class MarsRover
 
   def right
     @direction = Direction.load_direction(@direction.right, @x, @y)
+  end
+
+  def execute(instruction)
+    
   end
 
   private
