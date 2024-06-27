@@ -30,11 +30,11 @@ class MarsRover
   end
 
   def left
-    @direction = load_direction(@direction.left, @x, @y)
+    @direction = Direction.load_direction(@direction.left, @x, @y)
   end
 
   def right
-    @direction = load_direction(@direction.right, @x, @y)
+    @direction = Direction.load_direction(@direction.right, @x, @y)
   end
 
   private
@@ -54,10 +54,7 @@ class MarsRover
       raise ArgumentError, "Invalid direction: '#{direction}', 'N, S, E, W' accepted"
     end
 
-    @direction = load_direction(direction, @x, @y)
+    @direction = Direction.load_direction(direction, @x, @y)
   end
 
-  def load_direction(direction, x, y)
-    Direction.load_direction(direction, x, y)
-  end
 end
