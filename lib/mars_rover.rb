@@ -58,6 +58,6 @@ class MarsRover
   end
 
   def load_direction(direction, x, y)
-    Object.const_get('Direction' + direction).new(x, y)
+    Direction.load_direction(direction, x, y)
   end
 end

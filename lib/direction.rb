@@ -21,5 +21,9 @@ class Direction
   def right
     throw new Exception 'Right not implemented'
   end
+
+  def self.load_direction(direction, x, y)
+    Object.const_get('Direction' + direction).new(x, y)
+  end
 end
 
