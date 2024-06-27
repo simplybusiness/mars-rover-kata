@@ -101,7 +101,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can move forwards, facing E' do
       rover = MarsRover.new(0, 0, 'E')
 
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
@@ -109,7 +109,7 @@ RSpec.describe 'Rover Class Tests' do
       expect(y).to eq 0
       expect(rover.direction).to eq 'E'
 
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
@@ -121,7 +121,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can move backwards, facing S' do
       rover = MarsRover.new(1, 1, 'S')
 
-      rover.backward
+      rover.execute('b')
 
       x, y = rover.position
 
@@ -129,7 +129,7 @@ RSpec.describe 'Rover Class Tests' do
       expect(y).to eq 2
       expect(rover.direction).to eq 'S'
 
-      rover.backward
+      rover.execute('b')
 
       x, y = rover.position
 
@@ -141,7 +141,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can move forwards, facing S' do
       rover = MarsRover.new(1, 1, 'S')
 
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
@@ -149,7 +149,7 @@ RSpec.describe 'Rover Class Tests' do
       expect(y).to eq 0
       expect(rover.direction).to eq 'S'
 
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
@@ -194,7 +194,7 @@ RSpec.describe 'Rover Class Tests' do
       rover = MarsRover.new(0, 0, 'N')
 
       rover.right
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
