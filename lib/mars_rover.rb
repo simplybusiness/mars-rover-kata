@@ -38,12 +38,9 @@ class MarsRover
   end
 
   def execute(instruction)
-    if instruction == 'f'
-      forward
-    end
-
-    if instruction == 'b'
-      backward
+    case instruction
+      when 'f' then forward
+      when 'b' then backward
     end
   end
 
