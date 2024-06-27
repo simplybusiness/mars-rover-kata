@@ -77,7 +77,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can move forwards, facing N' do
       rover = MarsRover.new(0, 0, 'N')
 
-      rover.forward
+      rover.execute('f')
 
       x, y = rover.position
 
@@ -89,7 +89,7 @@ RSpec.describe 'Rover Class Tests' do
     example 'the rover can move backwards, facing N' do
       rover = MarsRover.new(0, 0, 'N')
 
-      rover.backward
+      rover.execute('b')
 
       x, y = rover.position
 
