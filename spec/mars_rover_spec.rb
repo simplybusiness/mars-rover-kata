@@ -203,10 +203,20 @@ RSpec.describe 'Rover Class Tests' do
       expect(rover.direction).to eq 'E'
     end
 
-    it 'can recive a list of commands from earth' do
+    it 'can receive a list of commands from earth' do
       rover = MarsRover.new(0, 0, 'N')
 
       expect(rover).to respond_to(:execute).with(1)
+    end
+
+    it 'can take multiple forward commands through the execute method in a single string' do
+      rover = MarsRover.new(0, 0, 'N')
+
+      rover.execute('f f')
+
+      x, y = rover.position
+
+      expect(y).to eq 2
     end
   end
 end

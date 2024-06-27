@@ -18,11 +18,15 @@ class MarsRover
   end
 
   def execute(instruction)
-    case instruction
-      when 'f' then forward
-      when 'b' then backward
-      when 'l' then left
-      when 'r' then right
+    single_instruction = instruction.split
+
+    single_instruction.each do |i|
+      case i
+        when 'f' then forward
+        when 'b' then backward
+        when 'l' then left
+        when 'r' then right
+      end
     end
   end
 
