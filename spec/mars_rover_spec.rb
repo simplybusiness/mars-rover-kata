@@ -2,11 +2,11 @@ require 'ostruct'
 describe 'Mars Rover' do
   class MarsRover
     def initialize(starting_point: OpenStruct.new(x: 0, y: 0))
-
+      @current_position = OpenStruct.new(x: 0, y: 0)
     end
 
     def current_position
-      OpenStruct.new(x: 0, y: 0)
+      @current_position
     end
 
     def inspect
