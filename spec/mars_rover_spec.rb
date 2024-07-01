@@ -10,6 +10,10 @@ describe 'Mars Rover' do
     def inspect
       'a Mars Rover'
     end
+
+    def direction
+      'N'
+    end
   end
 
   it 'knows its starting point' do
@@ -24,7 +28,11 @@ describe 'Mars Rover' do
     expect(mars_rover.current_position).to eq(OpenStruct.new(x: 2, y: 3))
   end
 
-  it 'knows the direction is facing (N, S, E, W)'
+  it 'knows the direction is facing (N, S, E, W)' do
+    mars_rover = MarsRover.new
+
+    expect(mars_rover.direction).to eq('N')
+  end
   it 'cannot be initialized with a direction outside of (N, S, E, W)'
   it 'cannot be initialized w/o a starting point'
 end
