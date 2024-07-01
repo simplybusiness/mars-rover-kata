@@ -8,10 +8,12 @@ describe 'Mars Rover' do
   let(:mars_rover) { MarsRover.new }
 
   it 'has an initial position' do
+    mars_rover = MarsRover.new
     expect(mars_rover.current_position([1, 2])).to eq([1, 2])
   end
 
   it 'has an initial position at any point on the planet' do
+    mars_rover = MarsRover.new
     expect(mars_rover.current_position([0, 0])).to eq([0, 0])
   end
 
