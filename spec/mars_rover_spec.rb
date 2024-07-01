@@ -1,10 +1,8 @@
 describe 'Mars Rover' do
   class MarsRover
+    attr_reader :current_position
     def initialize(current_position)
       @current_position = current_position
-    end
-    def current_position
-      @current_position
     end
   end
 
