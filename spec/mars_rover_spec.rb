@@ -7,10 +7,6 @@ describe 'Mars Rover' do
       @current_position = OpenStruct.new(x: 0, y: 0)
     end
 
-    def current_position
-      @current_position
-    end
-
     def inspect
       'a Mars Rover'
     end
