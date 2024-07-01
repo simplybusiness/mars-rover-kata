@@ -1,7 +1,7 @@
 require 'ostruct'
 describe 'Mars Rover' do
   class MarsRover
-    def initialize(starting_point:)
+    def initialize(starting_point: OpenStruct.new(x: 0, y: 0))
 
     end
 
@@ -15,7 +15,7 @@ describe 'Mars Rover' do
   end
 
   it 'knows its starting point' do
-    mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 0, y: 0))
+    mars_rover = MarsRover.new
 
     expect(mars_rover.current_position).to eq(OpenStruct.new(x: 0, y: 0))
   end
