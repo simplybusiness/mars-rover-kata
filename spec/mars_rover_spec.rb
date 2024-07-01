@@ -5,8 +5,6 @@ describe 'Mars Rover' do
     end
   end
 
-  let(:mars_rover) { MarsRover.new }
-
   it 'has an initial position' do
     mars_rover = MarsRover.new
     expect(mars_rover.current_position([1, 2])).to eq([1, 2])
