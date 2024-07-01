@@ -4,7 +4,7 @@ describe 'Mars Rover' do
     attr_reader :current_position
 
     def initialize(starting_point: OpenStruct.new(x: 0, y: 0))
-      @current_position = OpenStruct.new(x: 0, y: 0)
+      @current_position = starting_point
     end
 
     def inspect
@@ -17,6 +17,13 @@ describe 'Mars Rover' do
 
     expect(mars_rover.current_position).to eq(OpenStruct.new(x: 0, y: 0))
   end
+
+  it 'has a starting point anywhere on the planet' do
+    mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3))
+
+    expect(mars_rover.current_position).to eq(OpenStruct.new(x: 2, y: 3))
+  end
+
   it 'knows the direction is facing (N, S, E, W)'
   it 'cannot be initialized with a direction outside of (N, S, E, W)'
   it 'cannot be initialized w/o a starting point'
