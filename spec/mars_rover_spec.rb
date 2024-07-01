@@ -1,6 +1,8 @@
 require 'ostruct'
 describe 'Mars Rover' do
   class MarsRover
+    attr_reader :current_position
+
     def initialize(starting_point: OpenStruct.new(x: 0, y: 0))
       @current_position = OpenStruct.new(x: 0, y: 0)
     end
