@@ -30,7 +30,9 @@ RSpec.describe 'Rover' do
 
   describe "rover receives the commands" do
     it "receives an array of commands" do
-      expect(Rover.new(0, 0).commands([])).to eq('L')
+      rover = Rover.new(0, 0)
+      expect(rover.commands([])).to eq('L')
+      expect(rover).to respond_to(:commands).with(1)
     end
   end
 end
