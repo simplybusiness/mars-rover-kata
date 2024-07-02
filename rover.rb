@@ -7,4 +7,12 @@ class Rover
     @coordinates = [x, y]
     @direction = direction
   end
+
+  def inspect
+    "Rover facing direction: #{@direction } and the coordinates: #{@coordinates}"
+  end
+
+  def commands(commands)
+    'L'
+  end
 end

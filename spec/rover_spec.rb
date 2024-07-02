@@ -27,4 +27,10 @@ RSpec.describe 'Rover' do
       expect{Rover.new(0, 0, 'B')}.to raise_error
     end
   end
+
+  describe "rover receives the commands" do
+    it "receives an array of commands" do
+      expect(Rover.new(0, 0).commands([])).to eq('L')
+    end
+  end
 end
