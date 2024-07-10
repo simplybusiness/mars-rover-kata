@@ -32,6 +32,12 @@ describe 'Mars Rover' do
     expect(mars_rover.direction).to eq('N')
   end
 
+  it 'has a starting direction of E' do
+    mars_rover = MarsRover.new(direction: 'E')
+
+    expect(mars_rover.direction).to eq('E')
+  end
+
   it 'cannot be initialized with a direction outside of (N, S, E, W)' do
     expect { MarsRover.new(direction: 'Z') }.to raise_error(ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'")
   end
