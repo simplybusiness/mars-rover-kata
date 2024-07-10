@@ -17,6 +17,10 @@ describe 'Mars Rover' do
         expect(mars_rover.current_position).to eq(OpenStruct.new(x: 2, y: 3))
       end
     end
+
+    context 'when the starting point is not provided' do
+        it 'cannot be initialized w/o a starting point'
+    end
   end
 
 
@@ -39,6 +43,4 @@ describe 'Mars Rover' do
   it 'cannot be initialized with a direction outside of (N, S, E, W)' do
     expect { MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: 'Z') }.to raise_error(ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'")
   end
-
-  it 'cannot be initialized w/o a starting point'
 end
