@@ -21,6 +21,9 @@ describe 'Mars Rover' do
     context 'when the starting point is not provided' do
         it 'cannot be initialized w/o a starting point'
     end
+
+    context 'when the direction of the mars rover is provided'
+    context 'when the direction of the mars rover is not provided'
   end
 
 
