@@ -19,9 +19,9 @@ describe 'Mars Rover' do
     end
 
     context 'when the starting point is not provided' do
-        it 'cannot be initialized w/o a starting point' do
-          expect { MarsRover.new(direction: 'N') }.to raise_error(ArgumentError)
-        end
+      it 'cannot be initialized w/o a starting point' do
+        expect { MarsRover.new(direction: 'N') }.to raise_error(ArgumentError)
+      end
     end
 
     context 'when the direction of the mars rover is provided' do
