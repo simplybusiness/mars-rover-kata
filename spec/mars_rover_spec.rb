@@ -1,18 +1,15 @@
 require 'ostruct'
 describe 'Mars Rover' do
   class MarsRover
-    attr_reader :current_position
+    attr_reader :current_position, :direction
 
-    def initialize(starting_point: OpenStruct.new(x: 0, y: 0))
+    def initialize(starting_point: OpenStruct.new(x: 0, y: 0), direction: 'N')
       @current_position = starting_point
+      @direction = direction
     end
 
     def inspect
       'a Mars Rover'
-    end
-
-    def direction
-      'N'
     end
   end
 
@@ -33,6 +30,7 @@ describe 'Mars Rover' do
 
     expect(mars_rover.direction).to eq('N')
   end
+
   it 'cannot be initialized with a direction outside of (N, S, E, W)'
   it 'cannot be initialized w/o a starting point'
 end
