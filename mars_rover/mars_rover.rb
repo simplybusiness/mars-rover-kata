@@ -1,5 +1,3 @@
-require 'ostruct'
-
 class MarsRover
   attr_reader :current_position, :direction
 
