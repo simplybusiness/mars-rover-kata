@@ -22,17 +22,18 @@ describe 'Mars Rover' do
         it 'cannot be initialized w/o a starting point'
     end
 
-    context 'when the direction of the mars rover is provided'
+    context 'when the direction of the mars rover is provided' do
+      it 'knows the direction is facing (N, S, E, W)' do
+        mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: 'N')
+
+        expect(mars_rover.direction).to eq('N')
+      end
+    end
+
     context 'when the direction of the mars rover is not provided'
   end
 
 
-
-  it 'knows the direction is facing (N, S, E, W)' do
-    mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: 'N')
-
-    expect(mars_rover.direction).to eq('N')
-  end
 
   directions = %w[N E S W]
 
