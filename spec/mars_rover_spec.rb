@@ -33,7 +33,7 @@ describe 'Mars Rover' do
   end
 
   it 'cannot be initialized with a direction outside of (N, S, E, W)' do
-    expect { MarsRover.new(direction: 'Z') }.to raise_error(ArgumentError)
+    expect { MarsRover.new(direction: 'Z') }.to raise_error(ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'")
   end
 
   it 'cannot be initialized w/o a starting point'
