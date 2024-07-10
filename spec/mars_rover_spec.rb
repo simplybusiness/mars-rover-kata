@@ -28,20 +28,16 @@ describe 'Mars Rover' do
 
         expect(mars_rover.direction).to eq('N')
       end
+
+      %w[N E S W].each do |direction|
+        it "can have a starting direction of #{direction}" do
+          mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: direction)
+          expect(mars_rover.direction).to eq(direction)
+        end
+      end
     end
 
     context 'when the direction of the mars rover is not provided'
-  end
-
-
-
-  directions = %w[N E S W]
-
-  directions.each do |direction|
-    it "can have a starting direction of #{direction}" do
-      mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: direction)
-      expect(mars_rover.direction).to eq(direction)
-    end
   end
 
   it 'cannot be initialized with a direction outside of (N, S, E, W)' do
