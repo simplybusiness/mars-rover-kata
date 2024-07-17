@@ -42,7 +42,7 @@ describe 'Mars Rover' do
         expect { MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: 'Z') }.to raise_error(ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'")
       end
 
-      it 'can accept both lowercase and uppercase directions' do
+      it 'can accept lowercase directions' do
         mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: 'n')
         expect(mars_rover.direction).to eq('N')
       end
