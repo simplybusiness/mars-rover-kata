@@ -34,9 +34,13 @@ RSpec.describe 'Rover' do
       expect(rover).to respond_to(:commands).with(1)
     end
 
-    it "moves forward" do
-      expect(Rover.new(0, 0).commands(['f'])).to eq(['N', 0, 1])
+    it "moves forward given starting from initial point and the direction set is North" do
+      expect(Rover.new(0, 0, 'N').commands(['f'])).to eq(['N', 0, 1])
     end
+
+    it "moves forward given starting point is 2,2"
+
+    it "moves forward when the coordinates has negative values"
 
     it "moves backword"
   end
