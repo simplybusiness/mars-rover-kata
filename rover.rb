@@ -17,6 +17,7 @@ class Rover
       direction = @direction
       y_coord = @coordinates[1].to_i + 1
     end
+    @coordinates = [@coordinates[0], y_coord]
 
     [direction, @coordinates[0], y_coord]
   end
