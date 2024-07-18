@@ -14,11 +14,10 @@ class Rover
 
   def commands(commands)
     if commands.include?'f'
-      direction = @direction
       y_coord = @coordinates[1].to_i + 1
     end
     @coordinates = [@coordinates[0], y_coord]
 
-    [direction] + @coordinates
+    [@direction] + @coordinates
   end
 end
