@@ -19,6 +19,6 @@ class Rover
     end
     @coordinates = [@coordinates[0], y_coord]
 
-    [direction, @coordinates[0], y_coord]
+    [direction] + @coordinates
   end
 end
