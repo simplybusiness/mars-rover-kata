@@ -33,8 +33,14 @@ describe 'Mars Rover' do
     expect { MarsRover.new('1,2', 'N') }.to raise_error('Invalid position')
   end
 
-  it 'cannot accept anything other than coordinates for position' do
-    expect { MarsRover.new([1, 'sad'], 'N') }.to raise_error('Invalid position')
+  [
+    [1, 'sad'],
+    [nil, nil],
+    [2.0, 3.1],
+    [[0, 0], [2, 2]]
+  ].each do |invalid_coordinates|
+    it "cannot accept anything other than coordinates for position e.g. cannot accept #{invalid_coordinates}" do
+      expect { MarsRover.new(invalid_coordinates, 'N') }.to raise_error('Invalid position')
+    end
   end
-
 end
