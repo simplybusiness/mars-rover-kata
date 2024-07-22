@@ -10,6 +10,10 @@ describe 'Mars Rover' do
       raise 'Invalid position' unless @current_position.is_a?(Array)
       raise 'Invalid position' unless @current_position.all? { |coordinate| coordinate.is_a?(Integer) }
     end
+
+    def commands(commands)
+      commands
+    end
   end
 
   it 'has an initial position' do
@@ -36,5 +40,8 @@ describe 'Mars Rover' do
     it "cannot accept anything other than coordinates for position e.g. cannot accept #{invalid_coordinates}" do
       expect { MarsRover.new(invalid_coordinates, 'N') }.to raise_error('Invalid position')
     end
+  end
+  it 'receives the array of characters as commands' do
+    expect(MarsRover.new([1, 2], 'N').commands(['L','M','L'])).to eq(['L','M','L'])
   end
 end
