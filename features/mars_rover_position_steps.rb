@@ -1,11 +1,16 @@
 class MarsRover
+  def initialize(x , y)
+    @x = x
+    @y = y
+  end
+
   def current_position
-    [3, 2]
+    [@x, @y]
   end
 end
 
 Given('The Mars Rover is at \({int}, {int}) starting position') do |int, int2|
-  @mars_rover = MarsRover.new
+  @mars_rover = MarsRover.new(int, int2)
 end
 
 When('we ask its current position') do
