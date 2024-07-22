@@ -45,4 +45,13 @@ describe 'Mars Rover' do
     expect(MarsRover.new([1, 2], 'N').commands(['L','M','L'])).to eq(['L','M','L'])
     expect(MarsRover.new([1,2], 'N')).to respond_to(:commands).with(1).argument
   end
+
+  it 'receives the command f and moves the rover forward'
+
+
+  it 'receives the command b and moves the rover backward'
+
+  ['n','dsf','@@', '2','F', 'B'].each do |invalid_command|
+    it "cannot accept anything other than f, b for commands e.g. cannot accept #{invalid_command}"
+  end
 end
