@@ -25,16 +25,13 @@ describe 'Mars Rover' do
     expect { MarsRover.new([0, 0], 'Z') }.to raise_error('Invalid direction')
   end
 
-  it 'cannot have a null position' do
-    expect { MarsRover.new(nil, 'N') }.to raise_error('Invalid position')
-  end
-
   [
     [1, 'sad'],
     [nil, nil],
     [2.0, 3.1],
     [[0, 0], [2, 2]],
-    ['1,2']
+    ['1,2'],
+    [nil]
   ].each do |invalid_coordinates|
     it "cannot accept anything other than coordinates for position e.g. cannot accept #{invalid_coordinates}" do
       expect { MarsRover.new(invalid_coordinates, 'N') }.to raise_error('Invalid position')
