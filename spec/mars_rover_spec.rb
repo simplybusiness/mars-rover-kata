@@ -8,6 +8,7 @@ describe 'Mars Rover' do
       raise 'Invalid direction' unless ['N', 'E', 'S', 'W'].include?(@current_direction)
       raise 'Invalid position' if @current_position.nil?
       raise 'Invalid position' unless @current_position.is_a?(Array)
+      raise 'Invalid position' unless @current_position.all? { |coordinate| coordinate.is_a?(Integer) }
     end
   end
 
@@ -30,6 +31,10 @@ describe 'Mars Rover' do
 
   it 'cannot accept anything other than array for position' do
     expect { MarsRover.new('1,2', 'N') }.to raise_error('Invalid position')
+  end
+
+  it 'cannot accept anything other than coordinates for position' do
+    expect { MarsRover.new([1, 'sad'], 'N') }.to raise_error('Invalid position')
   end
 
 end
