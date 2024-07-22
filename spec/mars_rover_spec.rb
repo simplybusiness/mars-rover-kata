@@ -43,5 +43,6 @@ describe 'Mars Rover' do
   end
   it 'receives the array of characters as commands' do
     expect(MarsRover.new([1, 2], 'N').commands(['L','M','L'])).to eq(['L','M','L'])
+    expect(MarsRover.new([1,2], 'N')).to respond_to(:commands).with(1).argument
   end
 end
