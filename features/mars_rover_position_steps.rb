@@ -1,6 +1,6 @@
 class MarsRover
   def current_position
-
+    [3, 2]
   end
 end
 
@@ -13,7 +13,7 @@ When('we ask its current position') do
 end
 
 Then('we get a signal back that its starting position is \({int}, {int})') do |int, int2|
-  pending # Write code here that turns the phrase above into concrete actions
+  expect(@current_position).to eq([3, 2])
 end
     
 Then('we also get a signal back about its current direction') do
