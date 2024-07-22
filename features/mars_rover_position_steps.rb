@@ -13,7 +13,7 @@ When('we ask its current position') do
 end
 
 Then('we get a signal back that its starting position is \({int}, {int})') do |int, int2|
-  expect(@current_position).to eq([3, 2])
+  expect(@current_position).to eq([int, int2])
 end
     
 Then('we also get a signal back about its current direction') do
