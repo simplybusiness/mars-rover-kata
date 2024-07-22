@@ -28,7 +28,8 @@ describe 'Mars Rover' do
     expect { MarsRover.new(nil, 'N') }.to raise_error('Invalid position')
   end
 
-  it 'cannot accept anything other than cordinates for position' do
+  it 'cannot accept anything other than array for position' do
     expect { MarsRover.new('1,2', 'N') }.to raise_error('Invalid position')
   end
+
 end
