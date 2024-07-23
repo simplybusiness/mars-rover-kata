@@ -13,8 +13,13 @@ class Rover
   end
 
   def commands(commands)
-    y_coord = @coordinates[1].to_i + 1
-    @coordinates = [@coordinates[0], y_coord]
+    if @direction  == 'N'
+      y_coord = @coordinates[1].to_i + 1
+      @coordinates = [@coordinates[0], y_coord]
+    else
+      x_coord = @coordinates[0].to_i + 1
+      @coordinates = [x_coord, @coordinates[1]]
+    end
 
     [@direction] + @coordinates
   end
