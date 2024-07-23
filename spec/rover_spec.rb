@@ -43,8 +43,7 @@ RSpec.describe 'Rover' do
     it "moves forward given starting point is 2,2 and the direction is North" do
       rover = Rover.new(2, 2, 'N')
       expect(rover.commands(['f'])).to eq(['N', 2, 3])
-      expect(rover.coordinates).to eq([2, 3])
-      expect(rover.direction).to eq('N')
+      expect_mars_rover(expected_location: [2, 3], expected_direction: 'N', rover: rover)
     end
 
     it "moves forward given starting point is 2,2 and the direction set is South"
@@ -52,8 +51,7 @@ RSpec.describe 'Rover' do
     it 'moves forward given starting from initial point and the direction set is East' do
       rover = Rover.new(0, 0, 'E')
       expect(rover.commands(['f'])).to eq(['E', 1, 0])
-      expect(rover.coordinates).to eq([1, 0])
-      expect(rover.direction).to eq('E')
+      expect_mars_rover(expected_location: [1, 0], expected_direction: 'E', rover: rover)
     end
 
     it 'moves forward given starting from initial point and the direction set is West'
