@@ -13,6 +13,7 @@ class MarsRover
     unless VALID_DIRECTIONS.include?(direction)
       raise ArgumentError, "Direction must be one of #{VALID_DIRECTIONS.join(', ')}"
     end
+
     direction
   end
 
