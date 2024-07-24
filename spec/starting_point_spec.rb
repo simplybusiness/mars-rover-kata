@@ -1,12 +1,10 @@
 
 class StartingPoint
+  attr_reader :x, :y
 
-  def y
-    0
-  end
-
-  def x
-    0
+  def initialize
+    @x = 0
+    @y = 0
   end
 
   def inspect
