@@ -2,7 +2,6 @@ require 'ostruct'
 require './mars_rover/mars_rover.rb'
 
 describe 'Mars Rover' do
-
   describe 'initialization of the mars rover' do
     context 'when the starting point is provided' do
       it 'knows its starting point' do
