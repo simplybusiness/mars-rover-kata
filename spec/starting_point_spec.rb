@@ -1,5 +1,24 @@
+
+class StartingPoint
+
+  def y
+    0
+  end
+
+  def x
+    0
+  end
+end
+
+
 describe 'starting point' do
-  it 'has a x and y coordinate'
+  it 'has a x and y coordinate' do
+    starting_point = StartingPoint.new
+
+    expect(starting_point.y).to eq(0)
+    expect(starting_point.x).to eq(0)
+  end
+
   it 'validate the x and y coordinate'
   it 'has a starting point where the x and y coordinates are the same'
   it 'has a starting point where the x coordinate are different but y coordinates are the same'
