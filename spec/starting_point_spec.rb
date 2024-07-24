@@ -8,6 +8,10 @@ class StartingPoint
   def x
     0
   end
+
+  def inspect
+    "a starting point located at #{x}, #{y}"
+  end
 end
 
 
