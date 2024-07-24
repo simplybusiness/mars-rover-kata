@@ -55,9 +55,11 @@ describe 'Mars Rover' do
         expect(mars_rover.direction).to eq('N')
       end
 
-      # it 'rasies an exception when the direction is nil' do
-      #   expect { MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: nil) }.to raise_exception(ArgumentError)
-      # end
+      it 'defaults to N if the direction is nil' do
+        mars_rover = MarsRover.new(starting_point: OpenStruct.new(x: 2, y: 3), direction: nil)
+
+        expect(mars_rover.direction).to eq('N')
+      end
     end
   end
 end
