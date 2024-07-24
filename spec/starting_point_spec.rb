@@ -14,13 +14,14 @@ end
 
 
 describe 'starting point' do
-  it 'has a x and y coordinate' do
+  it 'starts with a x and y coordinate' do
     starting_point = StartingPoint.new
 
     expect(starting_point.y).to eq(0)
     expect(starting_point.x).to eq(0)
   end
 
+  it 'starts with a different x and y coordinate'
   it 'validate the x and y coordinate'
   it 'has a starting point where the x and y coordinates are the same'
   it 'has a starting point where the x coordinate are different but y coordinates are the same'
