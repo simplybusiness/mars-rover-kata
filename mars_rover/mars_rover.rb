@@ -1,15 +1,15 @@
 class MarsRover
   attr_reader :current_position, :direction
 
+  VALID_DIRECTIONS = %w[N E S W].freeze
+
   def initialize(starting_point:, direction: 'N')
     @current_position = starting_point
-    if direction.nil?
-      raise ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'"
-    else
-      direction = direction.upcase
+    @direction = (direction || 'N').upcase
+
+    unless VALID_DIRECTIONS.include?(@direction)
+      raise ArgumentError, "Direction must be one of #{VALID_DIRECTIONS.join(', ')}"
     end
-    raise ArgumentError, "Direction must be one of 'N', 'E', 'S', 'W'" unless %w[N E S W].include?(direction)
-    @direction = direction
   end
 
   def inspect
