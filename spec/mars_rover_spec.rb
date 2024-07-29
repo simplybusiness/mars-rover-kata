@@ -46,49 +46,24 @@ describe 'Mars Rover' do
     expect(MarsRover.new([1,2], 'N')).to respond_to(:commands).with(1).argument
   end
 
-  it 'receives the command f and moves the rover forward'
-
-
-  it 'receives the command b and moves the rover backward'
-
-  context 'when the rover is facing north' do
-    it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction remains the same'
+  context 'is facing north and initial position is [0, 0]' do
+    it 'receives the command f and moves the rover forward to [0, 1] and current direction remains the same'
+    it 'receives the command b and moves the rover backward to [0, -1] and current direction remains the same'
   end
 
-  context 'when the rover is facing east' do
-    it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction remains the same'
+  context 'when the rover is facing east and initial position is [0, 0]' do
+    it 'receives the command f and moves the rover forward to [1, 0] and current direction remains the same'
+    it 'receives the command b and moves the rover backward to [-1, 0] and current direction remains the same'
   end
 
-  context 'when the rover is facing south' do
-    it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction remains the same'
+  context 'when the rover is facing south and initial position is [0, 0]' do
+    it 'receives the command f and moves the rover forward to [0, -1] and current direction remains the same'
+    it 'receives the command b and moves the rover backward to [0, 1] and current direction remains the same'
   end
 
-  context 'when the rover is facing west' do
-    it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction remains the same'
-  end
-
-  context 'initial position is [0, 0] and direction is N' do
-    it 'receives the command f and moves the rover forward to [0, 1]'
-    it 'receives the command b and moves the rover backward to [0, -1]'
-  end
-
-  context 'initial position is [0, 0] and direction is E' do
-    it 'receives the command f and moves the rover forward to [1, 0]'
-    it 'receives the command b and moves the rover backward to [-1, 0]'
-  end
-
-  context 'initial position is [0, 0] and direction is S' do
-    it 'receives the command f and moves the rover forward to [0, -1]'
-    it 'receives the command b and moves the rover backward to [0, 1]'
-  end
-
-  context 'initial position is [0, 0] and direction is W' do
-    it 'receives the command f and moves the rover forward to [-1, 0]'
-    it 'receives the command b and moves the rover backward to [1, 0]'
+  context 'when the rover is facing west and initial position is [0, 0]' do
+    it 'receives the command f and moves the rover forward to [-1, 0] and current direction remains the same'
+    it 'receives the command b and moves the rover backward to [1, 0] and current direction remains the same'
   end
 
   ['n','dsf','@@', '2','F', 'B'].each do |invalid_command|
