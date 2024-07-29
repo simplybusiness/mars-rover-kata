@@ -53,22 +53,22 @@ describe 'Mars Rover' do
 
   context 'when the rover is facing north' do
     it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction is South'
+    it 'receives the command b and moves the rover backward and current direction remains the same'
   end
 
   context 'when the rover is facing east' do
     it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction is West'
+    it 'receives the command b and moves the rover backward and current direction remains the same'
   end
 
   context 'when the rover is facing south' do
     it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction is North'
+    it 'receives the command b and moves the rover backward and current direction remains the same'
   end
 
   context 'when the rover is facing west' do
     it 'receives the command f and moves the rover forward and current direction remains the same'
-    it 'receives the command b and moves the rover backward and current direction is East'
+    it 'receives the command b and moves the rover backward and current direction remains the same'
   end
 
   context 'initial position is [0, 0] and direction is N' do
