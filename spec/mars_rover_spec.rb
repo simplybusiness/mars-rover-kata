@@ -51,6 +51,26 @@ describe 'Mars Rover' do
 
   it 'receives the command b and moves the rover backward'
 
+  context 'when the rover is facing north' do
+    it 'receives the command f and moves the rover forward and current direction remains the same'
+    it 'receives the command b and moves the rover backward and current direction is South'
+  end
+
+  context 'when the rover is facing east' do
+    it 'receives the command f and moves the rover forward and current direction remains the same'
+    it 'receives the command b and moves the rover backward and current direction is West'
+  end
+
+  context 'when the rover is facing south' do
+    it 'receives the command f and moves the rover forward and current direction remains the same'
+    it 'receives the command b and moves the rover backward and current direction is North'
+  end
+
+  context 'when the rover is facing west' do
+    it 'receives the command f and moves the rover forward and current direction remains the same'
+    it 'receives the command b and moves the rover backward and current direction is East'
+  end
+
   ['n','dsf','@@', '2','F', 'B'].each do |invalid_command|
     it "cannot accept anything other than f, b for commands e.g. cannot accept #{invalid_command}"
   end
