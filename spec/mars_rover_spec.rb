@@ -16,6 +16,7 @@ describe 'Mars Rover' do
 
     def receive_command(commands)
       @current_position = [0, 1]
+      @current_coordinates = OpenStruct.new(x: @current_position[0], y: @current_position[1])
       commands
     end
   end
