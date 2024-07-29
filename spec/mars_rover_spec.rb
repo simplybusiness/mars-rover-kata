@@ -11,7 +11,7 @@ describe 'Mars Rover' do
       raise 'Invalid position' unless @current_position.all? { |coordinate| coordinate.is_a?(Integer) }
     end
 
-    def commands(commands)
+    def receive_command(commands)
       @current_position = [0, 1]
       commands
     end
@@ -43,14 +43,14 @@ describe 'Mars Rover' do
     end
   end
   it 'receives the array of characters as commands' do
-    expect(MarsRover.new([1, 2], 'N').commands(['L','M','L'])).to eq(['L','M','L'])
-    expect(MarsRover.new([1,2], 'N')).to respond_to(:commands).with(1).argument
+    expect(MarsRover.new([1, 2], 'N').receive_command(['L','M','L'])).to eq(['L','M','L'])
+    expect(MarsRover.new([1,2], 'N')).to respond_to(:receive_command).with(1).argument
   end
 
   context 'is facing north and initial position is [0, 0]' do
     it 'receives the command f and moves the rover forward to [0, 1] and current direction remains the same' do
       mars_rover = MarsRover.new([0, 0], 'N')
-      mars_rover.commands(['f'])
+      mars_rover.receive_command(['f'])
       expect(mars_rover.current_position).to(eq([0, 1]), "Current position should be [0, 1] but was #{mars_rover.current_position}")
       expect(mars_rover.current_direction).to eq('N')
     end
