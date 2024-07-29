@@ -71,6 +71,26 @@ describe 'Mars Rover' do
     it 'receives the command b and moves the rover backward and current direction is East'
   end
 
+  context 'initial position is [0, 0] and direction is N' do
+    it 'receives the command f and moves the rover forward to [0, 1]'
+    it 'receives the command b and moves the rover backward to [0, -1]'
+  end
+
+  context 'initial position is [0, 0] and direction is E' do
+    it 'receives the command f and moves the rover forward to [1, 0]'
+    it 'receives the command b and moves the rover backward to [-1, 0]'
+  end
+
+  context 'initial position is [0, 0] and direction is S' do
+    it 'receives the command f and moves the rover forward to [0, -1]'
+    it 'receives the command b and moves the rover backward to [0, 1]'
+  end
+
+  context 'initial position is [0, 0] and direction is W' do
+    it 'receives the command f and moves the rover forward to [-1, 0]'
+    it 'receives the command b and moves the rover backward to [1, 0]'
+  end
+
   ['n','dsf','@@', '2','F', 'B'].each do |invalid_command|
     it "cannot accept anything other than f, b for commands e.g. cannot accept #{invalid_command}"
   end
