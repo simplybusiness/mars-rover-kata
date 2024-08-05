@@ -11,6 +11,6 @@ class Coordinate
   end
 
   def ==(coordObj)
-    @x == coordObj.x
+    @x == coordObj.x && @y == coordObj.y
   end
 end

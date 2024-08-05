@@ -27,6 +27,13 @@ RSpec.describe Coordinate do
     expect(coord).not_to eq(coord2)
   end
 
+  it "two coord objects with different y values are not equal to each other" do
+    coord = Coordinate.new(2,13)
+    coord2 = Coordinate.new(1,1)
+
+    expect(coord).not_to eq(coord2)
+  end
+
   it "is able to determine if two coordinates are unequal to the current object"
   it "has an method to return both the coordinates as an array of integers, keyed by position"
   it "can add to the x coordinate"
