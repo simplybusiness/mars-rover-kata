@@ -6,7 +6,11 @@ class Coordinate
     @y = y
   end
 
+  def inspect
+    "CoOrd object is set to: (#{@x},#{@y})"
+  end
+
   def ==(coordObj)
-    true
+    @x == coordObj.x
   end
 end
