@@ -34,9 +34,19 @@ RSpec.describe Coordinate do
     expect(coord).not_to eq(coord2)
   end
 
-  it "is able to determine if two coordinates are unequal to the current object"
-  it "has an method to return both the coordinates as an array of integers, keyed by position"
-  it "can add to the x coordinate"
+  it "has a method to return both the coordinates as a struct of integers, keyed by position" do
+    coord = Coordinate.new(1,2)
+
+    expect(coord.to_struc['x']).to eq(1)
+    expect(coord.to_struc['y']).to eq(2)
+  end
+
+  it "can add to the x coordinate" do
+    coord = Coordinate.new(1,1)
+
+    expect(coord.addX).to eq(2)
+  end
+
   it "can add to the y coordinate"
   it "can subtract from the x coordinate"
   it "can subtract from the y coordinate"

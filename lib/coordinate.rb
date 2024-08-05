@@ -13,4 +13,15 @@ class Coordinate
   def ==(coordObj)
     @x == coordObj.x && @y == coordObj.y
   end
+
+  def to_struc
+    {
+      'x' => @x,
+      'y' => @y,
+    }
+  end
+
+  def addX
+    @x = @x + 1
+  end
 end
