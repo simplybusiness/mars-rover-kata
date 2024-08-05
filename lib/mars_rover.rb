@@ -1,11 +1,12 @@
 class MarsRover
 
   def initialize(x, y, direction)
-    set_position(x, y)
-    set_direction direction
+    self.position = [x, y]
+    self.direction = direction
   end
 
   def position
+    # move to a co oridinate object
     return @x, @y
   end
 
@@ -52,7 +53,10 @@ class MarsRover
     @y = @direction.y
   end
 
-  def set_position(x, y)
+  def position=(position)
+    x = position[0]
+    y = position[1]
+
     unless x.is_a?(Integer) && y.is_a?(Integer)
       raise ArgumentError, 'Invalid x or y position, both must be an integer'
     end
@@ -61,7 +65,7 @@ class MarsRover
     @y = y
   end
 
-  def set_direction(direction)
+  def direction=(direction)
     unless ['N', 'S', 'E', 'W'].include? direction
       ## TODO change to argument error
       raise ArgumentError, "Invalid direction: '#{direction}', 'N, S, E, W' accepted"
