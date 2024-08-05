@@ -15,8 +15,9 @@ RSpec.describe Coordinate do
 
   it "is able to determine if two coordinates are equal to the current object" do
     coord = Coordinate.new(1,1)
+    coord2 = Coordinate.new(1,1)
 
-    expect(coord.eq(1,1)).to eq(true)
+    expect(coord).to eq(coord2)
   end
 
   it "is able to determine if two coordinates are unequal to the current object"

@@ -6,8 +6,7 @@ class Coordinate
     @y = y
   end
 
-  def eq(x, y)
+  def ==(coordObj)
     true
-    #@x == x && @y == y
   end
 end
