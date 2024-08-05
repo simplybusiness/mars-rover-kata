@@ -6,7 +6,13 @@ RSpec.describe Coordinate do
 
     expect(coord.x).to eq(1)
   end
-  it "has a y coordinate"
+
+  it "has a y coordinate" do
+    coord = Coordinate.new(1,1)
+
+    expect(coord.y).to eq(1)
+  end
+
   it "is able to determine if two coordinates are equal to the current object"
   it "is able to determine if two coordinates are unequal to the current object"
   it "has an method to return both the coordinates as an array of integers, keyed by position"
