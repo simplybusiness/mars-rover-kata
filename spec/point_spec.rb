@@ -3,7 +3,7 @@ require_relative '../point'
 RSpec.describe 'Point' do
   describe "point" do
     it "has a x co-ordinate" do
-      expect(Point.new(1).x_coordinate).to eq(1)
+      expect(Point.new(1,0).x_coordinate).to eq(1)
     end
 
     it "has a y co-ordinate" do
