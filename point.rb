@@ -7,6 +7,6 @@ class Point
   end
 
   def ==(point)
-    true
+    point.x_coordinate == x_coordinate
   end
 end
