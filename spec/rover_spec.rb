@@ -82,9 +82,4 @@ RSpec.describe 'Rover' do
       mars_rover.direction == expected_direction
     end
   end
-
-  def expect_mars_rover(expected_location:, expected_direction:, rover:)
-    expect(rover.coordinates).to eq(expected_location)
-    expect(rover.direction).to eq(expected_direction)
-  end
 end
