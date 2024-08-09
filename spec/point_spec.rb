@@ -1,0 +1,13 @@
+require_relative '../point'
+
+RSpec.describe 'Point' do
+  describe "point" do
+    it "has a x co-ordinate" do
+      expect(Point.new(x_coordinate)).to eq(1)
+    end
+
+    it "has a y co-ordinate"
+    specify "two co-ordinates with the same x and y co-ordinates are the same"
+    specify "two co-ordinates with different x or y co-ordinates are unequal"
+  end
+end
