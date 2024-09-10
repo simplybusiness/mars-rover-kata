@@ -17,5 +17,9 @@ RSpec.describe 'Point' do
     specify "two co-ordinates with different x co-ordinates are unequal" do
       expect(Point.new(1,1) == Point.new(2,1)).to be false
     end
+
+    specify "two co-ordinates with different y co-ordinates are unequal" do
+      expect(Point.new(1,2) == Point.new(1,1)).to be false
+    end
   end
 end
