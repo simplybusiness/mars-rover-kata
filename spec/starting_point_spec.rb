@@ -16,10 +16,7 @@ describe 'starting point' do
   end
 
   it 'validate the x and y coordinate' do
-    starting_point = StartingPoint.new(x: '12', y: '4')
-
-    expect(starting_point.x).to eq(12)
-    expect(starting_point.y).to eq(4)
+    expect { StartingPoint.new(x: '12') }.to raise_error(ArgumentError)
   end
 
 

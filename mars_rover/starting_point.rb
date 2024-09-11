@@ -7,7 +7,11 @@ class StartingPoint
   end
 
   def validate_starting_point(coordinate)
-    coordinate.to_i
+    if coordinate.is_a?(String)
+      raise ArgumentError
+    end
+
+    coordinate
   end
 
   def inspect
