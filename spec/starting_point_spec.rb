@@ -15,7 +15,7 @@ describe 'starting point' do
     expect(starting_point.y).to eq(4)
   end
 
-  it 'validate the x and y coordinate' do
+  it 'asserts that the user input for x and y are integers' do
     expect { StartingPoint.new(x: '12') }.to raise_error(ArgumentError, "Coordinate must be an integer")
     expect { StartingPoint.new(y: '4') }.to raise_error(ArgumentError, "Coordinate must be an integer")
   end
