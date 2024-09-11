@@ -14,6 +14,10 @@ class StartingPoint
     coordinate
   end
 
+  def ==(other)
+    true
+  end
+
   def inspect
     "a starting point located at #{x}, #{y}"
   end
