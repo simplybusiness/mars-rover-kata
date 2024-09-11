@@ -2,7 +2,7 @@ class StartingPoint
   attr_reader :x, :y
 
   def initialize(x: 0, y: 0)
-    @x = x
+    @x = x.to_i
     @y = y
   end
 
