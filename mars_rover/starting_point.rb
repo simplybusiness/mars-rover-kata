@@ -3,7 +3,7 @@ class StartingPoint
 
   def initialize(x: 0, y: 0)
     @x = x.to_i
-    @y = y
+    @y = y.to_i
   end
 
   def inspect
