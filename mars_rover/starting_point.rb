@@ -8,7 +8,7 @@ class StartingPoint
 
   def validate_starting_point(coordinate)
     if coordinate.is_a?(String)
-      raise ArgumentError
+      raise ArgumentError, "Coordinate must be an integer"
     end
 
     coordinate
