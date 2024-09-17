@@ -19,11 +19,12 @@ RSpec.describe 'Point' do
     end
 
     specify "two co-ordinates with different y co-ordinates are unequal" do
-      expect(Point.new(1,2) == Point.new(1,1)).to be false
+      expect(Point.new(1,2)).not_to eq(Point.new(1,1))
     end
 
     specify "two co-ordinates with different types are unequal" do
       expect(Hash.new() == Point.new(1,2)).to be false
+      expect(Point.new(1,2)).not_to eq(Hash.new())
     end
   end
 end

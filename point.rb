@@ -7,6 +7,8 @@ class Point
   end
 
   def ==(point)
+    return false unless point.is_a? Point
+
     point.x_coordinate == x_coordinate && point.y_coordinate == y_coordinate
   end
 end
