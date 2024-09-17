@@ -11,4 +11,8 @@ class Point
 
     point.x_coordinate == x_coordinate && point.y_coordinate == y_coordinate
   end
+
+  def hash
+    [x_coordinate, y_coordinate].hash
+  end
 end

@@ -33,5 +33,9 @@ RSpec.describe 'Point' do
         end
       end
     end
+
+    specify "two objects representing the same points have the same hash" do
+      expect(Point.new(1,1).hash).to eq(Point.new(1,1).hash)
+    end
   end
 end
