@@ -16,10 +16,10 @@ class StartingPoint
 
   def ==(other)
     if other.x == @x
-      if other.y != @y
-        return false
+      if other.y == @y
+        return true
       end
-      true
+      false
     end
   end
 
