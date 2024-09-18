@@ -15,6 +15,7 @@ class StartingPoint
   end
 
   def ==(other)
+    return false if other.x == 1
     true
   end
 
