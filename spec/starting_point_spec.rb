@@ -36,7 +36,14 @@ describe 'starting point' do
     expect(starting_point.y).to eq(another_starting_point.y)
   end
 
-  it 'has a starting point where the y coordinate are different but x coordinates are the same'
+  it 'has a starting point where the y coordinate are different but x coordinates are the same' do
+    starting_point = StartingPoint.new(x: 2, y: 7)
+    another_starting_point = StartingPoint.new(x: 2, y: 5)
+
+    expect(starting_point.y).not_to eq(another_starting_point.y)
+    expect(starting_point.x).to eq(another_starting_point.x)
+  end
+
   it 'is not equal to hash'
   it 'cannot be initialized without a starting point'
   it 'has a starting point anywhere on the planet'
