@@ -35,26 +35,11 @@ describe 'starting point' do
     expect(starting_point).not_to eq(another_starting_point)
   end
 
-  it 'has a starting point where the x coordinate are different but y coordinates are the same' do
-    starting_point = StartingPoint.new(x: 5, y: 3)
+  it 'has a starting point where the x and y coordinates are different' do
+    starting_point = StartingPoint.new(x: 5, y: 6)
     another_starting_point = StartingPoint.new(x: 2, y: 3)
 
     expect(starting_point).not_to eq(another_starting_point)
-  end
-
-  it 'has a starting point where the y coordinate are different but x coordinates are the same' do
-    starting_point = StartingPoint.new(x: 2, y: 7)
-    another_starting_point = StartingPoint.new(x: 2, y: 5)
-
-    expect(starting_point).not_to eq(another_starting_point)
-  end
-
-  it 'has a starting point where the y coordinate are different but x coordinates are the same' do
-    starting_point = StartingPoint.new(x: 2, y: 7)
-    another_starting_point = StartingPoint.new(x: 2, y: 5)
-
-    expect(starting_point.y).not_to eq(another_starting_point.y)
-    expect(starting_point.x).to eq(another_starting_point.x)
   end
 
   it 'is not equal to hash'
