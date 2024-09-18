@@ -15,7 +15,12 @@ class StartingPoint
   end
 
   def ==(other)
-    other.x == @x
+    if other.x == @x
+      if other.y != @y
+        return false
+      end
+      true
+    end
   end
 
   def inspect
