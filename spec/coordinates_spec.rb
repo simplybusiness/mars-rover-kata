@@ -1,4 +1,4 @@
-require './mars_rover/starting_point'
+require './mars_rover/coordinates'
 
 describe 'starting point' do
   it 'by default starts at the origin' do
