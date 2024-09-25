@@ -1,5 +1,6 @@
 require 'ostruct'
 require './mars_rover/mars_rover.rb'
+require './mars_rover/coordinates.rb'
 
 describe 'Mars Rover' do
   describe 'initialization of the mars rover' do
