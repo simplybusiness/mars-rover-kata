@@ -49,6 +49,6 @@ describe 'starting point' do
   private
 
   def coordinates(x: 0, y: 0)
-    StartingPoint.new(x: x, y: y)
+    Coordinates.new(x: x, y: y)
   end
 end
