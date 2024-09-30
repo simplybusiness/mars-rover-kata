@@ -4,11 +4,11 @@ Feature: Starting Direction of Mars Rover
     When we ask its current position
     When we ask its current direction
     Then we get a signal back that its starting position is (3, 2)
-    And we also get a signal back about its current direction 'N'
+    And we also get a signal back about its current direction N
 
   Scenario: Mars Rover starts at a given point (-1, 4) in direction N
     Given The Mars Rover is at (-1, 4) starting position
     When we ask its current position
     When we ask its current direction
     Then we get a signal back that its starting position is (-1, 4)
-    And we also get a signal back about its current direction 'N'
+    And we also get a signal back about its current direction N

@@ -30,6 +30,6 @@ Then('we get a signal back that its starting position is \({int}, {int})') do |i
   expect(@current_position).to eq([int, int2])
 end
 
-Then('we also get a signal back about its current direction {string}') do |string|
-  expect(@current_direction).to eq(string)
+Then('we also get a signal back about its current direction {direction}') do |direction|
+  expect(@current_direction).to eq(direction)
 end
