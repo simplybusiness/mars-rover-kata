@@ -1,7 +1,8 @@
 class MarsRover
-  def initialize(x , y)
+  def initialize(x , y, direction = 'N')
     @x = x
     @y = y
+    @current_direction = direction
   end
 
   def current_position
@@ -9,13 +10,13 @@ class MarsRover
   end
 
   def current_direction
-    'N'
+    @current_direction
   end
 end 
 
 
-Given('The Mars Rover is at \({int}, {int}) starting position') do |int, int2|
-  @mars_rover = MarsRover.new(int, int2)
+Given('The Mars Rover is at \({int}, {int}) starting position and facing {direction}') do |int, int2, direction|
+  @mars_rover = MarsRover.new(int, int2, direction)
 end
 
 When('we ask its current position') do
