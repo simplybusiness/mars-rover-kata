@@ -12,11 +12,7 @@ class MarsRover
     'N'
   end
 end 
-ParameterType(
-  name: 'direction',
-  regexp: /[A-Z]/,
-  transformer: -> (name) {name}
-)
+
 
 Given('The Mars Rover is at \({int}, {int}) starting position') do |int, int2|
   @mars_rover = MarsRover.new(int, int2)
