@@ -1,5 +1,5 @@
 ParameterType(
   name: 'direction',
-  regexp: /[A-Z]/,
+  regexp: /[NESW]/,
   transformer: -> (name) {name}
 )
