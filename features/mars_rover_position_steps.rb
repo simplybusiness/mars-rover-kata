@@ -1,4 +1,4 @@
-require_relative '../lib/mars_rover.rb'
+require_relative '../lib/mars_rover'
 Given('The Mars Rover is at \({int}, {int}) starting position and facing {direction}') do |int, int2, direction|
   @mars_rover = MarsRover.new(int, int2, direction)
 end
