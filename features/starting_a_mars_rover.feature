@@ -16,4 +16,7 @@ Feature: Starting Direction of Mars Rover
     Scenario: Mars Rover has no position
     Given The Mars Rover has no starting position 
     Then we get a signal back that the Mars Rover has errored
-   
+
+    Scenario: Mars Rover receives a set of commands 
+    Given The Mars Rover receives a set of commands
+    Then it responds with a success message 

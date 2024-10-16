@@ -18,3 +18,11 @@ end
 Then('we also get a signal back about its current direction {direction}') do |direction|
   expect(@current_direction).to eq(direction)
 end
+
+Given('The Mars Rover receives a set of commands') do
+  @mars_rover=MarsRover.new(1,2,'S')
+end
+
+Then ('it responds with a success message')do
+pending
+end
