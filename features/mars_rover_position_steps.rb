@@ -1,20 +1,4 @@
-class MarsRover
-  def initialize(x , y, direction = 'N')
-    @x = x
-    @y = y
-    @current_direction = direction
-  end
-
-  def current_position
-    [@x, @y]
-  end
-
-  def current_direction
-    @current_direction
-  end
-end 
-
-
+require_relative '../lib/mars_rover.rb'
 Given('The Mars Rover is at \({int}, {int}) starting position and facing {direction}') do |int, int2, direction|
   @mars_rover = MarsRover.new(int, int2, direction)
 end
