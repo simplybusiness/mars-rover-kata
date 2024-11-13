@@ -17,7 +17,7 @@ class MarsRover
       "#{@x},#{@y},#{@current_direction}"
     end
 
-    def execute(ab)
+    def execute(commands)
       
     end
   end 
