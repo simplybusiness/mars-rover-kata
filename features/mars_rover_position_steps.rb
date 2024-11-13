@@ -21,8 +21,9 @@ end
 
 Given('The Mars Rover receives a set of commands') do
   @mars_rover=MarsRover.new(1,2,'S')
+  @mars_rover.execute(['f','b'])
 end
 
-Then ('it responds with a success message')do
-pending
+Then ('it responds with a success message') do
+ pending
 end

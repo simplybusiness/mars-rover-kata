@@ -12,5 +12,13 @@ class MarsRover
     def current_direction
       @current_direction
     end
+
+    def inspect
+      "#{@x},#{@y},#{@current_direction}"
+    end
+
+    def execute(ab)
+      
+    end
   end 
   
