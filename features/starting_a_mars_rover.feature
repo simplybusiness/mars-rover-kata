@@ -19,4 +19,4 @@ Feature: Starting Direction of Mars Rover
 
     Scenario: Mars Rover receives a set of commands 
     Given The Mars Rover receives a set of commands
-    Then it responds with a success message 
+    Then it responds with the current direction and position

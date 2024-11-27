@@ -24,6 +24,6 @@ Given('The Mars Rover receives a set of commands') do
   @message = @mars_rover.execute([])
 end
 
-Then ('it responds with a success message') do 
+Then ('it responds with the current direction and position') do 
  expect(@message).to eq("0,0,N")
 end
