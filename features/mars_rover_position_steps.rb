@@ -20,10 +20,10 @@ Then('we also get a signal back about its current direction {direction}') do |di
 end
 
 Given('The Mars Rover receives a set of commands') do
-  @mars_rover=MarsRover.new(1,2,'S')
-  @mars_rover.execute(['f','b'])
+  @mars_rover=MarsRover.new(0,0,'N')
+  @message = @mars_rover.execute(['f','b'])
 end
 
-Then ('it responds with a success message') do
- pending
+Then ('it responds with a success message') do 
+ expect(@message).to eq("0,1,N")
 end
