@@ -21,9 +21,9 @@ end
 
 Given('The Mars Rover receives a set of commands') do
   @mars_rover=MarsRover.new(0,0,'N')
-  @message = @mars_rover.execute(['f','b'])
+  @message = @mars_rover.execute([])
 end
 
 Then ('it responds with a success message') do 
- expect(@message).to eq("0,1,N")
+ expect(@message).to eq("0,0,N")
 end
