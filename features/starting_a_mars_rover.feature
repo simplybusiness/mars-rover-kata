@@ -20,3 +20,7 @@ Feature: Starting Direction of Mars Rover
     Scenario: Mars Rover receives a set of commands 
     Given The Mars Rover receives a set of commands
     Then it responds with the current direction and position
+
+    Scenario: Mars Rover moving forwards
+    Given The Mars Rover is positioned at (0,0) facing North
+    Then it moves forward to new position (0,1) still facing North
