@@ -20,7 +20,6 @@ class MarsRover
     def execute(commands)
       if(commands.first=="f")
         @y=@y+1
-      else
       end
        "#{@x},#{@y},#{@current_direction}"
     end
