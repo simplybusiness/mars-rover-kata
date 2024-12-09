@@ -18,7 +18,11 @@ class MarsRover
     end
 
     def execute(commands)
-      "#{@x},#{@y},#{@current_direction}"
+      if(commands.first=="f")
+        @y=@y+1
+      else
+      end
+       "#{@x},#{@y},#{@current_direction}"
     end
   end 
   

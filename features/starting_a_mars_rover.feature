@@ -22,5 +22,5 @@ Feature: Starting Direction of Mars Rover
     Then it responds with the current direction and position
 
     Scenario: Mars Rover moving forwards
-    Given The Mars Rover is positioned at (0,0) facing North
+     Given The Mars Rover is at (0, 0) starting position and facing N
     Then it moves forward to new position (0,1) still facing North

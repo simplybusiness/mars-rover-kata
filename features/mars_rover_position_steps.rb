@@ -27,3 +27,8 @@ end
 Then ('it responds with the current direction and position') do 
  expect(@message).to eq("0,0,N")
 end
+
+Then('it moves forward to new position \({int},{int}) still facing North') do |int, int2|
+@message=@mars_rover.execute(["f"])
+expect(@message).to eq("0,1,N")
+end
