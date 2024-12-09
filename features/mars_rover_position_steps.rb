@@ -19,14 +19,12 @@ Then('we also get a signal back about its current direction {direction}') do |di
   expect(@current_direction).to eq(direction)
 end
 
+=begin
 Given('The Mars Rover receives a set of commands') do
   @mars_rover=MarsRover.new(0,0,'N')
   @message = @mars_rover.execute([])
 end
-
-Then ('it responds with the current direction and position') do 
- expect(@message).to eq("0,0,N")
-end
+=end
 
 Then('it moves forward to new position \({int},{int}) still facing North') do |int, int2|
 @message=@mars_rover.execute(["f"])

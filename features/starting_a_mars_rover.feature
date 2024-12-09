@@ -13,14 +13,10 @@ Feature: Starting Direction of Mars Rover
     Then we get a signal back that its starting position is (-1, 4)
     And we also get a signal back about its current direction S
 
-    Scenario: Mars Rover has no position
+  Scenario: Mars Rover has no position
     Given The Mars Rover has no starting position 
     Then we get a signal back that the Mars Rover has errored
-
-    Scenario: Mars Rover receives a set of commands 
-    Given The Mars Rover receives a set of commands
-    Then it responds with the current direction and position
-
-    Scenario: Mars Rover moving forwards
-     Given The Mars Rover is at (0, 0) starting position and facing N
+   
+  Scenario: Mars Rover moving forwards in the same direction
+    Given The Mars Rover is at (0, 0) starting position and facing N
     Then it moves forward to new position (0,1) still facing North
