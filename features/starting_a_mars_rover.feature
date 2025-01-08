@@ -31,5 +31,5 @@ Feature: Starting Direction of Mars Rover
 
   Scenario: Mars Rover facing West moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing W
-    Then it moves forward to new position (-1,0) and facing W
+    Then it moves forward to new position (-1,0,W)
 

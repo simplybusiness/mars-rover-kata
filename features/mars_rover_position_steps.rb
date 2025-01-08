@@ -1,4 +1,5 @@
 require_relative '../lib/mars_rover'
+
 Given('The Mars Rover is at \({int}, {int}) starting position and facing {direction}') do |int, int2, direction|
   @mars_rover = MarsRover.new(int, int2, direction)
 end
@@ -23,3 +24,5 @@ Then('it moves forward to new position \({int},{int},{direction})') do |int, int
   message = @mars_rover.execute(["f"])
   expect(message).to eq("#{int},#{int2},#{direction}")
 end
+
+
