@@ -19,7 +19,7 @@ Feature: Starting Direction of Mars Rover
    
   Scenario: Mars Rover facing North moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing N
-    Then it moves forward to new position (0,1) still facing North
+    Then it moves forward to new position (0,1,N) 
 
   Scenario: Mars Rover facing east moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing E
