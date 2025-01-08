@@ -23,6 +23,8 @@ class MarsRover
           @y = @y + 1
         elsif @current_direction == "E"
           @x = @x + 1
+        elsif @current_direction == "S"
+           @y= @y - 1
         end
       end
 

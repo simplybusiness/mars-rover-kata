@@ -28,3 +28,10 @@ Then('it moves forward to new position \({int},{int}) still facing East') do |in
   message = @mars_rover.execute(["f"])
   expect(message).to eq("#{int},#{int2},E")
 end
+
+Then('it moves forward to new position \({int},{int}) still facing South') do |int, int2|
+  message = @mars_rover.execute(["f"])
+  expect(message).to eq("#{int},#{int2},S")
+end
+
+
