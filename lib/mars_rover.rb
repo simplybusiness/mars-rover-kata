@@ -19,12 +19,14 @@ class MarsRover
 
     def execute(commands)
       if commands.first == "f"
-        move_forward
+        move
+      elsif commands.first == "b"  
+      @y = @y -1  
       end
       "#{@x},#{@y},#{@current_direction}"
     end
 
-    def move_forward
+    def move
       if @current_direction == "N"
         @y = @y + 1
       elsif @current_direction == "E"
@@ -34,7 +36,7 @@ class MarsRover
       elsif @current_direction == "W"
          @x = @x - 1
       end
-      
+
     end  
   end 
   

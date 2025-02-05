@@ -25,4 +25,9 @@ Then('it moves forward to new position \({int},{int},{direction})') do |int, int
   expect(message).to eq("#{int},#{int2},#{direction}")
 end
 
+Then('it moves backward to new position \({int},{int},{direction})') do |int, int2,direction|
+  message = @mars_rover.execute(["b"])
+  expect(message).to eq("#{int},#{int2},#{direction}")
+end
+
 
