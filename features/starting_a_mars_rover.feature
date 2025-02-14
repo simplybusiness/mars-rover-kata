@@ -13,6 +13,8 @@ Feature: Starting Direction of Mars Rover
     Then we get a signal back that its starting position is (-1, 4)
     And we also get a signal back about its current direction S
 
+  # Scenarios for edge cases not defined yet
+
   Scenario: Mars Rover has no position
     Given The Mars Rover has no starting position 
     Then we get a signal back that the Mars Rover has errored
@@ -20,7 +22,9 @@ Feature: Starting Direction of Mars Rover
   Scenario: Mars Rover malfunction 
      Given The Mars Rover has malfunctioned 
      Then we get a signal back about the malfunction error  
-   
+
+# Scenarios for Mars Rover moving forwards
+
   Scenario: Mars Rover facing North moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing N
     Then it moves forward to new position (0,1,N) 
@@ -36,6 +40,8 @@ Feature: Starting Direction of Mars Rover
   Scenario: Mars Rover facing West moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing W
     Then it moves forward to new position (-1,0,W)
+
+# Scenarios for Mars Rover moving backwards
 
   Scenario: Mars Rover facing North moving backwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing N
