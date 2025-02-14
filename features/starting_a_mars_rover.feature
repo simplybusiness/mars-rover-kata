@@ -25,37 +25,28 @@ Feature: Starting Direction of Mars Rover
 
 # Scenarios for Mars Rover moving forwards
 
-  Scenario: Mars Rover facing North moving forwards in the same direction
+  Scenario: Mars Rover facing all the 4 directions and  moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing N
     Then it moves forward to new position (0,1,N) 
-
-  Scenario: Mars Rover facing East moving forwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing E
-    Then it moves forward to new position (1,0,E) 
-
-  Scenario: Mars Rover facing South moving forwards in the same direction
+    Then it moves forward to new position (1,0,E)
     Given The Mars Rover is at (0, 0) starting position and facing S
-    Then it moves forward to new position (0,-1,S) 
-
-  Scenario: Mars Rover facing West moving forwards in the same direction
+    Then it moves forward to new position (0,-1,S)
     Given The Mars Rover is at (0, 0) starting position and facing W
-    Then it moves forward to new position (-1,0,W)
+    Then it moves forward to new position (-1,0,W)  
 
 # Scenarios for Mars Rover moving backwards
 
-  Scenario: Mars Rover facing North moving backwards in the same direction
+  Scenario: Mars Rover facing all the 4 directions and moving backwards in the same direction
     Given The Mars Rover is at (0, 0) starting position and facing N
-    Then it moves backward to new position (0,-1,N) 
-
-  Scenario: Mars Rover facing East moving backwards in the same direction
+    Then it moves backward to new position (0,-1,N)
     Given The Mars Rover is at (0, 0) starting position and facing E
-    Then it moves backward to new position (-1,0,E) 
-
-   Scenario: Mars Rover facing South moving backwards in the same direction
+    Then it moves backward to new position (-1,0,E)
     Given The Mars Rover is at (0, 0) starting position and facing S
-    Then it moves backward to new position (0,1,S) 
-
-   Scenario: Mars Rover facing West moving backwards in the same direction
+    Then it moves backward to new position (0,1,S)
     Given The Mars Rover is at (0, 0) starting position and facing W
-    Then it moves backward to new position (1,0,W)     
+    Then it moves backward to new position (1,0,W)  
+
+ 
+    
 
