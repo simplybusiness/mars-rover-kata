@@ -7,6 +7,13 @@ RSpec.describe 'Rover' do
     expect(rover.direction).to eq('N')
   end
 
-  it 'should throw an error if initialised with an invalid position'
+  it 'should throw an error if initialised with an invalid position' do 
+    expect { Rover.new([1, 2, 3], 'N') }.to raise_error('Invalid position')    
+  end
+
+  it 'should throw an error if initialised with no position' do 
+    expect { Rover.new(nil, 'N') }.to raise_error('Invalid position')    
+  end
+
   it 'should throw an error if initialised with an invalid direction'
 end
