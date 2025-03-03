@@ -13,9 +13,10 @@ class Rover
 
   def valid_position?
     return false unless @position
+    return false unless @position.length == 2
 
     # TODO: For now assume that a valid position is an array of two integers
-    @position.length == 2
+    @position.all? { |value| value.is_a? Integer }
   end
 
   def valid_direction?
