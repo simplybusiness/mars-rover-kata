@@ -1,9 +1,6 @@
 # mars-rover-kata
 Practise Object Oriented Design its deep synergy with TDD. More details may be found here: https://kata-log.rocks/mars-rover-kata
 
-## Required Ruby version
-3.2.1
-
 ## Testing Framework
 Included are minitest and rspec. Pick one that you feel comfortable with or would like to explore.
 
