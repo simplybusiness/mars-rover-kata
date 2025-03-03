@@ -8,11 +8,11 @@ RSpec.describe 'Rover' do
   end
 
   it 'should throw an error if initialised with an invalid position' do 
-    expect { Rover.new([1, 2, 3], 'N') }.to raise_error('Invalid position')    
+    expect { Rover.new([1, 2, 3], 'N') }.to raise_error('Invalid position, must be an array of [X, Y]')    
   end
 
   it 'should throw an error if initialised with no position' do 
-    expect { Rover.new(nil, 'N') }.to raise_error('Invalid position')    
+    expect { Rover.new(nil, 'N') }.to raise_error('Invalid position, must be an array of [X, Y]')    
   end
 
   it 'should throw an error if initialised with an invalid direction' do
