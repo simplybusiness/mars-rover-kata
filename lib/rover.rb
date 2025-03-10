@@ -9,6 +9,10 @@ class Rover
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
   end
 
+  def command(commands)
+    raise Exception.new('Invalid command, must be an array of characters') if commands.nil?
+  end
+
   private
 
   def valid_position?

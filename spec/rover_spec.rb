@@ -7,6 +7,23 @@ RSpec.describe 'Rover' do
       expect(rover.position).to eq([1, 2])
       expect(rover.direction).to eq('N')
     end
+
+    context 'Command' do
+      xit 'should accept a character array of commands' do
+        rover = Rover.new([1, 2], 'N')
+        expect { rover.command(['1']) }.not_to raise_error
+      end
+
+      xit 'should throw an error if command is not an array' do
+        rover = Rover.new([1, 2], 'N')
+        expect { rover.command('L') }.to raise_error('Invalid command, must be an array of characters')
+      end
+
+      it 'should throw an error if command is nil' do
+        rover = Rover.new([1, 2], 'N')
+        expect { rover.command(nil) }.to raise_error('Invalid command, must be an array of characters')
+      end
+    end
   
     context "Position" do
       it 'should throw an error if initialised with an invalid position [X, Y, Z]' do 
