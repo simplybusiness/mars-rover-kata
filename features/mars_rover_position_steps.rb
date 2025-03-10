@@ -35,4 +35,9 @@ Then('it turns left now facing W') do
   expect(message).to eq("0,0,W")
 end
 
+Then('it turns left now facing E') do
+  message = @mars_rover.execute(["l"])
+  expect(message).to eq("0,0,E")
+end 
+
 

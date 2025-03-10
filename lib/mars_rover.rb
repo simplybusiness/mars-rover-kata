@@ -54,6 +54,10 @@ class MarsRover
     end 
 
     def move_left
+      if @current_direction == "N"
        @current_direction = "W"
+      elsif @current_direction == "S" 
+       @current_direction = "E" 
+      end
     end 
   end
