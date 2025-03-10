@@ -3,10 +3,10 @@ class Rover
   attr_reader :direction
 
   def initialize(position, direction)
-    @direction = direction
-
     raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?(direction)
+
+    @direction = direction
     @x = position[0]
     @y = position[1]
   end
