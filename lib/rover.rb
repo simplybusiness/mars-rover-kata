@@ -20,6 +20,10 @@ class Rover
     end
   end
 
+  def position
+    [@x, @y]
+  end
+
   private
 
   def move_forward
@@ -33,6 +37,7 @@ class Rover
 
   def move_y(value)
     @position[1] += value
+    @y += value
   end
 
   def valid_position?
