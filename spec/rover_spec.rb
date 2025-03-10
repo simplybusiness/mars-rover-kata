@@ -28,8 +28,8 @@ RSpec.describe 'Rover' do
       expect { Rover.new(nil, 'N') }.to raise_error('Invalid position, must be an array of [X, Y]')    
     end
   
-    it 'should accept all valid directions (N, S, E, W)' do
-      %w(N S E W).each do |dir|
+    %w(N S E W).each do |dir|
+      it "should accept all valid directions eg #{dir}" do
         rover = Rover.new([0, 0], dir)
         expect(rover.direction).to eq(dir)
       end
