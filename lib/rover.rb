@@ -1,9 +1,8 @@
 # Description: This class represents a rover that can move in directional manner on a x,y grid
 class Rover
-  attr_reader :position, :direction
+  attr_reader :direction
 
   def initialize(position, direction)
-    @position = position
     @direction = direction
 
     raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
