@@ -40,7 +40,7 @@ class Rover
     @y += value
   end
 
-  def valid_position?
+  def valid_position?(position = nil)
     return false unless @position
     return false unless @position.length == 2
 
