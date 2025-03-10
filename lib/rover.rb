@@ -6,7 +6,7 @@ class Rover
     @direction = direction
 
     raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
-    raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
+    raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?(direction)
     @x = position[0]
     @y = position[1]
   end
@@ -46,7 +46,7 @@ class Rover
     position.all? { |value| value.is_a? Integer }
   end
 
-  def valid_direction?
+  def valid_direction?(direction = nil)
     %w(N S W E).include? @direction
   end
 end
