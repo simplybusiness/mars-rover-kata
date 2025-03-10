@@ -20,7 +20,12 @@ class Rover
   private
 
   def move_forward
-    @position[1] += 1
+    case @direction
+      when 'N'
+        @position[1] += 1
+      when 'S'
+        @position[1] -= 1
+    end
   end
 
   def valid_position?
