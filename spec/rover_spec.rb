@@ -9,9 +9,14 @@ RSpec.describe 'Rover' do
     end
 
     context 'Command' do
-      xit 'should accept a character array of commands' do
+      it 'should accept a character array of commands' do
         rover = Rover.new([1, 2], 'N')
         expect { rover.command(['1']) }.not_to raise_error
+      end
+
+      it 'should accept an empty array' do
+        rover = Rover.new([1, 2], 'N')
+        expect { rover.command([]) }.not_to raise_error
       end
 
       it 'should throw an error if command is not an array' do
