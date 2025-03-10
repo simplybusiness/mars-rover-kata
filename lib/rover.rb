@@ -8,6 +8,8 @@ class Rover
 
     raise 'Invalid position, must be an array of [X, Y]' unless valid_position?
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
+    @x = position[0]
+    @y = position[1]
   end
 
   def command(commands)
