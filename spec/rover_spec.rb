@@ -28,6 +28,17 @@ RSpec.describe 'Rover' do
         rover = Rover.new([1, 2], 'N')
         expect { rover.command(nil) }.to raise_error('Invalid command, must be an array of characters')
       end
+
+      context 'Movement' do
+        it "should move forward when recieving ['f']" do
+          rover = Rover.new([0, 0], 'N')
+          rover.command(['f'])
+          expect(rover.position).to eq([0, 1])
+          expect(rover.direction).to eq('N')
+        end
+
+        it "should move backward when recieving ['b']"
+      end
     end
   
     context "Position" do

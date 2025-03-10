@@ -11,6 +11,10 @@ class Rover
 
   def command(commands)
     raise Exception.new('Invalid command, must be an array of characters') unless commands.is_a? Array
+
+    if commands[0] == 'f'
+      @position[1] += 1
+    end
   end
 
   private
