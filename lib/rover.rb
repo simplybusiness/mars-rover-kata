@@ -46,7 +46,7 @@ class Rover
     position.all? { |value| value.is_a? Integer }
   end
 
-  def valid_direction?(direction = nil)
-    %w(N S W E).include? @direction
+  def valid_direction?(direction)
+    %w(N S W E).include? direction
   end
 end
