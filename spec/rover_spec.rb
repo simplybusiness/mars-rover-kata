@@ -14,7 +14,7 @@ RSpec.describe 'Rover' do
         expect { rover.command(['1']) }.not_to raise_error
       end
 
-      xit 'should throw an error if command is not an array' do
+      it 'should throw an error if command is not an array' do
         rover = Rover.new([1, 2], 'N')
         expect { rover.command('L') }.to raise_error('Invalid command, must be an array of characters')
       end
