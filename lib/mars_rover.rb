@@ -14,7 +14,7 @@ class MarsRover
     end
 
     def inspect
-      "#{@x},#{@y},#{@current_direction}"
+      "MarsRover located at (#{@x},#{@y}),facing #{@current_direction}"
     end
 
     def execute(commands)
@@ -23,6 +23,8 @@ class MarsRover
         move_forward
       elsif command == "b"  
         move_backward 
+      elsif command == "l"
+        move_left  
       end
       "#{@x},#{@y},#{@current_direction}"
     end
@@ -50,6 +52,8 @@ class MarsRover
        @x = @x + 1
       end
     end 
-  
-  end 
-  
+
+    def move_left
+       @current_direction = "W"
+    end 
+  end
