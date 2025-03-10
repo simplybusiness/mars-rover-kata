@@ -1,5 +1,5 @@
 # Description: This class represents a rover that can move in directional manner on a x,y grid
-class Rover 
+class Rover
   attr_reader :position, :direction
 
   def initialize(position, direction)
@@ -23,10 +23,14 @@ class Rover
   def move_forward
     case @direction
       when 'N'
-        @position[1] += 1
+        move_y(1)
       when 'S'
-        @position[1] -= 1
+        move_y(-1)
     end
+  end
+
+  def move_y(value)
+    @position[1] += value
   end
 
   def valid_position?
