@@ -13,11 +13,15 @@ class Rover
     raise Exception.new('Invalid command, must be an array of characters') unless commands.is_a? Array
 
     if commands[0] == 'f'
-      @position[1] += 1
+      move_forward
     end
   end
 
   private
+
+  def move_forward
+    @position[1] += 1
+  end
 
   def valid_position?
     return false unless @position
