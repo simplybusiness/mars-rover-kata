@@ -42,6 +42,12 @@ class Rover
 
     # TODO: For now assume that a valid position is an array of two integers
     @position.all? { |value| value.is_a? Integer }
+
+    # Note - Parallel change, remove above when @position is no longer used
+    return false unless @position[0].is_a? Integer
+    return false unless @position[1].is_a? Integer
+
+    true
   end
 
   def valid_direction?
