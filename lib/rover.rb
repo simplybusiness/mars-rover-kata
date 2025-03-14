@@ -34,6 +34,7 @@ class Rover
 
   def move_y(value)
     @position[1] += value
+    @position_y += value
   end
 
   def valid_position?
