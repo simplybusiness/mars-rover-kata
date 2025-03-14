@@ -1,6 +1,6 @@
 # Description: This class represents a rover that can move in directional manner on a x,y grid
 class Rover
-  attr_reader :position, :direction
+  attr_reader :direction
 
   def initialize(position, direction)
     @position = position
