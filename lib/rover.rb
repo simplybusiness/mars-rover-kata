@@ -13,6 +13,10 @@ class Rover
     @position_y = position[1]
   end
 
+  def position
+    [@position_x, @position_y]
+  end
+
   def command(commands)
     raise Exception.new('Invalid command, must be an array of characters') unless commands.is_a? Array
 
