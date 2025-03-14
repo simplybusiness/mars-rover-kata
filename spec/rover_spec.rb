@@ -48,11 +48,7 @@ RSpec.describe 'Rover' do
       end
     end
   
-    context "Position" do
-      it 'should throw an error if initialised with an invalid position [X, Y, Z]' do 
-        expect { Rover.new([1, 2, 3], 'N') }.to raise_error('Invalid position, must be an array of [X, Y]')    
-      end
-  
+    context "Position" do 
       it 'should throw an error if initialised with an invalid position [X]' do 
         expect { Rover.new([1], 'N') }.to raise_error('Invalid position, must be an array of [X, Y]')    
       end

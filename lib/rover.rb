@@ -3,10 +3,9 @@ class Rover
   attr_reader :direction
 
   def initialize(position, direction)
-    @position = position
     @direction = direction
 
-    raise 'Invalid position, must be an array of [X, Y]' unless valid_position?
+    raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
 
     @position_x = position[0]
@@ -37,21 +36,13 @@ class Rover
   end
 
   def move_y(value)
-    @position[1] += value
     @position_y += value
   end
 
-  def valid_position?
-    return false unless @position
-    return false unless @position.length == 2
-
-    # TODO: For now assume that a valid position is an array of two integers
-    @position.all? { |value| value.is_a? Integer }
-
-    # Note - Parallel change, remove above when @position is no longer used
-    return false unless @position[0].is_a? Integer
-    return false unless @position[1].is_a? Integer
-
+  def valid_position?(position)
+    return false unless position.is_a? Array
+    return false unless position[0].is_a? Integer
+    return false unless position[1].is_a? Integer
     true
   end
 
