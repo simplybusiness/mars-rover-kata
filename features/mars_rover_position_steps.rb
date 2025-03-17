@@ -31,11 +31,6 @@ Then('it moves backward to new position \({int},{int},{direction})') do |int, in
 end
 
 Then('it turns left now facing {direction}') do |direction|
-  turns_left(direction)
-end
-
-def turns_left(direction) 
   message = @mars_rover.execute(["l"])
   expect(message).to eq("0,0,#{direction}")
 end
-
