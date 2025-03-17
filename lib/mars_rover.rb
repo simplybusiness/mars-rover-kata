@@ -54,14 +54,15 @@ class MarsRover
     end 
 
     def move_left
+      turning_left ={"N"=>"W","S"=>"E","W"=>"S","E"=>"N"}
       if @current_direction == "N"
-       @current_direction = "W"
+       @current_direction = turning_left["N"]
       elsif @current_direction == "S" 
-       @current_direction = "E" 
+       @current_direction = turning_left["S"] 
       elsif @current_direction == "W" 
-        @current_direction = "S"
+        @current_direction = turning_left["W"]
       elsif @current_direction == "E"
-        @current_direction = "N"
+        @current_direction = turning_left["E"]
       end
     end 
   end
