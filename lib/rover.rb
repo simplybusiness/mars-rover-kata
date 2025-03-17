@@ -26,6 +26,10 @@ class Rover
     if commands[0] == 'f'
       move_forward
     end
+
+    if commands[0] == 'b'
+      move_backwards
+    end
   end
 
   private
@@ -40,6 +44,13 @@ class Rover
         @position.x += 1
       when 'W'
         @position.x -= 1
+    end
+  end
+
+  def move_backwards
+    case @direction
+      when 'N'
+        @position.y -= 1
     end
   end
 
