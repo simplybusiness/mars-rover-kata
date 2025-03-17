@@ -30,4 +30,10 @@ RSpec.describe 'Position' do
       expect(position.y).to eq(5)
     end
   end
+
+  context 'Check position is valid' do
+    it 'should throw an error if x is not an integer' do
+      expect { Position.new(x: 'a') }.to raise_error('Invalid position, x must be an integer')
+    end
+  end
 end
