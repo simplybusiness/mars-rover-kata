@@ -1,3 +1,5 @@
+require_relative 'position'
+
 # Description: This class represents a rover that can move in directional manner on a x,y grid
 class Rover
   attr_reader :direction
@@ -7,6 +9,8 @@ class Rover
 
     raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
+
+    @position = Position.new(x: position[0], y: position[1])
 
     @position_x = position[0]
     @position_y = position[1]
