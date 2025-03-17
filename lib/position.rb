@@ -4,6 +4,7 @@ class Position
 
   def initialize(x: 0, y: 0)
     raise 'Invalid position, x must be an integer' unless x.is_a? Integer
+    raise 'Invalid position, y must be an integer' unless y.is_a? Integer
 
     @x = x
     @y = y

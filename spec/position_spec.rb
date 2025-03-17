@@ -35,5 +35,9 @@ RSpec.describe 'Position' do
     it 'should throw an error if x is not an integer' do
       expect { Position.new(x: 'a') }.to raise_error('Invalid position, x must be an integer')
     end
+
+    it 'should throw an error if y is not an integer' do
+      expect { Position.new(y: 'a') }.to raise_error('Invalid position, y must be an integer')
+    end
   end
 end
