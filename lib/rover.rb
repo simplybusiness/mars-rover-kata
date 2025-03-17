@@ -11,13 +11,9 @@ class Rover
     raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
 
     @position = Position.new(x: position[0], y: position[1])
-
-    @position_x = @position.x
-    @position_y = @position.y
   end
 
   def position
-    [@position_x, @position_y]
     [@position.x, @position.y]
   end
 
@@ -44,12 +40,10 @@ class Rover
 
   def move_y(value)
     @position.y += value
-    @position_y += value
   end
 
   def move_x(value)
     @position.x += value
-    @position_x += value
   end
 
   def valid_position?(position)
