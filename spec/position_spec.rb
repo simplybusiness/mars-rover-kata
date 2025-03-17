@@ -7,5 +7,11 @@ RSpec.describe 'Position' do
       expect(position.x).to eq(1)
       expect(position.y).to eq(2)
     end
+
+    it 'should initialize with default values' do
+      position = Position.new
+      expect(position.x).to eq(0)
+      expect(position.y).to eq(0)
+    end
   end
 end
