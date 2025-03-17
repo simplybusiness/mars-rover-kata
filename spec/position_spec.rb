@@ -14,4 +14,13 @@ RSpec.describe 'Position' do
       expect(position.y).to eq(0)
     end
   end
+
+  context 'Position is changed' do
+    it('should be able to update y position') do
+      position = Position.new
+      position.y = 5
+      expect(position.x).to eq(0)
+      expect(position.y).to eq(5)
+    end
+  end
 end
