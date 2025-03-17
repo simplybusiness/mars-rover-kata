@@ -18,6 +18,7 @@ class Rover
 
   def position
     [@position_x, @position_y]
+    [@position.x, @position.y]
   end
 
   def command(commands)
