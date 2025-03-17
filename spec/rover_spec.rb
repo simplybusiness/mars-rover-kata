@@ -51,7 +51,7 @@ RSpec.describe 'Rover' do
           expect(rover.direction).to eq('E')
         end
 
-        it "should move forward when receiving ['f'] command and facing E" do
+        it "should move forward when receiving ['f'] command and facing W" do
           rover = Rover.new([0, 0], 'W')
           rover.command(['f'])
           expect(rover.position).to eq([-1, 0])
@@ -72,8 +72,14 @@ RSpec.describe 'Rover' do
           expect(rover.direction).to eq('S')
         end
 
+        it "should move backward when receiving ['b'] command and facing E" do
+          rover = Rover.new([0, 0], 'E')
+          rover.command(['b'])
+          expect(rover.position).to eq([-1, 0])
+          expect(rover.direction).to eq('E')
+        end
+
         it "should move backward when receiving ['b'] command and facing W"
-        it "should move backward when receiving ['b'] command and facing E"
       end
     end
   

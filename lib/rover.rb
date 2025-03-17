@@ -53,6 +53,8 @@ class Rover
         @position.y -= 1
       when 'S'
         @position.y += 1
+      when 'E'
+        @position.x -= 1
     end
   end
 
