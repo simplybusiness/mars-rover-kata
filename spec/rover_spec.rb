@@ -30,21 +30,28 @@ RSpec.describe 'Rover' do
       end
 
       context 'Movement' do
-        it "should move forward when recieving ['f'] command and facing N" do
+        it "should move forward when receiving ['f'] command and facing N" do
           rover = Rover.new([0, 0], 'N')
           rover.command(['f'])
           expect(rover.position).to eq([0, 1])
           expect(rover.direction).to eq('N')
         end
 
-        it "should move forward when recieving ['f'] command and facing S" do
+        it "should move forward when receiving ['f'] command and facing S" do
           rover = Rover.new([0, 0], 'S')
           rover.command(['f'])
           expect(rover.position).to eq([0, -1])
           expect(rover.direction).to eq('S')
         end
 
-        it "should move backward when recieving ['b']"
+        it "should move forward when receiving ['f'] command and facing E" do
+          rover = Rover.new([0, 0], 'E')
+          rover.command(['f'])
+          expect(rover.position).to eq([1, 0])
+          expect(rover.direction).to eq('E')
+        end
+
+        it "should move backward when receiving ['b']"
       end
     end
   

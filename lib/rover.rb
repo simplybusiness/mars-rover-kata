@@ -32,11 +32,17 @@ class Rover
         move_y(1)
       when 'S'
         move_y(-1)
+      when 'E'
+        move_x(1)
     end
   end
 
   def move_y(value)
     @position_y += value
+  end
+
+  def move_x(value)
+    @position_x += value
   end
 
   def valid_position?(position)
