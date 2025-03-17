@@ -20,7 +20,7 @@ class MarsRover
     def execute(commands)
       command = commands.first
       if command == "f"
-        move_forward
+       move_forward
       elsif command == "b"  
         move_backward 
       elsif command == "l"

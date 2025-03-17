@@ -48,6 +48,8 @@ Feature: Starting Direction of Mars Rover
     Then it moves backward to new position (1,0,W)  
 
 # Scenarios for Mars Rover facing all directions turns left
+
+ Scenario: Mars Rover facing all directions turns left
    Given The Mars Rover is at (0, 0) starting position and facing N 
    Then it turns left now facing W
    Given The Mars Rover is at (0, 0) starting position and facing S
