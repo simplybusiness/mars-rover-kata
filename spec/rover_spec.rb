@@ -58,7 +58,10 @@ RSpec.describe 'Rover' do
           expect(rover.direction).to eq('W')
         end
 
-        it "should move backward when receiving ['b']"
+        it "should move backward when receiving ['b'] command and facing N"
+        it "should move backward when receiving ['b'] command and facing S"
+        it "should move backward when receiving ['b'] command and facing W"
+        it "should move backward when receiving ['b'] command and facing E"
       end
     end
   
