@@ -6,4 +6,8 @@ class Position
     @x = x
     @y = y
   end
+
+  def inspect
+    "(#{@x}, #{@y})"
+  end
 end
