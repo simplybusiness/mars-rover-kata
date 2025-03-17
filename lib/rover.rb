@@ -7,10 +7,13 @@ class Rover
   def initialize(position, direction)
     @direction = direction
 
-    raise 'Invalid position, must be an array of [X, Y]' unless valid_position?(position)
-    raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
+    begin
+      @position = Position.new(x: position[0], y: position[1])
+    rescue
+      raise 'Invalid position, must be an array of [X, Y]'
+    end
 
-    @position = Position.new(x: position[0], y: position[1])
+    raise 'Invalid direction, must be one of N,S,W,E' unless valid_direction?
   end
 
   def position
@@ -44,13 +47,6 @@ class Rover
 
   def move_x(value)
     @position.x += value
-  end
-
-  def valid_position?(position)
-    return false unless position.is_a? Array
-    return false unless position[0].is_a? Integer
-    return false unless position[1].is_a? Integer
-    true
   end
 
   def valid_direction?
