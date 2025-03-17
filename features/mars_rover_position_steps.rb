@@ -38,6 +38,10 @@ Then('it turns left now facing E') do
   turns_left('E')
 end 
 
+Then('it turns left now facing S') do
+   turns_left('S')
+end
+
 def turns_left(direction) 
   message = @mars_rover.execute(["l"])
   expect(message).to eq("0,0,#{direction}")
