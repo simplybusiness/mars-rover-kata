@@ -37,16 +37,8 @@ class Rover
       when 'S'
         @position.y -= 1
       when 'E'
-      @position.x += 1
+        @position.x += 1
     end
-  end
-
-  def move_y(value)
-    @position.y += value
-  end
-
-  def move_x(value)
-    @position.x += value
   end
 
   def valid_direction?
