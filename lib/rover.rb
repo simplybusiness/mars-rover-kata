@@ -51,6 +51,8 @@ class Rover
     case @direction
       when 'N'
         @position.y -= 1
+      when 'S'
+        @position.y += 1
     end
   end
 
