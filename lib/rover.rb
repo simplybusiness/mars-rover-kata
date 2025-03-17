@@ -33,11 +33,11 @@ class Rover
   def move_forward
     case @direction
       when 'N'
-        move_y(1)
+        @position.y += 1
       when 'S'
-        move_y(-1)
+        @position.y -= 1
       when 'E'
-        move_x(1)
+      @position.x += 1
     end
   end
 
