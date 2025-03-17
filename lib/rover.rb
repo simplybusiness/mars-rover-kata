@@ -12,8 +12,8 @@ class Rover
 
     @position = Position.new(x: position[0], y: position[1])
 
-    @position_x = position[0]
-    @position_y = position[1]
+    @position_x = @position.x
+    @position_y = @position.y
   end
 
   def position
