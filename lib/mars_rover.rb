@@ -60,6 +60,8 @@ class MarsRover
        @current_direction = "E" 
       elsif @current_direction == "W" 
         @current_direction = "S"
+      elsif @current_direction == "E"
+        @current_direction = "N"
       end
     end 
   end

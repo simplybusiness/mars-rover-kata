@@ -30,16 +30,8 @@ Then('it moves backward to new position \({int},{int},{direction})') do |int, in
   expect(message).to eq("#{int},#{int2},#{direction}")
 end
 
-Then('it turns left now facing W') do 
-  turns_left('W')
-end
-
-Then('it turns left now facing E') do
-  turns_left('E')
-end 
-
-Then('it turns left now facing S') do
-   turns_left('S')
+Then('it turns left now facing {direction}') do |direction|
+  turns_left(direction)
 end
 
 def turns_left(direction) 
