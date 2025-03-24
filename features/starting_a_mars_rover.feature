@@ -60,3 +60,14 @@ Feature: Starting Direction of Mars Rover
    Then it turns left now facing N
     
 
+ #Scenarios for Mars Rover facing all directions turns right
+
+ Scenario: Mars Rover facing all directions turns right
+   Given The Mars Rover is at (0, 0) starting position and facing N
+   Then it turns right now facing E
+   Given The Mars Rover is at (0, 0) starting position and facing S
+   Then it turns right now facing W
+   Given The Mars Rover is at (0, 0) starting position and facing W
+   Then it turns right now facing N
+   Given The Mars Rover is at (0, 0) starting position and facing E
+   Then it turns right now facing S

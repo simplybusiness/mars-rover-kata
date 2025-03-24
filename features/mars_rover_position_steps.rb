@@ -34,3 +34,8 @@ Then('it turns left now facing {direction}') do |direction|
   message = @mars_rover.execute(["l"])
   expect(message).to eq("0,0,#{direction}")
 end
+
+Then('it turns right now facing {direction}') do |direction|
+  message = @mars_rover.execute(["r"])
+  expect(message).to eq("0,0,#{direction}")
+end

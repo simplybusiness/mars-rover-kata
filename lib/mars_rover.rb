@@ -24,7 +24,9 @@ class MarsRover
       elsif command == "b"  
         move_backward 
       elsif command == "l"
-        move_left  
+        move_left 
+      elsif command == "r"
+        move_right   
       end
       "#{@x},#{@y},#{@current_direction}"
     end
@@ -56,5 +58,10 @@ class MarsRover
     def move_left
       turning_left ={"N"=>"W","S"=>"E","W"=>"S","E"=>"N"}
       @current_direction = turning_left[@current_direction]
+    end 
+
+    def move_right
+      turning_right ={"N"=>"E","S"=>"W","W"=>"N","E"=>"S"}
+      @current_direction = turning_right[@current_direction]
     end 
   end
