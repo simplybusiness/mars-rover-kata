@@ -87,20 +87,17 @@ RSpec.describe 'Rover' do
             expect(rover.direction).to eq(expected_dir)
           end
 
-          it "should face W when originally facing N" do
-            expect_rotate_left('N', 'W')
-          end
+          LEFT_ROTATE_DIRECTION_METHOD = {
+            'N' => 'W',
+            'S' => 'E',
+            'E' => 'N',
+            'W' => 'S'
+          }
 
-          it "should face S when originally facing W" do
-            expect_rotate_left('W', 'S')
-          end
-          
-          it "should face E when originally facing S" do
-            expect_rotate_left('S', 'E')
-          end
-
-          it "should face N when originally facing E" do
-            expect_rotate_left('E', 'N')
+          LEFT_ROTATE_DIRECTION_METHOD.each do |dir, expected_dir|
+            it "should face #{expected_dir} when originally facing #{dir}" do
+              expect_rotate_left(dir, expected_dir)
+            end
           end
         end
       end
