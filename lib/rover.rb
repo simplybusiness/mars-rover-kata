@@ -30,6 +30,10 @@ class Rover
     if commands[0] == 'b'
       move_backwards
     end
+
+    if commands[0] == 'l'
+      rotate_left
+    end
   end
 
   private
@@ -57,6 +61,13 @@ class Rover
         @position.x -= 1
       when 'W'
         @position.x += 1
+    end
+  end
+
+  def rotate_left
+    case @direction
+      when 'N'
+        @direction = 'W'
     end
   end
 

@@ -76,7 +76,12 @@ RSpec.describe 'Rover' do
 
       context 'Rotate' do
         context 'when rotating left' do
-          it "should face W when originally facing N"
+          it "should face W when originally facing N" do
+            rover = Rover.new([0, 0], 'N')
+            rover.command(['l'])
+            expect(rover.direction).to eq('W')
+          end
+
           it "should face S when originally facing W"
           it "should face E when originally facing S"
           it "should face N when originally facing E"
