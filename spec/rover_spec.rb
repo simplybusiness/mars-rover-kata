@@ -39,22 +39,19 @@ RSpec.describe 'Rover' do
         it "should move forward when receiving ['f'] command and facing S" do
           rover = Rover.new([0, 0], 'S')
           rover.command(['f'])
-          expect(rover.position).to eq([0, -1])
-          expect(rover.direction).to eq('S')
+          expect(rover).to have_moved_forward.south.from(0, 0).facing('S')
         end
 
         it "should move forward when receiving ['f'] command and facing E" do
           rover = Rover.new([0, 0], 'E')
           rover.command(['f'])
-          expect(rover.position).to eq([1, 0])
-          expect(rover.direction).to eq('E')
+          expect(rover).to have_moved_forward.east.from(0, 0).facing('E')
         end
 
         it "should move forward when receiving ['f'] command and facing W" do
           rover = Rover.new([0, 0], 'W')
           rover.command(['f'])
-          expect(rover.position).to eq([-1, 0])
-          expect(rover.direction).to eq('W')
+          expect(rover).to have_moved_forward.west.from(0, 0).facing('W')
         end
 
         it "should move backward when receiving ['b'] command and facing N" do
@@ -140,6 +137,18 @@ RSpec::Matchers.define :have_moved_forward do
   
   chain :north do |steps = 1|
     @y_movement = steps
+  end
+
+  chain :south do |steps = -1|
+    @y_movement = steps
+  end
+
+  chain :east do |steps = 1|
+    @x_movement = steps
+  end
+
+  chain :west do |steps = -1|
+    @x_movement = steps
   end
   
   chain :from do |x, y|
