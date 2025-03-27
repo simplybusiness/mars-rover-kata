@@ -1,33 +1,5 @@
 require_relative '../lib/rover'
 
-RSpec::Matchers.define :have_moved do
-  match do |rover|
-    # Default values
-    @x_movement ||= 0
-    @y_movement ||= 0
-    @direction ||= rover.direction
-    
-    expected_x = @initial_x + @x_movement
-    expected_y = @initial_y + @y_movement
-    
-    (rover.position == [expected_x, expected_y]) && 
-    (rover.direction == @direction)
-  end
-  
-  chain :north do |steps = 1|
-    @y_movement = steps
-  end
-  
-  chain :from do |x, y|
-    @initial_x = x
-    @initial_y = y
-  end
-  
-  chain :facing do |dir|
-    @direction = dir
-  end
-end
-
 RSpec.describe 'Rover' do
   context 'Rover is initialized' do
     it 'should initialize with a position and direction' do
@@ -149,5 +121,33 @@ RSpec.describe 'Rover' do
         expect { Rover.new([1, 2], nil) }.to raise_error('Invalid direction, must be one of N,S,W,E')
       end
     end
+  end
+end
+
+RSpec::Matchers.define :have_moved do
+  match do |rover|
+    # Default values
+    @x_movement ||= 0
+    @y_movement ||= 0
+    @direction ||= rover.direction
+    
+    expected_x = @initial_x + @x_movement
+    expected_y = @initial_y + @y_movement
+    
+    (rover.position == [expected_x, expected_y]) && 
+    (rover.direction == @direction)
+  end
+  
+  chain :north do |steps = 1|
+    @y_movement = steps
+  end
+  
+  chain :from do |x, y|
+    @initial_x = x
+    @initial_y = y
+  end
+  
+  chain :facing do |dir|
+    @direction = dir
   end
 end
