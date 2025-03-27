@@ -72,6 +72,12 @@ class Rover
     case @direction
       when 'N'
         @direction = 'W'
+      when 'W'
+        @direction = 'S'
+      when 'S'
+        @direction = 'E'
+      when 'E'
+        @direction = 'N'
     end
   end
 

@@ -87,10 +87,23 @@ RSpec.describe 'Rover' do
             expect(rover).to be_facing('W')
           end
 
-          it "should face S when originally facing W"
+          it "should face S when originally facing W" do
+            rover = Rover.new([0, 0], 'W')
+            rover.command(['l'])
+            expect(rover).to be_facing('S')
+          end
           
-          it "should face E when originally facing S"
-          it "should face N when originally facing E"
+          it "should face E when originally facing S" do
+            rover = Rover.new([0, 0], 'S')
+            rover.command(['l'])
+            expect(rover).to be_facing('E')
+          end
+
+          it "should face N when originally facing E" do
+            rover = Rover.new([0, 0], 'E')
+            rover.command(['l'])
+            expect(rover).to be_facing('N')
+          end
         end
       end
     end
