@@ -30,14 +30,14 @@ RSpec.describe 'Rover' do
       end
 
       context 'Movement' do
-        direction_method = {
+        DIRECTION_METHOD = {
           'N' => :north,
           'S' => :south,
           'E' => :east,
           'W' => :west
         }
 
-        direction_method.each do |dir, method|
+        DIRECTION_METHOD.each do |dir, method|
           it "should move forward when receiving ['f'] command and facing #{dir}" do
             rover = Rover.new([0, 0], dir)
             rover.command(['f'])
