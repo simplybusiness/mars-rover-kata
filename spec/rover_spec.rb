@@ -81,28 +81,26 @@ RSpec.describe 'Rover' do
 
       context 'Rotate' do
         context 'when rotating left' do
-          it "should face W when originally facing N" do
-            rover = Rover.new([0, 0], 'N')
+          def expect_rotate_left(initial_dir, expected_dir)
+            rover = Rover.new([0, 0], initial_dir)
             rover.command(['l'])
-            expect(rover).to be_facing('W')
+            expect(rover.direction).to eq(expected_dir)
+          end
+
+          it "should face W when originally facing N" do
+            expect_rotate_left('N', 'W')
           end
 
           it "should face S when originally facing W" do
-            rover = Rover.new([0, 0], 'W')
-            rover.command(['l'])
-            expect(rover).to be_facing('S')
+            expect_rotate_left('W', 'S')
           end
           
           it "should face E when originally facing S" do
-            rover = Rover.new([0, 0], 'S')
-            rover.command(['l'])
-            expect(rover).to be_facing('E')
+            expect_rotate_left('S', 'E')
           end
 
           it "should face N when originally facing E" do
-            rover = Rover.new([0, 0], 'E')
-            rover.command(['l'])
-            expect(rover).to be_facing('N')
+            expect_rotate_left('E', 'N')
           end
         end
       end
