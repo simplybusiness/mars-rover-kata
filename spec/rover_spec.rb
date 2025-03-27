@@ -8,6 +8,11 @@ RSpec.describe 'Rover' do
       expect(rover.direction).to eq('N')
     end
 
+    it "should return direction facing when facing? is called" do
+      rover = Rover.new([0, 0], 'N')
+      expect(rover.facing?('N')).to be true
+    end
+
     context 'Command' do
       it 'should accept a character array of commands' do
         rover = Rover.new([1, 2], 'N')
@@ -79,10 +84,11 @@ RSpec.describe 'Rover' do
           it "should face W when originally facing N" do
             rover = Rover.new([0, 0], 'N')
             rover.command(['l'])
-            expect(rover.direction).to eq('W')
+            expect(rover).to be_facing('W')
           end
 
           it "should face S when originally facing W"
+          
           it "should face E when originally facing S"
           it "should face N when originally facing E"
         end

@@ -20,6 +20,10 @@ class Rover
     [@position.x, @position.y]
   end
 
+  def facing?(direction)
+    @direction == direction
+  end
+
   def command(commands)
     raise Exception.new('Invalid command, must be an array of characters') unless commands.is_a? Array
 
