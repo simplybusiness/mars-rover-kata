@@ -73,6 +73,15 @@ RSpec.describe 'Rover' do
           expect(rover.direction).to eq('W')
         end
       end
+
+      context 'Rotate' do
+        context 'when rotating left' do
+          it "should face W when originally facing N"
+          it "should face S when originally facing W"
+          it "should face E when originally facing S"
+          it "should face N when originally facing E"
+        end
+      end
     end
   
     context "Position" do 
@@ -114,7 +123,6 @@ end
 
 RSpec::Matchers.define :have_moved_forward do
   match do |rover|
-    # Default values
     @x_movement ||= 0
     @y_movement ||= 0
     @direction ||= rover.direction
