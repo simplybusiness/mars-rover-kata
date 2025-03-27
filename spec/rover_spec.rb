@@ -33,7 +33,7 @@ RSpec.describe 'Rover' do
         it "should move forward when receiving ['f'] command and facing N" do
           rover = Rover.new([0, 0], 'N')
           rover.command(['f'])
-          expect(rover).to have_moved.north.from(0, 0).facing('N')
+          expect(rover).to have_moved_forward.north.from(0, 0).facing('N')
         end
 
         it "should move forward when receiving ['f'] command and facing S" do
@@ -124,7 +124,7 @@ RSpec.describe 'Rover' do
   end
 end
 
-RSpec::Matchers.define :have_moved do
+RSpec::Matchers.define :have_moved_forward do
   match do |rover|
     # Default values
     @x_movement ||= 0
