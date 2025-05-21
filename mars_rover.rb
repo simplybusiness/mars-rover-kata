@@ -36,7 +36,7 @@ class MarsRover
   end
 
   def execute(command)
-    self.y = self.y + 1
+    self.y += 1
     return self
   end
 
