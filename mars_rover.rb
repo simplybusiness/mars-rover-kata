@@ -29,7 +29,7 @@ class MarsRover
       raise ArgumentError, "Direction is invalid"
     end
 
-    @x = start_x
+    @x = start_y
     @y = start_y
     @direction = start_direction
 

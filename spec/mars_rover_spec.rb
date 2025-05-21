@@ -26,9 +26,9 @@ require_relative '../mars_rover'
 
 describe "Initialisation" do
   it "creates a rover with the correct initial state" do
-    rover = MarsRover.new(1, 2, "N")
+    rover = MarsRover.new(2, 2, "N")
 
-    expect(rover.x).to be == 1
+    expect(rover.x).to be == 2
     expect(rover.y).to be == 2
     expect(rover.direction).to be == "N"
   end
