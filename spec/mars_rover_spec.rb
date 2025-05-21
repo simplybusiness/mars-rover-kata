@@ -34,6 +34,11 @@ describe "Initialisation" do
   end
 
   context "with invalid parameters" do
+    [{x: 23, y: 5}].each do |position|
+      it "raises an error if the x coordinate is out of bounds" do
+        expect { MarsRover.new(position[:x], position[:y], "N") }.to raise_error(ArgumentError, "x-coordinate is outside the grid")
+      end
+    end
     it "raises an error if the x coordinate is out of bounds" do
       expect{ MarsRover.new(23, 5, "N") }
         .to raise_error(ArgumentError, "x-coordinate is outside the grid")
@@ -55,12 +60,15 @@ describe "Executing commands" do
   let(:rover) { MarsRover.new(1, 2, "N")}
 
   context "move Rover forward" do
-    it "moves forward" do
+    it "moves forward and stays within the grid" do
       mars_rover = rover.execute("f")
 
       expect(mars_rover.x).to be == 1
       expect(mars_rover.y).to be == 3
       expect(mars_rover.direction).to be == "N"
     end
+
+    it "moves forward which would cause the rover to go out of bounds"
+      
   end
 end
