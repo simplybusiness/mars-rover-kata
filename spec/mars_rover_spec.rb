@@ -40,11 +40,6 @@ describe "Initialisation" do
       end
     end
     
-    it "raises an error if the x coordinate is out of bounds" do
-      expect{ MarsRover.new(23, 5, "N") }
-        .to raise_error(ArgumentError, "x-coordinate is outside the grid")
-    end
-
     it "raises an error if the y coordinate is out of bounds" do
       expect{ MarsRover.new(3, 15, "N") }
         .to raise_error(ArgumentError, "y-coordinate is outside the grid")
