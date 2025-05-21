@@ -17,12 +17,11 @@ class MarsRover
     @grid_width = GRID_WIDTH
     @grid_height = GRID_HEIGHT
 
-    # if start_x < 0 || start_x >= GRID_WIDTH
     unless start_x.between?(0, GRID_WIDTH)
       raise ArgumentError, "x-coordinate is outside the grid"
     end
 
-    if start_y < 0 || start_y >= GRID_HEIGHT
+    unless start_y.between?(0, GRID_HEIGHT)
       raise ArgumentError, "y-coordinate is outside the grid"
     end
 
