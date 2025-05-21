@@ -1,5 +1,5 @@
 class MarsRover
-  attr_reader :x, :y, :direction
+  attr_accessor :x, :y, :direction
 
   GRID_WIDTH = 10
   GRID_HEIGHT = 10
@@ -34,6 +34,15 @@ class MarsRover
     @direction = start_direction
 
   end
+
+  def execute(command)
+    self.y = self.y + 1
+    return self
+  end
+
+  # def y
+  #   :y
+  # end
 end
 
 
