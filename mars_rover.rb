@@ -71,4 +71,12 @@ class MarsRover
     [desired_x, desired_y]
   end
 
+  def x
+    @current_location.x
+  end
+
+  def y
+    @current_location.y
+  end
+
 end
