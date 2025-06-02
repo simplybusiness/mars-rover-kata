@@ -64,7 +64,11 @@ describe "Executing commands" do
       expect(mars_rover.direction).to be == "N"
     end
 
-    # it "moves forward which would cause the rover to go out of bounds" do
+    it "moves forward which would cause the rover to go out of bounds" do
+      rover = MarsRover.new(2, 10, "N")
+
+      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+    end
       
   end
 end

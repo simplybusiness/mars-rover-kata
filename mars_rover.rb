@@ -36,14 +36,12 @@ class MarsRover
   end
 
   def execute(command)
+    desired_y = self.y + 1
+    if desired_y > GRID_HEIGHT 
+      raise ArgumentError, "Rover will go out of bounds"
+    end
     self.y += 1
     return self
   end
 
-  # def y
-  #   :y
-  # end
 end
-
-
-
