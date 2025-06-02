@@ -53,10 +53,10 @@ describe "Initialisation" do
 end
 
 describe "Executing commands" do
-  let(:rover) { MarsRover.new(1, 2, "N")}
 
-  context "move Rover forward" do
+  context "move Rover forward" do  
     it "moves forward in the North direction and stay within the grid" do
+      rover = MarsRover.new(1, 2, "N")
       mars_rover = rover.execute("f")
 
       expect(mars_rover.x).to be == 1
