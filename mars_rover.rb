@@ -1,7 +1,7 @@
 Point = Data.define(:x, :y)
 
 class MarsRover
-  attr_accessor :x, :y, :direction
+  attr_accessor :direction
 
   GRID_WIDTH = 10
   GRID_HEIGHT = 10
