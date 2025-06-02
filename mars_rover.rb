@@ -39,10 +39,7 @@ class MarsRover
     desired_x = self.x
     desired_y = self.y
 
-    if self.direction == "N"
-      desired_y = self.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
-    end
-    if self.direction == "S"
+    if self.direction == "N" || self.direction == "S"
       desired_y = self.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
     end
     if self.direction == "E"
