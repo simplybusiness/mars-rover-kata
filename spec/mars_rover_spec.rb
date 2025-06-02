@@ -64,7 +64,7 @@ describe "Executing commands" do
       expect(mars_rover.direction).to be == "N"
     end
 
-    it "moves forward which would cause the rover to go out of bounds"
+    # it "moves forward which would cause the rover to go out of bounds" do
       
   end
 end
