@@ -59,9 +59,10 @@ describe "Executing commands" do
       rover = MarsRover.new(1, 2, "N")
       mars_rover = rover.execute("f")
 
-      expect(mars_rover.x).to be == 1
-      expect(mars_rover.y).to be == 3
+      expected_location = Point.new(x: 1, y: 3)
+      
       expect(mars_rover.direction).to be == "N"
+      expect(mars_rover.current_location).to be == expected_location
     end
 
     it "moves forward in the North direction which would cause the rover to go out of bounds" do
