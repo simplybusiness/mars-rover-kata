@@ -36,15 +36,7 @@ class MarsRover
   end
 
   def execute(command)
-    desired_x = self.x
-    desired_y = self.y
-
-    if self.direction == "N" || self.direction == "S"
-      desired_y = self.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
-    end
-    if self.direction == "E" || self.direction == "W"
-      desired_x = self.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]  
-    end
+    desired_x, desired_y = attempt_to_move_forward
 
     if desired_y > GRID_HEIGHT || desired_y < 0
       raise ArgumentError, "Rover will go out of bounds"
@@ -63,7 +55,7 @@ class MarsRover
   def attempt_to_move_forward()
     desired_x = self.x
     desired_y = self.y
-    
+
     if self.direction == "E" || self.direction == "W"
       desired_x = self.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]  
     end
