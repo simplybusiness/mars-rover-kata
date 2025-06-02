@@ -1,3 +1,5 @@
+Point = Data.define(:x, :y)
+
 class MarsRover
   attr_accessor :x, :y, :direction
 
