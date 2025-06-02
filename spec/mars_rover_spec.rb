@@ -116,4 +116,15 @@ describe "Executing commands" do
     end
       
   end
+
+  context "move Rover backwards" do  
+    xit "moves forward in the North direction and stay within the grid" do
+      rover = MarsRover.new(1, 2, "N")
+      mars_rover = rover.execute("b")
+
+      expect(mars_rover.x).to be == 1
+      expect(mars_rover.y).to be == 1
+      expect(mars_rover.direction).to be == "N"
+    end
+  end
 end
