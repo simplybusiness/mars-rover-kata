@@ -49,10 +49,7 @@ class MarsRover
       raise ArgumentError, "Rover will go out of bounds"
     end
 
-    self.x = desired_x
-    self.y = desired_y
-
-    @current_location = Point.new(x: @x, y: @y)
+    @current_location = Point.new(x: desired_x, y: desired_y)
 
     return self
   end
