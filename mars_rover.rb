@@ -34,6 +34,7 @@ class MarsRover
     @x = start_x
     @y = start_y
     @direction = start_direction
+    @current_location = Point.new(x: start_x, y: start_y)
 
   end
 
@@ -50,6 +51,8 @@ class MarsRover
 
     self.x = desired_x
     self.y = desired_y
+
+    @current_location = Point.new(x: @x, y: @y)
 
     return self
   end
