@@ -42,11 +42,11 @@ class MarsRover
     if self.direction == "N" || self.direction == "S"
       desired_y = self.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
     end
-    if self.direction == "E"
-      desired_x = self.x + 1  
+    if self.direction == "E" 
+      desired_x = self.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]  
     end
     if self.direction == "W"
-      desired_x = self.x - 1
+      desired_x = self.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]
     end
 
     if desired_y > GRID_HEIGHT || desired_y < 0
