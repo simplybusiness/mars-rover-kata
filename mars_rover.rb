@@ -60,4 +60,18 @@ class MarsRover
     return self
   end
 
+  def attempt_to_move_forward()
+    desired_x = self.x
+    desired_y = self.y
+    
+    if self.direction == "E" || self.direction == "W"
+      desired_x = self.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]  
+    end
+    if self.direction == "N" || self.direction == "S"
+      desired_y = self.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
+    end
+  
+    [desired_x, desired_y]
+  end
+
 end
