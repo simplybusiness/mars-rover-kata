@@ -36,11 +36,33 @@ class MarsRover
   end
 
   def execute(command)
-    desired_y = self.y + 1
-    if desired_y > GRID_HEIGHT 
+    desired_x = self.x
+    desired_y = self.y
+
+    if self.direction == "N"
+      desired_y = self.y + 1  
+    end
+    if self.direction == "S"
+      desired_y = self.y - 1
+    end
+    if self.direction == "E"
+      desired_x = self.x + 1  
+    end
+    if self.direction == "W"
+      desired_x = self.x - 1
+    end
+
+    if desired_y > GRID_HEIGHT || desired_y < 0
       raise ArgumentError, "Rover will go out of bounds"
     end
-    self.y += 1
+
+    if desired_x > GRID_WIDTH || desired_x < 0
+      raise ArgumentError, "Rover will go out of bounds"
+    end
+
+    self.x = desired_x
+    self.y = desired_y
+
     return self
   end
 

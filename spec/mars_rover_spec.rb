@@ -56,7 +56,7 @@ describe "Executing commands" do
   let(:rover) { MarsRover.new(1, 2, "N")}
 
   context "move Rover forward" do
-    it "moves forward and stays within the grid" do
+    it "moves forward North and stays within the grid" do
       mars_rover = rover.execute("f")
 
       expect(mars_rover.x).to be == 1
@@ -68,6 +68,16 @@ describe "Executing commands" do
       rover = MarsRover.new(2, 10, "N")
 
       expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+    end
+
+    it "moves forward in the East direction" do
+      rover = MarsRover.new(1, 2, "E")
+      rover = rover.execute("f")
+
+      expect(rover.x).to be == 2
+      expect(rover.y).to be == 2
+      expect(rover.direction).to be == "E"
+   
     end
       
   end
