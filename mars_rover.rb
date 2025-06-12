@@ -1,4 +1,8 @@
-Point = Data.define(:x, :y)
+Point = Data.define(:x, :y) do
+  def move(displacement)
+    Point.new(x: self.x + displacement[:x], y: self.y + displacement[:y])
+  end
+end
 
 class MarsRover
   attr_accessor :direction
@@ -59,11 +63,13 @@ class MarsRover
     desired_x = @current_location.x
     desired_y = @current_location.y
 
+    displacement = MarsRover::MOVEMENT_VECTORS[@direction]
+
     if self.direction == "E" || self.direction == "W"
-      desired_x = @current_location.x + MarsRover::MOVEMENT_VECTORS[@direction][:x]  
+      desired_x = @current_location.x + displacement[:x]  
     end
     if self.direction == "N" || self.direction == "S"
-      desired_y = @current_location.y + MarsRover::MOVEMENT_VECTORS[@direction][:y]
+      desired_y = @current_location.y + displacement[:y]
     end
   
     [desired_x, desired_y]
