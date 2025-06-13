@@ -127,5 +127,11 @@ describe "Executing commands" do
       expect(mars_rover.y).to be == 1
       expect(mars_rover.direction).to be == "N"
     end
+
+    it "moves backward in the North direction whcih would cause the rover to go out of bounds" do
+      rover = MarsRover.new(1, 0, "N")
+
+      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+    end
   end
 end
