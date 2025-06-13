@@ -76,20 +76,12 @@ class MarsRover
   end
 
   def attempt_to_move_backward()
-    desired_x = @current_location.x
-    desired_y = @current_location.y
-
     displacement = MarsRover::BACKWARDS_MOVEMENT_VECTORS[@direction]
+    current_point = Point.new(@current_location.x, @current_location.y)
 
-
-    if self.direction == "E" || self.direction == "W"
-      desired_x = @current_location.x + displacement[:x]
-    end
-    if self.direction == "N" || self.direction == "S"
-      desired_y = @current_location.y + displacement[:y]
-    end
+    new_point = current_point.move(displacement)
   
-    [desired_x, desired_y]
+    [new_point.x, new_point.y]
   end
 
   def x
