@@ -149,5 +149,36 @@ describe "Executing commands" do
 
       expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
     end
+
+    it "moves backward in the West direction and stay within the grid" do
+      rover = MarsRover.new(3, 2, "W")
+      mars_rover = rover.execute("b")
+
+      expect(mars_rover.x).to be == 4
+      expect(mars_rover.y).to be == 2
+      expect(mars_rover.direction).to be == "W"
+    end
+
+    it "moves backward in the West direction whcih would cause the rover to go out of bounds" do
+      rover = MarsRover.new(10, 4, "W")
+
+      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+    end
+
+    it "moves backward in the South direction and stay within the grid" do
+      rover = MarsRover.new(3, 2, "S")
+      mars_rover = rover.execute("b")
+
+      expect(mars_rover.x).to be == 3
+      expect(mars_rover.y).to be == 3
+      expect(mars_rover.direction).to be == "S"
+    end
+
+    it "moves backward in the East direction whcih would cause the rover to go out of bounds" do
+      rover = MarsRover.new(3, 10, "S")
+
+      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+    end
+    
   end
 end
