@@ -50,7 +50,8 @@ class MarsRover
   end
 
   def execute(command)
-    desired_x, desired_y = attempt_to_move_forward if command == "f"
+    displacement = MarsRover::MOVEMENT_VECTORS[@direction] if command == "f"
+    desired_x, desired_y = attempt_to_move_forward(displacement) if command == "f"
     desired_x, desired_y = attempt_to_move_backward if command == "b"
 
     if desired_y > GRID_HEIGHT || desired_y < 0
@@ -66,8 +67,7 @@ class MarsRover
     return self
   end
 
-  def attempt_to_move_forward()
-    displacement = MarsRover::MOVEMENT_VECTORS[@direction]
+  def attempt_to_move_forward(displacement)
     current_point = Point.new(@current_location.x, @current_location.y)
 
     new_point = current_point.move(displacement)
