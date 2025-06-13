@@ -56,8 +56,8 @@ class MarsRover
       displacement = MarsRover::BACKWARDS_MOVEMENT_VECTORS[@direction]
     end
     
-    desired_x, desired_y = attempt_to_move_forward(displacement) if command == "f"
-    desired_x, desired_y = attempt_to_move_backward(displacement) if command == "b"
+    desired_x, desired_y = attempt_to_move(displacement)
+    # desired_x, desired_y = attempt_to_move(displacement) if command == "b"
 
     if desired_y > GRID_HEIGHT || desired_y < 0
       raise ArgumentError, "Rover will go out of bounds"
@@ -70,6 +70,12 @@ class MarsRover
     @current_location = Point.new(x: desired_x, y: desired_y)
 
     return self
+  end
+
+  def attempt_to_move(displacement)
+    current_point = Point.new(@current_location.x, @current_location.y)
+    new_point = current_point.move(displacement)
+    [new_point.x, new_point.y]
   end
 
   def attempt_to_move_forward(displacement)
