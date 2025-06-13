@@ -65,9 +65,10 @@ class MarsRover
     desired_y = @current_location.y
 
     displacement = MarsRover::MOVEMENT_VECTORS[@direction]
+    current_point = Point.new(@current_location.x, @current_location.y)
 
     if self.direction == "E" || self.direction == "W"
-      desired_x = @current_location.x + displacement[:x]  
+      desired_x = current_point.move(displacement).x
     end
     if self.direction == "N" || self.direction == "S"
       desired_y = @current_location.y + displacement[:y]
