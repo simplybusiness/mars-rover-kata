@@ -119,7 +119,7 @@ describe "Executing commands" do
   end
 
   context "move Rover backwards" do  
-    xit "moves forward in the North direction and stay within the grid" do
+    it "moves backward in the North direction and stay within the grid" do
       rover = MarsRover.new(1, 2, "N")
       mars_rover = rover.execute("b")
 
