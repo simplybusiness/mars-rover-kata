@@ -57,18 +57,16 @@ class MarsRover
     end
 
     desired_point = attempt_to_move(displacement)
-    
-    desired_x, desired_y = desired_point.x, desired_point.y
 
-    if desired_y > GRID_HEIGHT || desired_y < 0
+    if desired_point.y > GRID_HEIGHT || desired_point.y < 0
       raise ArgumentError, "Rover will go out of bounds"
     end
 
-    if desired_x > GRID_WIDTH || desired_x < 0
+    if desired_point.x > GRID_WIDTH || desired_point.x < 0
       raise ArgumentError, "Rover will go out of bounds"
     end
 
-    @current_location = Point.new(x: desired_x, y: desired_y)
+    @current_location = desired_point
 
     return self
   end
