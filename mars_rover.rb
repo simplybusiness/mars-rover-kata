@@ -19,6 +19,12 @@ class MarsRover
     'S' => { x: 0, y: -1},
     'W' => {x: -1, y: 0},
   }
+  BACKWARDS_MOVEMENT_VECTORS = {
+    'N' => { x: 0, y: -1},
+    'E' => { x: -1, y: 0},
+    'S' => { x: 0, y: 1},
+    'W' => {x: 1, y: 0},
+  }
 
   def initialize(start_x, start_y, start_direction)
     @grid_width = GRID_WIDTH
@@ -73,13 +79,14 @@ class MarsRover
     desired_x = @current_location.x
     desired_y = @current_location.y
 
-    displacement = MarsRover::MOVEMENT_VECTORS[@direction]
+    displacement = MarsRover::BACKWARDS_MOVEMENT_VECTORS[@direction]
+
 
     if self.direction == "E" || self.direction == "W"
-      desired_x = @current_location.x + displacement[:x] * -1  
+      desired_x = @current_location.x + displacement[:x]
     end
     if self.direction == "N" || self.direction == "S"
-      desired_y = @current_location.y + displacement[:y] * -1
+      desired_y = @current_location.y + displacement[:y]
     end
   
     [desired_x, desired_y]
