@@ -32,12 +32,8 @@ class MarsRover
 
     # "Rover out of bounds, got {x: __, y: __}"
 
-    unless start_x.between?(0, GRID_WIDTH)
+    unless start_x.between?(0, GRID_WIDTH) && start_y.between?(0, GRID_HEIGHT)
       # raise ArgumentError, "x-coordinate is outside the grid"
-      raise ArgumentError, "Rover out of bounds. Got {x: #{start_x}, y: #{start_y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
-    end
-
-    unless start_y.between?(0, GRID_HEIGHT)
       raise ArgumentError, "Rover out of bounds. Got {x: #{start_x}, y: #{start_y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
     end
 
