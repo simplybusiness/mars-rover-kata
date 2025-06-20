@@ -171,10 +171,10 @@ describe "Executing commands" do
       expect(mars_rover.direction).to be == "S"
     end
 
-    it "moves backward in the East direction whcih would cause the rover to go out of bounds" do
+    it "moves backward in the South direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(3, 10, "S")
 
-      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("b") }.to raise_error(ArgumentError, a_string_including("Rover out of bounds", "{x: 3, y: 11}", "{x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}"))
     end
     
   end
