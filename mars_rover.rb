@@ -30,12 +30,15 @@ class MarsRover
     @grid_width = GRID_WIDTH
     @grid_height = GRID_HEIGHT
 
+    # "Rover out of bounds, got {x: __, y: __}"
+
     unless start_x.between?(0, GRID_WIDTH)
-      raise ArgumentError, "x-coordinate is outside the grid"
+      # raise ArgumentError, "x-coordinate is outside the grid"
+      raise ArgumentError, "Rover out of bounds, got {x: #{start_x}, y: #{start_y}}"
     end
 
     unless start_y.between?(0, GRID_HEIGHT)
-      raise ArgumentError, "y-coordinate is outside the grid"
+      raise ArgumentError, "Rover out of bounds, got {x: #{start_x}, y: #{start_y}}"
     end
 
     unless DIRECTIONS.include?(start_direction)
