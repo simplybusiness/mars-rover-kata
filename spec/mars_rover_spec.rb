@@ -80,7 +80,7 @@ describe "Executing commands" do
     it "moves forward in the East direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(10, 2, "E")
 
-      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("f") }.to raise_error(ArgumentError, a_string_including("Rover out of bounds", "{x: 11, y: 2}", "{x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}"))
     end
 
     it "moves forward in the West direction and stay within the grid" do
@@ -95,7 +95,7 @@ describe "Executing commands" do
     it "moves forward in the West direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(0, 2, "W")
 
-      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("f") }.to raise_error(ArgumentError, a_string_including("Rover out of bounds", "{x: -1, y: 2}", "{x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}"))
     end
 
     it "moves forward in the South direction and stay within the grid" do
@@ -144,7 +144,7 @@ describe "Executing commands" do
     it "moves backward in the East direction whcih would cause the rover to go out of bounds" do
       rover = MarsRover.new(0, 4, "E")
 
-      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("b") }.to raise_error(ArgumentError, a_string_including("Rover out of bounds", "{x: -1, y: 4}", "{x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}"))
     end
 
     it "moves backward in the West direction and stay within the grid" do
@@ -159,7 +159,7 @@ describe "Executing commands" do
     it "moves backward in the West direction whcih would cause the rover to go out of bounds" do
       rover = MarsRover.new(10, 4, "W")
 
-      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("b") }.to raise_error(ArgumentError, a_string_including("Rover out of bounds", "{x: 11, y: 4}", "{x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}"))
     end
 
     it "moves backward in the South direction and stay within the grid" do

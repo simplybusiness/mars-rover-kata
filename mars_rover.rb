@@ -57,7 +57,7 @@ class MarsRover
     end
 
     unless @current_location.x.between?(0, GRID_WIDTH)
-      raise ArgumentError, "Rover will go out of bounds"
+      raise ArgumentError, "Rover out of bounds. Got {x: #{@current_location.x}, y: #{@current_location.y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
     end
 
     return self
