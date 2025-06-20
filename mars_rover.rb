@@ -30,14 +30,13 @@ class MarsRover
     @grid_width = GRID_WIDTH
     @grid_height = GRID_HEIGHT
 
-    out_of_bounds(start_x, start_y)
-
     unless DIRECTIONS.include?(start_direction)
       raise ArgumentError, "Direction is invalid"
     end
 
     @direction = start_direction
     @current_location = Point.new(x: start_x, y: start_y)
+    out_of_bounds(@current_location.x, @current_location.y)
 
   end
 
