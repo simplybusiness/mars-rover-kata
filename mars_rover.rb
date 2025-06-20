@@ -42,8 +42,6 @@ class MarsRover
       raise ArgumentError, "Direction is invalid"
     end
 
-    @x = start_x
-    @y = start_y
     @direction = start_direction
     @current_location = Point.new(x: start_x, y: start_y)
 
