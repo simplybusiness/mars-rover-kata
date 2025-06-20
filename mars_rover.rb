@@ -56,11 +56,11 @@ class MarsRover
 
     @current_location = @current_location.move(displacement)
 
-    if @current_location.y > GRID_HEIGHT || @current_location.y < 0
+    unless @current_location.y.between?(0,  GRID_HEIGHT)
       raise ArgumentError, "Rover will go out of bounds"
     end
 
-    if @current_location.x > GRID_WIDTH || @current_location.x < 0
+    unless @current_location.x.between?(0, GRID_WIDTH)
       raise ArgumentError, "Rover will go out of bounds"
     end
 
