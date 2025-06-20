@@ -65,7 +65,7 @@ describe "Executing commands" do
     it "moves forward in the North direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(2, 10, "N")
 
-      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover out of bounds. Got {x: 2, y: 11}. Expecting to be within {x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}")
     end
 
     it "moves forward in the East direction and stay within the grid" do
@@ -110,7 +110,7 @@ describe "Executing commands" do
     it "moves forward in the South direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(1, 0, "S")
 
-      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("f") }.to raise_error(ArgumentError, "Rover out of bounds. Got {x: 1, y: -1}. Expecting to be within {x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}")
     end
       
   end
@@ -125,10 +125,10 @@ describe "Executing commands" do
       expect(mars_rover.direction).to be == "N"
     end
 
-    it "moves backward in the North direction whcih would cause the rover to go out of bounds" do
+    it "moves backward in the North direction which would cause the rover to go out of bounds" do
       rover = MarsRover.new(1, 0, "N")
 
-      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover will go out of bounds")
+      expect { rover.execute("b") }.to raise_error(ArgumentError, "Rover out of bounds. Got {x: 1, y: -1}. Expecting to be within {x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}")
     end
 
 

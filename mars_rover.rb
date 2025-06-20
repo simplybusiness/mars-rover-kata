@@ -30,10 +30,7 @@ class MarsRover
     @grid_width = GRID_WIDTH
     @grid_height = GRID_HEIGHT
 
-    # "Rover out of bounds, got {x: __, y: __}"
-
     unless start_x.between?(0, GRID_WIDTH) && start_y.between?(0, GRID_HEIGHT)
-      # raise ArgumentError, "x-coordinate is outside the grid"
       raise ArgumentError, "Rover out of bounds. Got {x: #{start_x}, y: #{start_y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
     end
 
@@ -56,7 +53,7 @@ class MarsRover
     @current_location = @current_location.move(displacement)
 
     unless @current_location.y.between?(0,  GRID_HEIGHT)
-      raise ArgumentError, "Rover will go out of bounds"
+      raise ArgumentError, "Rover out of bounds. Got {x: #{@current_location.x}, y: #{@current_location.y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
     end
 
     unless @current_location.x.between?(0, GRID_WIDTH)
