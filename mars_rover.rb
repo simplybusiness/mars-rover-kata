@@ -30,9 +30,7 @@ class MarsRover
     @grid_width = GRID_WIDTH
     @grid_height = GRID_HEIGHT
 
-    unless start_x.between?(0, GRID_WIDTH) && start_y.between?(0, GRID_HEIGHT)
-      raise ArgumentError, "Rover out of bounds. Got {x: #{start_x}, y: #{start_y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
-    end
+    out_of_bounds(start_x, start_y)
 
     unless DIRECTIONS.include?(start_direction)
       raise ArgumentError, "Direction is invalid"
@@ -41,6 +39,12 @@ class MarsRover
     @direction = start_direction
     @current_location = Point.new(x: start_x, y: start_y)
 
+  end
+
+  def out_of_bounds(x, y)
+    unless x.between?(0, GRID_WIDTH) && y.between?(0, GRID_HEIGHT)
+      raise ArgumentError, "Rover out of bounds. Got {x: #{x}, y: #{y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
+    end
   end
 
   def execute(command)
@@ -52,9 +56,7 @@ class MarsRover
 
     @current_location = @current_location.move(displacement)
 
-    unless @current_location.y.between?(0,  GRID_HEIGHT) && @current_location.x.between?(0, GRID_WIDTH)
-      raise ArgumentError, "Rover out of bounds. Got {x: #{@current_location.x}, y: #{@current_location.y}}. Expecting to be within {x: [0,#{GRID_WIDTH}), y:[0,#{GRID_HEIGHT})}"
-    end
+    out_of_bounds(@current_location.x, @current_location.y)
 
     return self
   end
