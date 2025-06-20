@@ -36,7 +36,7 @@ describe "Initialisation" do
   context "with invalid parameters" do
     [{x: 23, y: 5}, {x: 3, y: 15}].each do |position|
       it "raises an error if the starting coordinate is out of bounds at (#{position[:x]}, #{position[:y]})" do
-        expect { MarsRover.new(position[:x], position[:y], "N") }.to raise_error(ArgumentError, "Rover out of bounds, got {x: #{position[:x]}, y: #{position[:y]}}")
+        expect { MarsRover.new(position[:x], position[:y], "N") }.to raise_error(ArgumentError, "Rover out of bounds. Got {x: #{position[:x]}, y: #{position[:y]}}. Expecting to be within {x: [0,#{MarsRover::GRID_WIDTH}), y:[0,#{MarsRover::GRID_HEIGHT})}")
       end
     end
 
