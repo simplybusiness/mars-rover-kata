@@ -3,9 +3,8 @@ RSpec.describe 'mars rover' do
         def initialize
             @current_position = [0, 0]
         end
-        def current_position
-            @current_position
-        end
+
+        attr_reader :current_position
     end
     it 'has a current position' do
         mars_rover = MarsRover.new
