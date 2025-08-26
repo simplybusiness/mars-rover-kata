@@ -13,5 +13,8 @@ RSpec.describe 'mars rover' do
       expect(mars_rover.current_position).to eq [0, 1]
     end
 
-    it 'has a direction'
+    it 'has a direction' do
+        mars_rover = MarsRover.new(starting_position: [0, 0])
+        expect(mars_rover.direction).to eq "N"
+    end
 end
