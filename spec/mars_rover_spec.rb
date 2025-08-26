@@ -17,4 +17,8 @@ RSpec.describe 'mars rover' do
         mars_rover = MarsRover.new(starting_position: [0, 0], starting_direction: "N")
         expect(mars_rover.direction).to eq "N"
     end
+
+    it 'has a direction other than N'
+    it 'assigns a direction when an invalid direction is given'
+    it 'assigns a position when an invalid position is given'
 end
