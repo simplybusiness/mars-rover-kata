@@ -1,5 +1,15 @@
 describe 'Mars Rover' do
-    it 'has an initial starting point'
+    class MarsRover
+        def initialize(starting_point:)
+    end
+    def current_position 
+        [0, 0]
+    end
+end
+    it 'has an initial starting point' do
+        mars_rover = MarsRover.new(starting_point: [0, 0])
+        expect(mars_rover.current_position).to eq([0, 0])
+    end
     it 'has a direction it is facing e.g. N'
     it 'has a direction it is facing e.g. E'
     it 'has a direction it is facing e.g. S'
