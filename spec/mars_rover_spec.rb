@@ -19,6 +19,7 @@ RSpec.describe 'mars rover' do
     end
 
     it 'has a direction other than N'
-    it 'assigns a direction when an invalid direction is given'
-    it 'assigns a position when an invalid position is given'
+    it 'assigns a direction when an invalid direction is given, or throws and error'
+    it 'assigns a position when an invalid position is given, or throws an error'
+    it 'assigns a direction and position when invalid arguments are given, or throws an error'
 end
