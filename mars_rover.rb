@@ -1,7 +1,12 @@
 class MarsRover
-    def initialize(starting_position:, current_direction: "N")
+    VALID_DIRECTIONS = ['N', 'E', 'S', 'W']
+
+    def initialize(starting_position:, starting_direction:)
+        if !VALID_DIRECTIONS.include?(starting_direction)
+            raise ArgumentError, "Starting direction is invalid and must be N, E, S, or W"     
+        end  
         @current_position = starting_position
-        @current_direction = current_direction
+        @current_direction = starting_direction 
     end
 
     def direction
