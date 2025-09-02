@@ -23,4 +23,16 @@ RSpec.describe 'mars rover' do
             MarsRover.new(starting_position: [0, 0], starting_direction: "Y")
         }.to raise_error(ArgumentError, "Starting direction is invalid and must be N, E, S, or W")
     end
+
+    it 'starting direction is nil' do
+      expect {
+        MarsRover.new(starting_position: [0, 0], starting_direction: nil)
+      }. to raise_error(ArgumentError, "Starting direction is invalid and must be N, E, S, or W")
+    end
+    it 'starting position is nil'
+
+
+
+
+
 end
