@@ -18,24 +18,13 @@ RSpec.describe 'mars rover' do
         expect(mars_rover.direction).to eq "N"
     end
 
-    it 'has an invalid starting direction' do
-        expect {
-            MarsRover.new(starting_position: [0, 0], starting_direction: "Y")
-        }.to raise_error(ArgumentError, "Starting direction is invalid and must be N, E, S, or W")
-    end
-
     invalid_directions = ['Y', nil, 1]
     invalid_directions.each do |invalid_direction|
         it "cannot have an invalid direction e.g. #{invalid_direction.inspect}" do
             expect {
-                MarsRover.new(starting_position: [0, 0], starting_direction: nil)
+                MarsRover.new(starting_position: [0, 0], starting_direction: invalid_direction)
             }.to raise_error(ArgumentError, "Starting direction is invalid and must be N, E, S, or W")
         end
-    end
-    it 'starting direction is nil' do
-      expect {
-        MarsRover.new(starting_position: [0, 0], starting_direction: nil)
-      }.to raise_error(ArgumentError, "Starting direction is invalid and must be N, E, S, or W")
     end
     it 'starting position is nil'
 
