@@ -2,9 +2,9 @@ describe 'Mars Rover' do
   class MarsRover
     attr_reader :current_position, :current_direction
 
-    def initialize(starting_point:)
+    def initialize(starting_point:, starting_direction: 'N')
       @current_position = starting_point
-      @current_direction = 'N'
+      @current_direction = starting_direction
     end
   end
 
@@ -26,8 +26,18 @@ describe 'Mars Rover' do
     expect(mars_rover.current_direction).to eq 'N'
   end
 
-  it 'has a direction it is facing e.g. E'
-  it 'has a direction it is facing e.g. S'
+  it 'has a direction it is facing e.g. E' do
+    mars_rover = MarsRover.new(starting_point: [1, 1], starting_direction: 'E')
+
+    expect(mars_rover.current_direction).to eq 'E'
+  end
+
+  it 'has a direction it is facing e.g. S' do
+    mars_rover = MarsRover.new(starting_point: [1, 1], starting_direction: 'S')
+
+    expect(mars_rover.current_direction).to eq 'S'
+  end
+
   it 'has a direction it is facing e.g. W'
   it 'cannot have a direction outside of N, E, S and W e.g. R'
   it 'cannot face N, E, S and W simultaneously'
