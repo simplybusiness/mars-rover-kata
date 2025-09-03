@@ -9,19 +9,19 @@ describe 'Mars Rover' do
   end
 
   it 'has an initial starting point' do
-    mars_rover = MarsRover.new(starting_point: [0, 0])
+    mars_rover = MarsRover.new(starting_point: [0, 0], starting_direction: 'N')
 
     expect(mars_rover.current_position).to eq([0, 0])
   end
 
   it 'has an initial starting point anywhere on Mars' do
-    mars_rover = MarsRover.new(starting_point: [1, 1])
+    mars_rover = MarsRover.new(starting_point: [1, 1], starting_direction: 'N')
 
     expect(mars_rover.current_position).to eq [1, 1]
   end
 
   it 'has a direction it is facing e.g. N' do
-    mars_rover = MarsRover.new(starting_point: [0, 0])
+    mars_rover = MarsRover.new(starting_point: [0, 0], starting_direction: 'N')
 
     expect(mars_rover.current_direction).to eq 'N'
   end
