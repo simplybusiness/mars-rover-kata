@@ -3,11 +3,11 @@ describe 'Mars Rover' do
    class MarsRover
 
     def initialize(starting_point:)
-
+      @current_position  = [0, 0]
     end
 
     def current_position
-      [0, 0]
+      @current_position
     end
 
    end
