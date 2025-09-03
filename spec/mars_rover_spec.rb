@@ -4,10 +4,11 @@ describe 'Mars Rover' do
 
     def initialize(starting_point:)
       @current_position = starting_point
+      @current_direction = 'N'
     end
 
     def current_direction
-      'N'
+      @current_direction
     end
   end
 
