@@ -1,7 +1,6 @@
 describe 'Mars Rover' do
     class MarsRover
-        attr_reader :current_position
-        attr_reader :current_direction
+        attr_reader :current_position, :current_direction
 
         def initialize(starting_point:)
             @current_position = starting_point
