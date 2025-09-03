@@ -5,6 +5,10 @@ describe 'Mars Rover' do
     def initialize(starting_point:)
       @current_position = starting_point
     end
+
+    def current_direction
+      'N'
+    end
   end
 
   it 'has an initial starting point' do
@@ -19,7 +23,12 @@ describe 'Mars Rover' do
     expect(mars_rover.current_position).to eq [1, 1]
   end
 
-  it 'has a direction it is facing e.g. N'
+  it 'has a direction it is facing e.g. N' do
+    mars_rover = MarsRover.new(starting_point: [0, 0])
+
+    expect(mars_rover.current_direction).to eq 'N'
+  end
+
   it 'has a direction it is facing e.g. E'
   it 'has a direction it is facing e.g. S'
   it 'has a direction it is facing e.g. W'
