@@ -1,15 +1,11 @@
 describe 'Mars Rover' do
 
    class MarsRover
+    attr_reader :current_position
 
     def initialize(starting_point:)
       @current_position  = starting_point
     end
-
-    def current_position
-      @current_position
-    end
-
    end
 
 
@@ -17,7 +13,7 @@ describe 'Mars Rover' do
     mars_rover = MarsRover.new(starting_point: [0,0])
   
     expect(mars_rover.current_position).to eq([0,0])
-end
+  end
 
   it 'has an initial starting point anywhere on Mars' do
     mars_rover = MarsRover.new(starting_point: [1,1])
