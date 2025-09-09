@@ -50,6 +50,7 @@ describe 'Mars Rover' do
       MarsRover.new(starting_point: [0, 1], starting_direction: 'C')
     end.to raise_error(ArgumentError, 'The starting direction must be one of N, E, S or W')
   end
+
   it 'cannot face N, E, S and W simultaneously'
   it 'cannot have a nil starting point'
 end
