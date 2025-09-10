@@ -12,9 +12,5 @@ class MarsRover
         @current_direction = starting_direction 
     end
 
-    def direction
-        @current_direction
-    end
-
-    attr_reader :current_position
+    attr_reader :current_position, :current_direction
 end

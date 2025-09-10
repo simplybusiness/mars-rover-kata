@@ -16,7 +16,7 @@ RSpec.describe 'mars rover' do
 
     it 'has a starting direction of north' do
         mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
-        expect(mars_rover.direction).to eq "N"
+        expect(mars_rover.current_direction).to eq "N"
     end
 
     invalid_directions = ['Y', nil, 1]
