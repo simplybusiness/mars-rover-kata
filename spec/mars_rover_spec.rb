@@ -1,10 +1,11 @@
 require_relative "../mars_rover"
+require_relative "../coordinates"
 
 RSpec.describe 'mars rover' do
     it 'has a current position' do
-        mars_rover = MarsRover.new(starting_position: [0, 0], starting_direction: "N")
+        mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
 
-        expect(mars_rover.current_position).to eq [0, 0]
+        expect(mars_rover.current_position).to eq Coordinates.new(0, 0)
     end
 
     it 'has a current position away from the origin' do
