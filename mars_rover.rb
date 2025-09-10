@@ -2,7 +2,7 @@ class MarsRover
     VALID_DIRECTIONS = ['N', 'E', 'S', 'W']
 
     def initialize(starting_position:, starting_direction:)
-        if starting_position.nil?
+        if starting_position.nil? || !starting_position.is_a?(Coordinates)
           raise ArgumentError, "Starting position is invalid and must be valid coordinates"
         end
         if !VALID_DIRECTIONS.include?(starting_direction)
