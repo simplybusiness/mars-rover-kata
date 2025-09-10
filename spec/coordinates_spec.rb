@@ -28,4 +28,9 @@ RSpec.describe 'coordinates' do
       expect(c1).not_to(eq(c2), "expected #{c1.inspect} not to equal #{c2.inspect}")
     end
   end
+
+  it "is immutable" do
+    c1 = Coordinates.new(0, 0)
+    expect(c1).to be_frozen
+  end
 end
