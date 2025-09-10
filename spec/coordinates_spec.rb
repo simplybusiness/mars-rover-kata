@@ -12,6 +12,14 @@ RSpec.describe 'coordinates' do
       c2 = Coordinates.new(0, 0)
       expect(c1).to eq(c2)
     end
-    it "is transitive"
+
+    it "is transitive" do
+      c1 = Coordinates.new(0, 0)
+      c2 = Coordinates.new(0, 0)
+      c3 = Coordinates.new(0, 0)
+      expect(c1).to eq(c2)
+      expect(c2).to eq(c3)
+      expect(c1).to eq(c3)
+    end
   end
 end
