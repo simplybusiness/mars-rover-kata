@@ -1,7 +1,9 @@
-require 'spec_helper'
 require_relative '../rover'
 
 RSpec.describe Rover do
+    # example of a pending test
+    it 'knows its starting position'
+
     it 'has a starting position that is not null' do
         rov = Rover.new
         expect(rov.x).not_to be_nil
