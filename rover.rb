@@ -26,6 +26,10 @@ class Rover
         @commands = commands
     end
 
+    def current_position
+        return [@x, @y]
+    end
+
     def move
         commands.each do |command|
             case command.downcase

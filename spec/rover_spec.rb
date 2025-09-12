@@ -14,6 +14,7 @@ RSpec.describe Rover do
         rov = Rover.new(x: 3, y: 3)
         expect(rov.x).to eq(3)
         expect(rov.y).to eq(3)
+        expect(rov.current_position).to eq([3, 3])
     end
 
     it 'raises an argument error when the coordinates passed are not floats' do
