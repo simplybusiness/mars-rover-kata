@@ -4,4 +4,6 @@ RSpec.describe 'Mars Rover' do
   it 'knows the direction it is facing'
 
   it 'complains that it does not have a starting point'
+
+  it 'complains that it does not have a direction'
 end
