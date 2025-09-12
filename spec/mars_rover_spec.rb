@@ -1,5 +1,13 @@
 RSpec.describe 'Mars Rover' do
-  it 'knows its current position'
+  class MarsRover
+
+  end
+
+  it 'knows its current position' do
+    mars_rover = MarsRover.new(starting_position: [1, 1])
+
+    expect(mars_rover.current_position).to eq([1, 1])
+  end
 
   it 'knows the direction it is facing'
 
