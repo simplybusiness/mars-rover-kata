@@ -5,14 +5,12 @@ require 'rspec/expectations'
 RSpec.describe 'mars rover' do
     it 'has a current position' do
         mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
-
-        expect(mars_rover.current_position).to eq Coordinates.new(0, 0)
+        expect(mars_rover).to be_located_at(Coordinates.new(0, 0))
     end
 
     it 'has a current position away from the origin' do
       mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 1), starting_direction: "N")
-
-      expect(mars_rover.current_position).to eq Coordinates.new(0, 1)
+      expect(mars_rover).to  be_located_at(Coordinates.new(0, 1))
     end
 
     it 'has a starting direction of north' do
