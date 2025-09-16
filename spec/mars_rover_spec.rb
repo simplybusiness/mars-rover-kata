@@ -15,7 +15,7 @@ RSpec.describe 'mars rover' do
 
     it 'has a starting direction of north' do
         mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
-        expect(mars_rover.current_direction).to eq "N"
+        expect(mars_rover).to have_direction("N")
     end
 
     invalid_directions = ['Y', nil, 1]
@@ -76,6 +76,12 @@ RSpec.describe 'mars rover' do
     RSpec::Matchers.define :be_located_at do |expected_coordinates|
         match do |mars_rover|
             mars_rover.current_position == expected_coordinates
+        end
+    end
+
+    RSpec::Matchers.define :have_direction do |expected_direction|
+        match do |mars_rover|
+            mars_rover.current_direction == expected_direction
         end
     end
 
