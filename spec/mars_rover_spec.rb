@@ -1,5 +1,6 @@
 require_relative "../mars_rover"
 require_relative "../coordinates"
+require 'rspec/expectations'
 
 RSpec.describe 'mars rover' do
     it 'has a current position' do
@@ -57,7 +58,7 @@ RSpec.describe 'mars rover' do
     it "moves forwards and starts at position (1, 0)" do
         mars_rover = MarsRover.new(starting_position: Coordinates.new(1, 0), starting_direction: "N")
         mars_rover.execute(["f"])
-        expect(mars_rover.current_position).to eq(Coordinates.new(1, 1))
+        expect(mars_rover).to be_located_at(Coordinates.new(1, 1))
     end
 
     it "moves backwards and is facing north"
@@ -73,5 +74,11 @@ RSpec.describe 'mars rover' do
     it "moves forwards and is facing west"
 
     it "moves backwards and is facing west"
+
+    RSpec::Matchers.define :be_located_at do |expected_coordinates|
+        match do |mars_rover|
+            mars_rover.current_position == expected_coordinates
+        end
+    end
 
 end
