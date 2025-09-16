@@ -36,4 +36,9 @@ RSpec.describe 'mars rover' do
             }.to raise_error(ArgumentError, "Starting position is invalid and must be valid coordinates")
         end
     end
+
+    it "receives an array of commands" do
+        mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
+        expect(mars_rover).to respond_to :execute
+    end
 end
