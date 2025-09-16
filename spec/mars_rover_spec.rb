@@ -48,6 +48,12 @@ RSpec.describe 'mars rover' do
         expect(mars_rover.current_position).to eq(Coordinates.new(0, 1))
     end
 
+    it "moves forwards, facing north, and starts at position (0, 1)" do
+        mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 1), starting_direction: "N")
+        mars_rover.execute(["f"])
+        expect(mars_rover.current_position).to eq(Coordinates.new(0, 2))
+    end
+
     it "moves backwards and is facing north"
 
     it "moves forwards and is facing east"

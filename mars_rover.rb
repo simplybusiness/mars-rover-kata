@@ -13,7 +13,7 @@ class MarsRover
     end
 
     def execute(commands)
-        set_position(0, 1)
+        set_position(0, current_position.y_coordinate + 1)
     end
 
     private 
