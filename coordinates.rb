@@ -1,18 +1,18 @@
 class Coordinates
 
-  attr_reader :x_coordinate, :y_coordinate
+  attr_reader :x, :y
 
   def initialize(x, y)
-    @x_coordinate = x
-    @y_coordinate = y
+    @x = x
+    @y = y
     freeze
   end
 
   def inspect
-    "(#{@x_coordinate}, #{@y_coordinate})"
+    "(#{@x}, #{@y})"
   end
 
   def ==(other)
-    @x_coordinate == other.x_coordinate && @y_coordinate == other.y_coordinate
+    @x == other.x && @y == other.y
   end
 end
