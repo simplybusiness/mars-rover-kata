@@ -39,6 +39,6 @@ RSpec.describe 'mars rover' do
 
     it "receives an array of commands" do
         mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: "N")
-        expect(mars_rover).to respond_to :execute
+        expect(mars_rover).to respond_to(:execute).with(1)
     end
 end

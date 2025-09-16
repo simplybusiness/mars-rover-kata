@@ -10,7 +10,7 @@ class MarsRover
         @current_direction = starting_direction 
     end
 
-    def execute 
+    def execute(commands)
     end
 
     attr_reader :current_position, :current_direction
