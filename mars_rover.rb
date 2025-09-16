@@ -1,6 +1,8 @@
 class MarsRover
     VALID_DIRECTIONS = ['N', 'E', 'S', 'W']
 
+    attr_reader :current_position, :current_direction
+
     def initialize(starting_position:, starting_direction:)
         raise ArgumentError, "Starting position is invalid and must be valid coordinates" if !starting_position.is_a?(Coordinates)
         if !VALID_DIRECTIONS.include?(starting_direction)
@@ -14,9 +16,8 @@ class MarsRover
         set_position(0, 1)
     end
 
+    private 
     def set_position(x, y)
         @current_position = Coordinates.new(x, y)
     end
-
-    attr_reader :current_position, :current_direction
 end
