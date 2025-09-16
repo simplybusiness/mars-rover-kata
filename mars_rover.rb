@@ -11,7 +11,11 @@ class MarsRover
     end
 
     def execute(commands)
-        @current_position = Coordinates.new(0, 1)
+        set_position(0, 1)
+    end
+
+    def set_position(x, y)
+        @current_position = Coordinates.new(x, y)
     end
 
     attr_reader :current_position, :current_direction
