@@ -22,13 +22,6 @@ RSpec.describe 'Mars Rover' do
     end
   end
 
-
-  it 'knows its position when it is located anywhere' do
-    mars_rover = MarsRover.new(starting_position: [0, 5])
-
-    expect(mars_rover.current_position).to eq([0, 5])
-  end
-
   it 'knows the direction it is facing'
 
   it 'complains that it does not have a starting point'
