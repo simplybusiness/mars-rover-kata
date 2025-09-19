@@ -7,11 +7,21 @@ RSpec.describe 'Mars Rover' do
     end
   end
 
-  it 'knows its current position' do
-    mars_rover = MarsRover.new(starting_position: [1, 1])
+  positions = [
+    [1, 1],
+    [0, 5],
+    [0, 0],
+    [-1, 4]
+  ]
 
-    expect(mars_rover.current_position).to eq([1, 1])
+  positions.each do |position|
+    it "knows its current position (#{position})" do
+      mars_rover = MarsRover.new(starting_position: position)
+
+      expect(mars_rover.current_position).to eq(position)
+    end
   end
+
 
   it 'knows its position when it is located anywhere' do
     mars_rover = MarsRover.new(starting_position: [0, 5])
