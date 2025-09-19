@@ -1,9 +1,11 @@
 RSpec.describe 'Mars Rover' do
   class MarsRover
     attr_reader :current_position
+    attr_reader :current_direction
 
-    def initialize(starting_position:)
+    def initialize(starting_position:, starting_direction: 0)
       @current_position = starting_position
+      @current_direction = starting_direction
     end
   end
 
@@ -22,7 +24,14 @@ RSpec.describe 'Mars Rover' do
     end
   end
 
-  it 'knows the direction it is facing'
+  it 'knows the direction it is facing' do
+    # direction is in bearing
+    # direction is from 0 to 360 (not inclusive)
+    # assume north is 0
+    direction = 0
+    mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction)
+    expect(mars_rover.current_direction).to eq(direction)
+  end
 
   it 'complains that it does not have a starting point'
 
