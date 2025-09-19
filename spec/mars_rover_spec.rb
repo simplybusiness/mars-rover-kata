@@ -5,7 +5,7 @@ RSpec.describe 'Mars Rover' do
     end
 
     def current_position
-      [1,1]
+      @current_position
     end
   end
 
