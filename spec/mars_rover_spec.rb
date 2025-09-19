@@ -1,7 +1,7 @@
 RSpec.describe 'Mars Rover' do
   class MarsRover
     def initialize(starting_position:)
-      @starting_position = [1, 1]
+      @current_position = [1, 1]
     end
 
     def current_position
