@@ -5,10 +5,6 @@ RSpec.describe 'Mars Rover' do
     def initialize(starting_position:)
       @current_position = [1, 1]
     end
-
-    def current_position
-      @current_position
-    end
   end
 
   it 'knows its current position' do
