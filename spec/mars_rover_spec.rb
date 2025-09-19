@@ -3,7 +3,7 @@ RSpec.describe 'Mars Rover' do
     attr_reader :current_position
     attr_reader :current_direction
 
-    def initialize(starting_position:, starting_direction: 0)
+    def initialize(starting_position: [0,0], starting_direction: 0)
       @current_position = starting_position
       @current_direction = starting_direction
     end
