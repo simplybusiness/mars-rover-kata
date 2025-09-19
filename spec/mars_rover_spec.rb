@@ -1,5 +1,7 @@
 RSpec.describe 'Mars Rover' do
   class MarsRover
+    attr_reader :current_position
+
     def initialize(starting_position:)
       @current_position = [1, 1]
     end
