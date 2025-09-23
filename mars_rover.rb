@@ -13,7 +13,11 @@ class MarsRover
     end
 
     def execute(commands)
-        set_position(current_position.x, current_position.y + 1)
+        if commands[0] == "f"
+            set_position(current_position.x, current_position.y + 1)  
+        else
+            set_position(current_position.x, current_position.y - 1)  
+        end
     end
 
     def inspect
