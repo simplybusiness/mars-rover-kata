@@ -28,7 +28,7 @@ class MarsRover
                 displacement[1] -= 1
             end
         end
-        set_position(current_position.x + x_displacement, current_position.y + y_displacement)  
+        set_position(current_position.x + x_displacement, current_position.y + displacement[1])  
     end
 
     def inspect
