@@ -18,7 +18,8 @@ class MarsRover
 
         commands.each do |command|
             if command == "f"
-               y_displacement += 1
+               y_displacement += 1 if current_direction == "N"
+               x_displacement += 1 if current_direction == "E"
             else
                 y_displacement -= 1
             end
