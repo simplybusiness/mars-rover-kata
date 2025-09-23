@@ -16,6 +16,10 @@ class MarsRover
         set_position(current_position.x, current_position.y + 1)
     end
 
+    def inspect
+        "Mars rover located at #{current_position.inspect} facing #{current_direction}"
+    end
+
     private 
     def set_position(x, y)
         @current_position = Coordinates.new(x, y)
