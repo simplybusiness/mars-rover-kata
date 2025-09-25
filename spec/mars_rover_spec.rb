@@ -9,6 +9,10 @@ RSpec.describe 'Mars Rover' do
       @current_position = starting_position
       @current_direction = starting_direction
     end
+
+    def command(commands:)
+      
+    end
   end
 
   positions = [
@@ -48,6 +52,6 @@ RSpec.describe 'Mars Rover' do
 
   it 'can take a character array of commands' do
     mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: 'N')
-    expect { mars_rover.command(['a', 'b'])}.not_to raise_error(StandardError)
+    expect { mars_rover.command(commands: ['a', 'b'])}.not_to raise_error(StandardError)
   end
 end
