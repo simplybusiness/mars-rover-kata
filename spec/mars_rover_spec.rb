@@ -35,7 +35,9 @@ RSpec.describe 'Mars Rover' do
 
   it 'complains that it does not have a starting point'
 
-  it 'complains that it does not have a direction'
+  it 'complains that it does not have a direction' do
+    expect{ MarsRover.new(starting_position: [1,1]) }.to raise_error(StandardError)
+  end
 
   it 'complains when it has a direction that is not N, E, S, W' do
     expect{ MarsRover.new(starting_position: [1,1], starting_direction: 'X') }.to raise_error(StandardError)
