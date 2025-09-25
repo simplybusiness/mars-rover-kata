@@ -46,5 +46,8 @@ RSpec.describe 'Mars Rover' do
     expect{ MarsRover.new(starting_position: [1,1], starting_direction: 'X') }.to raise_error(StandardError)
   end
 
-  it 'can take a character array of commands'
+  it 'can take a character array of commands' do
+    mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: 'N')
+    expect { mars_rover.command(['a', 'b'])}.not_to raise_error(StandardError)
+  end
 end
