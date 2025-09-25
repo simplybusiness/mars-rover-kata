@@ -4,6 +4,9 @@ RSpec.describe 'Mars Rover' do
     attr_reader :current_direction
 
     def initialize(starting_position: [0,0], starting_direction: 0)
+      if !['N', 'E', 'W', 'S'].include? starting_direction
+        raise "Invalid direction"
+      end
       @current_position = starting_position
       @current_direction = starting_direction
     end
