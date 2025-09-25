@@ -26,10 +26,13 @@ RSpec.describe 'Mars Rover' do
     end
   end
 
-  it 'knows the direction it is facing' do
-    direction = 'N'
-    mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction)
-    expect(mars_rover.current_direction).to eq(direction)
+  directions = ['N', 'E', 'W', 'S']
+
+  directions.each do |direction|
+    it "knows its current direction (#{direction})" do
+      mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction)
+      expect(mars_rover.current_direction).to eq(direction)
+    end
   end
 
   it 'complains that it does not have a starting position' do
