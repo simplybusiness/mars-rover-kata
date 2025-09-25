@@ -28,10 +28,7 @@ RSpec.describe 'Mars Rover' do
   end
 
   it 'knows the direction it is facing' do
-    # direction is in bearing
-    # direction is from 0 to 360 (not inclusive)
-    # assume north is 0
-    direction = 0
+    direction = 'N'
     mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction)
     expect(mars_rover.current_direction).to eq(direction)
   end
