@@ -21,7 +21,7 @@ RSpec.describe 'Mars Rover' do
 
   positions.each do |position|
     it "knows its current position (#{position})" do
-      mars_rover = MarsRover.new(starting_position: position)
+      mars_rover = MarsRover.new(starting_position: position, starting_direction: 'N')
 
       expect(mars_rover.current_position).to eq(position)
     end
