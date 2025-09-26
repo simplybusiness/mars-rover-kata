@@ -1,0 +1,8 @@
+{
+    "github.copilot.advanced": {
+
+    },
+    "github.copilot.editor.enableCodeActions": true,
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "editor.inlineSuggest.enabled": false
+}

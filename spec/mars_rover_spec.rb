@@ -13,8 +13,10 @@ RSpec.describe 'Mars Rover' do
     def execute(commands:)
       if current_direction == 'N'
         @current_position = [@current_position[0], @current_position[1] + 1]
-      else
+      elsif current_direction == 'E'
         @current_position = [@current_position[0] + 1, @current_position[1]]
+      elsif current_direction == 'S'
+        @current_position = [@current_position[0], @current_position[1] - 1]
       end
     end
 
@@ -83,7 +85,13 @@ RSpec.describe 'Mars Rover' do
       expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :y_coordinate)
     end
 
-    example 'when it is facing south'
+    example 'when it is facing south' do
+            mars_rover = mars_rover_facing('S')
+
+      expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :y_coordinate).by -1
+      expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :x_coordinate)
+    end
+
     example 'when it is facing west'
 
     private
