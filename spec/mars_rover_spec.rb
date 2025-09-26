@@ -10,11 +10,11 @@ RSpec.describe 'Mars Rover' do
       @current_direction = starting_direction
     end
 
-    def command(commands:)
+    def execute(commands:)
       @current_position = [@current_position[0], @current_position[1] + 1]
     end
 
-    alias_method :execute, :command
+    alias_method :command, :execute
 
     def x_coordinate
       @current_position[0]
