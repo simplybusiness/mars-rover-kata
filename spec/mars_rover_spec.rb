@@ -55,4 +55,11 @@ RSpec.describe 'Mars Rover' do
 
     expect(mars_rover).to respond_to(:command).with_keywords(:commands)
   end
+
+  describe 'moving forward' do
+    example 'when it is facing north'
+    example 'when it is facing east'
+    example 'when it is facing south'
+    example 'when it is facing west'
+  end
 end
