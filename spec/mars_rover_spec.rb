@@ -11,7 +11,7 @@ RSpec.describe 'Mars Rover' do
     end
 
     def command(commands:)
-      @current_position = [0, 1]
+      @current_position = [0, @current_position[1] + 1]
     end
 
     def y_coordinate
