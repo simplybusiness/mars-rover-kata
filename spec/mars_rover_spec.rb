@@ -71,7 +71,14 @@ RSpec.describe 'Mars Rover' do
       expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :y_coordinate).by 1
       expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :x_coordinate)
     end
-    example 'when it is facing east'
+
+    example 'when it is facing east' do
+      mars_rover = MarsRover.new(starting_position: [-1, 4], starting_direction: 'E')
+
+      expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :x_coordinate).by 1
+      expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :y_coordinate)
+    end
+    
     example 'when it is facing south'
     example 'when it is facing west'
   end
