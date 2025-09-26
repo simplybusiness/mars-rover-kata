@@ -70,14 +70,14 @@ RSpec.describe 'Mars Rover' do
 
   describe 'moving forward' do
     example 'when it is facing north' do
-      mars_rover = MarsRover.new(starting_position: [0, 0], starting_direction: 'N')
+      mars_rover = mars_rover_facing('N')
 
       expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :y_coordinate).by 1
       expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :x_coordinate)
     end
 
     example 'when it is facing east' do
-      mars_rover = MarsRover.new(starting_position: [-1, 4], starting_direction: 'E')
+      mars_rover = mars_rover_facing('E')
 
       expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :x_coordinate).by 1
       expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :y_coordinate)
@@ -85,5 +85,12 @@ RSpec.describe 'Mars Rover' do
 
     example 'when it is facing south'
     example 'when it is facing west'
+
+    private
+
+    def mars_rover_facing(direction)
+      irrelevant = [0, 0]
+      MarsRover.new(starting_position: irrelevant, starting_direction: direction)
+    end
   end
 end
