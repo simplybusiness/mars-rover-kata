@@ -11,6 +11,10 @@ RSpec.describe 'Mars Rover' do
     end
 
     def execute(commands:)
+      move_forward
+    end
+
+    def move_forward
       case current_direction
         when 'N'
           @current_position = [@current_position[0], @current_position[1] + 1]
