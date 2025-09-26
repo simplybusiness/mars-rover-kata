@@ -11,7 +11,11 @@ RSpec.describe 'Mars Rover' do
     end
 
     def command(commands:)
-      
+      @current_position = [0, 1]
+    end
+
+    def y_coordinate
+      @current_position[1]
     end
   end
 
@@ -57,7 +61,11 @@ RSpec.describe 'Mars Rover' do
   end
 
   describe 'moving forward' do
-    example 'when it is facing north'
+    example 'when it is facing north' do
+      mars_rover = MarsRover.new(starting_position: [0, 0], starting_direction: 'N')
+
+      expect {  mars_rover.command(commands: ['f']) }.to change(mars_rover, :y_coordinate).by 1
+    end
     example 'when it is facing east'
     example 'when it is facing south'
     example 'when it is facing west'
