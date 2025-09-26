@@ -63,15 +63,15 @@ RSpec.describe 'Mars Rover' do
   it 'receives a character array of commands from Earth' do
     mars_rover = MarsRover.new(starting_position: [-1, 1], starting_direction: 'S')
 
-    expect(mars_rover).to respond_to(:command).with_keywords(:commands)
+    expect(mars_rover).to respond_to(:execute).with_keywords(:commands)
   end
 
   describe 'moving forward' do
     example 'when it is facing north' do
       mars_rover = MarsRover.new(starting_position: [0, 0], starting_direction: 'N')
 
-      expect { mars_rover.command(commands: ['f']) }.to change(mars_rover, :y_coordinate).by 1
-      expect { mars_rover.command(commands: ['f']) }.not_to change(mars_rover, :x_coordinate)
+      expect { mars_rover.execute(commands: ['f']) }.to change(mars_rover, :y_coordinate).by 1
+      expect { mars_rover.execute(commands: ['f']) }.not_to change(mars_rover, :x_coordinate)
     end
     example 'when it is facing east'
     example 'when it is facing south'
