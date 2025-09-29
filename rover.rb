@@ -49,26 +49,26 @@ class Rover
     def move_forward
         case @direction
         when 'N'
-            @coordinates.y += 1
+            @coordinates.change_y
         when 'S'
-            @coordinates.y -= 1
+            @coordinates.change_y(increase: false)
         when 'E'
-            @coordinates.x += 1
+            @coordinates.change_x
         when 'W'
-            @coordinates.x -= 1
+            @coordinates.change_x(increase: false)
         end
     end
 
     def move_backwards
         case @direction
         when 'N'
-            @coordinates.y -= 1
+            @coordinates.change_y(increase: false)
         when 'S'
-            @coordinates.y += 1
+            @coordinates.change_y
         when 'E'
-            @coordinates.x -= 1
+            @coordinates.change_x(increase: false)
         when 'W'
-            @coordinates.x += 1
+            @coordinates.change_x
         end
     end
 
