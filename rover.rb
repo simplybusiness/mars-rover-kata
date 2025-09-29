@@ -38,20 +38,7 @@ class Rover
         commands.each do |command|
             case command.downcase
             when 'f'
-                case @direction
-                when 'N'
-                    @y += 1
-                    @coordinates.y += 1
-                when 'S'
-                    @y -= 1
-                    @coordinates.y -= 1
-                when 'E'
-                    @x += 1
-                    @coordinates.x += 1
-                when 'W'
-                    @x -= 1
-                    @coordinates.x -= 1
-                end
+                move_forward
             when 'b'
                 case @direction
                 when 'N'
@@ -86,6 +73,23 @@ class Rover
                     @y += 1
                 end
             end
+        end
+    end
+
+    def move_forward
+        case @direction
+        when 'N'
+            @y += 1
+            @coordinates.y += 1
+        when 'S'
+            @y -= 1
+            @coordinates.y -= 1
+        when 'E'
+            @x += 1
+            @coordinates.x += 1
+        when 'W'
+            @x -= 1
+            @coordinates.x -= 1
         end
     end
 end
