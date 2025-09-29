@@ -30,7 +30,7 @@ class Rover
     end
 
     def current_position
-        return [@coordinates.x, @coordinates.y]
+        return @coordinates.current_coordinates
     end
 
     def move

@@ -6,14 +6,11 @@ RSpec.describe Rover do
 
     it 'has a starting position that is not null' do
         rov = Rover.new
-        expect(rov.x).not_to be_nil
-        expect(rov.y).not_to be_nil
+        expect(rov.current_position).not_to be_nil
     end
 
     it 'can be initialized with custom starting coordinates' do
         rov = Rover.new(x: 3, y: 3)
-        expect(rov.x).to eq(3)
-        expect(rov.y).to eq(3)
         expect(rov.current_position).to eq([3, 3])
     end
 
@@ -53,16 +50,6 @@ RSpec.describe Rover do
         expect { Rover.new(commands: ['A', "ABSDF"]) }.to raise_error(ArgumentError, /Commands must be/)
     end
 
-    it 'moves forward facing West' do
-        rov_w = Rover.new(direction: 'W', commands: ['f'])
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(0)
-
-        rov_w.move()
-        expect(rov_w.x).to eq(-1)
-        expect(rov_w.y).to eq(0)
-    end
-
     it 'moves forward facing North' do
         rov = Rover.new(direction: 'N', commands: ['f'])
         expect(rov.x).to eq(0)
@@ -91,6 +78,14 @@ RSpec.describe Rover do
         rov_e.move()
         expect(rov_e.x).to eq(1)
         expect(rov_e.y).to eq(0)
+    end
+
+    it 'moves forward facing West' do
+        rov_w = Rover.new(direction: 'W', commands: ['f'])
+        expect(rov_w.current_position).to eq([0, 0])
+
+        rov_w.move()
+        expect(rov_w.current_position).to eq([-1, 0])
     end
 
     it 'moves forward 10 times correctly' do
