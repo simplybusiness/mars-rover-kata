@@ -1,3 +1,5 @@
+require_relative "./coordinates"
+
 class Rover
     CARDINAL_DIRECTIONS = ['N', 'S', 'E', 'W']
 
