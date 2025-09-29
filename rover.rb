@@ -41,16 +41,7 @@ class Rover
             when 'l'
                 turn_left
             when 'r'
-                case @direction
-                when 'N'
-                    @x += 1
-                when 'S'
-                    @x -= 1
-                when 'E'
-                    @y -= 1
-                when 'W'
-                    @y += 1
-                end
+                turn_right
             end
         end
     end
@@ -91,6 +82,19 @@ class Rover
             @direction = 'E'
         when 'W'
             @direction = 'S'
+        end
+    end
+
+    def turn_right
+        case @direction
+        when 'N'
+            @direction = 'E'
+        when 'E'
+            @direction = 'S'
+        when 'S'
+            @direction = 'W'
+        when 'W'
+            @direction = 'N'
         end
     end
 end
