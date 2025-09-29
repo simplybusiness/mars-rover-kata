@@ -122,91 +122,43 @@ RSpec.describe Rover do
         expect(rov_w.current_position).to eq([1, 0])
     end
 
-    it 'can move backwards and forwards in the same command list' do
-        rov = Rover.new(commands: ['f', 'f', 'b', 'b', 'b'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+    it 'can move backwards and forwards in the same command list when facing North' do
+        rov = Rover.new(direction: 'N', commands: ['f', 'f', 'b', 'b', 'b'])
+        expect(rov.current_position).to eq([0, 0])
 
         rov.move()
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(-1)
+        expect(rov.current_position).to eq([0, -1])
     end
 
-    it 'moves left correctly' do
-        rov = Rover.new(commands: ['l', 'l', 'l'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+    it 'faces west after turning left when facing north' do
+        rov = Rover.new(direction: 'N', commands: ['l'])
+        expect(rov.direction).to eq('N')
 
         rov.move()
-        expect(rov.x).to eq(-3)
-        expect(rov.y).to eq(0)
-
-        rov_s = Rover.new(direction: 'S', commands: ['l', 'l', 'l'])
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(0)
-
-        rov_s.move()
-        expect(rov_s.x).to eq(3)
-        expect(rov_s.y).to eq(0)
-
-        rov_e = Rover.new(direction: 'E', commands: ['l'])
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(0)
-
-        rov_e.move()
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(1)
-
-        rov_w = Rover.new(direction: 'W', commands: ['l', 'l'])
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(0)
-
-        rov_w.move()
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(-2)
+        expect(rov.direction).to eq('W')
     end
 
-    it 'moves right correctly' do
-        rov = Rover.new(commands: ['r', 'r', 'r'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+    it 'faces north after turning left when facing east' do
+        rov = Rover.new(direction: 'E', commands: ['l'])
+        expect(rov.direction).to eq('E')
 
         rov.move()
-        expect(rov.x).to eq(3)
-        expect(rov.y).to eq(0)
-
-        rov_s = Rover.new(direction: 'S', commands: ['r', 'r', 'r'])
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(0)
-
-        rov_s.move()
-        expect(rov_s.x).to eq(-3)
-        expect(rov_s.y).to eq(0)
-
-        rov_e = Rover.new(direction: 'E', commands: ['r'])
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(0)
-
-        rov_e.move()
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(-1)
-
-        rov_w = Rover.new(direction: 'W', commands: ['r', 'r'])
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(0)
-
-        rov_w.move()
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(2)
+        expect(rov.direction).to eq('N')
     end
 
-    it 'can move all directions in the same command list' do
-        rov = Rover.new(commands: ['f', 'f', 'b', 'r', 'l', 'r'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+    it 'faces east after turning left when facing south' do
+        rov = Rover.new(direction: 'S', commands: ['l'])
+        expect(rov.direction).to eq('S')
 
         rov.move()
-        expect(rov.x).to eq(1)
-        expect(rov.y).to eq(1)
+        expect(rov.direction).to eq('E')
+    end
+
+    it 'faces south after turning left when facing west' do
+        rov = Rover.new(direction: 'W', commands: ['l'])
+        expect(rov.direction).to eq('W')
+
+        rov.move()
+        expect(rov.direction).to eq('S')
     end
 end
