@@ -3,7 +3,7 @@ require_relative "./coordinates"
 class Rover
     CARDINAL_DIRECTIONS = ['N', 'S', 'E', 'W']
 
-    attr_reader :x, :y, :direction, :commands
+    attr_reader :direction, :commands
 
     def initialize(x: 0, y: 0, direction: 'N', commands: [])
 
@@ -22,8 +22,6 @@ class Rover
             raise ArgumentError, 'Commands must be an array of characters'
         end
 
-        @x = x
-        @y = y
         @direction = direction
         @commands = commands
         @coordinates = Coordinates.new(x: x, y: y)
@@ -60,16 +58,12 @@ class Rover
     def move_forward
         case @direction
         when 'N'
-            @y += 1
             @coordinates.y += 1
         when 'S'
-            @y -= 1
             @coordinates.y -= 1
         when 'E'
-            @x += 1
             @coordinates.x += 1
         when 'W'
-            @x -= 1
             @coordinates.x -= 1
         end
     end
@@ -77,16 +71,12 @@ class Rover
     def move_backwards
         case @direction
         when 'N'
-            @y -= 1
             @coordinates.y -= 1
         when 'S'
-            @y += 1
             @coordinates.y += 1
         when 'E'
-            @x -= 1
             @coordinates.x -= 1
         when 'W'
-            @x += 1
             @coordinates.x += 1
         end
     end
