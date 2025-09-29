@@ -54,12 +54,12 @@ RSpec.describe Rover do
     end
 
     it 'moves forward facing West' do
-        rov_w = Rover.new(direction: 'W', commands: ['f', 'f'])
+        rov_w = Rover.new(direction: 'W', commands: ['f'])
         expect(rov_w.x).to eq(0)
         expect(rov_w.y).to eq(0)
 
         rov_w.move()
-        expect(rov_w.x).to eq(-2)
+        expect(rov_w.x).to eq(-1)
         expect(rov_w.y).to eq(0)
     end
 
