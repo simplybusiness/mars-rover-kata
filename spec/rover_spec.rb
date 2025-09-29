@@ -52,32 +52,26 @@ RSpec.describe Rover do
 
     it 'moves forward facing North' do
         rov = Rover.new(direction: 'N', commands: ['f'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+        expect(rov.current_position).to eq([0, 0])
 
         rov.move()
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(1)
+        expect(rov.current_position).to eq([0, 1])
     end
 
     it 'moves forward facing South' do
         rov_s = Rover.new(direction: 'S', commands: ['f'])
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(0)
+        expect(rov_s.current_position).to eq([0, 0])
 
         rov_s.move()
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(-1)
+        expect(rov_s.current_position).to eq([0, -1])
     end
 
     it 'moves forward facing East' do
         rov_e = Rover.new(direction: 'E', commands: ['f'])
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(0)
+        expect(rov_e.current_position).to eq([0, 0])
 
         rov_e.move()
-        expect(rov_e.x).to eq(1)
-        expect(rov_e.y).to eq(0)
+        expect(rov_e.current_position).to eq([1, 0])
     end
 
     it 'moves forward facing West' do
@@ -89,47 +83,43 @@ RSpec.describe Rover do
     end
 
     it 'moves forward 10 times correctly' do
-        rover = Rover.new(direction: 'N', commands: ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'])
-        expect(rover.x).to eq(0)
-        expect(rover.y).to eq(0)
-
-        rover.move()
-        expect(rover.x).to eq(0)
-        expect(rover.y).to eq(10)
-    end
-
-    it 'moves backward correctly' do
-        rov = Rover.new(commands: ['b', 'b', 'b'])
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(0)
+        rov = Rover.new(direction: 'N', commands: ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'])
+        expect(rov.current_position).to eq([0, 0])
 
         rov.move()
-        expect(rov.x).to eq(0)
-        expect(rov.y).to eq(-3)
+        expect(rov.current_position).to eq([0, 10])
+    end
 
-        rov_s = Rover.new(direction: 'S', commands: ['b', 'b', 'b'])
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(0)
+    it 'moves backward correctly when facing North' do
+        rov = Rover.new(direction: 'N', commands: ['b'])
+        expect(rov.current_position).to eq([0, 0])
+
+        rov.move()
+        expect(rov.current_position).to eq([0, -1])
+    end
+
+    it 'moves backward correctly when facing South' do
+        rov_s = Rover.new(direction: 'S', commands: ['b'])
+        expect(rov_s.current_position).to eq([0, 0])
 
         rov_s.move()
-        expect(rov_s.x).to eq(0)
-        expect(rov_s.y).to eq(3)
+        expect(rov_s.current_position).to eq([0, 1])
+    end
 
+    it 'moves backward correctly when facing East' do
         rov_e = Rover.new(direction: 'E', commands: ['b'])
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(0)
+        expect(rov_e.current_position).to eq([0, 0])
 
         rov_e.move()
-        expect(rov_e.x).to eq(-1)
-        expect(rov_e.y).to eq(0)
+        expect(rov_e.current_position).to eq([-1, 0])
+    end
 
-        rov_w = Rover.new(direction: 'W', commands: ['b', 'b'])
-        expect(rov_w.x).to eq(0)
-        expect(rov_w.y).to eq(0)
+    it 'moves backward correctly when facing West' do
+        rov_w = Rover.new(direction: 'W', commands: ['b'])
+        expect(rov_w.current_position).to eq([0, 0])
 
         rov_w.move()
-        expect(rov_w.x).to eq(2)
-        expect(rov_w.y).to eq(0)
+        expect(rov_w.current_position).to eq([1, 0])
     end
 
     it 'can move backwards and forwards in the same command list' do
