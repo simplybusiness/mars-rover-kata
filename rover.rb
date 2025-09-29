@@ -26,10 +26,12 @@ class Rover
         @y = y
         @direction = direction
         @commands = commands
+        @coordinates = Coordinates.new(x: x, y: y)
     end
 
     def current_position
-        return [@x, @y]
+        current_coordinates = Coordinates.new(x: @x, y: @y)
+        return [current_coordinates.x, current_coordinates.y]
     end
 
     def move
@@ -39,12 +41,16 @@ class Rover
                 case @direction
                 when 'N'
                     @y += 1
+                    @coordinates.y += 1
                 when 'S'
                     @y -= 1
+                    @coordinates.y -= 1
                 when 'E'
                     @x += 1
+                    @coordinates.x += 1
                 when 'W'
                     @x -= 1
+                    @coordinates.x -= 1
                 end
             when 'b'
                 case @direction
