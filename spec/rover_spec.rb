@@ -93,6 +93,16 @@ RSpec.describe Rover do
         expect(rov_e.y).to eq(0)
     end
 
+    it 'moves forward 10 times correctly' do
+        rover = Rover.new(direction: 'N', commands: ['f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f', 'f'])
+        expect(rover.x).to eq(0)
+        expect(rover.y).to eq(0)
+
+        rover.move()
+        expect(rover.x).to eq(0)
+        expect(rover.y).to eq(10)
+    end
+
     it 'moves backward correctly' do
         rov = Rover.new(commands: ['b', 'b', 'b'])
         expect(rov.x).to eq(0)
