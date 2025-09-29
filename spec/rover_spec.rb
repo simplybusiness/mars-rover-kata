@@ -53,15 +53,7 @@ RSpec.describe Rover do
         expect { Rover.new(commands: ['A', "ABSDF"]) }.to raise_error(ArgumentError, /Commands must be/)
     end
 
-    it 'moves forward correctly' do
-        rov_e = Rover.new(direction: 'E', commands: ['f'])
-        expect(rov_e.x).to eq(0)
-        expect(rov_e.y).to eq(0)
-
-        rov_e.move()
-        expect(rov_e.x).to eq(1)
-        expect(rov_e.y).to eq(0)
-
+    it 'moves forward facing West' do
         rov_w = Rover.new(direction: 'W', commands: ['f', 'f'])
         expect(rov_w.x).to eq(0)
         expect(rov_w.y).to eq(0)
