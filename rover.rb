@@ -40,16 +40,7 @@ class Rover
             when 'f'
                 move_forward
             when 'b'
-                case @direction
-                when 'N'
-                    @y -= 1
-                when 'S'
-                    @y += 1
-                when 'E'
-                    @x -= 1
-                when 'W'
-                    @x += 1
-                end
+                move_backwards
             when 'l'
                 case @direction
                 when 'N'
@@ -90,6 +81,19 @@ class Rover
         when 'W'
             @x -= 1
             @coordinates.x -= 1
+        end
+    end
+
+    def move_backwards
+        case @direction
+        when 'N'
+            @y -= 1
+        when 'S'
+            @y += 1
+        when 'E'
+            @x -= 1
+        when 'W'
+            @x += 1
         end
     end
 end
