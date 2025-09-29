@@ -87,6 +87,16 @@ RSpec.describe Rover do
         expect(rov_w.y).to eq(0)
     end
 
+    it 'moves forward facing North' do
+        rov = Rover.new(direction: 'N', commands: ['f', 'f', 'f'])
+        expect(rov.x).to eq(0)
+        expect(rov.y).to eq(0)
+
+        rov.move()
+        expect(rov.x).to eq(0)
+        expect(rov.y).to eq(3)
+    end
+
     it 'moves backward correctly' do
         rov = Rover.new(commands: ['b', 'b', 'b'])
         expect(rov.x).to eq(0)
