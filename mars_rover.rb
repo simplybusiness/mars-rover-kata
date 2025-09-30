@@ -16,9 +16,7 @@ class MarsRover
 
       commands.each do |command|
         if command == "f"
-          displacement = [0, 0]
-          displacement[1] += 1 if current_direction == "N"
-          displacement[0] += 1 if current_direction == "E"
+          displacement = move_forwards
         else
           displacement = [0, 0]
           displacement[1] -= 1
@@ -31,7 +29,15 @@ class MarsRover
         "Mars rover located at #{current_position.inspect} facing #{current_direction}"
     end
 
-    private 
+    private
+
+    def move_forwards
+      displacement = [0, 0]
+      displacement[1] += 1 if current_direction == "N"
+      displacement[0] += 1 if current_direction == "E"
+      displacement
+    end
+
     def set_position(x, y)
         @current_position = Coordinates.new(x, y)
     end
