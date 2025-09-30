@@ -18,8 +18,7 @@ class MarsRover
         if command == "f"
           displacement = move_forwards
         else
-          displacement = [0, 0]
-          displacement[1] -= 1
+          displacement = move_backwards
         end
         set_position(current_position.x + displacement[0], current_position.y + displacement[1])
       end
@@ -30,6 +29,12 @@ class MarsRover
     end
 
     private
+
+    def move_backwards
+      displacement = [0, 0]
+      displacement[1] -= 1
+      displacement
+    end
 
     def move_forwards
       displacement = [0, 0]
