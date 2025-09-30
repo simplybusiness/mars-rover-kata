@@ -18,8 +18,7 @@ class MarsRover
         if command == "f"
           total_displacement = move_forwards(total_displacement: total_displacement)
         else
-          displacement = move_backwards
-          total_displacement = [total_displacement[0] + displacement[0], total_displacement[1] + displacement[1]]
+          total_displacement = move_backwards(total_displacement: total_displacement)
         end
       end
       set_position(current_position.x + total_displacement[0], current_position.y + total_displacement[1])
@@ -31,10 +30,9 @@ class MarsRover
 
     private
 
-    def move_backwards
-      displacement = [0, 0]
-      displacement[1] -= 1
-      displacement
+    def move_backwards(total_displacement:)
+      total_displacement[1] -= 1
+      total_displacement
     end
 
     def move_forwards(total_displacement:)
