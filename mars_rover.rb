@@ -17,12 +17,12 @@ class MarsRover
       commands.each do |command|
         displacement = [0, 0]
         if command == "f"
-               displacement[1] += 1 if current_direction == "N"
-               displacement[0] += 1 if current_direction == "E"
-            else
-                displacement[1] -= 1
-            end
-            set_position(current_position.x + displacement[0], current_position.y + displacement[1])
+          displacement[1] += 1 if current_direction == "N"
+          displacement[0] += 1 if current_direction == "E"
+        else
+          displacement[1] -= 1
+        end
+        set_position(current_position.x + displacement[0], current_position.y + displacement[1])
         end
     end
 
