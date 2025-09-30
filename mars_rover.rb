@@ -22,8 +22,8 @@ class MarsRover
           displacement = move_backwards
           total_displacement = [total_displacement[0] + displacement[0], total_displacement[1] + displacement[1]]
         end
-        set_position(current_position.x + displacement[0], current_position.y + displacement[1])
       end
+      set_position(current_position.x + total_displacement[0], current_position.y + total_displacement[1])
     end
 
     def inspect
