@@ -15,11 +15,11 @@ class MarsRover
     def execute(commands)
       total_displacement = [0, 0]
       commands.each do |command|
-        if command == "f"
-          total_displacement = move_forwards(total_displacement: total_displacement)
-        else
-          total_displacement = move_backwards(total_displacement: total_displacement)
-        end
+        total_displacement = if command == "f"
+                               move_forwards(total_displacement: total_displacement)
+                             else
+                               move_backwards(total_displacement: total_displacement)
+                             end
       end
       set_position(current_position.x + total_displacement[0], current_position.y + total_displacement[1])
     end
