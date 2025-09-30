@@ -38,6 +38,7 @@ class MarsRover
     def move_forwards(total_displacement:)
       total_displacement[1] += 1 if current_direction == "N"
       total_displacement[0] += 1 if current_direction == "E"
+      total_displacement[0] -= 1 if current_direction == "W"
       total_displacement
     end
 
