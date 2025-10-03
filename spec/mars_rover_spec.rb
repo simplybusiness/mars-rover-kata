@@ -21,7 +21,7 @@ RSpec.describe 'Mars Rover' do
 
   directions.each do |direction|
     it "knows its current direction (#{direction})" do
-      mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction)
+      mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction, starting_coordinates: Coordinates.new(x: 1, y: 1))
       expect(mars_rover.current_direction).to eq(direction)
     end
   end
