@@ -9,7 +9,10 @@ RSpec.describe 'Mars Rover' do
   ]
 
   starting_coordinates = [
-    Coordinates.new(x: 1, y: 1)
+    Coordinates.new(x: 1, y: 1),
+    Coordinates.new(x: 0, y: 5),
+    Coordinates.new(x: 0, y: 0),
+    Coordinates.new(x: -1, y: 4)
   ]
 
   starting_coordinates.each do |coordinates|
