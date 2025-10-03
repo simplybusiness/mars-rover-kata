@@ -33,7 +33,7 @@ class MarsRover
   end
 
   def x_coordinate
-    @current_position[0]
+    @current_coordinates.x
   end
 
   def y_coordinate
