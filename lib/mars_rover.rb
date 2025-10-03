@@ -7,6 +7,7 @@ class MarsRover
       raise "Invalid direction"
     end
     @current_position = starting_position
+    @current_coordinates = Coordinates.new(x: starting_position[0], y: starting_position[1])
     @current_direction = starting_direction
   end
 
@@ -18,6 +19,7 @@ class MarsRover
     case current_direction
     when 'N'
       @current_position = [@current_position[0], @current_position[1] + 1]
+      @current_coordinates = Coordinates.new(x: @current_coordinates.x, y: @current_coordinates.y + 1)
     when 'E'
       @current_position = [@current_position[0] + 1, @current_position[1]]
     when 'S'
