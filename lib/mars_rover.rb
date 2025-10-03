@@ -7,7 +7,7 @@ class MarsRover
       raise "Invalid direction"
     end
     @current_position = starting_position
-    @current_coordinates = Coordinates.new(x: starting_position[0], y: starting_position[1])
+    @current_coordinates = starting_coordinates
     @current_direction = starting_direction
   end
 
