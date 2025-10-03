@@ -1,12 +1,6 @@
 require_relative '../lib/mars_rover'
 
 RSpec.describe 'Mars Rover' do
-  positions = [
-    [1, 1],
-    [0, 5],
-    [0, 0],
-    [-1, 4]
-  ]
 
   starting_coordinates = [
     Coordinates.new(x: 1, y: 1),
