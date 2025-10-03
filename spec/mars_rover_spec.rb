@@ -11,7 +11,7 @@ RSpec.describe 'Mars Rover' do
 
   starting_coordinates.each do |coordinates|
     it "knows its current position (#{coordinates.x}, #{coordinates.y})" do
-      mars_rover = MarsRover.new(starting_position: [coordinates.x, coordinates.y], starting_direction: 'N', starting_coordinates: coordinates)
+      mars_rover = MarsRover.new(starting_direction: 'N', starting_coordinates: coordinates)
       # expected_coordinates = Coordinates.new(x: position[0], y: position[1])
       expect(mars_rover.current_coordinates).to eq(coordinates)
     end
@@ -21,7 +21,7 @@ RSpec.describe 'Mars Rover' do
 
   directions.each do |direction|
     it "knows its current direction (#{direction})" do
-      mars_rover = MarsRover.new(starting_position: [1,1], starting_direction: direction, starting_coordinates: Coordinates.new(x: 1, y: 1))
+      mars_rover = MarsRover.new(starting_direction: direction, starting_coordinates: Coordinates.new(x: 1, y: 1))
       expect(mars_rover.current_direction).to eq(direction)
     end
   end
@@ -30,15 +30,15 @@ RSpec.describe 'Mars Rover' do
     expect{ MarsRover.new(starting_direction: 'N') }.to raise_error(StandardError)
   end
   it 'complains that it does not have a direction' do
-    expect{ MarsRover.new(starting_position: [1,1], starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
+    expect{ MarsRover.new(starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
   end
 
   it 'complains when it has a direction that is not N, E, S, W' do
-    expect{ MarsRover.new(starting_position: [1,1], starting_direction: 'X',  starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
+    expect{ MarsRover.new(starting_direction: 'X',  starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
   end
 
   it 'receives a character array of commands from Earth' do
-    mars_rover = MarsRover.new(starting_position: [-1, 1], starting_direction: 'S', starting_coordinates: Coordinates.new(x: -1, y: 1))
+    mars_rover = MarsRover.new(starting_direction: 'S', starting_coordinates: Coordinates.new(x: -1, y: 1))
 
     expect(mars_rover).to respond_to(:execute).with_keywords(:commands)
   end
@@ -75,7 +75,7 @@ RSpec.describe 'Mars Rover' do
 
     def mars_rover_facing(direction)
       irrelevant = Coordinates.new(x: 0, y: 0)
-      MarsRover.new(starting_position: irrelevant, starting_direction: direction, starting_coordinates: irrelevant)
+      MarsRover.new(starting_direction: direction, starting_coordinates: irrelevant)
     end
   end
 end
