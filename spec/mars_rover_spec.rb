@@ -1,3 +1,5 @@
+require_relative '../lib/mars_rover'
+
 RSpec.describe 'Mars Rover' do
   class MarsRover
     attr_reader :current_position, :current_direction
