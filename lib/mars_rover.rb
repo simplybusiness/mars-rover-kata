@@ -25,6 +25,7 @@ class MarsRover
       @current_coordinates = Coordinates.new(x: @current_coordinates.x + 1, y: @current_coordinates.y)
     when 'S'
       @current_position = [@current_position[0], @current_position[1] - 1]
+      @current_coordinates = Coordinates.new(x: @current_coordinates.x, y: @current_coordinates.y - 1)
     when 'W'
       @current_position = [@current_position[0] - 1, @current_position[1]]
     end
