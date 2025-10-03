@@ -74,8 +74,8 @@ RSpec.describe 'Mars Rover' do
     private
 
     def mars_rover_facing(direction)
-      irrelevant = [0, 0]
-      MarsRover.new(starting_position: irrelevant, starting_direction: direction)
+      irrelevant = Coordinates.new(x: 0, y: 0)
+      MarsRover.new(starting_position: irrelevant, starting_direction: direction, starting_coordinates: irrelevant)
     end
   end
 end
