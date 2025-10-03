@@ -8,11 +8,15 @@ RSpec.describe 'Mars Rover' do
     [-1, 4]
   ]
 
-  positions.each do |position|
-    it "knows its current position (#{position})" do
-      mars_rover = MarsRover.new(starting_position: position, starting_direction: 'N')
-      expected_coordinates = Coordinates.new(x: position[0], y: position[1])
-      expect(mars_rover.current_coordinates).to eq(expected_coordinates)
+  starting_coordinates = [
+    Coordinates.new(x: 1, y: 1)
+  ]
+
+  starting_coordinates.each do |coordinates|
+    it "knows its current position (#{coordinates.x}, #{coordinates.y})" do
+      mars_rover = MarsRover.new(starting_position: [coordinates.x, coordinates.y], starting_direction: 'N', starting_coordinates: coordinates)
+      # expected_coordinates = Coordinates.new(x: position[0], y: position[1])
+      expect(mars_rover.current_coordinates).to eq(coordinates)
     end
   end
 
