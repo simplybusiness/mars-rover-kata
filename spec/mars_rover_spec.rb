@@ -10,7 +10,9 @@ end
 
 describe 'on bootup' do
   feature 'Operating a Mars Rover' do
-
+    step 'a Mars Rover facing north' do
+      @rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
+    end
   end
 
   it 'starts at the origin and faces N' do
