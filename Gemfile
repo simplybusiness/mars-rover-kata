@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-ruby '3.2.1'
+ruby '3.4.5'
 group :test do
   gem 'minitest'
   gem 'rspec'
+  gem 'rutabaga'
 end
