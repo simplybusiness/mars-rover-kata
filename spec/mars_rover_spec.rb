@@ -13,6 +13,11 @@ describe 'on bootup' do
     step 'a Mars Rover facing north' do
       @rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
     end
+
+    step 'its direction does not change when it moves forward' do
+      @rover.execute('f')
+      expect(@rover.direction).to eq('N')
+    end
   end
 
   it 'starts at the origin and faces N' do
@@ -34,10 +39,10 @@ describe 'on bootup' do
 
     expect(rover.direction).to eq('W')
   end
-  
+
   it 'receives commands from earth' do
     rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'W')
-    
+
     expect(rover).to respond_to(:execute)
   end
 
@@ -112,13 +117,13 @@ describe 'on bootup' do
 
     it 'moves backward when facing east' do
       rover = MarsRover.new(OpenStruct.new(x: 2, y: -1), 'E')
-      
+
       rover.execute('b')
 
       expect(rover.current_position).to eq([1, -1])
     end
   end
-  
+
   describe 'turning left' do
     it 'turns left when facing north and position remains unchanged' do
       rover = MarsRover.new(OpenStruct.new(x: 1, y: 2), 'N')
@@ -153,5 +158,5 @@ describe 'on bootup' do
       expect(rover.direction).to eq('S')
       expect(rover.current_position).to eq([-1, 0])
     end
-  end 
+  end
 end
