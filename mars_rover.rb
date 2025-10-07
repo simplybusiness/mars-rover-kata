@@ -39,6 +39,8 @@ class MarsRover
         total_displacement[Y_AXIS] -= 1
       when "E"
         total_displacement[X_AXIS] -= 1
+      when "W"
+        total_displacement[X_AXIS] += 1
       when "S"
         total_displacement[Y_AXIS] += 1
       end
