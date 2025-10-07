@@ -7,7 +7,7 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v5
-      - uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1.202.0
         with:
           ruby-version: '3.4.5'
       - run: bundle install
