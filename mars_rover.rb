@@ -2,6 +2,7 @@ class MarsRover
     VALID_DIRECTIONS = ['N', 'E', 'S', 'W']
     X_AXIS = 0
     Y_AXIS = 1
+    private_constant :X_AXIS, :Y_AXIS, :VALID_DIRECTIONS
 
     attr_reader :current_position, :current_direction
 
