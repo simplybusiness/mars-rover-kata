@@ -11,6 +11,5 @@ jobs:
         with:
           ruby-version: '3.4.5'
       - run: bundle install
-      - name: Run the tests
       - run: bundle exec rspec
       - run: echo "🍏 This job's status is ${{ job.status }}."
