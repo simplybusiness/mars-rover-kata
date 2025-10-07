@@ -1,5 +1,7 @@
 class MarsRover
     VALID_DIRECTIONS = ['N', 'E', 'S', 'W']
+    X_AXIS = 0
+    Y_AXIS = 1
 
     attr_reader :current_position, :current_direction
 
@@ -33,11 +35,11 @@ class MarsRover
     def move_backwards(total_displacement:)
       case current_direction
       when "N"
-        total_displacement[1] -= 1
+        total_displacement[Y_AXIS] -= 1
       when "E"
-        total_displacement[0] -= 1
+        total_displacement[X_AXIS] -= 1
       when "S"
-        total_displacement[1] += 1
+        total_displacement[Y_AXIS] += 1
       end
       total_displacement
     end
@@ -45,13 +47,13 @@ class MarsRover
     def move_forwards(total_displacement:)
       case current_direction
       when 'N'
-        total_displacement[1] += 1
+        total_displacement[Y_AXIS] += 1
       when 'E'
-        total_displacement[0] += 1
+        total_displacement[X_AXIS] += 1
       when 'W'
-        total_displacement[0] -= 1
+        total_displacement[X_AXIS] -= 1
       when 'S'
-        total_displacement[1] -= 1
+        total_displacement[Y_AXIS] -= 1
       end
       total_displacement
     end
