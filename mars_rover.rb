@@ -43,6 +43,8 @@ class MarsRover
         total_displacement[0] += 1
       when 'W'
         total_displacement[0] -= 1
+      when 'S'
+        total_displacement[1] -= 1
       end
       total_displacement
     end
