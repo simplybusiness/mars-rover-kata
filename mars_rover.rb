@@ -31,7 +31,14 @@ class MarsRover
     private
 
     def move_backwards(total_displacement:)
-      total_displacement[1] -= 1
+      case current_direction
+      when "N"
+        total_displacement[1] -= 1
+      when "E"
+        total_displacement[0] -= 1
+      when "S"
+        total_displacement[1] += 1
+      end
       total_displacement
     end
 
