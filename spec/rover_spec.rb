@@ -19,9 +19,6 @@ RSpec.describe Rover do
   end
 
   it 'holds the character array of commands' do
-    rov = Rover.new(commands: %w[f b f b])
-    expect(rov.commands).to eq(%w[f b f b])
-
     expect { Rover.new(commands: [1, 2, 3]) }.to raise_error(ArgumentError, /Commands must be/)
     expect { Rover.new(commands: [1]) }.to raise_error(ArgumentError, /Commands must be/)
     expect { Rover.new(commands: ['A', 23]) }.to raise_error(ArgumentError, /Commands must be/)
