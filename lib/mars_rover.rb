@@ -4,17 +4,9 @@ require 'coordinates'
 class MarsRover
   attr_reader :current_coordinates, :current_direction
 
-<<<<<<< Updated upstream
   def initialize(starting_direction:, starting_coordinates:)
-    if !['N', 'E', 'W', 'S'].include? starting_direction
-      raise "Invalid direction"
-    end
-=======
-  def initialize(starting_position:, starting_direction:,
-                 starting_coordinates: Coordinates.new(x: starting_position[0], y: starting_position[1]))
     raise 'Invalid direction' unless %w[N E W S].include? starting_direction
 
->>>>>>> Stashed changes
     @current_coordinates = starting_coordinates
     @current_direction = starting_direction
   end

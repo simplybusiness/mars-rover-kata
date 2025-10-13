@@ -12,13 +12,7 @@ RSpec.describe 'Mars Rover' do
 
   starting_coordinates.each do |coordinates|
     it "knows its current position (#{coordinates.x}, #{coordinates.y})" do
-<<<<<<< Updated upstream
       mars_rover = MarsRover.new(starting_direction: 'N', starting_coordinates: coordinates)
-=======
-      mars_rover = MarsRover.new(starting_position: [coordinates.x, coordinates.y], starting_direction: 'N',
-                                 starting_coordinates: coordinates)
->>>>>>> Stashed changes
-      # expected_coordinates = Coordinates.new(x: position[0], y: position[1])
       expect(mars_rover.current_coordinates).to eq(coordinates)
     end
   end
@@ -27,12 +21,7 @@ RSpec.describe 'Mars Rover' do
 
   directions.each do |direction|
     it "knows its current direction (#{direction})" do
-<<<<<<< Updated upstream
       mars_rover = MarsRover.new(starting_direction: direction, starting_coordinates: Coordinates.new(x: 1, y: 1))
-=======
-      mars_rover = MarsRover.new(starting_position: [1, 1], starting_direction: direction,
-                                 starting_coordinates: Coordinates.new(x: 1, y: 1))
->>>>>>> Stashed changes
       expect(mars_rover.current_direction).to eq(direction)
     end
   end
@@ -41,7 +30,6 @@ RSpec.describe 'Mars Rover' do
     expect { MarsRover.new(starting_direction: 'N') }.to raise_error(StandardError)
   end
   it 'complains that it does not have a direction' do
-<<<<<<< Updated upstream
     expect{ MarsRover.new(starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
   end
 
@@ -50,8 +38,6 @@ RSpec.describe 'Mars Rover' do
   end
 
   it 'receives a character array of commands from Earth' do
-    mars_rover = MarsRover.new(starting_direction: 'S', starting_coordinates: Coordinates.new(x: -1, y: 1))
-=======
     expect do
       MarsRover.new(starting_position: [1, 1],
                     starting_coordinates: Coordinates.new(x: 1, y: 1))
@@ -66,9 +52,8 @@ RSpec.describe 'Mars Rover' do
   end
 
   it 'receives a character array of commands from Earth' do
-    mars_rover = MarsRover.new(starting_position: [-1, 1], starting_direction: 'S',
+    mars_rover = MarsRover.new(starting_direction: 'S',
                                starting_coordinates: Coordinates.new(x: -1, y: 1))
->>>>>>> Stashed changes
 
     expect(mars_rover).to respond_to(:execute).with_keywords(:commands)
   end
