@@ -86,9 +86,11 @@ class Rover
     end
 
     def turn_right
+        turn_right_hash = {'N' => 'E'}
+
         case @direction
         when 'N'
-            @direction = 'E'
+            @direction = turn_right_hash[@direction]
         when 'E'
             @direction = 'S'
         when 'S'
