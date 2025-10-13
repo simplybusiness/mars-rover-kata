@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 require_relative './coordinates'
 
 class Rover
-  CARDINAL_DIRECTIONS = %w[N S E W]
-  TURN_RIGHT_HASH = { 'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N' }
+  CARDINAL_DIRECTIONS = %w[N S E W].freeze
+  TURN_RIGHT_HASH = { 'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N' }.freeze
 
   attr_reader :direction, :commands
 

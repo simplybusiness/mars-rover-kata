@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Coordinates
   attr_reader :x, :y
 
