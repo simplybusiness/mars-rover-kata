@@ -6,4 +6,5 @@ group :test do
 end
 group :development do
   gem 'reek'
+  gem 'simplycop'
 end
