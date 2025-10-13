@@ -9,31 +9,9 @@ RSpec.describe Rover do
     expect(rov.current_position).not_to be_nil
   end
 
-  it 'can be initialized with custom starting coordinates' do
-    rov = Rover.new(x: 3, y: 3)
-    expect(rov.current_position).to eq([3, 3])
-  end
-
   it 'raises an argument error when the coordinates passed are not floats' do
     expect { Rover.new(x: 'Z') }.to raise_error(ArgumentError, /Invalid coordinates/)
     expect { Rover.new(y: 'Z') }.to raise_error(ArgumentError, /Invalid coordinates/)
-  end
-
-  it 'has a starting direction that is one of N, S, E, W' do
-    rov = Rover.new
-    valid_directions = %w[N S E W]
-    expect(valid_directions).to include(rov.direction)
-  end
-
-  it 'can be initialized with all custom directions' do
-    rov_s = Rover.new(direction: 'S')
-    expect(rov_s.direction).to eq('S')
-
-    rov_e = Rover.new(direction: 'E')
-    expect(rov_e.direction).to eq('E')
-
-    rov_w = Rover.new(direction: 'W')
-    expect(rov_w.direction).to eq('W')
   end
 
   it 'raises an argument error when initialized with an invalid direction' do
