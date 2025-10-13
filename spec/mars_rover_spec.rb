@@ -37,23 +37,14 @@ RSpec.describe 'Mars Rover' do
     expect{ MarsRover.new(starting_direction: 'X',  starting_coordinates: Coordinates.new(x: 1, y: 1)) }.to raise_error(StandardError)
   end
 
-  it 'receives a character array of commands from Earth' do
-    expect do
-      MarsRover.new(starting_position: [1, 1],
-                    starting_coordinates: Coordinates.new(x: 1, y: 1))
-    end.to raise_error(StandardError)
-  end
-
   it 'complains when it has a direction that is not N, E, S, W' do
     expect do
-      MarsRover.new(starting_position: [1, 1], starting_direction: 'X',
-                    starting_coordinates: Coordinates.new(x: 1, y: 1))
+      MarsRover.new(starting_direction: 'X', starting_coordinates: Coordinates.new(x: 1, y: 1))
     end.to raise_error(StandardError)
   end
 
   it 'receives a character array of commands from Earth' do
-    mars_rover = MarsRover.new(starting_direction: 'S',
-                               starting_coordinates: Coordinates.new(x: -1, y: 1))
+    mars_rover = MarsRover.new(starting_direction: 'S', starting_coordinates: Coordinates.new(x: -1, y: 1))
 
     expect(mars_rover).to respond_to(:execute).with_keywords(:commands)
   end
