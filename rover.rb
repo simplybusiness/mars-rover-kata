@@ -2,6 +2,7 @@ require_relative './coordinates'
 
 class Rover
   CARDINAL_DIRECTIONS = %w[N S E W]
+  TURN_RIGHT_HASH = { 'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N' }
 
   attr_reader :direction, :commands
 
@@ -70,14 +71,10 @@ class Rover
   end
 
   def turn_left
-    turn_left_hash = { 'N' => 'W', 'E' => 'N', 'S' => 'E', 'W' => 'S' }
-
-    @direction = turn_left_hash[@direction]
+    @direction = TURN_RIGHT_HASH.invert[@direction]
   end
 
   def turn_right
-    turn_right_hash = { 'N' => 'E', 'E' => 'S', 'S' => 'W', 'W' => 'N' }
-
-    @direction = turn_right_hash[@direction]
+    @direction = TURN_RIGHT_HASH[@direction]
   end
 end
