@@ -8,7 +8,7 @@ class Rover
 
   attr_reader :direction, :commands
 
-  def initialize(x: 0, y: 0, direction: 'N', commands: [])
+  def initialize(x: 0, y: 0, direction: 'N')
     # coords are numbers
     raise ArgumentError, 'Invalid coordinates, must be numbers' unless x.is_a?(Numeric) && y.is_a?(Numeric)
 
@@ -17,13 +17,7 @@ class Rover
       raise ArgumentError, "Invalid direction, must be one of #{CARDINAL_DIRECTIONS.join(', ')}"
     end
 
-    # the commands are an array of characters
-    unless commands.is_a?(Array) && commands.all? { |c| c.is_a?(String) && c.length == 1 }
-      raise ArgumentError, 'Commands must be an array of characters'
-    end
-
     @direction = direction
-    @commands = commands
     @coordinates = Coordinates.new(x: x, y: y)
   end
 
@@ -31,8 +25,16 @@ class Rover
     @coordinates.current_coordinates
   end
 
+  def check_valid_commands(commands)
+    # the commands are an array of characters
+    unless commands.is_a?(Array) && commands.all? { |c| c.is_a?(String) && c.length == 1 }
+      raise ArgumentError, 'Commands must be an array of characters'
+    end
+  end
+
   def move(commands: [])
-    @commands.each do |command|
+    check_valid_commands(commands)
+    commands.each do |command|
       case command.downcase
       when 'f'
         move_forward

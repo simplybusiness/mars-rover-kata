@@ -21,17 +21,15 @@ RSpec.describe Rover do
   end
 
   it 'holds the character array of commands' do
-    expect { Rover.new(commands: [1, 2, 3]) }.to raise_error(ArgumentError, /Commands must be/)
-    expect { Rover.new(commands: [1]) }.to raise_error(ArgumentError, /Commands must be/)
-    expect { Rover.new(commands: ['A', 23]) }.to raise_error(ArgumentError, /Commands must be/)
-    expect { Rover.new(commands: %w[A ABSDF]) }.to raise_error(ArgumentError, /Commands must be/)
+    expect { Rover.new.move(commands: [1, 2, 3]) }.to raise_error(ArgumentError, /Commands must be/)
+    expect { Rover.new.move(commands: [1]) }.to raise_error(ArgumentError, /Commands must be/)
+    expect { Rover.new.move(commands: ['A', 23]) }.to raise_error(ArgumentError, /Commands must be/)
+    expect { Rover.new.move(commands: %w[A ABSDF]) }.to raise_error(ArgumentError, /Commands must be/)
   end
 
   it 'can move backwards and forwards in the same command list when facing North' do
-    rov = Rover.new(direction: 'N', commands: %w[f f b b b])
-    expect(rov.current_position).to eq([0, 0])
-
-    rov.move
-    expect(rov.current_position).to eq([0, -1])
+    rov = Rover.new(direction: 'N')
+    
+    expect { rov.move(commands: %w[f f b b b]) }.to change(rov, :current_position).from([0, 0]).to([0, -1])
   end
 end
