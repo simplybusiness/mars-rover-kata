@@ -1,0 +1,20 @@
+name: GitHub Actions Demo
+run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: [push]
+
+# ADD THIS BLOCK TO RESTRICT PERMISSIONS
+permissions:
+  contents: read
+
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v5
+      - uses: ruby/setup-ruby@v1.202.0
+        with:
+          ruby-version: '3.4.5'
+      - run: bundle install
+      - run: bundle exec rspec -cfd
+      - run: echo "This job's status is ${{ job.status }}."
