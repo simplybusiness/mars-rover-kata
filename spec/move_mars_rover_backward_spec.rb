@@ -26,4 +26,10 @@ RSpec.describe Rover do
     
     expect { rov.move(commands: ['b']) }.to change(rov, :current_position).from([0, 0]).to([1, 0])
   end
+
+  it 'moves forward 10 times correctly' do
+    rov = Rover.new(direction: 'N')
+    
+    expect { rov.move(commands: %w[b b b b b b b b b b]) }.to change(rov, :current_position).from([0, 0]).to([0, -10])
+  end
 end
