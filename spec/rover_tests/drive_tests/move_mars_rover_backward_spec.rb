@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../rover'
+require_relative '../../../src/rover'
 
 RSpec.describe Rover do
   it 'moves backward correctly when facing North' do
