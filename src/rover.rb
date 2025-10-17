@@ -27,9 +27,9 @@ class Rover
 
   def check_valid_commands(commands)
     # the commands are an array of characters
-    unless commands.is_a?(Array) && commands.all? { |c| c.is_a?(String) && c.length == 1 }
-      raise ArgumentError, 'Commands must be an array of characters'
-    end
+    return if commands.is_a?(Array) && commands.all? { |c| c.is_a?(String) && c.length == 1 }
+
+    raise ArgumentError, 'Commands must be an array of characters'
   end
 
   def move(commands: [])

@@ -28,7 +28,7 @@ class Coordinates
     end
   end
 
-  def ==(other_coords)
-    @x == other_coords.x && @y == other_coords.y
+  def ==(other)
+    @x == other.x && @y == other.y
   end
 end
