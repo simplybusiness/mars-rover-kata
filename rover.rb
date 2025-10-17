@@ -31,8 +31,8 @@ class Rover
     @coordinates.current_coordinates
   end
 
-  def move
-    commands.each do |command|
+  def move(commands: [])
+    @commands.each do |command|
       case command.downcase
       when 'f'
         move_forward
