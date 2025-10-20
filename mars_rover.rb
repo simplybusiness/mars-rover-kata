@@ -74,29 +74,18 @@ class MarsRover
   end
 
   def rotate(command)
-    if command == "l"
-      turn_left
-    elsif command == "r"
-      turn_right
+    if command == 'l'
+      direction_modifier = -1
+    else
+      direction_modifier = 1
     end
 
-      # number = command == 'l' ? -1 : 1
-      # new_position_index = current_position_index + number % 4
-      # @current_direction = VALID_DIRECTIONS[new_position_index]
+    new_direction_index = current_direction_index + direction_modifier % 4
+    @current_direction = VALID_DIRECTIONS[new_direction_index]
   end
 
   def current_direction_index
     VALID_DIRECTIONS.index(current_direction)
-  end
-
-  def turn_left
-    new_direction_index = current_direction_index - 1 % 4
-    @current_direction = VALID_DIRECTIONS[new_direction_index]
-  end
-
-  def turn_right
-    new_direction_index = current_direction_index + 1 % 4
-    @current_direction = VALID_DIRECTIONS[new_direction_index]
   end
 
   def move_backwards(total_displacement:)
