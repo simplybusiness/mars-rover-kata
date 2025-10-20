@@ -14,7 +14,7 @@ class Coordinates
 
   def change_x(increase: true)
     if increase
-      @x += 1
+      Coordinates.new(x: @x += 1, y: @y)
     else
       @x -= 1
     end

@@ -8,7 +8,7 @@ class Rover
 
   attr_reader :direction, :commands
 
-  def initialize(x: 0, y: 0, direction: 'N')
+  def initialize(x: 0, y: 0, coordinates: Coordinates.new(x: x, y: y), direction: 'N')
     # coords are numbers
     raise ArgumentError, 'Invalid coordinates, must be numbers' unless x.is_a?(Numeric) && y.is_a?(Numeric)
 
@@ -18,7 +18,7 @@ class Rover
     end
 
     @direction = direction
-    @coordinates = Coordinates.new(x: x, y: y)
+    @coordinates = coordinates
   end
 
   def current_position
