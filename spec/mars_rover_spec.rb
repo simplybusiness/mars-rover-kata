@@ -17,11 +17,12 @@ describe 'on bootup' do
     step 'its direction is unchanged when it moves forward' do
       expect { @rover.execute('F') }.not_to change { @rover.direction }
     end
+
+    step 'a Mars Rover is facing an invalid direction it raises an error' do
+      expect { MarsRover.new(OpenStruct.new(x: 0, y: 0), 'Q') }.to raise_error
+    end
   end
 
-  step 'a Mars Rover is facing an invalid direction it raises an error' do
-    expect { MarsRover.new(OpenStruct.new(x: 0, y: 0), 'Q') }.to raise_error
-  end
 
   it 'starts at the origin and faces N' do
     rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
