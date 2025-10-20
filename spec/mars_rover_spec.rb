@@ -19,7 +19,7 @@ describe 'on bootup' do
     end
 
     step 'a Mars Rover is facing an invalid direction it raises an error' do
-      expect { MarsRover.new(OpenStruct.new(x: 0, y: 0), 'Q') }.to raise_error
+      expect { MarsRover.new(OpenStruct.new(x: 0, y: 0), 'Q') }.to raise_error('Invalid Direction')
     end
   end
 
@@ -45,7 +45,7 @@ describe 'on bootup' do
   end
 
   it 'raises error when given an invalid direction' do
-    expect{ MarsRover.new(OpenStruct.new(x: 0, y:0), 'V') }.to raise_error
+    expect{ MarsRover.new(OpenStruct.new(x: 0, y:0), 'V') }.to raise_error('Invalid Direction')
   end
 
   it 'receives commands from earth' do
