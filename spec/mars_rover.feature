@@ -6,3 +6,5 @@ Feature: Operating a Mars Rover
       | original_direction |
       | N                  |
       | S                  |
+      | E                  |
+      | W                  |
