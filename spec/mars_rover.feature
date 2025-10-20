@@ -1,4 +1,8 @@
 Feature: Operating a Mars Rover
-  Scenario: Moving a Mars Rover forward when facing north
-    Given a Mars Rover facing north
-    Then its direction does not change when it moves forward
+  Scenario Outline: Moving a Mars Rover forward
+    Given a Mars Rover is facing <original_direction>
+    Then its direction is <ending_direction> when it moves forward
+    Examples:
+      | original_direction | ending_direction |
+      | N                  | N                |
+      | S                  | S                |

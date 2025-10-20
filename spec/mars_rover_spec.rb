@@ -10,13 +10,13 @@ end
 
 describe 'on bootup' do
   feature 'Operating a Mars Rover' do
-    step 'a Mars Rover facing north' do
-      @rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
+    step 'a Mars Rover is facing :original_direction' do |original_direction|
+      @rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), original_direction)
     end
 
-    step 'its direction does not change when it moves forward' do
-      @rover.execute('f')
-      expect(@rover.direction).to eq('N')
+    step 'its direction is :ending_direction when it moves forward' do |ending_direction|
+      @rover.execute('F')
+      expect(@rover.direction).to eq(ending_direction)
     end
   end
 
