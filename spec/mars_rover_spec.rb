@@ -116,10 +116,10 @@ RSpec.describe 'mars rover' do
   end
 
   it 'turns left' do
-      mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: 'N')
-      mars_rover.execute(['l'])
-      expect(mars_rover).to be_located_at(Coordinates.new(0, 0))
-      expect(mars_rover).to face_direction('W')
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: 'N')
+    mars_rover.execute(['l'])
+    expect(mars_rover).to be_located_at(Coordinates.new(0, 0))
+    expect(mars_rover).to face_direction('W')
   end
   it 'turns left multiple times'
   it 'turns right' do
