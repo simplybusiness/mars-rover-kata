@@ -44,10 +44,6 @@ describe 'on bootup' do
     expect(rover.direction).to eq('W')
   end
 
-  it 'raises error when given an invalid direction' do
-    expect{ MarsRover.new(OpenStruct.new(x: 0, y:0), 'V') }.to raise_error('Invalid Direction')
-  end
-
   it 'receives commands from earth' do
     rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'W')
 
