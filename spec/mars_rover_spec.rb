@@ -115,6 +115,23 @@ RSpec.describe 'mars rover' do
     expect(mars_rover).to be_located_at(Coordinates.new(1, 0))
   end
 
+  it 'turns left' do
+      mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: 'N')
+      mars_rover.execute(['l'])
+      expect(mars_rover).to be_located_at(Coordinates.new(0, 0))
+      expect(mars_rover).to face_direction('W')
+  end
+  it 'turns left multiple times'
+  it 'turns right' do
+    mars_rover = MarsRover.new(starting_position: Coordinates.new(0, 0), starting_direction: 'N')
+    mars_rover.execute(['r'])
+    expect(mars_rover).to be_located_at(Coordinates.new(0, 0))
+    expect(mars_rover).to face_direction('E')
+  end
+
+  it 'turns right multiple times'
+  it 'turns and moves forwards'
+
   RSpec::Matchers.define :be_located_at do |expected_coordinates|
     match do |mars_rover|
       mars_rover.current_position == expected_coordinates

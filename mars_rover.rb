@@ -17,9 +17,23 @@ class MarsRover
       raise ArgumentError, 'Starting direction is invalid and must be N, E, S, or W'
     end
 
+<<<<<<< HEAD
     @current_position = starting_position
     @current_direction = starting_direction
   end
+=======
+    def execute(commands)
+      total_displacement = [0, 0]
+      commands.each do |command|
+        if ["l", "r"].include?(command)
+          rotate(command)
+        else
+          total_displacement = move(total_displacement, command)
+        end             
+      end
+      set_position(current_position.x + total_displacement[0], current_position.y + total_displacement[1])
+    end
+>>>>>>> 7492eb5 (added turning left and turning right)
 
   def execute(commands)
     total_displacement = [0, 0]
@@ -37,6 +51,7 @@ class MarsRover
     "Mars rover located at #{current_position.inspect} facing #{current_direction}"
   end
 
+<<<<<<< HEAD
   private
 
   def move_backwards(total_displacement:)
@@ -49,6 +64,45 @@ class MarsRover
       total_displacement[X_AXIS] += 1
     when 'S'
       total_displacement[Y_AXIS] += 1
+=======
+    def move(total_displacement, command)
+      total_displacement = if command == "f"
+                               move_forwards(total_displacement: total_displacement)
+                             else
+                               move_backwards(total_displacement: total_displacement)
+                             end
+      total_displacement
+    end
+
+    def rotate(command)
+      if command == "l"
+        turn_left
+      elsif command == "r"
+        turn_right
+      end
+    end
+
+    def turn_left
+      @current_direction = "W"
+    end
+
+    def turn_right
+      @current_direction = "E"
+    end
+
+    def move_backwards(total_displacement:)
+      case current_direction
+      when "N"
+        total_displacement[Y_AXIS] -= 1
+      when "E"
+        total_displacement[X_AXIS] -= 1
+      when "W"
+        total_displacement[X_AXIS] += 1
+      when "S"
+        total_displacement[Y_AXIS] += 1
+      end
+      total_displacement
+>>>>>>> 7492eb5 (added turning left and turning right)
     end
     total_displacement
   end
