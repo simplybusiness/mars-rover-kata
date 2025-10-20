@@ -25,8 +25,7 @@ class MarsRover
     total_displacement = [0, 0]
     commands.each do |command|
       if %w[l r].include?(command)
-        direction_modifier = rotate(command)
-        set_direction(VALID_DIRECTIONS[(current_direction_index + direction_modifier) % 4])
+        set_direction(rotate(command))
       else
         total_displacement = move(total_displacement, command)
       end
@@ -49,11 +48,12 @@ class MarsRover
   end
 
   def rotate(command)
-    if command == 'l'
-      -1
-    else
-      1
-    end
+    direction_modifier = if command == 'l'
+                           -1
+                         else
+                           1
+                         end
+    VALID_DIRECTIONS[(current_direction_index + direction_modifier) % 4]
   end
 
   def current_direction_index
