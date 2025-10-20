@@ -1,9 +1,16 @@
+# Monkey Patching - can patch ruby's own classes (Enumerable)
+module Enumerable
+  def exclude?(object)
+    !include?(object)
+  end
+end
+
 class MarsRover
   attr_reader :direction
 
   def initialize(coords, direction)
     @coords = coords
-    @direction = direction
+    @direction = assign_direction(direction)
   end
 
   def current_position
@@ -20,7 +27,7 @@ class MarsRover
         turn_left
       end
     end
-  end  
+  end
 
   private
 
@@ -55,7 +62,16 @@ class MarsRover
       'N' => 'W',
       'S' => 'E',
       'E' => 'N',
-      'W' => 'S' 
+      'W' => 'S'
     }[@direction]
+  end
+
+  def assign_direction(direction)
+    valid_directions = ['N', 'S', 'E', 'W']
+    if valid_directions.exclude?(direction)
+      raise 'Invalid Direction'
+    else
+      direction
+    end
   end
 end
