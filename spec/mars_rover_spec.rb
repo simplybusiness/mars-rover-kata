@@ -19,6 +19,10 @@ describe 'on bootup' do
     end
   end
 
+  step 'a Mars Rover is facing an invalid direction it raises an error' do
+    expect { MarsRover.new(OpenStruct.new(x: 0, y: 0), 'Q') }.to raise_error
+  end
+
   it 'starts at the origin and faces N' do
     rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), 'N')
 
