@@ -14,9 +14,8 @@ describe 'on bootup' do
       @rover = MarsRover.new(OpenStruct.new(x: 0, y: 0), original_direction)
     end
 
-    step 'its direction is :ending_direction when it moves forward' do |ending_direction|
-      @rover.execute('F')
-      expect(@rover.direction).to eq(ending_direction)
+    step 'its direction is unchanged when it moves forward' do
+      expect { @rover.execute('F') }.not_to change { @rover.direction }
     end
   end
 
