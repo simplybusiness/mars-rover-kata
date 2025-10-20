@@ -24,19 +24,7 @@ class MarsRover
   def execute(commands)
     total_displacement = [0, 0]
     commands.each do |command|
-      if ["l", "r"].include?(command)
-        rotate(command)
-      else
-        total_displacement = move(total_displacement, command)
-      end             
-    end
-    set_position(current_position.x + total_displacement[0], current_position.y + total_displacement[1])
-  end
-
-  def execute(commands)
-    total_displacement = [0, 0]
-    commands.each do |command|
-      if ["l", "r"].include?(command)
+      if %w[l r].include?(command)
         rotate(command)
       else
         total_displacement = move(total_displacement, command)
@@ -51,34 +39,20 @@ class MarsRover
 
   private
 
-  def move_backwards(total_displacement:)
-    case current_direction
-    when 'N'
-      total_displacement[Y_AXIS] -= 1
-    when 'E'
-      total_displacement[X_AXIS] -= 1
-    when 'W'
-      total_displacement[X_AXIS] += 1
-    when 'S'
-      total_displacement[Y_AXIS] += 1
-    end
-  end
-
   def move(total_displacement, command)
-    total_displacement = if command == "f"
-                              move_forwards(total_displacement: total_displacement)
-                          else
-                              move_backwards(total_displacement: total_displacement)
-                            end
-    total_displacement
+    if command == 'f'
+      move_forwards(total_displacement: total_displacement)
+    else
+      move_backwards(total_displacement: total_displacement)
+    end
   end
 
   def rotate(command)
-    if command == 'l'
-      direction_modifier = -1
-    else
-      direction_modifier = 1
-    end
+    direction_modifier = if command == 'l'
+                           -1
+                         else
+                           1
+                         end
 
     new_direction_index = current_direction_index + direction_modifier % 4
     @current_direction = VALID_DIRECTIONS[new_direction_index]
@@ -90,13 +64,13 @@ class MarsRover
 
   def move_backwards(total_displacement:)
     case current_direction
-    when "N"
+    when 'N'
       total_displacement[Y_AXIS] -= 1
-    when "E"
+    when 'E'
       total_displacement[X_AXIS] -= 1
-    when "W"
+    when 'W'
       total_displacement[X_AXIS] += 1
-    when "S"
+    when 'S'
       total_displacement[Y_AXIS] += 1
     end
     total_displacement
