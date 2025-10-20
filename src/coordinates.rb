@@ -6,29 +6,30 @@ class Coordinates
   def initialize(x: 0, y: 0)
     @x = x
     @y = y
+    freeze
   end
 
   def current_coordinates
-    [@x, @y]
+    [@x, @y].freeze
   end
 
   def change_x(increase: true)
     if increase
-      Coordinates.new(x: @x += 1, y: @y)
+      Coordinates.new(x: @x + 1, y: @y)
     else
-      @x -= 1
+      Coordinates.new(x: @x - 1, y: @y)
     end
   end
 
   def change_y(increase: true)
     if increase
-      @y += 1
+      Coordinates.new(x: @x, y: @y + 1)
     else
-      @y -= 1
+      Coordinates.new(x: @x, y: @y - 1)
     end
   end
 
   def ==(other)
-    @x == other.x && @y == other.y
+    other.is_a?(self.class) && @x == other.x && @y == other.y
   end
 end
