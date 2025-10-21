@@ -6,12 +6,10 @@ describe 'Mars Rover' do
     attr_reader :current_position, :current_direction
 
     def initialize(starting_point:, starting_direction:)
-      unless VALID_DIRECTIONS.include?(starting_direction)
-      raise ArgumentError, "Starting direction must be one of #{VALID_DIRECTIONS.join(', ')}"
-    end
-
+      raise ArgumentError, "Starting direction must be one of #{VALID_DIRECTIONS.join(', ')}" unless VALID_DIRECTIONS.include?(starting_direction)
+      raise ArgumentError, "Starting point cannot be nil" if starting_point.nil?
       @current_position  = starting_point
-      @current_direction  = starting_direction
+      @current_direction = starting_direction
     end
   end
 
@@ -54,6 +52,13 @@ describe 'Mars Rover' do
   end
 
 
-  it 'cannot face N, E, S and W at the same time'
-  it 'cannot have a nil starting point'
+  it 'cannot face N, E, S and W at the same time' do
+  expect { MarsRover.new(starting_point: [-3, 1], starting_direction: ['N, E, S, W']) }
+    .to raise_error(ArgumentError, "Starting direction must be one of N, E, S, W")
+end
+
+  it 'cannot have a nil starting point' do
+    expect { MarsRover.new(starting_point: nil, starting_direction: 'E') }
+      .to raise_error(ArgumentError, "Starting point cannot be nil")
+  end
 end
