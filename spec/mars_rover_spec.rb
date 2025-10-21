@@ -4,6 +4,7 @@ describe 'Mars Rover' do
 
     def initialize(starting_point:, starting_direction:)
       raise ArgumentError, 'The starting direction must be one of N, E, S or W' unless ['N', 'E', 'S', 'W'].include? starting_direction
+      raise ArgumentError, 'The starting point cannot be nil' if starting_point.nil?
       @current_position = starting_point
       @current_direction = starting_direction
     end
@@ -56,5 +57,9 @@ describe 'Mars Rover' do
       raise_error(ArgumentError, 'The starting direction must be one of N, E, S or W')
     )
   end
-  it 'cannot have a nil starting point'
+  it 'cannot have a nil starting point' do
+    expect { MarsRover.new(starting_point: nil, starting_direction: 'E') }.to(
+      raise_error(ArgumentError, 'The starting point cannot be nil')
+    )
+  end
 end
