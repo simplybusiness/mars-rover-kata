@@ -3,7 +3,7 @@ describe 'Mars Rover' do
     attr_reader :current_position, :current_direction
 
     def initialize(starting_point:, starting_direction:)
-      raise ArgumentError, 'The starting direction must be one of N, E, S or W' unless %w[N E S W].include? starting_direction
+      raise ArgumentError, 'The starting direction must be one of N, E, S or W' unless ['N', 'E', 'S', 'W'].include? starting_direction
       @current_position = starting_point
       @current_direction = starting_direction
     end
@@ -51,6 +51,10 @@ describe 'Mars Rover' do
     end.to raise_error(ArgumentError, 'The starting direction must be one of N, E, S or W')
   end
 
-  it 'cannot face N, E, S and W simultaneously'
+  it 'cannot face N, E, S and W simultaneously' do
+    expect { MarsRover.new(starting_point: [-3, 1], starting_direction: ['N', 'E', 'S', 'W']) }.to(
+      raise_error(ArgumentError, 'The starting direction must be one of N, E, S or W')
+    )
+  end
   it 'cannot have a nil starting point'
 end
