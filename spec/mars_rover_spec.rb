@@ -3,13 +3,14 @@ describe 'Mars Rover' do
    class MarsRover
     VALID_DIRECTIONS = %w[N E S W].freeze
 
-    attr_reader :current_position, :current_direction
+    attr_reader :current_position, :current_direction, :commands
 
-    def initialize(starting_point:, starting_direction:)
+    def initialize(starting_point:, starting_direction:, commands:[])
       raise ArgumentError, "Starting direction must be one of #{VALID_DIRECTIONS.join(', ')}" unless VALID_DIRECTIONS.include?(starting_direction)
       raise ArgumentError, "Starting point cannot be nil" if starting_point.nil?
       @current_position  = starting_point
       @current_direction = starting_direction
+      @commands = commands
     end
   end
 
@@ -60,5 +61,11 @@ end
   it 'cannot have a nil starting point' do
     expect { MarsRover.new(starting_point: nil, starting_direction: 'E') }
       .to raise_error(ArgumentError, "Starting point cannot be nil")
+  end
+
+  it 'it receives a character array of commands from Earth' do
+    mars_rover = MarsRover.new(starting_point: [0,1], starting_direction: 'E', commands: ['f', 'b'])
+    
+    expect(mars_rover.commands).to eq ['f', 'b']
   end
 end
