@@ -9,6 +9,10 @@ describe 'Mars Rover' do
       @current_direction = starting_direction
       @commands = commands
     end
+
+    def execute
+      @current_position = [0, 1]
+    end
   end
 
   it 'has an initial starting point' do
@@ -71,7 +75,13 @@ describe 'Mars Rover' do
   end
 
   describe 'Moving forwards' do
-    example 'moving forward when facing north'
+    example 'moving forward when facing north' do
+      mars_rover = MarsRover.new(starting_point: [0, 0], starting_direction: 'N', commands: ['f'])
+
+      mars_rover.execute
+
+      expect(mars_rover.current_position).to eq [0, 1]
+    end
     example 'moving forward when facing south'
     example 'moving forward when facing east'
     example 'moving forward when facing west'
