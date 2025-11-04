@@ -69,4 +69,11 @@ describe 'Mars Rover' do
 
     expect(mars_rover.commands).to eq ['f', 'b']
   end
+
+  describe 'Moving forwards' do
+    example 'moving forward when facing north'
+    example 'moving forward when facing south'
+    example 'moving forward when facing east'
+    example 'moving forward when facing west'
+  end
 end
