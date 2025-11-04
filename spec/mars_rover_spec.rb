@@ -91,6 +91,14 @@ describe 'Mars Rover' do
       expect(mars_rover.current_position).to eq [0, 2]
     end
 
+    example 'moving forward when facing north from any position' do
+      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
+
+      mars_rover.execute
+
+      expect(mars_rover.current_position).to eq [1, 3]
+    end
+
     example 'moving forward when facing south'
     example 'moving forward when facing east'
     example 'moving forward when facing west'
