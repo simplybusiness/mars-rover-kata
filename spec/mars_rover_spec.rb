@@ -11,7 +11,7 @@ describe 'Mars Rover' do
     end
 
     def execute
-      @current_position = [0, @current_position[1] + 1]
+      @current_position = [@current_position[0], @current_position[1] + 1]
     end
   end
 
