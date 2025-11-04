@@ -68,4 +68,11 @@ end
     
     expect(mars_rover.commands).to eq ['f', 'b']
   end
+
+  describe 'moving forwards' do
+    example 'moves forwards when facing north'
+    example 'moves forwards when facing east'
+    example 'moves forwards when facing south'
+    example 'moves forwards when facing west'
+    end
 end
