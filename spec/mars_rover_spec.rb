@@ -13,7 +13,7 @@ describe 'Mars Rover' do
       @commands = commands
 
       def execute
-       @current_position = [0, @current_position[1] + 1]
+       @current_position = [@current_position.first, @current_position[1] + 1]
       end
     end
   end
@@ -73,13 +73,29 @@ end
     expect(mars_rover.commands).to eq ['f', 'b']
   end
 
-  describe 'moving forwards' do
-    example 'moves forwards when facing north' do
-      mars_rover = MarsRover.new(starting_point: [0,0], starting_direction: 'N', commands: ['f'])
+  describe 'Moving forwards' do
+    example 'moving forward when facing north' do
+      mars_rover = MarsRover.new(starting_point: [0, 0], starting_direction: 'N', commands: ['f'])
 
       mars_rover.execute
 
       expect(mars_rover.current_position).to eq [0, 1]
+    end
+
+    example 'moving forward when facing north from [0, 1]' do
+      mars_rover = MarsRover.new(starting_point: [0, 1], starting_direction: 'N', commands: ['f'])
+
+      mars_rover.execute
+
+      expect(mars_rover.current_position).to eq [0, 2]
+    end
+
+    example 'moving forward when facing north from any position' do
+      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
+
+      mars_rover.execute
+
+      expect(mars_rover.current_position).to eq [1, 3]
     end
 
     example 'moves forwards when facing east'
