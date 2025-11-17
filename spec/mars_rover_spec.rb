@@ -13,6 +13,14 @@ describe 'Mars Rover' do
     def execute
       @current_position = [@current_position[0], @current_position[1] + 1]
     end
+
+    def x_coordinate
+      @current_position[0]
+    end
+
+    def y_coordinate
+      @current_position[1]
+    end
   end
 
   it 'has an initial starting point' do
@@ -85,7 +93,8 @@ describe 'Mars Rover' do
 
         mars_rover.execute
 
-        expect(mars_rover).to be_located_at final_position
+        expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by 1
+        expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
       end
     end
 
