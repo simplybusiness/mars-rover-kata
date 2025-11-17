@@ -76,7 +76,8 @@ describe 'Mars Rover' do
 
   describe 'Moving forwards' do
     [
-      [[0, 0], [0, 1]]
+      [[0, 0], [0, 1]],
+      [[0, 1], [0, 2]]
     ].each do |initial_position, final_position|
       example "moving forward when facing north e.g. from #{initial_position} to #{final_position}" do
         mars_rover = MarsRover.new(starting_point: initial_position, starting_direction: 'N', commands: ['f'])
