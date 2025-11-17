@@ -11,7 +11,7 @@ describe 'Mars Rover' do
     end
 
     def execute
-      @current_position = [@current_position.first, @current_position[1] + 1]
+      @current_position = [@current_position[0], @current_position[1] + 1]
     end
   end
 
@@ -75,32 +75,26 @@ describe 'Mars Rover' do
   end
 
   describe 'Moving forwards' do
-    example 'moving forward when facing north' do
-      mars_rover = MarsRover.new(starting_point: [0, 0], starting_direction: 'N', commands: ['f'])
+    [
+      [[0, 0], [0, 1]],
+      [[0, 1], [0, 2]],
+      [[1, 2], [1, 3]]
+    ].each do |initial_position, final_position|
+      example "moving forward when facing north e.g. from #{initial_position} to #{final_position}" do
+        mars_rover = MarsRover.new(starting_point: initial_position, starting_direction: 'N', commands: ['f'])
 
-      mars_rover.execute
+        mars_rover.execute
 
-      expect(mars_rover.current_position).to eq [0, 1]
-    end
-
-    example 'moving forward when facing north from [0, 1]' do
-      mars_rover = MarsRover.new(starting_point: [0, 1], starting_direction: 'N', commands: ['f'])
-
-      mars_rover.execute
-
-      expect(mars_rover.current_position).to eq [0, 2]
-    end
-
-    example 'moving forward when facing north from any position' do
-      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
-
-      mars_rover.execute
-
-      expect(mars_rover.current_position).to eq [1, 3]
+        expect(mars_rover).to be_located_at final_position
+      end
     end
 
     example 'moving forward when facing south'
     example 'moving forward when facing east'
     example 'moving forward when facing west'
+
+    RSpec::Matchers.define :be_located_at do |expected_position|
+      match { |mars_rover| mars_rover.current_position == expected_position }
+    end
   end
 end
