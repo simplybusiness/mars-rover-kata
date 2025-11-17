@@ -85,7 +85,6 @@ describe 'Mars Rover' do
 
         mars_rover.execute
 
-        expect(mars_rover.current_position).to eq final_position
         expect(mars_rover).to be_located_at final_position
       end
     end
