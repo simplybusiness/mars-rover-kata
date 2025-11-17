@@ -86,11 +86,16 @@ describe 'Mars Rover' do
         mars_rover.execute
 
         expect(mars_rover.current_position).to eq final_position
+        expect(mars_rover).to be_located_at final_position
       end
     end
 
     example 'moving forward when facing south'
     example 'moving forward when facing east'
     example 'moving forward when facing west'
+
+    RSpec::Matchers.define :be_located_at do |expected_position|
+      match { |mars_rover| mars_rover.current_position == expected_position }
+    end
   end
 end
