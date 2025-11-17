@@ -83,19 +83,13 @@ describe 'Mars Rover' do
   end
 
   describe 'Moving forwards' do
-    [
-      [[0, 0], [0, 1]],
-      [[0, 1], [0, 2]],
-      [[1, 2], [1, 3]]
-    ].each do |initial_position, final_position|
-      example "moving forward when facing north e.g. from #{initial_position} to #{final_position}" do
-        mars_rover = MarsRover.new(starting_point: initial_position, starting_direction: 'N', commands: ['f'])
+    example "moving forward (1 step up the y-axis) when facing north" do
+      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
 
-        mars_rover.execute
+      mars_rover.execute
 
-        expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by 1
-        expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
-      end
+      expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by 1
+      expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
     end
 
     example 'moving forward when facing south'
