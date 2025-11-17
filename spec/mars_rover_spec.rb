@@ -76,7 +76,9 @@ describe 'Mars Rover' do
 
  describe 'Moving forwards' do
     [
-      [[0, 0], [0, 1]]
+      [[0, 0], [0, 1]],
+      [[0, 1], [0, 2]],
+      [[1, 2], [1, 3]]
     ].each do |initial_position, final_position|
       example "moving forward when facing north e.g. from #{initial_position} to #{final_position}" do
         mars_rover = MarsRover.new(starting_point: initial_position, starting_direction: 'N', commands: ['f'])
@@ -85,14 +87,6 @@ describe 'Mars Rover' do
 
         expect(mars_rover.current_position).to eq final_position
       end
-    end
-
-    example 'moving forward when facing north from any position' do
-      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
-
-      mars_rover.execute
-
-      expect(mars_rover.current_position).to eq [1, 3]
     end
 
     example 'moving forward when facing south'
