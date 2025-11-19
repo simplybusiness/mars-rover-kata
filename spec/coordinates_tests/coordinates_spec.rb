@@ -19,16 +19,16 @@ RSpec.describe Coordinates do
 
       new_coords = original_coords.change_x(increase: true)
 
-      expect(new_coords.current_coordinates).to eq([6, 10])
-      expect(original_coords.current_coordinates).to eq([5, 10])
+      expected = Coordinates.new(x: 6, y: 10)
+      expect(new_coords).to eq(expected)
     end
 
     it 'returns a new object with x decreased by 1' do
       original_coords = Coordinates.new(x: 5, y: 10)
       new_coords = original_coords.change_x(increase: false)
 
-      expect(new_coords.current_coordinates).to eq([4, 10])
-      expect(original_coords.current_coordinates).to eq([5, 10])
+      expected = Coordinates.new(x: 4, y: 10)
+      expect(new_coords).to eq(expected)
     end
   end
 
@@ -37,16 +37,16 @@ RSpec.describe Coordinates do
       original_coords = Coordinates.new(x: 5, y: 10)
       new_coords = original_coords.change_y(increase: true)
 
-      expect(new_coords.current_coordinates).to eq([5, 11])
-      expect(original_coords.current_coordinates).to eq([5, 10])
+      expected = Coordinates.new(x: 5, y: 11)
+      expect(new_coords).to eq(expected)
     end
 
     it 'returns a new object with y decreased by 1' do
       original_coords = Coordinates.new(x: 5, y: 10)
       new_coords = original_coords.change_y(increase: false)
 
-      expect(new_coords.current_coordinates).to eq([5, 9])
-      expect(original_coords.current_coordinates).to eq([5, 10])
+      expected = Coordinates.new(x: 5, y: 9)
+      expect(new_coords).to eq(expected)
     end
   end
 end
