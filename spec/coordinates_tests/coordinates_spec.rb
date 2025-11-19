@@ -5,12 +5,15 @@ require_relative '../../src/coordinates'
 RSpec.describe Coordinates do
   it 'is initialized to be 0, 0' do
     coords = Coordinates.new
-    expect(coords.current_coordinates).to eq([0, 0])
+    expected = Coordinates.new(x: 0, y: 0)
+    expect(coords).to eq(expected)
   end
 
+  # how to test equality?
   it 'can be initialized to different coordinates' do
     coords = Coordinates.new(x: 1, y: 1)
-    expect(coords.current_coordinates).to eq([1, 1])
+    expected = Coordinates.new(x: 1, y: 1)
+    expect(coords).to eq(expected)
   end
 
   describe '#change_x' do
