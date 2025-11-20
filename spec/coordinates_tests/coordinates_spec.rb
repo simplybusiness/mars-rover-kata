@@ -10,7 +10,7 @@ RSpec.describe Coordinates do
   end
 
   describe '#equals' do
-    it 'can be initialized to different coordinates' do
+    it 'correctly compares two different objects with the same coordinates' do
       coords = Coordinates.new(x: 1, y: 1)
       expected = Coordinates.new(x: 1, y: 1)
       expect(coords).to eq(expected)
