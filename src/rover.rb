@@ -22,7 +22,7 @@ class Rover
   end
 
   def current_position
-    @coordinates.current_coordinates
+    @coordinates
   end
 
   def check_valid_commands(commands)

@@ -9,10 +9,6 @@ class Coordinates
     freeze
   end
 
-  def current_coordinates
-    [@x, @y].freeze
-  end
-
   def change_x(increase: true)
     if increase
       Coordinates.new(x: @x + 1, y: @y)
