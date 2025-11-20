@@ -3,17 +3,46 @@
 require_relative '../../src/coordinates'
 
 RSpec.describe Coordinates do
-  it 'is initialized to be 0, 0' do
+  it 'is initialized to be 0, 0 by default' do
     coords = Coordinates.new
     expected = Coordinates.new(x: 0, y: 0)
     expect(coords).to eq(expected)
   end
 
-  # how to test equality?
-  it 'can be initialized to different coordinates' do
-    coords = Coordinates.new(x: 1, y: 1)
-    expected = Coordinates.new(x: 1, y: 1)
-    expect(coords).to eq(expected)
+  describe '#equals' do
+    it 'can be initialized to different coordinates' do
+      coords = Coordinates.new(x: 1, y: 1)
+      expected = Coordinates.new(x: 1, y: 1)
+      expect(coords).to eq(expected)
+    end
+
+    it 'returns false when comparing coordinates with different x values' do
+      coords1 = Coordinates.new(x: 1, y: 5)
+      coords2 = Coordinates.new(x: 2, y: 5)
+      expect(coords1).not_to eq(coords2)
+    end
+
+    it 'returns false when comparing coordinates with different y values' do
+      coords1 = Coordinates.new(x: 5, y: 1)
+      coords2 = Coordinates.new(x: 5, y: 2)
+      expect(coords1).not_to eq(coords2)
+    end
+
+    it 'returns false when comparing with a non-Coordinates object' do
+      coords = Coordinates.new(x: 1, y: 1)
+      expect(coords).not_to eq([1, 1])
+    end
+
+    it 'returns false when comparing with nil' do
+      coords = Coordinates.new(x: 1, y: 1)
+      expect(coords).not_to eq(nil)
+    end
+
+    it 'returns true when comparing negative coordinates' do
+      coords1 = Coordinates.new(x: -5, y: -10)
+      coords2 = Coordinates.new(x: -5, y: -10)
+      expect(coords1).to eq(coords2)
+    end
   end
 
   describe '#change_x' do
