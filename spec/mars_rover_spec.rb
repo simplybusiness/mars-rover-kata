@@ -92,8 +92,24 @@ describe 'Mars Rover' do
       expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
     end
 
-    example 'moving forward when facing south'
-    example 'moving forward when facing east'
+    example "moving forward (1 step down the y-axis) when facing south" do
+      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'S', commands: ['f'])
+
+      mars_rover.execute
+
+      expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by(-1)
+      expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
+    end
+
+    example "moving forward (1 step right on the x-axis) when facing east" do
+      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'E', commands: ['f'])
+
+      mars_rover.execute
+
+      expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by 1
+      expect { mars_rover.execute }.not_to change { mars_rover.y_coordinate }
+    end
+
     example 'moving forward when facing west'
 
     RSpec::Matchers.define :be_located_at do |expected_position|
