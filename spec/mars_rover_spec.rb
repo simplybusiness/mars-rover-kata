@@ -95,16 +95,12 @@ end
     example "moving forward (1 step up the y-axis) when facing north" do
       mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'N', commands: ['f'])
 
-      mars_rover.execute
-
       expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by 1
       expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
     end
 
     example "moving forward (1 step up the y-axis) when facing south" do
       mars_rover = MarsRover.new(starting_point: [1, 3], starting_direction: 'S', commands: ['f'])
-
-      mars_rover.execute
 
       expect { mars_rover.execute }.to change { mars_rover.y_coordinate }.by(-1)
       expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
@@ -113,16 +109,12 @@ end
     example "moving forward (1 step down the y-axis) when facing east" do
       mars_rover = MarsRover.new(starting_point: [1, 4], starting_direction: 'E', commands: ['f'])
 
-      mars_rover.execute
-
       expect { mars_rover.execute }.not_to change { mars_rover.y_coordinate }
       expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by 1
     end
 
     example 'moving forward (1 step back along the x-axis) when facing west' do
       mars_rover = MarsRover.new(starting_point: [2, 4], starting_direction: 'W', commands: ['f'])
-
-      mars_rover.execute
 
       expect { mars_rover.execute }.not_to change { mars_rover.y_coordinate }
       expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by(-1)
