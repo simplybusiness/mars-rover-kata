@@ -119,7 +119,14 @@ end
       expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by 1
     end
 
-    example 'moving forward when facing west'
+    example 'moving forward (1 step back along the x-axis) when facing west' do
+      mars_rover = MarsRover.new(starting_point: [2, 4], starting_direction: 'W', commands: ['f'])
+
+      mars_rover.execute
+
+      expect { mars_rover.execute }.not_to change { mars_rover.y_coordinate }
+      expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by(-1)
+    end
 
     RSpec::Matchers.define :be_located_at do |expected_position|
       match { |mars_rover| mars_rover.current_position == expected_position }
