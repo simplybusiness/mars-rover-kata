@@ -11,8 +11,17 @@ describe 'Mars Rover' do
     end
 
     def execute
-      @current_position = [@current_position[0], @current_position[1] + 1]
-    end
+  case @current_direction
+  when 'N'
+    @current_position = [x_coordinate, y_coordinate + 1]
+  when 'S'
+    @current_position = [x_coordinate, y_coordinate - 1]
+  when 'E'
+    @current_position = [x_coordinate + 1, y_coordinate]
+  when 'W'
+    @current_position = [x_coordinate - 1, y_coordinate]
+  end
+end
 
     def x_coordinate
       @current_position[0]
@@ -92,8 +101,8 @@ describe 'Mars Rover' do
       expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
     end
 
-    example "moving forward (1 step down the y-axis) when facing south" do
-      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'S', commands: ['f'])
+    example "moving forward (1 step up the y-axis) when facing south" do
+      mars_rover = MarsRover.new(starting_point: [1, 3], starting_direction: 'S', commands: ['f'])
 
       mars_rover.execute
 
@@ -101,13 +110,13 @@ describe 'Mars Rover' do
       expect { mars_rover.execute }.not_to change { mars_rover.x_coordinate }
     end
 
-    example "moving forward (1 step right on the x-axis) when facing east" do
-      mars_rover = MarsRover.new(starting_point: [1, 2], starting_direction: 'E', commands: ['f'])
+    example "moving forward (1 step down the y-axis) when facing east" do
+      mars_rover = MarsRover.new(starting_point: [1, 4], starting_direction: 'E', commands: ['f'])
 
       mars_rover.execute
 
-      expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by 1
       expect { mars_rover.execute }.not_to change { mars_rover.y_coordinate }
+      expect { mars_rover.execute }.to change { mars_rover.x_coordinate }.by 1
     end
 
     example 'moving forward when facing west'
