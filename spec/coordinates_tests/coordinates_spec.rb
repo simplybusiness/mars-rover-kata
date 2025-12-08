@@ -43,6 +43,55 @@ RSpec.describe Coordinates do
       coords2 = Coordinates.new(x: -5, y: -10)
       expect(coords1).to eq(coords2)
     end
+
+    it 'is reflexive (object equals itself)' do
+      coords = Coordinates.new(x: 3, y: 7)
+      expect(coords).to eq(coords)
+    end
+
+    it 'is symmetric (if a == b then b == a)' do
+      coords1 = Coordinates.new(x: 4, y: 8)
+      coords2 = Coordinates.new(x: 4, y: 8)
+      expect(coords1).to eq(coords2)
+      expect(coords2).to eq(coords1)
+    end
+
+    it 'is transitive (if a == b and b == c then a == c)' do
+      coords1 = Coordinates.new(x: 2, y: 3)
+      coords2 = Coordinates.new(x: 2, y: 3)
+      coords3 = Coordinates.new(x: 2, y: 3)
+      expect(coords1).to eq(coords2)
+      expect(coords2).to eq(coords3)
+      expect(coords1).to eq(coords3)
+    end
+
+    it 'returns true when comparing coordinates with zero values' do
+      coords1 = Coordinates.new(x: 0, y: 0)
+      coords2 = Coordinates.new(x: 0, y: 0)
+      expect(coords1).to eq(coords2)
+    end
+
+    it 'returns true when comparing large coordinate values' do
+      coords1 = Coordinates.new(x: 1000000, y: 2000000)
+      coords2 = Coordinates.new(x: 1000000, y: 2000000)
+      expect(coords1).to eq(coords2)
+    end
+
+    it 'returns true when comparing mixed positive and negative coordinates' do
+      coords1 = Coordinates.new(x: -5, y: 10)
+      coords2 = Coordinates.new(x: -5, y: 10)
+      expect(coords1).to eq(coords2)
+    end
+
+    it 'returns false when comparing with a string' do
+      coords = Coordinates.new(x: 1, y: 1)
+      expect(coords).not_to eq("1,1")
+    end
+
+    it 'returns false when comparing with a hash' do
+      coords = Coordinates.new(x: 1, y: 1)
+      expect(coords).not_to eq({ x: 1, y: 1 })
+    end
   end
 
   describe '#change_x' do
