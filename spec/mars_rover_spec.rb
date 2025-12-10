@@ -20,7 +20,4 @@ class MarsRover
     @x_axis = x_axis
     @y_axis = y_axis
   end
-
-
-
 end
