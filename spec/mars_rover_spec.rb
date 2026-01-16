@@ -5,7 +5,11 @@ RSpec.describe 'operating a mars rover' do
     expect(rover.x_coordinate).to eq(0)
     expect(rover.y_coordinate).to eq(0)
   end
-  it "has a starting direction"
+  it "has a starting direction" do
+    rover = MarsRover.new(0, 0, direction: :north)
+
+    expect(rover.direction).to eq(:north)
+  end
   it "has a position on planet"
   it "has a valid direction"
 
@@ -14,10 +18,11 @@ end
 
 class MarsRover
 
-  attr_reader :x_coordinate, :y_coordinate
+  attr_reader :x_coordinate, :y_coordinate, :direction
 
-  def initialize(x_coordinate, y_coordinate)
+  def initialize(x_coordinate, y_coordinate, direction: nil)
     @x_coordinate = x_coordinate
     @y_coordinate = y_coordinate
+    @direction = direction
   end
 end
