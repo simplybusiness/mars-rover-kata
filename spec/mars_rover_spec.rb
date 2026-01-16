@@ -1,5 +1,5 @@
 RSpec.describe 'operating a mars rover' do
-  it "has a starting postition" do
+  it "has a starting position" do
     rover = MarsRover.new(0, 0)
 
     expect(rover.x_axis).to eq(0)
