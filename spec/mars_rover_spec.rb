@@ -18,10 +18,10 @@ class MarsRover
 
   def initialize(x_coordinate, y_coordinate)
     @x_coordinate = x_coordinate
-    @y_axis = y_coordinate
+    @y_coordinate = y_coordinate
   end
 
   def y_coordinate
-    @y_axis
+    @y_coordinate
   end
 end
