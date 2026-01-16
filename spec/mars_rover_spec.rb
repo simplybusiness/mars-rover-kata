@@ -3,7 +3,7 @@ RSpec.describe 'operating a mars rover' do
     rover = MarsRover.new(0, 0)
 
     expect(rover.x_coordinate).to eq(0)
-    expect(rover.y_axis).to eq(0)
+    expect(rover.y_coordinate).to eq(0)
   end
   it "has a starting direction"
   it "has a position on planet"
@@ -19,5 +19,9 @@ class MarsRover
   def initialize(x_coordinate, y_coordinate)
     @x_coordinate = x_coordinate
     @y_axis = y_coordinate
+  end
+
+  def y_coordinate
+    @y_axis
   end
 end
