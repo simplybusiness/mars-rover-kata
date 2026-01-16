@@ -16,8 +16,8 @@ class MarsRover
 
   attr_reader :x_axis, :y_axis
 
-  def initialize(x_axis, y_axis)
-    @x_axis = x_axis
+  def initialize(x_coordinate, y_axis)
+    @x_axis = x_coordinate
     @y_axis = y_axis
   end
 end
