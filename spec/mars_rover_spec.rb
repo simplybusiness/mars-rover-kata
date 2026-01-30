@@ -1,3 +1,4 @@
+require_relative '../lib/mars_rover.rb'
 RSpec.describe 'operating a mars rover' do
   it "has a starting position" do
     rover = MarsRover.new(0, 0)
