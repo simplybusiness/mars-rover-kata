@@ -10,7 +10,12 @@ RSpec.describe 'operating a mars rover' do
 
     expect(rover.direction).to eq(:north)
   end
-  it "has a position on planet"
+  it "has a position on planet" do
+
+    rover = MarsRover.new(1, 2)
+    expect(rover.x_coordinate).to eq(1)
+    expect(rover.y_coordinate).to eq(2)
+  end
   it "has a valid direction"
 
 end
