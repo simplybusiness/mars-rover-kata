@@ -23,15 +23,3 @@ RSpec.describe 'operating a mars rover' do
     expect(rover.direction).to eq(:east)
   end
 end
-
-
-class MarsRover
-
-  attr_reader :x_coordinate, :y_coordinate, :direction
-
-  def initialize(x_coordinate, y_coordinate, direction: nil)
-    @x_coordinate = x_coordinate
-    @y_coordinate = y_coordinate
-    @direction = direction
-  end
-end
