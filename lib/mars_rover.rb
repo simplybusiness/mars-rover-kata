@@ -9,9 +9,6 @@ class MarsRover
   end
 
   def execute(instructions= [])
-
     # Return: New coordinates and direction after moving according to instructions
   end
-
-    
 end
