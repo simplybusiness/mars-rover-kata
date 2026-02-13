@@ -29,4 +29,9 @@ RSpec.describe 'operating a mars rover' do
     
   it "cannot have negative coordinates"
   it "cannot have a direction outside of north, south, east, or west"
+
+  it "the y coordinates increases by 1 when facing north"
+  it "the y coordinates decreases by 1 when facing south"
+  it "the x coordinates decreases by 1 when facing west"
+  it "the x coordinates increases by 1 when facing east"
 end
