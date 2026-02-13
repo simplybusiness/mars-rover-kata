@@ -8,7 +8,7 @@ class MarsRover
     @direction = direction
   end
 
-  def execute(instructions= [])
+  def execute(instructions = [])
     # Return: New coordinates and direction after moving according to instructions
     @y_coordinate += 1
   end
