@@ -34,6 +34,7 @@ RSpec.describe 'operating a mars rover' do
     rover = MarsRover.new(0, 0, direction: :north)
     rover.execute(['f'])  
     expect(rover.y_coordinate).to eq(1)
+    expect(rover.x_coordinate).to eq(0)
   end
 
   it "the y coordinates decreases by 1 when facing south"
