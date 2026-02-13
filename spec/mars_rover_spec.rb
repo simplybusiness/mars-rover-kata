@@ -30,7 +30,12 @@ RSpec.describe 'operating a mars rover' do
   it "cannot have negative coordinates"
   it "cannot have a direction outside of north, south, east, or west"
 
-  it "the y coordinates increases by 1 when facing north"
+  it "increases y coordinate by 1 when moving forward while facing north" do
+    rover = MarsRover.new(0, 0, direction: :north)
+    rover.execute(['f'])  
+    expect(rover.y_coordinate).to eq(1)
+  end
+
   it "the y coordinates decreases by 1 when facing south"
   it "the x coordinates decreases by 1 when facing west"
   it "the x coordinates increases by 1 when facing east"
