@@ -1,7 +1,7 @@
 require_relative '../lib/mars_rover.rb'
 RSpec.describe 'operating a mars rover' do
   it "has a starting position" do
-    rover = MarsRover.new(0, 0)
+    rover = MarsRover.new(0, 0, direction: :north)
 
     expect(rover.x_coordinate).to eq(0)
     expect(rover.y_coordinate).to eq(0)
