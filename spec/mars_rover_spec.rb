@@ -49,4 +49,10 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
   it 'the y coordinates decreases by 1 when facing south'
   it 'the x coordinates decreases by 1 when facing west'
   it 'the x coordinates increases by 1 when facing east'
+
+  RSpec::Matchers.define :be_located_at do |x, y|
+    match do |rover|
+      rover.x_coordinate == x && rover.y_coordinate == y
+    end
+  end
 end
