@@ -40,9 +40,7 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
     rover = MarsRover.new(0, 0, direction: :north)
     rover.execute(['f'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 1
-    expect(rover).to be_located_at(expected_x_coordinate, expected_y_coordinate)
+    expect(rover).to be_located_at(0, 1)
   end
 
   it 'the y coordinates decreases by 1 when facing south'
