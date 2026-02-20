@@ -5,8 +5,10 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
   it 'has a starting position' do
     rover = MarsRover.new(0, 0, direction: :north)
 
-    expect(rover.x_coordinate).to eq(0)
-    expect(rover.y_coordinate).to eq(0)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expect(rover.x_coordinate).to eq(expected_x_coordinate)
+    expect(rover.y_coordinate).to eq(expected_y_coordinate)
   end
   it 'has a starting direction' do
     rover = MarsRover.new(0, 0, direction: :north)
@@ -16,8 +18,10 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
   it 'has a position on planet' do
     rover = MarsRover.new(1, 2, direction: :north)
 
-    expect(rover.x_coordinate).to eq(1)
-    expect(rover.y_coordinate).to eq(2)
+    expected_x_coordinate = 1
+    expected_y_coordinate = 2
+    expect(rover.x_coordinate).to eq(expected_x_coordinate)
+    expect(rover.y_coordinate).to eq(expected_y_coordinate)
   end
   it 'has a valid direction' do
     rover = MarsRover.new(0, 0, direction: :east)
@@ -36,8 +40,10 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
     rover = MarsRover.new(0, 0, direction: :north)
     rover.execute(['f'])
 
-    expect(rover.x_coordinate).to eq(0)
-    expect(rover.y_coordinate).to eq(1)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 1
+    expect(rover.x_coordinate).to eq(expected_x_coordinate)
+    expect(rover.y_coordinate).to eq(expected_y_coordinate)
   end
 
   it 'the y coordinates decreases by 1 when facing south'
