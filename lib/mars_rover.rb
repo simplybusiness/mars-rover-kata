@@ -11,6 +11,14 @@ class MarsRover # rubocop:disable Style/Documentation
 
   def execute(_instructions = [])
     # Return: New coordinates and direction after moving according to instructions
-    @y_coordinate += 1
+    if @direction == :south
+      @y_coordinate -= 1
+    else
+      @y_coordinate += 1
+    end
+  end
+
+  def inspect
+    "A Mars Rover at (#{@x_coordinate}, #{@y_coordinate}) facing #{@direction}"
   end
 end
