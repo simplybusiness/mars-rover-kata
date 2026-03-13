@@ -11,11 +11,12 @@ class MarsRover # rubocop:disable Style/Documentation
 
   def execute(_instructions = [])
     # Return: New coordinates and direction after moving according to instructions
-    if @direction == :south
+    case @direction
+    when :south
       @y_coordinate -= 1
-    elsif @direction == :west
+    when :west
       @x_coordinate -= 1
-    else
+    when :north
       @y_coordinate += 1
     end
   end
