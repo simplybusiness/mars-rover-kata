@@ -44,7 +44,15 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
 
     expect(rover).to be_located_at(3, -1)
   end
-  it 'the x coordinates decreases by 1 when facing west'
+
+  it 'the x coordinates decreases by 1 when facing west' do
+      rover = MarsRover.new(3, 0, direction: :west)
+
+    rover.execute(['f'])
+
+    expect(rover).to be_located_at(2, 0)
+  end
+
   it 'the x coordinates increases by 1 when facing east'
 
   RSpec::Matchers.define :be_located_at do |x, y|

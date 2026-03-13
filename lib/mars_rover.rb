@@ -13,6 +13,8 @@ class MarsRover # rubocop:disable Style/Documentation
     # Return: New coordinates and direction after moving according to instructions
     if @direction == :south
       @y_coordinate -= 1
+    elsif @direction == :west
+      @x_coordinate -= 1
     else
       @y_coordinate += 1
     end
