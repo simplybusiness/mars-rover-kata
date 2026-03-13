@@ -59,5 +59,8 @@ RSpec.describe 'operating a mars rover' do # rubocop:disable Metrics/BlockLength
     match do |rover|
       rover.x_coordinate == x && rover.y_coordinate == y
     end
+    failure_message do |rover|
+      "expected rover to be located at (#{x}, #{y}), but was located at (#{rover.x_coordinate}, #{rover.y_coordinate})"
+    end
   end
 end
