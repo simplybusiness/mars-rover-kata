@@ -25,6 +25,8 @@ class Rover
         move_backward
       when 'r'
         turn_right
+      when 'l'
+        turn_left
       end
     end
   end
@@ -35,6 +37,11 @@ class Rover
     delta = MOVEMENT[@direction]
     @x += delta[:x]
     @y += delta[:y]
+  end
+
+  def turn_left
+    current_index = DIRECTIONS.index(@direction)
+    @direction = DIRECTIONS[(current_index - 1) % 4]
   end
 
   def turn_right
