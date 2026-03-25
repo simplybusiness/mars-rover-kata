@@ -260,4 +260,16 @@ RSpec.describe Rover do
     expect(rover.y).to eq(4)
     expect(rover.obstacle_detected?).to be true
   end
+
+  it 'handles a complex path with obstacles, wrapping, and turning' do
+    grid = Grid.new(width: 5, height: 5, obstacles: [[2, 2]])
+    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+
+    rover.execute(%w[f f r f f l f])
+
+    expect(rover.x).to eq(1)
+    expect(rover.y).to eq(2)
+    expect(rover.direction).to eq(:E)
+    expect(rover.obstacle_detected?).to be true
+  end
 end
