@@ -240,4 +240,14 @@ RSpec.describe Rover do
     expect(rover.y).to eq(1)
     expect(rover.obstacle_detected?).to be true
   end
+
+  it 'stops before an obstacle when moving backward' do
+    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 4]])
+    rover = Rover.new(x: 0, y: 5, direction: :N, grid: grid)
+
+    rover.execute(['b'])
+
+    expect(rover.y).to eq(5)
+    expect(rover.obstacle_detected?).to be true
+  end
 end
