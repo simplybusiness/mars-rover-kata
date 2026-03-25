@@ -250,4 +250,14 @@ RSpec.describe Rover do
     expect(rover.y).to eq(5)
     expect(rover.obstacle_detected?).to be true
   end
+
+  it 'detects obstacle at a wrapped position' do
+    grid = Grid.new(width: 5, height: 5, obstacles: [[0, 0]])
+    rover = Rover.new(x: 0, y: 4, direction: :N, grid: grid)
+
+    rover.execute(['f'])
+
+    expect(rover.y).to eq(4)
+    expect(rover.obstacle_detected?).to be true
+  end
 end
