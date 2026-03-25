@@ -24,6 +24,7 @@ class Rover
     case @direction
     when :N then @y -= 1
     when :E then @x -= 1
+    when :S then @y += 1
     end
   end
 
