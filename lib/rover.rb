@@ -25,6 +25,7 @@ class Rover
     when :N then @y -= 1
     when :E then @x -= 1
     when :S then @y += 1
+    when :W then @x += 1
     end
   end
 
