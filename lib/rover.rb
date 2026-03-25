@@ -1,7 +1,7 @@
-class Rover
-  attr_reader :x, :y, :direction
+require_relative 'compass'
 
-  DIRECTIONS = %i[N E S W].freeze
+class Rover
+  attr_reader :x, :y
 
   COMMANDS = {
     'f' => :move_forward,
@@ -20,9 +20,13 @@ class Rover
   def initialize(x:, y:, direction:, grid: nil)
     @x = x
     @y = y
-    @direction = direction
+    @compass = Compass.new(direction)
     @grid = grid
     @obstacle_detected = false
+  end
+
+  def direction
+    @compass.direction
   end
 
   def obstacle_detected?
@@ -49,7 +53,7 @@ class Rover
   end
 
   def attempt_move(multiplier)
-    delta = MOVEMENT[@direction]
+    delta = MOVEMENT[direction]
     new_x = @x + (delta[:x] * multiplier)
     new_y = @y + (delta[:y] * multiplier)
 
@@ -68,12 +72,10 @@ class Rover
   end
 
   def turn_left
-    current_index = DIRECTIONS.index(@direction)
-    @direction = DIRECTIONS[(current_index - 1) % 4]
+    @compass = @compass.turn_left
   end
 
   def turn_right
-    current_index = DIRECTIONS.index(@direction)
-    @direction = DIRECTIONS[(current_index + 1) % 4]
+    @compass = @compass.turn_right
   end
 end
