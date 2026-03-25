@@ -18,4 +18,10 @@ RSpec.describe Compass do
 
     expect(compass.turn_left.direction).to eq(:W)
   end
+
+  it 'provides movement delta for north' do
+    compass = Compass.new(:N)
+
+    expect(compass.delta).to eq({ x: 0, y: 1 })
+  end
 end
