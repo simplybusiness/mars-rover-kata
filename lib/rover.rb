@@ -55,6 +55,11 @@ class Rover
       new_y = @grid.wrap_y(new_y)
     end
 
+    if @grid&.obstacle_at?(new_x, new_y)
+      @obstacle_detected = true
+      return
+    end
+
     @x = new_x
     @y = new_y
   end

@@ -218,4 +218,15 @@ RSpec.describe Rover do
 
     expect(rover.obstacle_detected?).to be false
   end
+
+  it 'stops before an obstacle when moving forward' do
+    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 1]])
+    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+
+    rover.execute(['f'])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.obstacle_detected?).to be true
+  end
 end
