@@ -1,6 +1,13 @@
 class Rover
   attr_reader :x, :y, :direction
 
+  MOVEMENT = {
+    N: { x: 0, y: 1 },
+    E: { x: 1, y: 0 },
+    S: { x: 0, y: -1 },
+    W: { x: -1, y: 0 }
+  }.freeze
+
   def initialize(x:, y:, direction:)
     @x = x
     @y = y
@@ -20,21 +27,15 @@ class Rover
 
   private
 
-  def move_backward
-    case @direction
-    when :N then @y -= 1
-    when :E then @x -= 1
-    when :S then @y += 1
-    when :W then @x += 1
-    end
+  def move_forward
+    delta = MOVEMENT[@direction]
+    @x += delta[:x]
+    @y += delta[:y]
   end
 
-  def move_forward
-    case @direction
-    when :N then @y += 1
-    when :E then @x += 1
-    when :S then @y -= 1
-    when :W then @x -= 1
-    end
+  def move_backward
+    delta = MOVEMENT[@direction]
+    @x -= delta[:x]
+    @y -= delta[:y]
   end
 end
