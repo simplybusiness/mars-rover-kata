@@ -3,6 +3,13 @@ class Rover
 
   DIRECTIONS = %i[N E S W].freeze
 
+  COMMANDS = {
+    'f' => :move_forward,
+    'b' => :move_backward,
+    'r' => :turn_right,
+    'l' => :turn_left
+  }.freeze
+
   MOVEMENT = {
     N: { x: 0, y: 1 },
     E: { x: 1, y: 0 },
@@ -18,16 +25,7 @@ class Rover
 
   def execute(commands)
     commands.each do |command|
-      case command
-      when 'f'
-        move_forward
-      when 'b'
-        move_backward
-      when 'r'
-        turn_right
-      when 'l'
-        turn_left
-      end
+      send(COMMANDS[command]) if COMMANDS.key?(command)
     end
   end
 
