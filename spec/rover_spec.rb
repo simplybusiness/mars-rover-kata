@@ -54,4 +54,13 @@ RSpec.describe Rover do
     expect(rover.x).to eq(0)
     expect(rover.y).to eq(-1)
   end
+
+  it 'moves forward one step when facing east' do
+    rover = Rover.new(x: 0, y: 0, direction: :E)
+
+    rover.execute(['f'])
+
+    expect(rover.x).to eq(1)
+    expect(rover.y).to eq(0)
+  end
 end
