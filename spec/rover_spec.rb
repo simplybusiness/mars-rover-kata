@@ -145,4 +145,14 @@ RSpec.describe Rover do
 
     expect(rover.direction).to eq(:E)
   end
+
+  it 'executes a complex path with all four commands' do
+    rover = Rover.new(x: 0, y: 0, direction: :N)
+
+    rover.execute(%w[f f r f f l b])
+
+    expect(rover.x).to eq(2)
+    expect(rover.y).to eq(1)
+    expect(rover.direction).to eq(:N)
+  end
 end
