@@ -1,6 +1,8 @@
 class Rover
   attr_reader :x, :y, :direction
 
+  DIRECTIONS = %i[N E S W].freeze
+
   MOVEMENT = {
     N: { x: 0, y: 1 },
     E: { x: 1, y: 0 },
@@ -36,7 +38,8 @@ class Rover
   end
 
   def turn_right
-    @direction = :E
+    current_index = DIRECTIONS.index(@direction)
+    @direction = DIRECTIONS[(current_index + 1) % 4]
   end
 
   def move_backward
