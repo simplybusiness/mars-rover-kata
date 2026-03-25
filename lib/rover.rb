@@ -21,6 +21,8 @@ class Rover
         move_forward
       when 'b'
         move_backward
+      when 'r'
+        turn_right
       end
     end
   end
@@ -31,6 +33,10 @@ class Rover
     delta = MOVEMENT[@direction]
     @x += delta[:x]
     @y += delta[:y]
+  end
+
+  def turn_right
+    @direction = :E
   end
 
   def move_backward
