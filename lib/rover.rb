@@ -9,6 +9,10 @@ class Rover
 
   def execute(commands)
     commands.each do |command|
+      case command
+      when 'f'
+        @y += 1
+      end
     end
   end
 end
