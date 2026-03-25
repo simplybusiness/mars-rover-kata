@@ -12,4 +12,10 @@ RSpec.describe Compass do
 
     expect(compass.turn_right.direction).to eq(:E)
   end
+
+  it 'turns left from north to west' do
+    compass = Compass.new(:N)
+
+    expect(compass.turn_left.direction).to eq(:W)
+  end
 end

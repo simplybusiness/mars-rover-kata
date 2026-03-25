@@ -7,6 +7,11 @@ class Compass
     @direction = direction
   end
 
+  def turn_left
+    current_index = DIRECTIONS.index(@direction)
+    Compass.new(DIRECTIONS[(current_index - 1) % 4])
+  end
+
   def turn_right
     current_index = DIRECTIONS.index(@direction)
     Compass.new(DIRECTIONS[(current_index + 1) % 4])
