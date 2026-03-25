@@ -12,6 +12,8 @@ class Rover
       case command
       when 'f'
         @y += 1
+      when 'b'
+        @y -= 1
       end
     end
   end
