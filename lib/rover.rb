@@ -13,12 +13,19 @@ class Rover
       when 'f'
         move_forward
       when 'b'
-        @y -= 1
+        move_backward
       end
     end
   end
 
   private
+
+  def move_backward
+    case @direction
+    when :N then @y -= 1
+    when :E then @x -= 1
+    end
+  end
 
   def move_forward
     case @direction
