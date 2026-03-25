@@ -7,5 +7,8 @@ class Rover
     @direction = direction
   end
 
-  def execute(commands); end
+  def execute(commands)
+    commands.each do |command|
+    end
+  end
 end

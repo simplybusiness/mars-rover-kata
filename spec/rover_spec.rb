@@ -18,4 +18,14 @@ RSpec.describe Rover do
     expect(rover.y).to eq(0)
     expect(rover.direction).to eq(:N)
   end
+
+  it 'ignores unrecognized commands' do
+    rover = Rover.new(x: 0, y: 0, direction: :N)
+
+    rover.execute(%w[x z])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
+    expect(rover.direction).to eq(:N)
+  end
 end
