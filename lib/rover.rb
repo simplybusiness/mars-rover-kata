@@ -17,10 +17,11 @@ class Rover
     W: { x: -1, y: 0 }
   }.freeze
 
-  def initialize(x:, y:, direction:)
+  def initialize(x:, y:, direction:, grid: nil)
     @x = x
     @y = y
     @direction = direction
+    @grid = grid
   end
 
   def execute(commands)

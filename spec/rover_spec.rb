@@ -1,4 +1,5 @@
 require_relative '../lib/rover'
+require_relative '../lib/grid'
 
 RSpec.describe Rover do
   it 'has a starting position and direction' do
@@ -154,5 +155,13 @@ RSpec.describe Rover do
     expect(rover.x).to eq(2)
     expect(rover.y).to eq(1)
     expect(rover.direction).to eq(:N)
+  end
+
+  it 'accepts a grid' do
+    grid = Grid.new(width: 10, height: 10)
+    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(0)
   end
 end
