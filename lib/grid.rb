@@ -5,4 +5,8 @@ class Grid
     @width = width
     @height = height
   end
+
+  def wrap_x(x)
+    x % @width
+  end
 end
