@@ -36,6 +36,14 @@ class Rover
     delta = MOVEMENT[@direction]
     @x += delta[:x]
     @y += delta[:y]
+    wrap_coordinates
+  end
+
+  def wrap_coordinates
+    return unless @grid
+
+    @x = @grid.wrap_x(@x)
+    @y = @grid.wrap_y(@y)
   end
 
   def turn_left
