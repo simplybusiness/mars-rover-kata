@@ -10,13 +10,6 @@ class Rover
     'l' => :turn_left
   }.freeze
 
-  MOVEMENT = {
-    N: { x: 0, y: 1 },
-    E: { x: 1, y: 0 },
-    S: { x: 0, y: -1 },
-    W: { x: -1, y: 0 }
-  }.freeze
-
   def initialize(x:, y:, direction:, grid: nil)
     @x = x
     @y = y
@@ -53,7 +46,7 @@ class Rover
   end
 
   def attempt_move(multiplier)
-    delta = MOVEMENT[direction]
+    delta = @compass.delta
     new_x = @x + (delta[:x] * multiplier)
     new_y = @y + (delta[:y] * multiplier)
 
