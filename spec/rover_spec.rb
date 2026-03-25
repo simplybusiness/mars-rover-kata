@@ -174,4 +174,31 @@ RSpec.describe Rover do
     expect(rover.y).to eq(0)
     expect(rover.x).to eq(0)
   end
+
+  it 'wraps when moving south past the bottom edge' do
+    grid = Grid.new(width: 5, height: 5)
+    rover = Rover.new(x: 0, y: 0, direction: :S, grid: grid)
+
+    rover.execute(['f'])
+
+    expect(rover.y).to eq(4)
+  end
+
+  it 'wraps when moving east past the right edge' do
+    grid = Grid.new(width: 5, height: 5)
+    rover = Rover.new(x: 4, y: 0, direction: :E, grid: grid)
+
+    rover.execute(['f'])
+
+    expect(rover.x).to eq(0)
+  end
+
+  it 'wraps when moving west past the left edge' do
+    grid = Grid.new(width: 5, height: 5)
+    rover = Rover.new(x: 0, y: 0, direction: :W, grid: grid)
+
+    rover.execute(['f'])
+
+    expect(rover.x).to eq(4)
+  end
 end
