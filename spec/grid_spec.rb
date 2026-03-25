@@ -19,4 +19,16 @@ RSpec.describe Grid do
 
     expect(grid.wrap_x(-1)).to eq(4)
   end
+
+  it 'wraps y-coordinate when exceeding height' do
+    grid = Grid.new(width: 5, height: 5)
+
+    expect(grid.wrap_y(5)).to eq(0)
+  end
+
+  it 'wraps y-coordinate when going below zero' do
+    grid = Grid.new(width: 5, height: 5)
+
+    expect(grid.wrap_y(-1)).to eq(4)
+  end
 end

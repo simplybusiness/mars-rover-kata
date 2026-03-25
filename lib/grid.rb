@@ -9,4 +9,8 @@ class Grid
   def wrap_x(x)
     x % @width
   end
+
+  def wrap_y(y)
+    y % @height
+  end
 end
