@@ -210,4 +210,12 @@ RSpec.describe Rover do
 
     expect(rover.y).to eq(4)
   end
+
+  it 'reports no obstacle detected after normal movement' do
+    rover = Rover.new(x: 0, y: 0, direction: :N)
+
+    rover.execute(['f'])
+
+    expect(rover.obstacle_detected?).to be false
+  end
 end

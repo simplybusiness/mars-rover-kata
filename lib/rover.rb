@@ -22,6 +22,11 @@ class Rover
     @y = y
     @direction = direction
     @grid = grid
+    @obstacle_detected = false
+  end
+
+  def obstacle_detected?
+    @obstacle_detected
   end
 
   def execute(commands)
