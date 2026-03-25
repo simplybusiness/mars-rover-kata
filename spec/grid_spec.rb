@@ -31,4 +31,17 @@ RSpec.describe Grid do
 
     expect(grid.wrap_y(-1)).to eq(4)
   end
+
+  it 'can be created with obstacles' do
+    grid = Grid.new(width: 5, height: 5, obstacles: [[1, 2], [3, 4]])
+
+    expect(grid.obstacle_at?(1, 2)).to be true
+    expect(grid.obstacle_at?(0, 0)).to be false
+  end
+
+  it 'has no obstacles by default' do
+    grid = Grid.new(width: 5, height: 5)
+
+    expect(grid.obstacle_at?(0, 0)).to be false
+  end
 end

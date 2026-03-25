@@ -1,9 +1,10 @@
 class Grid
   attr_reader :width, :height
 
-  def initialize(width:, height:)
+  def initialize(width:, height:, obstacles: [])
     @width = width
     @height = height
+    @obstacles = obstacles
   end
 
   def wrap_x(x)
@@ -12,5 +13,9 @@ class Grid
 
   def wrap_y(y)
     y % @height
+  end
+
+  def obstacle_at?(x, y)
+    @obstacles.include?([x, y])
   end
 end
