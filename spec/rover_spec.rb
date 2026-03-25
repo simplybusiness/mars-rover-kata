@@ -121,4 +121,12 @@ RSpec.describe Rover do
 
     expect(rover.direction).to eq(:S)
   end
+
+  it 'turns right four times to face north again' do
+    rover = Rover.new(x: 0, y: 0, direction: :N)
+
+    rover.execute(%w[r r r r])
+
+    expect(rover.direction).to eq(:N)
+  end
 end
