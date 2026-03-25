@@ -201,4 +201,13 @@ RSpec.describe Rover do
 
     expect(rover.x).to eq(4)
   end
+
+  it 'wraps when moving backward past an edge' do
+    grid = Grid.new(width: 5, height: 5)
+    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+
+    rover.execute(['b'])
+
+    expect(rover.y).to eq(4)
+  end
 end

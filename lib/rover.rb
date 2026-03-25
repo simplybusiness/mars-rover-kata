@@ -60,5 +60,6 @@ class Rover
     delta = MOVEMENT[@direction]
     @x -= delta[:x]
     @y -= delta[:y]
+    wrap_coordinates
   end
 end
