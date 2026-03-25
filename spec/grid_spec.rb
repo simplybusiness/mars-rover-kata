@@ -13,4 +13,10 @@ RSpec.describe Grid do
 
     expect(grid.wrap_x(5)).to eq(0)
   end
+
+  it 'wraps x-coordinate when going below zero' do
+    grid = Grid.new(width: 5, height: 5)
+
+    expect(grid.wrap_x(-1)).to eq(4)
+  end
 end
