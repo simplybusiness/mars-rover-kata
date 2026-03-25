@@ -38,17 +38,25 @@ class Rover
   private
 
   def move_forward
-    delta = MOVEMENT[@direction]
-    @x += delta[:x]
-    @y += delta[:y]
-    wrap_coordinates
+    attempt_move(1)
   end
 
-  def wrap_coordinates
-    return unless @grid
+  def move_backward
+    attempt_move(-1)
+  end
 
-    @x = @grid.wrap_x(@x)
-    @y = @grid.wrap_y(@y)
+  def attempt_move(multiplier)
+    delta = MOVEMENT[@direction]
+    new_x = @x + (delta[:x] * multiplier)
+    new_y = @y + (delta[:y] * multiplier)
+
+    if @grid
+      new_x = @grid.wrap_x(new_x)
+      new_y = @grid.wrap_y(new_y)
+    end
+
+    @x = new_x
+    @y = new_y
   end
 
   def turn_left
@@ -59,12 +67,5 @@ class Rover
   def turn_right
     current_index = DIRECTIONS.index(@direction)
     @direction = DIRECTIONS[(current_index + 1) % 4]
-  end
-
-  def move_backward
-    delta = MOVEMENT[@direction]
-    @x -= delta[:x]
-    @y -= delta[:y]
-    wrap_coordinates
   end
 end
