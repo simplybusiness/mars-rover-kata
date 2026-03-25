@@ -30,7 +30,10 @@ class Rover
   end
 
   def execute(commands)
+    @obstacle_detected = false
     commands.each do |command|
+      break if @obstacle_detected
+
       send(COMMANDS[command]) if COMMANDS.key?(command)
     end
   end

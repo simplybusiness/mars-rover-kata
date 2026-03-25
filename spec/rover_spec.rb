@@ -229,4 +229,15 @@ RSpec.describe Rover do
     expect(rover.y).to eq(0)
     expect(rover.obstacle_detected?).to be true
   end
+
+  it 'aborts remaining commands after hitting an obstacle' do
+    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 2]])
+    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+
+    rover.execute(%w[f f f])
+
+    expect(rover.x).to eq(0)
+    expect(rover.y).to eq(1)
+    expect(rover.obstacle_detected?).to be true
+  end
 end
