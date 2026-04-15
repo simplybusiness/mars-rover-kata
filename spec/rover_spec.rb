@@ -35,7 +35,7 @@ RSpec.describe Rover do
   end
 
   it 'moves forward one step when facing north' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(['f'])
 
@@ -44,7 +44,7 @@ RSpec.describe Rover do
   end
 
   it 'moves forward multiple steps when facing north' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(%w[f f f])
 
@@ -52,7 +52,7 @@ RSpec.describe Rover do
   end
 
   it 'moves backward one step when facing north' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(['b'])
 
