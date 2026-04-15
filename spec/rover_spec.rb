@@ -220,7 +220,7 @@ RSpec.describe Rover do
   end
 
   it 'reports no obstacle detected after normal movement' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(['f'])
 
