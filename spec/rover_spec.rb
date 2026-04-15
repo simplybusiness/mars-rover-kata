@@ -174,8 +174,8 @@ RSpec.describe Rover do
   end
 
   it 'wraps when moving north past the top edge' do
-    grid = Grid.new(width: 5, height: 5)
-    rover = Rover.new(x: 0, y: 4, direction: :N, grid: grid)
+    grid = grid_with_obstacles
+    rover = rover_facing(:N, x: 0, y: 4, grid: grid)
 
     rover.execute(['f'])
 
@@ -184,8 +184,8 @@ RSpec.describe Rover do
   end
 
   it 'wraps when moving south past the bottom edge' do
-    grid = Grid.new(width: 5, height: 5)
-    rover = Rover.new(x: 0, y: 0, direction: :S, grid: grid)
+    grid = grid_with_obstacles
+    rover = rover_facing(:S, grid: grid)
 
     rover.execute(['f'])
 
@@ -193,8 +193,8 @@ RSpec.describe Rover do
   end
 
   it 'wraps when moving east past the right edge' do
-    grid = Grid.new(width: 5, height: 5)
-    rover = Rover.new(x: 4, y: 0, direction: :E, grid: grid)
+    grid = grid_with_obstacles
+    rover = rover_facing(:E, x: 4, grid: grid)
 
     rover.execute(['f'])
 
@@ -202,8 +202,8 @@ RSpec.describe Rover do
   end
 
   it 'wraps when moving west past the left edge' do
-    grid = Grid.new(width: 5, height: 5)
-    rover = Rover.new(x: 0, y: 0, direction: :W, grid: grid)
+    grid = grid_with_obstacles
+    rover = rover_facing(:W, grid: grid)
 
     rover.execute(['f'])
 
@@ -211,8 +211,8 @@ RSpec.describe Rover do
   end
 
   it 'wraps when moving backward past an edge' do
-    grid = Grid.new(width: 5, height: 5)
-    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+    grid = grid_with_obstacles
+    rover = rover_facing(:N, grid: grid)
 
     rover.execute(['b'])
 
