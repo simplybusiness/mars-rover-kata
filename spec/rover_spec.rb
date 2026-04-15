@@ -166,8 +166,8 @@ RSpec.describe Rover do
   end
 
   it 'accepts a grid' do
-    grid = Grid.new(width: 10, height: 10)
-    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+    grid = grid_with_obstacles([], width: 10, height: 10)
+    rover = rover_facing(:N, grid: grid)
 
     expect(rover.x).to eq(0)
     expect(rover.y).to eq(0)
