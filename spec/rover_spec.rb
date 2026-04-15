@@ -110,7 +110,7 @@ RSpec.describe Rover do
   end
 
   it 'turns right from north to face east' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(['r'])
 
@@ -120,7 +120,7 @@ RSpec.describe Rover do
   end
 
   it 'turns right from east to face south' do
-    rover = Rover.new(x: 0, y: 0, direction: :E)
+    rover = rover_facing(:E)
 
     rover.execute(['r'])
 
@@ -128,7 +128,7 @@ RSpec.describe Rover do
   end
 
   it 'turns right four times to face north again' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(%w[r r r r])
 
@@ -136,7 +136,7 @@ RSpec.describe Rover do
   end
 
   it 'turns left from north to face west' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(['l'])
 
@@ -144,7 +144,7 @@ RSpec.describe Rover do
   end
 
   it 'turns left from south to face east' do
-    rover = Rover.new(x: 0, y: 0, direction: :S)
+    rover = rover_facing(:S)
 
     rover.execute(['l'])
 
@@ -152,7 +152,7 @@ RSpec.describe Rover do
   end
 
   it 'executes a complex path with all four commands' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(%w[f f r f f l b])
 
