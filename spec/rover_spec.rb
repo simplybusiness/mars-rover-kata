@@ -2,6 +2,10 @@ require_relative '../lib/rover'
 require_relative '../lib/grid'
 
 RSpec.describe Rover do
+  def rover_facing(direction, x: 0, y: 0, grid: nil)
+    Rover.new(x: x, y: y, direction: direction, grid: grid)
+  end
+
   it 'has a starting position and direction' do
     rover = Rover.new(x: 0, y: 0, direction: :N)
 
