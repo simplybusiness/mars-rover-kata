@@ -6,6 +6,10 @@ RSpec.describe Rover do
     Rover.new(x: x, y: y, direction: direction, grid: grid)
   end
 
+  def grid_with_obstacles(obstacles = [], width: 5, height: 5)
+    Grid.new(width: width, height: height, obstacles: obstacles)
+  end
+
   it 'has a starting position and direction' do
     rover = rover_facing(:N)
 
