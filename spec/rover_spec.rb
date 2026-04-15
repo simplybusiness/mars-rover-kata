@@ -7,7 +7,7 @@ RSpec.describe Rover do
   end
 
   it 'has a starting position and direction' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     expect(rover.x).to eq(0)
     expect(rover.y).to eq(0)
@@ -15,7 +15,7 @@ RSpec.describe Rover do
   end
 
   it 'receives an empty array of commands' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute([])
 
@@ -25,7 +25,7 @@ RSpec.describe Rover do
   end
 
   it 'ignores unrecognized commands' do
-    rover = Rover.new(x: 0, y: 0, direction: :N)
+    rover = rover_facing(:N)
 
     rover.execute(%w[x z])
 
