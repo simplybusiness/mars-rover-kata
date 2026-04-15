@@ -228,8 +228,8 @@ RSpec.describe Rover do
   end
 
   it 'stops before an obstacle when moving forward' do
-    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 1]])
-    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+    grid = grid_with_obstacles([[0, 1]], width: 10, height: 10)
+    rover = rover_facing(:N, grid: grid)
 
     rover.execute(['f'])
 
@@ -239,8 +239,8 @@ RSpec.describe Rover do
   end
 
   it 'aborts remaining commands after hitting an obstacle' do
-    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 2]])
-    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+    grid = grid_with_obstacles([[0, 2]], width: 10, height: 10)
+    rover = rover_facing(:N, grid: grid)
 
     rover.execute(%w[f f f])
 
@@ -250,8 +250,8 @@ RSpec.describe Rover do
   end
 
   it 'stops before an obstacle when moving backward' do
-    grid = Grid.new(width: 10, height: 10, obstacles: [[0, 4]])
-    rover = Rover.new(x: 0, y: 5, direction: :N, grid: grid)
+    grid = grid_with_obstacles([[0, 4]], width: 10, height: 10)
+    rover = rover_facing(:N, x: 0, y: 5, grid: grid)
 
     rover.execute(['b'])
 
@@ -260,8 +260,8 @@ RSpec.describe Rover do
   end
 
   it 'detects obstacle at a wrapped position' do
-    grid = Grid.new(width: 5, height: 5, obstacles: [[0, 0]])
-    rover = Rover.new(x: 0, y: 4, direction: :N, grid: grid)
+    grid = grid_with_obstacles([[0, 0]])
+    rover = rover_facing(:N, x: 0, y: 4, grid: grid)
 
     rover.execute(['f'])
 
@@ -270,8 +270,8 @@ RSpec.describe Rover do
   end
 
   it 'handles a complex path with obstacles, wrapping, and turning' do
-    grid = Grid.new(width: 5, height: 5, obstacles: [[2, 2]])
-    rover = Rover.new(x: 0, y: 0, direction: :N, grid: grid)
+    grid = grid_with_obstacles([[2, 2]])
+    rover = rover_facing(:N, grid: grid)
 
     rover.execute(%w[f f r f f l f])
 
