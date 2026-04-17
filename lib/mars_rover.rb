@@ -14,8 +14,6 @@ class MarsRover
     @movements = array.chars
   end
 
-  alias commands movements
-
   private
 
   # should the mars rover know what valid co-ordinates are?
