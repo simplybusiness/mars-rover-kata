@@ -5,7 +5,7 @@ class MarsRover
 
   def initialize(starting_position:, direction:)
     raise ArgumentError, "Invalid starting position: #{starting_position}" unless valid_position?(starting_position)
-    raise ArgumentError, "Invalid direction: #{direction}" unless VALID_DIRECTIONS.include?(direction)
+    raise ArgumentError, "Invalid direction: #{direction}" unless valid_direction?(direction)
     @starting_position = starting_position
     @direction = direction
   end
@@ -14,5 +14,9 @@ class MarsRover
 
   def valid_position?(pos)
     pos.is_a?(Array) && pos.size == 2 && pos.all? { |c| c.is_a?(Integer) }
+  end
+
+  def valid_direction?(dir)
+    VALID_DIRECTIONS.include?(dir)
   end
 end
