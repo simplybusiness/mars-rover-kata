@@ -35,4 +35,8 @@ describe MarsRover do
     expect(MarsRover.new(starting_position: [0, 0], direction: 'S')).to respond_to :movements
   end
   
+  it "can move forward or backward" do
+    mars_rover = MarsRover.new(starting_position: [0, 0], direction: 'N')
+    expect { mars_rover.move_forwards }.to change(mars_rover, :starting_position)
+  end
 end

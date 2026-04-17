@@ -14,6 +14,11 @@ class MarsRover
     @movements = array.chars
   end
 
+  def move_forwards
+    x, y = @starting_position
+    @starting_position = [x, y + 1]
+  end
+
   private
 
   # should the mars rover know what valid co-ordinates are?
