@@ -32,7 +32,7 @@ describe MarsRover do
   end
 
   it "can receive a character array of commands" do
-    expect(MarsRover.new(starting_position: [0, 0], direction: 'S')).to respond_to :commands
+    expect(MarsRover.new(starting_position: [0, 0], direction: 'S')).to respond_to :movements
   end
   
 end

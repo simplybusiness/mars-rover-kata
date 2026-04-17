@@ -10,9 +10,11 @@ class MarsRover
     @direction = direction
   end
 
-  def commands(array)
-    
+  def movements(array)
+    @movements = array.chars
   end
+
+  alias commands movements
 
   private
 
