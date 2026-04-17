@@ -10,8 +10,13 @@ class MarsRover
     @direction = direction
   end
 
+  def commands(array)
+    
+  end
+
   private
 
+  # should the mars rover know what valid co-ordinates are?
   def valid_position?(pos)
     pos.is_a?(Array) && pos.size == 2 && pos.all? { |c| c.is_a?(Integer) }
   end

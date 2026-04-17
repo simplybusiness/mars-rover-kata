@@ -30,5 +30,9 @@ describe MarsRover do
     expect { MarsRover.new(starting_position: [0], direction: 'N') }
       .to raise_error(ArgumentError, /Invalid starting position/)
   end
+
+  it "can receive a character array of commands" do
+    expect(MarsRover.new(starting_position: [0, 0], direction: 'S')).to respond_to :commands
+  end
   
 end
