@@ -16,7 +16,10 @@ class MarsRover
 
   def move_forwards
     x, y = @starting_position
-    @starting_position = [x, y + 1]
+    case @direction
+    when 'N' then @starting_position = [x, y + 1]
+    when 'S' then @starting_position = [x, y - 1]
+    end
   end
 
   def move_backwards
