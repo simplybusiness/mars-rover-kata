@@ -19,6 +19,11 @@ class MarsRover
     @starting_position = [x, y + 1]
   end
 
+  def move_backwards
+    x, y = @starting_position
+    @starting_position = [x, y - 1]
+  end
+
   private
 
   # should the mars rover know what valid co-ordinates are?

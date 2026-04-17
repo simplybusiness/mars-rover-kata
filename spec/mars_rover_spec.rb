@@ -39,4 +39,9 @@ describe MarsRover do
     mars_rover = MarsRover.new(starting_position: [0, 0], direction: 'N')
     expect { mars_rover.move_forwards }.to change(mars_rover, :starting_position).from([0, 0]).to([0, 1])
   end
+
+  it "can move backward when facing North" do
+    mars_rover = MarsRover.new(starting_position: [0, 0], direction: 'N')
+    expect { mars_rover.move_backwards }.to change(mars_rover, :starting_position).from([0, 0]).to([0, -1])
+  end
 end
