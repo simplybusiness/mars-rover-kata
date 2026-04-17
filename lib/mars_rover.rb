@@ -1,6 +1,18 @@
 class MarsRover
-  attr_reader :starting_position
-  def initialize(starting_position:)
+  VALID_DIRECTIONS = %w[N S E W].freeze
+
+  attr_reader :starting_position, :direction
+
+  def initialize(starting_position:, direction:)
+    raise ArgumentError, "Invalid starting position: #{starting_position}" unless valid_position?(starting_position)
+    raise ArgumentError, "Invalid direction: #{direction}" unless VALID_DIRECTIONS.include?(direction)
     @starting_position = starting_position
+    @direction = direction
+  end
+
+  private
+
+  def valid_position?(pos)
+    pos.is_a?(Array) && pos.size == 2 && pos.all? { |c| c.is_a?(Integer) }
   end
 end
