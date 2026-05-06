@@ -178,12 +178,7 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :N
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :N)
   end
 
   it 'wraps when moving south past the bottom edge' do
@@ -192,12 +187,7 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 4
-    expected_direction = :S
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 4, direction: :S)
   end
 
   it 'wraps when moving east past the right edge' do
@@ -206,12 +196,7 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :E
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :E)
   end
 
   it 'wraps when moving west past the left edge' do
@@ -220,12 +205,7 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expected_x_coordinate = 4
-    expected_y_coordinate = 0
-    expected_direction = :W
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 4, y: 0, direction: :W)
   end
 
   it 'wraps when moving backward past an edge' do
@@ -234,12 +214,7 @@ RSpec.describe Rover do
 
     rover.execute(['b'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 4
-    expected_direction = :N
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 4, direction: :N)
   end
 
   it 'reports no obstacle detected after normal movement' do
