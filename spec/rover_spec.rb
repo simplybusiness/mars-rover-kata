@@ -1,6 +1,19 @@
 require_relative '../lib/rover'
 require_relative '../lib/grid'
 
+RSpec::Matchers.define :be_at do |expected|
+  match do |rover|
+    rover.x == expected[:x] &&
+      rover.y == expected[:y] &&
+      rover.direction == expected[:direction]
+  end
+
+  failure_message do |rover|
+    "expected rover at (#{expected[:x]}, #{expected[:y]}) facing #{expected[:direction]}, " \
+    "got (#{rover.x}, #{rover.y}) facing #{rover.direction}"
+  end
+end
+
 RSpec.describe Rover do
   def rover_facing(direction, x: 0, y: 0, grid: nil)
     Rover.new(x: x, y: y, direction: direction, grid: grid)
