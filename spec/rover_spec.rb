@@ -13,9 +13,12 @@ RSpec.describe Rover do
   it 'has a starting position and direction' do
     rover = rover_facing(:N)
 
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(0)
-    expect(rover.direction).to eq(:N)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'receives an empty array of commands' do
@@ -23,9 +26,12 @@ RSpec.describe Rover do
 
     rover.execute([])
 
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(0)
-    expect(rover.direction).to eq(:N)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'ignores unrecognized commands' do
@@ -33,9 +39,12 @@ RSpec.describe Rover do
 
     rover.execute(%w[x z])
 
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(0)
-    expect(rover.direction).to eq(:N)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves forward one step when facing north' do
@@ -225,17 +234,24 @@ RSpec.describe Rover do
 
     rover.execute(%w[f f r f f l b])
 
-    expect(rover.x).to eq(2)
-    expect(rover.y).to eq(1)
-    expect(rover.direction).to eq(:N)
+    expected_x_coordinate = 2
+    expected_y_coordinate = 1
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'accepts a grid' do
     grid = grid_with_obstacles([], width: 10, height: 10)
     rover = rover_facing(:N, grid: grid)
 
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(0)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'wraps when moving north past the top edge' do
