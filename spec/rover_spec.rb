@@ -137,12 +137,7 @@ RSpec.describe Rover do
 
     rover.execute(['r'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :E
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :E)
   end
 
   it 'turns right from east to face south' do
@@ -150,12 +145,7 @@ RSpec.describe Rover do
 
     rover.execute(['r'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :S
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :S)
   end
 
   it 'turns right four times to face north again' do
@@ -163,12 +153,7 @@ RSpec.describe Rover do
 
     rover.execute(%w[r r r r])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :N
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :N)
   end
 
   it 'turns left from north to face west' do
@@ -176,12 +161,7 @@ RSpec.describe Rover do
 
     rover.execute(['l'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :W
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :W)
   end
 
   it 'turns left from south to face east' do
@@ -189,12 +169,7 @@ RSpec.describe Rover do
 
     rover.execute(['l'])
 
-    expected_x_coordinate = 0
-    expected_y_coordinate = 0
-    expected_direction = :E
-    expect(rover.x).to eq expected_x_coordinate
-    expect(rover.y).to eq expected_y_coordinate
-    expect(rover.direction).to eq expected_direction
+    expect(rover).to be_at(x: 0, y: 0, direction: :E)
   end
 
   it 'executes a complex path with all four commands' do
