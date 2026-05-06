@@ -165,13 +165,6 @@ RSpec.describe Rover do
     expect(rover).to be_at(x: 2, y: 1, direction: :N)
   end
 
-  it 'accepts a grid' do
-    grid = grid_with_obstacles([], width: 10, height: 10)
-    rover = rover_facing(:N, grid: grid)
-
-    expect(rover).to be_at(x: 0, y: 0, direction: :N)
-  end
-
   it 'wraps when moving north past the top edge' do
     grid = grid_with_obstacles
     rover = rover_facing(:N, x: 0, y: 4, grid: grid)
