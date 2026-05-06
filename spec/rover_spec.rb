@@ -43,8 +43,12 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(1)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 1
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves forward multiple steps when facing north' do
@@ -52,7 +56,12 @@ RSpec.describe Rover do
 
     rover.execute(%w[f f f])
 
-    expect(rover.y).to eq(3)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 3
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves backward one step when facing north' do
@@ -69,8 +78,12 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expect(rover.x).to eq(1)
-    expect(rover.y).to eq(0)
+    expected_x_coordinate = 1
+    expected_y_coordinate = 0
+    expected_direction = :E
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves forward one step when facing south' do
@@ -78,7 +91,12 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expect(rover.y).to eq(-1)
+    expected_x_coordinate = 0
+    expected_y_coordinate = -1
+    expected_direction = :S
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves forward one step when facing west' do
@@ -86,7 +104,12 @@ RSpec.describe Rover do
 
     rover.execute(['f'])
 
-    expect(rover.x).to eq(-1)
+    expected_x_coordinate = -1
+    expected_y_coordinate = 0
+    expected_direction = :W
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'moves backward one step when facing east' do
