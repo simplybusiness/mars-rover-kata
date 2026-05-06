@@ -160,9 +160,12 @@ RSpec.describe Rover do
 
     rover.execute(['r'])
 
-    expect(rover.direction).to eq(:E)
-    expect(rover.x).to eq(0)
-    expect(rover.y).to eq(0)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :E
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'turns right from east to face south' do
@@ -170,7 +173,12 @@ RSpec.describe Rover do
 
     rover.execute(['r'])
 
-    expect(rover.direction).to eq(:S)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :S
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'turns right four times to face north again' do
@@ -178,7 +186,12 @@ RSpec.describe Rover do
 
     rover.execute(%w[r r r r])
 
-    expect(rover.direction).to eq(:N)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :N
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'turns left from north to face west' do
@@ -186,7 +199,12 @@ RSpec.describe Rover do
 
     rover.execute(['l'])
 
-    expect(rover.direction).to eq(:W)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :W
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'turns left from south to face east' do
@@ -194,7 +212,12 @@ RSpec.describe Rover do
 
     rover.execute(['l'])
 
-    expect(rover.direction).to eq(:E)
+    expected_x_coordinate = 0
+    expected_y_coordinate = 0
+    expected_direction = :E
+    expect(rover.x).to eq expected_x_coordinate
+    expect(rover.y).to eq expected_y_coordinate
+    expect(rover.direction).to eq expected_direction
   end
 
   it 'executes a complex path with all four commands' do
