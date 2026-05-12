@@ -3,7 +3,7 @@ class MarsRover
 
   attr_reader :starting_position, :direction
 
-  def initialize(starting_position:, direction:)
+  def initialize(starting_position:, direction:) # confusion about y and x variables - should they be named?
     raise ArgumentError, "Invalid starting position: #{starting_position}" unless valid_position?(starting_position)
     raise ArgumentError, "Invalid direction: #{direction}" unless valid_direction?(direction)
     @starting_position = starting_position
@@ -24,7 +24,10 @@ class MarsRover
 
   def move_backwards
     x, y = @starting_position
-    @starting_position = [x, y - 1]
+    case @direction
+    when 'S' then @starting_position = [x, y + 1]
+    when 'N' then @starting_position = [x, y - 1]
+    end
   end
 
   private
