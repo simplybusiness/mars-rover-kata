@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rubocop
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Detect test sources
+        id: tests
+        run: |
+          has_rspec=false
+          has_minitest=false
+          [ -n "$(find spec -name '*_spec.rb' -print -quit 2>/dev/null)" ] && has_rspec=true
+          [ -n "$(find test -name '*_test.rb' -print -quit 2>/dev/null)" ] && has_minitest=true
+          echo "has_rspec=$has_rspec" >> "$GITHUB_OUTPUT"
+          echo "has_minitest=$has_minitest" >> "$GITHUB_OUTPUT"
+          if ! $has_rspec && ! $has_minitest; then
+            echo "::notice::No tests yet — add specs under spec/ or tests under test/ and CI will run them."
+          fi
+      - name: RSpec
+        if: steps.tests.outputs.has_rspec == 'true'
+        run: bundle exec rspec
+      - name: Minitest
+        if: steps.tests.outputs.has_minitest == 'true'
+        run: bundle exec ruby -Ilib -Itest -e "Dir.glob('test/**/*_test.rb').sort.each { |f| require './' + f }"
