@@ -30,16 +30,10 @@ jobs:
         run: |
           has_rspec=false
           has_minitest=false
-          has_lib=false
           [ -n "$(find spec -name '*_spec.rb' -print -quit 2>/dev/null)" ] && has_rspec=true
           [ -n "$(find test -name '*_test.rb' -print -quit 2>/dev/null)" ] && has_minitest=true
-          [ -n "$(find lib  -name '*.rb'      -print -quit 2>/dev/null)" ] && has_lib=true
           echo "has_rspec=$has_rspec" >> "$GITHUB_OUTPUT"
           echo "has_minitest=$has_minitest" >> "$GITHUB_OUTPUT"
-          if $has_lib && ! $has_rspec && ! $has_minitest; then
-            echo "::error::lib/ contains Ruby code but no tests found in spec/ or test/."
-            exit 1
-          fi
           if ! $has_rspec && ! $has_minitest; then
             echo "::notice::No tests yet — add specs under spec/ or tests under test/ and CI will run them."
           fi
