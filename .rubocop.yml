@@ -8,3 +8,4 @@ AllCops:
 
 Naming/MethodParameterName:
   Enabled: false
+
