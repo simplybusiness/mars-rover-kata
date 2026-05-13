@@ -2,8 +2,6 @@
 
 # This class represents the grid on which the rover operates, including its dimensions and any obstacles present
 class Grid
-  attr_reader :width, :height
-
   def initialize(width:, height:, obstacles: [])
     @width = width
     @height = height
