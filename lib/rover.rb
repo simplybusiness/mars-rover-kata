@@ -2,6 +2,7 @@
 
 require_relative 'compass'
 
+# This class represents the rover, including its position, direction, and the grid it operates on. It can execute movement and turning commands while checking for obstacles.
 class Rover
   attr_reader :x, :y
 
