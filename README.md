@@ -26,3 +26,16 @@ Develop an API that translates the commands sent from earth to instructions that
 - Change roles (driver, navigator) after each TDD cycle.
 - No red phases while refactoring.
 - Be careful about edge cases and exceptions. We can not afford to lose a mars rover, just because the developers overlooked a null pointer.
+
+## CI
+
+Every push to `main` and every pull request runs RuboCop plus your tests via GitHub Actions (see `.github/workflows/ci.yml`).
+
+Run the same checks locally:
+
+    bundle install
+    bundle exec rubocop
+    bundle exec rspec                                 # if you chose RSpec
+    bundle exec ruby -Ilib -Itest test/**/*_test.rb   # if you chose Minitest
+
+Minitest tests are picked up from `test/**/*_test.rb`. If you don't use Minitest, the CI step skips silently.
