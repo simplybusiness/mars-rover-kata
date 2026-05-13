@@ -5,3 +5,6 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - 'tmp/**/*'
+
+Naming/MethodParameterName:
+  Enabled: false

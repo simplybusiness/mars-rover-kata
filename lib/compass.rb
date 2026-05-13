@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This class represents the compass direction of the rover and provides methods to turn and decide how the rover moves
 class Compass
   attr_reader :direction
 
