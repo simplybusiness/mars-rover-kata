@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/compass'
 
 RSpec.describe Compass do

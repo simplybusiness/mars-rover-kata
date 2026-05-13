@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Compass
   attr_reader :direction
 

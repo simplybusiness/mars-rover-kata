@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative '../lib/rover'
 require_relative '../lib/grid'
 
@@ -10,7 +12,7 @@ RSpec::Matchers.define :be_at do |expected|
 
   failure_message do |rover|
     "expected rover at (#{expected[:x]}, #{expected[:y]}) facing #{expected[:direction]}, " \
-    "got (#{rover.x}, #{rover.y}) facing #{rover.direction}"
+      "got (#{rover.x}, #{rover.y}) facing #{rover.direction}"
   end
 end
 
