@@ -25,10 +25,12 @@ RSpec.describe Rover do
     Grid.new(width: width, height: height, obstacles: obstacles)
   end
 
-  it 'has a starting position and direction' do
-    rover = rover_facing(:N)
+  describe 'initial state' do
+    it 'has a starting position and direction' do
+      rover = rover_facing(:N)
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :N)
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
+    end
   end
 
   context 'with empty commands' do
