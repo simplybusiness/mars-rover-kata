@@ -9,3 +9,7 @@ AllCops:
 Naming/MethodParameterName:
   Enabled: false
 
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
