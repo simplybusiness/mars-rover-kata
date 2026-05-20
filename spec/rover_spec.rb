@@ -16,6 +16,19 @@ RSpec::Matchers.define :be_at do |expected|
   end
 end
 
+RSpec::Matchers.define :be_obstructed_at do |expected|
+  match do |rover|
+    rover.x == expected[:x] &&
+      rover.y == expected[:y] &&
+      rover.obstacle_detected?
+  end
+
+  failure_message do |rover|
+    "expected rover obstructed at (#{expected[:x]}, #{expected[:y]}), " \
+      "got (#{rover.x}, #{rover.y}) obstacle_detected? = #{rover.obstacle_detected?}"
+  end
+end
+
 RSpec.describe Rover do
   def rover_facing(direction, x: 0, y: 0, grid: nil)
     Rover.new(x: x, y: y, direction: direction, grid: grid)
@@ -191,9 +204,7 @@ RSpec.describe Rover do
 
       rover.execute(['f'])
 
-      expect(rover.x).to eq(0)
-      expect(rover.y).to eq(0)
-      expect(rover.obstacle_detected?).to be true
+      expect(rover).to be_obstructed_at(x: 0, y: 0)
     end
 
     it 'aborts remaining commands after hitting an obstacle' do
@@ -202,9 +213,7 @@ RSpec.describe Rover do
 
       rover.execute(%w[f f f])
 
-      expect(rover.x).to eq(0)
-      expect(rover.y).to eq(1)
-      expect(rover.obstacle_detected?).to be true
+      expect(rover).to be_obstructed_at(x: 0, y: 1)
     end
 
     it 'stops before an obstacle when moving backward' do
@@ -213,8 +222,7 @@ RSpec.describe Rover do
 
       rover.execute(['b'])
 
-      expect(rover.y).to eq(5)
-      expect(rover.obstacle_detected?).to be true
+      expect(rover).to be_obstructed_at(x: 0, y: 5)
     end
 
     it 'detects obstacle at a wrapped position' do
@@ -223,8 +231,7 @@ RSpec.describe Rover do
 
       rover.execute(['f'])
 
-      expect(rover.y).to eq(4)
-      expect(rover.obstacle_detected?).to be true
+      expect(rover).to be_obstructed_at(x: 0, y: 4)
     end
   end
 end
