@@ -88,6 +88,7 @@ Expected: All 41 tests pass, changes committed.
 ### Task 2: Replace `Rover.new` in forward/backward movement tests
 
 **Files:**
+
 - Modify: `spec/rover_spec.rb`
 
 - [ ] **Step 1: Replace in north-facing movement tests**
