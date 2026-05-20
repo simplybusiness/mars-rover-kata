@@ -21,6 +21,7 @@
 ### Task 1: Add `rover_facing` helper and replace basic movement tests
 
 **Files:**
+
 - Modify: `spec/rover_spec.rb`
 
 - [ ] **Step 1: Add the `rover_facing` helper method**

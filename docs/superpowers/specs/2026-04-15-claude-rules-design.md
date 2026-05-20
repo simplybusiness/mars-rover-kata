@@ -49,5 +49,6 @@ bundle exec rspec -cfd && git add -A && git commit -m "$message" || git checkout
 ## Scope
 
 Two files:
+
 1. `CLAUDE.md` — new file with rules
 2. `tcr.sh` — update existing script

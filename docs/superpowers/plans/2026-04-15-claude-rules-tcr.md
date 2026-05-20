@@ -20,6 +20,7 @@
 ### Task 1: Update tcr.sh
 
 **Files:**
+
 - Modify: `tcr.sh`
 
 - [ ] **Step 1: Read current tcr.sh and verify current behavior**
@@ -45,6 +46,7 @@ bundle exec rspec -cfd && git add -A && git commit -m "$message" || git checkout
 ```
 
 Changes:
+
 - Accept commit message as first argument (default: "green")
 - Add `git add -A` before commit so new/untracked files are included
 - Revert both `lib/` and `spec/` on failure (was only `lib/`)
@@ -71,6 +73,7 @@ git commit -m "feat: tcr.sh accepts commit message, reverts lib/ and spec/ on fa
 ### Task 2: Create CLAUDE.md
 
 **Files:**
+
 - Create: `CLAUDE.md`
 
 - [ ] **Step 1: Create CLAUDE.md with all rules**
