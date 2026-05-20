@@ -175,49 +175,51 @@ RSpec.describe Rover do
     expect(rover).to be_at(x: 2, y: 1, direction: :N)
   end
 
-  it 'wraps when moving north past the top edge' do
-    grid = grid_with_obstacles
-    rover = rover_facing(:N, x: 0, y: 4, grid: grid)
+  context 'when wrapping around the grid' do
+    it 'wraps when moving north past the top edge' do
+      grid = grid_with_obstacles
+      rover = rover_facing(:N, x: 0, y: 4, grid: grid)
 
-    rover.execute(['f'])
+      rover.execute(['f'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :N)
-  end
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
+    end
 
-  it 'wraps when moving south past the bottom edge' do
-    grid = grid_with_obstacles
-    rover = rover_facing(:S, grid: grid)
+    it 'wraps when moving south past the bottom edge' do
+      grid = grid_with_obstacles
+      rover = rover_facing(:S, grid: grid)
 
-    rover.execute(['f'])
+      rover.execute(['f'])
 
-    expect(rover).to be_at(x: 0, y: 4, direction: :S)
-  end
+      expect(rover).to be_at(x: 0, y: 4, direction: :S)
+    end
 
-  it 'wraps when moving east past the right edge' do
-    grid = grid_with_obstacles
-    rover = rover_facing(:E, x: 4, grid: grid)
+    it 'wraps when moving east past the right edge' do
+      grid = grid_with_obstacles
+      rover = rover_facing(:E, x: 4, grid: grid)
 
-    rover.execute(['f'])
+      rover.execute(['f'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :E)
-  end
+      expect(rover).to be_at(x: 0, y: 0, direction: :E)
+    end
 
-  it 'wraps when moving west past the left edge' do
-    grid = grid_with_obstacles
-    rover = rover_facing(:W, grid: grid)
+    it 'wraps when moving west past the left edge' do
+      grid = grid_with_obstacles
+      rover = rover_facing(:W, grid: grid)
 
-    rover.execute(['f'])
+      rover.execute(['f'])
 
-    expect(rover).to be_at(x: 4, y: 0, direction: :W)
-  end
+      expect(rover).to be_at(x: 4, y: 0, direction: :W)
+    end
 
-  it 'wraps when moving backward past an edge' do
-    grid = grid_with_obstacles
-    rover = rover_facing(:N, grid: grid)
+    it 'wraps when moving backward past an edge' do
+      grid = grid_with_obstacles
+      rover = rover_facing(:N, grid: grid)
 
-    rover.execute(['b'])
+      rover.execute(['b'])
 
-    expect(rover).to be_at(x: 0, y: 4, direction: :N)
+      expect(rover).to be_at(x: 0, y: 4, direction: :N)
+    end
   end
 
   it 'reports no obstacle detected after normal movement' do
