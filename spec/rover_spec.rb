@@ -150,40 +150,20 @@ RSpec.describe Rover do
   end
 
   context 'when wrapping around the grid' do
-    it 'wraps when moving north past the top edge' do
-      grid = grid_with_obstacles
-      rover = rover_facing(:N, x: 0, y: 4, grid: grid)
+    [
+      { direction: :N, edge: 'top',    start: { x: 0, y: 4 }, expected: { x: 0, y: 0 } },
+      { direction: :S, edge: 'bottom', start: { x: 0, y: 0 }, expected: { x: 0, y: 4 } },
+      { direction: :E, edge: 'right',  start: { x: 4, y: 0 }, expected: { x: 0, y: 0 } },
+      { direction: :W, edge: 'left',   start: { x: 0, y: 0 }, expected: { x: 4, y: 0 } }
+    ].each do |row|
+      it "wraps when moving #{row[:direction]} past the #{row[:edge]} edge" do
+        grid = grid_with_obstacles
+        rover = rover_facing(row[:direction], x: row[:start][:x], y: row[:start][:y], grid: grid)
 
-      rover.execute(['f'])
+        rover.execute(['f'])
 
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-
-    it 'wraps when moving south past the bottom edge' do
-      grid = grid_with_obstacles
-      rover = rover_facing(:S, grid: grid)
-
-      rover.execute(['f'])
-
-      expect(rover).to be_at(x: 0, y: 4, direction: :S)
-    end
-
-    it 'wraps when moving east past the right edge' do
-      grid = grid_with_obstacles
-      rover = rover_facing(:E, x: 4, grid: grid)
-
-      rover.execute(['f'])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :E)
-    end
-
-    it 'wraps when moving west past the left edge' do
-      grid = grid_with_obstacles
-      rover = rover_facing(:W, grid: grid)
-
-      rover.execute(['f'])
-
-      expect(rover).to be_at(x: 4, y: 0, direction: :W)
+        expect(rover).to be_at(x: row[:expected][:x], y: row[:expected][:y], direction: row[:direction])
+      end
     end
 
     it 'wraps when moving backward past an edge' do
