@@ -29,6 +29,18 @@ RSpec::Matchers.define :be_obstructed_at do |expected|
   end
 end
 
+RSpec.shared_examples 'a single-step command' do |command, cases|
+  cases.each do |label, params|
+    it "ends in expected state #{label}" do
+      rover = rover_facing(params[:start])
+
+      rover.execute([command])
+
+      expect(rover).to be_at(x: params[:x], y: params[:y], direction: params[:direction])
+    end
+  end
+end
+
 RSpec.describe Rover do
   def rover_facing(direction, x: 0, y: 0, grid: nil)
     Rover.new(x: x, y: y, direction: direction, grid: grid)
@@ -67,20 +79,11 @@ RSpec.describe Rover do
   end
 
   context 'when moving forward' do
-    {
-      N: { x: 0, y: 1 },
-      E: { x: 1, y: 0 },
-      S: { x: 0, y: -1 },
-      W: { x: -1, y: 0 }
-    }.each do |direction, expected|
-      it "moves forward one step when facing #{direction}" do
-        rover = rover_facing(direction)
-
-        rover.execute(['f'])
-
-        expect(rover).to be_at(x: expected[:x], y: expected[:y], direction: direction)
-      end
-    end
+    include_examples 'a single-step command', 'f',
+                     'facing N' => { start: :N, x: 0,  y: 1,  direction: :N },
+                     'facing E' => { start: :E, x: 1,  y: 0,  direction: :E },
+                     'facing S' => { start: :S, x: 0,  y: -1, direction: :S },
+                     'facing W' => { start: :W, x: -1, y: 0,  direction: :W }
 
     it 'moves forward multiple steps when facing north' do
       rover = rover_facing(:N)
@@ -92,32 +95,17 @@ RSpec.describe Rover do
   end
 
   context 'when moving backward' do
-    {
-      N: { x: 0, y: -1 },
-      E: { x: -1, y: 0 },
-      S: { x: 0, y: 1 },
-      W: { x: 1, y: 0 }
-    }.each do |direction, expected|
-      it "moves backward one step when facing #{direction}" do
-        rover = rover_facing(direction)
-
-        rover.execute(['b'])
-
-        expect(rover).to be_at(x: expected[:x], y: expected[:y], direction: direction)
-      end
-    end
+    include_examples 'a single-step command', 'b',
+                     'facing N' => { start: :N, x: 0,  y: -1, direction: :N },
+                     'facing E' => { start: :E, x: -1, y: 0,  direction: :E },
+                     'facing S' => { start: :S, x: 0,  y: 1,  direction: :S },
+                     'facing W' => { start: :W, x: 1,  y: 0,  direction: :W }
   end
 
   context 'when turning right' do
-    { N: :E, E: :S }.each do |start, expected|
-      it "turns right from #{start} to face #{expected}" do
-        rover = rover_facing(start)
-
-        rover.execute(['r'])
-
-        expect(rover).to be_at(x: 0, y: 0, direction: expected)
-      end
-    end
+    include_examples 'a single-step command', 'r',
+                     'starting from N' => { start: :N, x: 0, y: 0, direction: :E },
+                     'starting from E' => { start: :E, x: 0, y: 0, direction: :S }
 
     it 'turns right four times to face north again' do
       rover = rover_facing(:N)
@@ -129,15 +117,9 @@ RSpec.describe Rover do
   end
 
   context 'when turning left' do
-    { N: :W, S: :E }.each do |start, expected|
-      it "turns left from #{start} to face #{expected}" do
-        rover = rover_facing(start)
-
-        rover.execute(['l'])
-
-        expect(rover).to be_at(x: 0, y: 0, direction: expected)
-      end
-    end
+    include_examples 'a single-step command', 'l',
+                     'starting from N' => { start: :N, x: 0, y: 0, direction: :W },
+                     'starting from S' => { start: :S, x: 0, y: 0, direction: :E }
   end
 
   context 'with a complex sequence of commands' do
