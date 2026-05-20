@@ -171,49 +171,51 @@ RSpec.describe Rover do
     end
   end
 
-  context 'when encountering an obstacle' do
-    it 'reports no obstacle detected after normal movement' do
-      rover = rover_facing(:N)
+  describe 'obstacle detection' do
+    context 'when encountering an obstacle' do
+      it 'reports no obstacle detected after normal movement' do
+        rover = rover_facing(:N)
 
-      rover.execute(['f'])
+        rover.execute(['f'])
 
-      expect(rover.obstacle_detected?).to be false
-    end
+        expect(rover.obstacle_detected?).to be false
+      end
 
-    it 'stops before an obstacle when moving forward' do
-      grid = grid_with_obstacles([[0, 1]], width: 10, height: 10)
-      rover = rover_facing(:N, grid: grid)
+      it 'stops before an obstacle when moving forward' do
+        grid = grid_with_obstacles([[0, 1]], width: 10, height: 10)
+        rover = rover_facing(:N, grid: grid)
 
-      rover.execute(['f'])
+        rover.execute(['f'])
 
-      expect(rover).to be_obstructed_at(x: 0, y: 0)
-    end
+        expect(rover).to be_obstructed_at(x: 0, y: 0)
+      end
 
-    it 'aborts remaining commands after hitting an obstacle' do
-      grid = grid_with_obstacles([[0, 2]], width: 10, height: 10)
-      rover = rover_facing(:N, grid: grid)
+      it 'aborts remaining commands after hitting an obstacle' do
+        grid = grid_with_obstacles([[0, 2]], width: 10, height: 10)
+        rover = rover_facing(:N, grid: grid)
 
-      rover.execute(%w[f f f])
+        rover.execute(%w[f f f])
 
-      expect(rover).to be_obstructed_at(x: 0, y: 1)
-    end
+        expect(rover).to be_obstructed_at(x: 0, y: 1)
+      end
 
-    it 'stops before an obstacle when moving backward' do
-      grid = grid_with_obstacles([[0, 4]], width: 10, height: 10)
-      rover = rover_facing(:N, x: 0, y: 5, grid: grid)
+      it 'stops before an obstacle when moving backward' do
+        grid = grid_with_obstacles([[0, 4]], width: 10, height: 10)
+        rover = rover_facing(:N, x: 0, y: 5, grid: grid)
 
-      rover.execute(['b'])
+        rover.execute(['b'])
 
-      expect(rover).to be_obstructed_at(x: 0, y: 5)
-    end
+        expect(rover).to be_obstructed_at(x: 0, y: 5)
+      end
 
-    it 'detects obstacle at a wrapped position' do
-      grid = grid_with_obstacles([[0, 0]])
-      rover = rover_facing(:N, x: 0, y: 4, grid: grid)
+      it 'detects obstacle at a wrapped position' do
+        grid = grid_with_obstacles([[0, 0]])
+        rover = rover_facing(:N, x: 0, y: 4, grid: grid)
 
-      rover.execute(['f'])
+        rover.execute(['f'])
 
-      expect(rover).to be_obstructed_at(x: 0, y: 4)
+        expect(rover).to be_obstructed_at(x: 0, y: 4)
+      end
     end
   end
 end
