@@ -181,6 +181,18 @@ RSpec.describe Rover do
 
       expect(rover).to be_at(x: 2, y: 1, direction: :N)
     end
+
+    it 'handles a complex path with obstacles, wrapping, and turning' do
+      grid = grid_with_obstacles([[2, 2]])
+      rover = rover_facing(:N, grid: grid)
+
+      rover.execute(%w[f f r f f l f])
+
+      expect(rover.x).to eq(1)
+      expect(rover.y).to eq(2)
+      expect(rover.direction).to eq(:E)
+      expect(rover.obstacle_detected?).to be true
+    end
   end
 
   context 'when wrapping around the grid' do
@@ -280,17 +292,5 @@ RSpec.describe Rover do
       expect(rover.y).to eq(4)
       expect(rover.obstacle_detected?).to be true
     end
-  end
-
-  it 'handles a complex path with obstacles, wrapping, and turning' do
-    grid = grid_with_obstacles([[2, 2]])
-    rover = rover_facing(:N, grid: grid)
-
-    rover.execute(%w[f f r f f l f])
-
-    expect(rover.x).to eq(1)
-    expect(rover.y).to eq(2)
-    expect(rover.direction).to eq(:E)
-    expect(rover.obstacle_detected?).to be true
   end
 end
