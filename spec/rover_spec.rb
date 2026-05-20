@@ -123,28 +123,30 @@ RSpec.describe Rover do
     end
   end
 
-  it 'turns right from north to face east' do
-    rover = rover_facing(:N)
+  context 'when turning right' do
+    it 'turns right from north to face east' do
+      rover = rover_facing(:N)
 
-    rover.execute(['r'])
+      rover.execute(['r'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :E)
-  end
+      expect(rover).to be_at(x: 0, y: 0, direction: :E)
+    end
 
-  it 'turns right from east to face south' do
-    rover = rover_facing(:E)
+    it 'turns right from east to face south' do
+      rover = rover_facing(:E)
 
-    rover.execute(['r'])
+      rover.execute(['r'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :S)
-  end
+      expect(rover).to be_at(x: 0, y: 0, direction: :S)
+    end
 
-  it 'turns right four times to face north again' do
-    rover = rover_facing(:N)
+    it 'turns right four times to face north again' do
+      rover = rover_facing(:N)
 
-    rover.execute(%w[r r r r])
+      rover.execute(%w[r r r r])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :N)
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
+    end
   end
 
   it 'turns left from north to face west' do
