@@ -89,36 +89,38 @@ RSpec.describe Rover do
     end
   end
 
-  it 'moves backward one step when facing north' do
-    rover = rover_facing(:N)
+  context 'when moving backward' do
+    it 'moves backward one step when facing north' do
+      rover = rover_facing(:N)
 
-    rover.execute(['b'])
+      rover.execute(['b'])
 
-    expect(rover).to be_at(x: 0, y: -1, direction: :N)
-  end
+      expect(rover).to be_at(x: 0, y: -1, direction: :N)
+    end
 
-  it 'moves backward one step when facing east' do
-    rover = rover_facing(:E)
+    it 'moves backward one step when facing east' do
+      rover = rover_facing(:E)
 
-    rover.execute(['b'])
+      rover.execute(['b'])
 
-    expect(rover).to be_at(x: -1, y: 0, direction: :E)
-  end
+      expect(rover).to be_at(x: -1, y: 0, direction: :E)
+    end
 
-  it 'moves backward one step when facing south' do
-    rover = rover_facing(:S)
+    it 'moves backward one step when facing south' do
+      rover = rover_facing(:S)
 
-    rover.execute(['b'])
+      rover.execute(['b'])
 
-    expect(rover).to be_at(x: 0, y: 1, direction: :S)
-  end
+      expect(rover).to be_at(x: 0, y: 1, direction: :S)
+    end
 
-  it 'moves backward one step when facing west' do
-    rover = rover_facing(:W)
+    it 'moves backward one step when facing west' do
+      rover = rover_facing(:W)
 
-    rover.execute(['b'])
+      rover.execute(['b'])
 
-    expect(rover).to be_at(x: 1, y: 0, direction: :W)
+      expect(rover).to be_at(x: 1, y: 0, direction: :W)
+    end
   end
 
   it 'turns right from north to face east' do
