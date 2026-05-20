@@ -47,20 +47,46 @@ RSpec.describe Rover do
     expect(rover).to be_at(x: 0, y: 0, direction: :N)
   end
 
-  it 'moves forward one step when facing north' do
-    rover = rover_facing(:N)
+  context 'when moving forward' do
+    it 'moves forward one step when facing north' do
+      rover = rover_facing(:N)
 
-    rover.execute(['f'])
+      rover.execute(['f'])
 
-    expect(rover).to be_at(x: 0, y: 1, direction: :N)
-  end
+      expect(rover).to be_at(x: 0, y: 1, direction: :N)
+    end
 
-  it 'moves forward multiple steps when facing north' do
-    rover = rover_facing(:N)
+    it 'moves forward multiple steps when facing north' do
+      rover = rover_facing(:N)
 
-    rover.execute(%w[f f f])
+      rover.execute(%w[f f f])
 
-    expect(rover).to be_at(x: 0, y: 3, direction: :N)
+      expect(rover).to be_at(x: 0, y: 3, direction: :N)
+    end
+
+    it 'moves forward one step when facing east' do
+      rover = rover_facing(:E)
+
+      rover.execute(['f'])
+
+      expect(rover).to be_at(x: 1, y: 0, direction: :E)
+    end
+
+    it 'moves forward one step when facing south' do
+      rover = rover_facing(:S)
+
+      rover.execute(['f'])
+
+      expect(rover).to be_at(x: 0, y: -1, direction: :S)
+    end
+
+    it 'moves forward one step when facing west' do
+      rover = rover_facing(:W)
+
+      rover.execute(['f'])
+
+      expect(rover).to be_at(x: -1, y: 0, direction: :W)
+    end
   end
 
   it 'moves backward one step when facing north' do
@@ -69,30 +95,6 @@ RSpec.describe Rover do
     rover.execute(['b'])
 
     expect(rover).to be_at(x: 0, y: -1, direction: :N)
-  end
-
-  it 'moves forward one step when facing east' do
-    rover = rover_facing(:E)
-
-    rover.execute(['f'])
-
-    expect(rover).to be_at(x: 1, y: 0, direction: :E)
-  end
-
-  it 'moves forward one step when facing south' do
-    rover = rover_facing(:S)
-
-    rover.execute(['f'])
-
-    expect(rover).to be_at(x: 0, y: -1, direction: :S)
-  end
-
-  it 'moves forward one step when facing west' do
-    rover = rover_facing(:W)
-
-    rover.execute(['f'])
-
-    expect(rover).to be_at(x: -1, y: 0, direction: :W)
   end
 
   it 'moves backward one step when facing east' do
