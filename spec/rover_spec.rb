@@ -31,12 +31,14 @@ RSpec.describe Rover do
     expect(rover).to be_at(x: 0, y: 0, direction: :N)
   end
 
-  it 'receives an empty array of commands' do
-    rover = rover_facing(:N)
+  context 'with empty commands' do
+    it 'receives an empty array of commands' do
+      rover = rover_facing(:N)
 
-    rover.execute([])
+      rover.execute([])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :N)
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
+    end
   end
 
   it 'ignores unrecognized commands' do
