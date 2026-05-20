@@ -149,20 +149,22 @@ RSpec.describe Rover do
     end
   end
 
-  it 'turns left from north to face west' do
-    rover = rover_facing(:N)
+  context 'when turning left' do
+    it 'turns left from north to face west' do
+      rover = rover_facing(:N)
 
-    rover.execute(['l'])
+      rover.execute(['l'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :W)
-  end
+      expect(rover).to be_at(x: 0, y: 0, direction: :W)
+    end
 
-  it 'turns left from south to face east' do
-    rover = rover_facing(:S)
+    it 'turns left from south to face east' do
+      rover = rover_facing(:S)
 
-    rover.execute(['l'])
+      rover.execute(['l'])
 
-    expect(rover).to be_at(x: 0, y: 0, direction: :E)
+      expect(rover).to be_at(x: 0, y: 0, direction: :E)
+    end
   end
 
   it 'executes a complex path with all four commands' do
