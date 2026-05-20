@@ -50,14 +50,7 @@ class Rover
   end
 
   def attempt_move(multiplier)
-    delta = @compass.delta
-    new_x = @x + (delta[:x] * multiplier)
-    new_y = @y + (delta[:y] * multiplier)
-
-    if @grid
-      new_x = @grid.wrap_x(new_x)
-      new_y = @grid.wrap_y(new_y)
-    end
+    new_x, new_y = next_position(multiplier)
 
     if @grid&.obstacle_at?(new_x, new_y)
       @obstacle_detected = true
@@ -66,6 +59,15 @@ class Rover
 
     @x = new_x
     @y = new_y
+  end
+
+  def next_position(multiplier)
+    delta = @compass.delta
+    new_x = @x + (delta[:x] * multiplier)
+    new_y = @y + (delta[:y] * multiplier)
+    return [new_x, new_y] unless @grid
+
+    [@grid.wrap_x(new_x), @grid.wrap_y(new_y)]
   end
 
   def turn_left
