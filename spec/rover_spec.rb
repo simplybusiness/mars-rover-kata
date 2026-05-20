@@ -173,12 +173,14 @@ RSpec.describe Rover do
     end
   end
 
-  it 'executes a complex path with all four commands' do
-    rover = rover_facing(:N)
+  context 'with a complex sequence of commands' do
+    it 'executes a complex path with all four commands' do
+      rover = rover_facing(:N)
 
-    rover.execute(%w[f f r f f l b])
+      rover.execute(%w[f f r f f l b])
 
-    expect(rover).to be_at(x: 2, y: 1, direction: :N)
+      expect(rover).to be_at(x: 2, y: 1, direction: :N)
+    end
   end
 
   context 'when wrapping around the grid' do
