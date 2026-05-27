@@ -51,14 +51,12 @@ RSpec.describe Rover do
   end
 
   describe 'movement and turning' do
-    context 'with empty commands' do
-      it 'does not move or turn' do
-        rover = rover_facing(:N)
+    it 'does not move or turn with empty commands' do
+      rover = rover_facing(:N)
 
-        rover.execute([])
+      rover.execute([])
 
-        expect(rover).to be_at(x: 0, y: 0, direction: :N)
-      end
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
     end
 
     context 'with unrecognized commands' do
