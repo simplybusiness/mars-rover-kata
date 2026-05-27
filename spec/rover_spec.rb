@@ -59,14 +59,12 @@ RSpec.describe Rover do
       expect(rover).to be_at(x: 0, y: 0, direction: :N)
     end
 
-    context 'with unrecognized commands' do
-      it 'ignores unrecognized commands' do
-        rover = rover_facing(:N)
+    it 'ignores unrecognized commands' do
+      rover = rover_facing(:N)
 
-        rover.execute(%w[x z])
+      rover.execute(%w[x z])
 
-        expect(rover).to be_at(x: 0, y: 0, direction: :N)
-      end
+      expect(rover).to be_at(x: 0, y: 0, direction: :N)
     end
 
     context 'when moving forward' do
