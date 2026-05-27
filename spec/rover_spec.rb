@@ -50,124 +50,118 @@ RSpec.describe Rover do
     Grid.new(width: width, height: height, obstacles: obstacles)
   end
 
-  describe 'initial state' do
-    it 'has a starting position and direction' do
-      rover = rover_facing(:N)
+  describe 'movement and turning' do
+    context 'with empty commands' do
+      it 'receives an empty array of commands' do
+        rover = rover_facing(:N)
 
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-  end
+        rover.execute([])
 
-  context 'with empty commands' do
-    it 'receives an empty array of commands' do
-      rover = rover_facing(:N)
-
-      rover.execute([])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-  end
-
-  context 'with unrecognized commands' do
-    it 'ignores unrecognized commands' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[x z])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-  end
-
-  context 'when moving forward' do
-    include_examples 'a single-step command', 'f',
-                     'facing N' => { start: :N, x: 0,  y: 1,  direction: :N },
-                     'facing E' => { start: :E, x: 1,  y: 0,  direction: :E },
-                     'facing S' => { start: :S, x: 0,  y: -1, direction: :S },
-                     'facing W' => { start: :W, x: -1, y: 0,  direction: :W }
-
-    it 'moves forward multiple steps when facing north' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[f f f])
-
-      expect(rover).to be_at(x: 0, y: 3, direction: :N)
-    end
-  end
-
-  context 'when moving backward' do
-    include_examples 'a single-step command', 'b',
-                     'facing N' => { start: :N, x: 0,  y: -1, direction: :N },
-                     'facing E' => { start: :E, x: -1, y: 0,  direction: :E },
-                     'facing S' => { start: :S, x: 0,  y: 1,  direction: :S },
-                     'facing W' => { start: :W, x: 1,  y: 0,  direction: :W }
-  end
-
-  context 'when turning right' do
-    include_examples 'a single-step command', 'r',
-                     'starting from N' => { start: :N, x: 0, y: 0, direction: :E },
-                     'starting from E' => { start: :E, x: 0, y: 0, direction: :S }
-
-    it 'turns right four times to face north again' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[r r r r])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-  end
-
-  context 'when turning left' do
-    include_examples 'a single-step command', 'l',
-                     'starting from N' => { start: :N, x: 0, y: 0, direction: :W },
-                     'starting from S' => { start: :S, x: 0, y: 0, direction: :E }
-  end
-
-  context 'with a complex sequence of commands' do
-    it 'executes a complex path with all four commands' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[f f r f f l b])
-
-      expect(rover).to be_at(x: 2, y: 1, direction: :N)
-    end
-
-    it 'handles a complex path with obstacles, wrapping, and turning' do
-      grid = grid_with_obstacles([[2, 2]])
-      rover = rover_facing(:N, grid: grid)
-
-      rover.execute(%w[f f r f f l f])
-
-      expect(rover.x).to eq(1)
-      expect(rover.y).to eq(2)
-      expect(rover.direction).to eq(:E)
-      expect(rover.obstacle_detected?).to be true
-    end
-  end
-
-  context 'when wrapping around the grid' do
-    [
-      { direction: :N, edge: 'top',    start: { x: 0, y: 4 }, expected: { x: 0, y: 0 } },
-      { direction: :S, edge: 'bottom', start: { x: 0, y: 0 }, expected: { x: 0, y: 4 } },
-      { direction: :E, edge: 'right',  start: { x: 4, y: 0 }, expected: { x: 0, y: 0 } },
-      { direction: :W, edge: 'left',   start: { x: 0, y: 0 }, expected: { x: 4, y: 0 } }
-    ].each do |row|
-      it "wraps when moving #{row[:direction]} past the #{row[:edge]} edge" do
-        grid = grid_with_obstacles
-        rover = rover_facing(row[:direction], x: row[:start][:x], y: row[:start][:y], grid: grid)
-
-        rover.execute(['f'])
-
-        expect(rover).to be_at(x: row[:expected][:x], y: row[:expected][:y], direction: row[:direction])
+        expect(rover).to be_at(x: 0, y: 0, direction: :N)
       end
     end
 
-    it 'wraps when moving backward past an edge' do
-      grid = grid_with_obstacles
-      rover = rover_facing(:N, grid: grid)
+    context 'with unrecognized commands' do
+      it 'ignores unrecognized commands' do
+        rover = rover_facing(:N)
 
-      rover.execute(['b'])
+        rover.execute(%w[x z])
 
-      expect(rover).to be_at(x: 0, y: 4, direction: :N)
+        expect(rover).to be_at(x: 0, y: 0, direction: :N)
+      end
+    end
+
+    context 'when moving forward' do
+      include_examples 'a single-step command', 'f',
+                      'facing N' => { start: :N, x: 0,  y: 1,  direction: :N },
+                      'facing E' => { start: :E, x: 1,  y: 0,  direction: :E },
+                      'facing S' => { start: :S, x: 0,  y: -1, direction: :S },
+                      'facing W' => { start: :W, x: -1, y: 0,  direction: :W }
+
+      it 'moves forward multiple steps when facing north' do
+        rover = rover_facing(:N)
+
+        rover.execute(%w[f f f])
+
+        expect(rover).to be_at(x: 0, y: 3, direction: :N)
+      end
+    end
+
+    context 'when moving backward' do
+      include_examples 'a single-step command', 'b',
+                      'facing N' => { start: :N, x: 0,  y: -1, direction: :N },
+                      'facing E' => { start: :E, x: -1, y: 0,  direction: :E },
+                      'facing S' => { start: :S, x: 0,  y: 1,  direction: :S },
+                      'facing W' => { start: :W, x: 1,  y: 0,  direction: :W }
+    end
+
+    context 'when turning right' do
+      include_examples 'a single-step command', 'r',
+                      'starting from N' => { start: :N, x: 0, y: 0, direction: :E },
+                      'starting from E' => { start: :E, x: 0, y: 0, direction: :S }
+
+      it 'turns right four times to face north again' do
+        rover = rover_facing(:N)
+
+        rover.execute(%w[r r r r])
+
+        expect(rover).to be_at(x: 0, y: 0, direction: :N)
+      end
+    end
+
+    context 'when turning left' do
+      include_examples 'a single-step command', 'l',
+                      'starting from N' => { start: :N, x: 0, y: 0, direction: :W },
+                      'starting from S' => { start: :S, x: 0, y: 0, direction: :E }
+    end
+
+    context 'with a complex sequence of commands' do
+      it 'executes a complex path with all four commands' do
+        rover = rover_facing(:N)
+
+        rover.execute(%w[f f r f f l b])
+
+        expect(rover).to be_at(x: 2, y: 1, direction: :N)
+      end
+
+      it 'handles a complex path with obstacles, wrapping, and turning' do
+        grid = grid_with_obstacles([[2, 2]])
+        rover = rover_facing(:N, grid: grid)
+
+        rover.execute(%w[f f r f f l f])
+
+        expect(rover.x).to eq(1)
+        expect(rover.y).to eq(2)
+        expect(rover.direction).to eq(:E)
+        expect(rover.obstacle_detected?).to be true
+      end
+    end
+
+    context 'when wrapping around the grid' do
+      [
+        { direction: :N, edge: 'top',    start: { x: 0, y: 4 }, expected: { x: 0, y: 0 } },
+        { direction: :S, edge: 'bottom', start: { x: 0, y: 0 }, expected: { x: 0, y: 4 } },
+        { direction: :E, edge: 'right',  start: { x: 4, y: 0 }, expected: { x: 0, y: 0 } },
+        { direction: :W, edge: 'left',   start: { x: 0, y: 0 }, expected: { x: 4, y: 0 } }
+      ].each do |row|
+        it "wraps when moving #{row[:direction]} past the #{row[:edge]} edge" do
+          grid = grid_with_obstacles
+          rover = rover_facing(row[:direction], x: row[:start][:x], y: row[:start][:y], grid: grid)
+
+          rover.execute(['f'])
+
+          expect(rover).to be_at(x: row[:expected][:x], y: row[:expected][:y], direction: row[:direction])
+        end
+      end
+
+      it 'wraps when moving backward past an edge' do
+        grid = grid_with_obstacles
+        rover = rover_facing(:N, grid: grid)
+
+        rover.execute(['b'])
+
+        expect(rover).to be_at(x: 0, y: 4, direction: :N)
+      end
     end
   end
 
