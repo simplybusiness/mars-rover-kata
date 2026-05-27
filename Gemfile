@@ -12,3 +12,7 @@ group :test do
   gem 'minitest'
   gem 'rspec'
 end
+
+group :development do
+  gem 'rubocop', require: false
+end
