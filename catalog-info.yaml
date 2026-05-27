@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: mars-rover-kata
+  title: Mars Rover Kata
+  description: Practise Evolutionary Software Engineering with TDD
+  annotations:
+    github.com/project-slug: simplybusiness/mars-rover-kata
+    backstage.io/source-template: template:default/add-to-backstage
+spec:
+  type: tooling
+  lifecycle: experimental
