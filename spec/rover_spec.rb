@@ -52,7 +52,7 @@ RSpec.describe Rover do
 
   describe 'movement and turning' do
     context 'with empty commands' do
-      it 'receives an empty array of commands' do
+      it 'does not move or turn' do
         rover = rover_facing(:N)
 
         rover.execute([])
