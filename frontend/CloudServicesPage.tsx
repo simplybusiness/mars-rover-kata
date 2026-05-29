@@ -1,5 +1,3 @@
-import React from 'react';
-
 type CloudService = {
   label: string;
   summary: string;
