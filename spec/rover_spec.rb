@@ -50,168 +50,170 @@ RSpec.describe Rover do
     Grid.new(width: width, height: height, obstacles: obstacles)
   end
 
-  describe 'command handling' do
-    it 'does not move or turn with empty commands' do
-      rover = rover_facing(:N)
-
-      rover.execute([])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-
-    it 'ignores unrecognized commands' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[x z])
-
-      expect(rover).to be_at(x: 0, y: 0, direction: :N)
-    end
-  end
-
-  describe 'moving' do
-    context 'when moving forward' do
-      include_examples 'a single-step command', 'f',
-                       'facing N' => { start: :N, x: 0,  y: 1,  direction: :N },
-                       'facing E' => { start: :E, x: 1,  y: 0,  direction: :E },
-                       'facing S' => { start: :S, x: 0,  y: -1, direction: :S },
-                       'facing W' => { start: :W, x: -1, y: 0,  direction: :W }
-
-      it 'moves forward multiple steps when facing north' do
+  describe '#execute' do
+    describe 'command parsing' do
+      it 'stays put on empty input' do
         rover = rover_facing(:N)
 
-        rover.execute(%w[f f f])
+        rover.execute([])
 
-        expect(rover).to be_at(x: 0, y: 3, direction: :N)
+        expect(rover).to be_at(x: 0, y: 0, direction: :N)
       end
-    end
 
-    context 'when moving backward' do
-      include_examples 'a single-step command', 'b',
-                       'facing N' => { start: :N, x: 0,  y: -1, direction: :N },
-                       'facing E' => { start: :E, x: -1, y: 0,  direction: :E },
-                       'facing S' => { start: :S, x: 0,  y: 1,  direction: :S },
-                       'facing W' => { start: :W, x: 1,  y: 0,  direction: :W }
-    end
-  end
-
-  describe 'turning' do
-    context 'when turning right' do
-      include_examples 'a single-step command', 'r',
-                       'starting from N' => { start: :N, x: 0, y: 0, direction: :E },
-                       'starting from E' => { start: :E, x: 0, y: 0, direction: :S }
-
-      it 'turns right four times to face north again' do
+      it 'ignores unrecognized commands' do
         rover = rover_facing(:N)
 
-        rover.execute(%w[r r r r])
+        rover.execute(%w[x z])
 
         expect(rover).to be_at(x: 0, y: 0, direction: :N)
       end
     end
 
-    context 'when turning left' do
-      include_examples 'a single-step command', 'l',
-                       'starting from N' => { start: :N, x: 0, y: 0, direction: :W },
-                       'starting from S' => { start: :S, x: 0, y: 0, direction: :E }
+    describe 'movement' do
+      context 'forward' do
+        include_examples 'a single-step command', 'f',
+                         'facing N' => { start: :N, x: 0,  y: 1,  direction: :N },
+                         'facing E' => { start: :E, x: 1,  y: 0,  direction: :E },
+                         'facing S' => { start: :S, x: 0,  y: -1, direction: :S },
+                         'facing W' => { start: :W, x: -1, y: 0,  direction: :W }
+
+        it 'moves multiple steps when facing north' do
+          rover = rover_facing(:N)
+
+          rover.execute(%w[f f f])
+
+          expect(rover).to be_at(x: 0, y: 3, direction: :N)
+        end
+      end
+
+      context 'backward' do
+        include_examples 'a single-step command', 'b',
+                         'facing N' => { start: :N, x: 0,  y: -1, direction: :N },
+                         'facing E' => { start: :E, x: -1, y: 0,  direction: :E },
+                         'facing S' => { start: :S, x: 0,  y: 1,  direction: :S },
+                         'facing W' => { start: :W, x: 1,  y: 0,  direction: :W }
+      end
     end
-  end
 
-  describe 'wrapping around the grid' do
-    context 'when moving forward past an edge' do
-      [
-        { direction: :N, edge: 'top',    start: { x: 0, y: 4 }, expected: { x: 0, y: 0 } },
-        { direction: :S, edge: 'bottom', start: { x: 0, y: 0 }, expected: { x: 0, y: 4 } },
-        { direction: :E, edge: 'right',  start: { x: 4, y: 0 }, expected: { x: 0, y: 0 } },
-        { direction: :W, edge: 'left',   start: { x: 0, y: 0 }, expected: { x: 4, y: 0 } }
-      ].each do |row|
-        it "wraps when moving #{row[:direction]} past the #{row[:edge]} edge" do
+    describe 'rotation' do
+      context 'right' do
+        include_examples 'a single-step command', 'r',
+                         'starting from N' => { start: :N, x: 0, y: 0, direction: :E },
+                         'starting from E' => { start: :E, x: 0, y: 0, direction: :S }
+
+        it 'returns to facing north after four right turns' do
+          rover = rover_facing(:N)
+
+          rover.execute(%w[r r r r])
+
+          expect(rover).to be_at(x: 0, y: 0, direction: :N)
+        end
+      end
+
+      context 'left' do
+        include_examples 'a single-step command', 'l',
+                         'starting from N' => { start: :N, x: 0, y: 0, direction: :W },
+                         'starting from S' => { start: :S, x: 0, y: 0, direction: :E }
+      end
+    end
+
+    describe 'grid wrapping' do
+      context 'when moving forward off an edge' do
+        [
+          { direction: :N, edge: 'top',    start: { x: 0, y: 4 }, expected: { x: 0, y: 0 } },
+          { direction: :S, edge: 'bottom', start: { x: 0, y: 0 }, expected: { x: 0, y: 4 } },
+          { direction: :E, edge: 'right',  start: { x: 4, y: 0 }, expected: { x: 0, y: 0 } },
+          { direction: :W, edge: 'left',   start: { x: 0, y: 0 }, expected: { x: 4, y: 0 } }
+        ].each do |row|
+          it "wraps to the #{row[:edge]} edge moving #{row[:direction]}" do
+            grid = grid_with_obstacles
+            rover = rover_facing(row[:direction], x: row[:start][:x], y: row[:start][:y], grid: grid)
+
+            rover.execute(['f'])
+
+            expect(rover).to be_at(x: row[:expected][:x], y: row[:expected][:y], direction: row[:direction])
+          end
+        end
+      end
+
+      context 'when moving backward off an edge' do
+        it 'wraps to the opposite edge' do
           grid = grid_with_obstacles
-          rover = rover_facing(row[:direction], x: row[:start][:x], y: row[:start][:y], grid: grid)
+          rover = rover_facing(:N, grid: grid)
 
-          rover.execute(['f'])
+          rover.execute(['b'])
 
-          expect(rover).to be_at(x: row[:expected][:x], y: row[:expected][:y], direction: row[:direction])
+          expect(rover).to be_at(x: 0, y: 4, direction: :N)
         end
       end
     end
 
-    context 'when moving backward past an edge' do
-      it 'wraps to the opposite edge' do
-        grid = grid_with_obstacles
-        rover = rover_facing(:N, grid: grid)
-
-        rover.execute(['b'])
-
-        expect(rover).to be_at(x: 0, y: 4, direction: :N)
-      end
-    end
-  end
-
-  describe 'obstacle detection' do
-    it 'reports no obstacle detected after normal movement' do
-      rover = rover_facing(:N)
-
-      rover.execute(['f'])
-
-      expect(rover.obstacle_detected?).to be false
-    end
-
-    context 'when an obstacle is in the path' do
-      it 'stops before an obstacle when moving forward' do
-        grid = grid_with_obstacles([[0, 1]], width: 10, height: 10)
-        rover = rover_facing(:N, grid: grid)
+    describe 'obstacle detection' do
+      it 'reports no obstacle after a clear move' do
+        rover = rover_facing(:N)
 
         rover.execute(['f'])
 
-        expect(rover).to be_obstructed_at(x: 0, y: 0)
+        expect(rover.obstacle_detected?).to be false
       end
 
-      it 'stops before an obstacle when moving backward' do
-        grid = grid_with_obstacles([[0, 4]], width: 10, height: 10)
-        rover = rover_facing(:N, x: 0, y: 5, grid: grid)
+      context 'when the path is blocked' do
+        it 'stops before an obstacle when moving forward' do
+          grid = grid_with_obstacles([[0, 1]], width: 10, height: 10)
+          rover = rover_facing(:N, grid: grid)
 
-        rover.execute(['b'])
+          rover.execute(['f'])
 
-        expect(rover).to be_obstructed_at(x: 0, y: 5)
+          expect(rover).to be_obstructed_at(x: 0, y: 0)
+        end
+
+        it 'stops before an obstacle when moving backward' do
+          grid = grid_with_obstacles([[0, 4]], width: 10, height: 10)
+          rover = rover_facing(:N, x: 0, y: 5, grid: grid)
+
+          rover.execute(['b'])
+
+          expect(rover).to be_obstructed_at(x: 0, y: 5)
+        end
+
+        it 'aborts remaining commands after hitting an obstacle' do
+          grid = grid_with_obstacles([[0, 2]], width: 10, height: 10)
+          rover = rover_facing(:N, grid: grid)
+
+          rover.execute(%w[f f f])
+
+          expect(rover).to be_obstructed_at(x: 0, y: 1)
+        end
+
+        it 'detects an obstacle at a wrapped position' do
+          grid = grid_with_obstacles([[0, 0]])
+          rover = rover_facing(:N, x: 0, y: 4, grid: grid)
+
+          rover.execute(['f'])
+
+          expect(rover).to be_obstructed_at(x: 0, y: 4)
+        end
+      end
+    end
+
+    describe 'command sequences' do
+      it 'executes a path combining moves and turns' do
+        rover = rover_facing(:N)
+
+        rover.execute(%w[f f r f f l b])
+
+        expect(rover).to be_at(x: 2, y: 1, direction: :N)
       end
 
-      it 'aborts remaining commands after hitting an obstacle' do
-        grid = grid_with_obstacles([[0, 2]], width: 10, height: 10)
+      it 'handles a path with obstacles, wrapping, and turning' do
+        grid = grid_with_obstacles([[2, 2]])
         rover = rover_facing(:N, grid: grid)
 
-        rover.execute(%w[f f f])
+        rover.execute(%w[f f r f f l f])
 
-        expect(rover).to be_obstructed_at(x: 0, y: 1)
+        expect(rover).to be_obstructed_at(x: 1, y: 2)
+        expect(rover.direction).to eq(:E)
       end
-
-      it 'detects an obstacle at a wrapped position' do
-        grid = grid_with_obstacles([[0, 0]])
-        rover = rover_facing(:N, x: 0, y: 4, grid: grid)
-
-        rover.execute(['f'])
-
-        expect(rover).to be_obstructed_at(x: 0, y: 4)
-      end
-    end
-  end
-
-  describe 'complex command sequences' do
-    it 'executes a path combining moves and turns' do
-      rover = rover_facing(:N)
-
-      rover.execute(%w[f f r f f l b])
-
-      expect(rover).to be_at(x: 2, y: 1, direction: :N)
-    end
-
-    it 'handles a path with obstacles, wrapping, and turning' do
-      grid = grid_with_obstacles([[2, 2]])
-      rover = rover_facing(:N, grid: grid)
-
-      rover.execute(%w[f f r f f l f])
-
-      expect(rover).to be_obstructed_at(x: 1, y: 2)
-      expect(rover.direction).to eq(:E)
     end
   end
 end
