@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#
+# Pre-commit hook: secret scan, lint, and tests.
+# Shared via core.hooksPath (see hooks/README.md).
+set -euo pipefail
+
+# 1. Scan staged changes for secrets (git-secrets), if installed.
+if command -v git-secrets >/dev/null 2>&1; then
+  git secrets --pre_commit_hook -- "$@"
+fi
+
+# 2. Lint.
+echo "==> RuboCop"
+bundle exec rubocop
+
+# 3. Tests.
+echo "==> RSpec"
+bundle exec rspec

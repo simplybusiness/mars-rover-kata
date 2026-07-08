@@ -1,3 +1,10 @@
 #!/bin/sh
 
-bundle exec rspec -cfd && git commit -am "Test passes" || git checkout lib
+message=${1:-"green"}
+
+if bundle exec rspec -cfd
+then
+  git add -A && git commit -m "$message"
+else
+  git checkout lib spec
+fi
