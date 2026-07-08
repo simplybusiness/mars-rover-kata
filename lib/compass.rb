@@ -18,16 +18,21 @@ class Compass
   end
 
   def turn_left
-    current_index = DIRECTIONS.index(@direction)
-    Compass.new(DIRECTIONS[(current_index - 1) % 4])
+    turn(-1)
+  end
+
+  def turn_right
+    turn(1)
   end
 
   def delta
     MOVEMENT[@direction]
   end
 
-  def turn_right
-    current_index = DIRECTIONS.index(@direction)
-    Compass.new(DIRECTIONS[(current_index + 1) % 4])
+  private
+
+  def turn(offset)
+    index = DIRECTIONS.index(@direction)
+    Compass.new(DIRECTIONS[(index + offset) % DIRECTIONS.length])
   end
 end
