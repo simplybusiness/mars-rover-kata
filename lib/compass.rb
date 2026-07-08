@@ -4,8 +4,6 @@
 class Compass
   attr_reader :direction
 
-  DIRECTIONS = %i[N E S W].freeze
-
   MOVEMENT = {
     N: { x: 0, y: 1 },
     E: { x: 1, y: 0 },
